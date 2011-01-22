@@ -6,4 +6,7 @@
   <email>fordfrog@gentoo.org</email>
   <name>Miroslav Šulc</name>
 </maintainer>
+<use>
+  <flag name="doc">Installs JavaDocs for Netbeans source code</flag>
+</use>
 </pkgmetadata>
