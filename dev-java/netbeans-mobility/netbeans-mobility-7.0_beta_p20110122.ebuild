@@ -79,7 +79,7 @@ src_prepare() {
 	find -name "*.class" -type f | xargs rm -vf
 
 	epatch netbeans-7.0-build.xml.patch
-	sed -i "/release\.external.*nbactivesync/d" o.n.mobility.lib.activesync/nbproject/project.properties || die
+	sed -i "/release\.external.*nbactivesync\.dll/d" o.n.mobility.lib.activesync/nbproject/project.properties || die
 
 	einfo "Symlinking external libraries..."
 	java-pkg_jar-from --into j2me.cdc.project.ricoh/external commons-codec commons-codec.jar commons-codec-1.3.jar
