@@ -3,6 +3,10 @@
 # $Header: $
 
   22 Jan 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  netbeans-nb-7.0_beta_p20110122.ebuild:
+  Migrated some fixes from netbeans 6.9 to netbeans-nb
+
+  22 Jan 2011; Miroslav Šulc <fordfrog@gentoo.org>
   netbeans-nb-7.0_beta_p20110122.ebuild, +metadata.xml:
   Switched to EAPI4
 

@@ -100,6 +100,12 @@ src_install() {
 	dosym /etc/netbeans-${SLOT} ${INSTALL_DIR}/etc
 	sed -i "s%#netbeans_jdkhome=\"/path/to/jdk\"%netbeans_jdkhome=\"\$(java-config -O)\"%" "${D}"/etc/netbeans-${SLOT}/netbeans.conf || die
 
+	# fix paths per bug# 163483
+	if [[ -e "${D}"/${INSTALL_DIR}/bin/netbeans ]]; then
+		sed -i -e 's:"$progdir"/../etc/:/etc/netbeans-7.0/:' "${D}"/${INSTALL_DIR}/bin/netbeans
+		sed -i -e 's:"${userdir}"/etc/:/etc/netbeans-7.0/:' "${D}"/${INSTALL_DIR}/bin/netbeans
+	fi
+
 	dodir /usr/share/icons/hicolor/32x32/apps
 	dosym ${INSTALL_DIR}/nb/netbeans.png /usr/share/icons/hicolor/32x32/apps/netbeans-${SLOT}.png
 	dodir /usr/share/icons/hicolor/128x128/apps
@@ -133,7 +139,8 @@ src_install() {
 
 	make_desktop_entry netbeans-${SLOT} "Netbeans ${PV}" netbeans-${SLOT} Development
 
-	echo "NBGNT" > ${D}/${INSTALL_DIR}/nb/config/productid || die "Could not set Gentoo Netbeans ID"
+	mkdir -p  "${D}"/${INSTALL_DIR}/nb/config || die
+	echo "NBGNT" > "${D}"/${INSTALL_DIR}/nb/config/productid || die
 }
 
 pkg_postinst() {
