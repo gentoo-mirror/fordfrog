@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="3"
+EAPI="4"
 WANT_ANT_TASKS="ant-nodeps"
 inherit eutils java-pkg-2 java-ant-2
 
@@ -81,22 +81,22 @@ src_prepare() {
 src_install() {
 	pushd nbbuild/netbeans >/dev/null || die
 
-	insinto ${INSTALL_DIR}/nb || die
+	insinto ${INSTALL_DIR}/nb
 
 	grep -E "/nb$" moduleCluster.properties > "${D}"/${INSTALL_DIR}/nb/moduleCluster.properties || die
 
-	insinto ${INSTALL_DIR} || die
-	doins -r nb || die
-	dodoc *.txt || die
-	dohtml *.html *.css || die
+	insinto ${INSTALL_DIR}
+	doins -r nb
+	dodoc *.txt
+	dohtml *.html *.css
 
-	insinto ${INSTALL_DIR}/bin || die
-	doins bin/netbeans || die
-	dosym ${INSTALL_DIR}/bin/netbeans /usr/bin/netbeans-${SLOT} || die
-	fperms 755 ${INSTALL_DIR}/bin/netbeans || die
+	insinto ${INSTALL_DIR}/bin
+	doins bin/netbeans
+	dosym ${INSTALL_DIR}/bin/netbeans /usr/bin/netbeans-${SLOT}
+	fperms 755 ${INSTALL_DIR}/bin/netbeans
 
-	insinto /etc/netbeans-${SLOT} || die
-	doins etc/* || die
+	insinto /etc/netbeans-${SLOT}
+	doins etc/*
 	dosym /etc/netbeans-${SLOT} ${INSTALL_DIR}/etc
 	sed -i "s%#netbeans_jdkhome=\"/path/to/jdk\"%netbeans_jdkhome=\"\$(java-config -O)\"%" "${D}"/etc/netbeans-${SLOT}/netbeans.conf || die
 

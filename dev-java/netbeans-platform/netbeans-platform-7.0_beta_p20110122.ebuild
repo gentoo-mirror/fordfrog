@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="3"
+EAPI="4"
 WANT_ANT_TASKS="ant-nodeps"
 inherit eutils java-pkg-2 java-ant-2
 
@@ -82,23 +82,18 @@ src_install() {
 	java-pkg_dojar lib/*.jar
 	grep -E "/platform$" ../moduleCluster.properties > "${D}"/${INSTALL_DIR}/moduleCluster.properties || die
 
-	insinto ${INSTALL_DIR} || die
-	doins -r config || die
-	doins -r core || die
-	doins -r docs || die
+	insinto ${INSTALL_DIR}
+	doins -r *
 	rm "${D}"/${INSTALL_DIR}/docs/swing-layout-1.0.4-src.zip || die
-	dosym /usr/share/swing-layout-1/sources/swing-layout-src.zip ${INSTALL_DIR}/docs/swing-layout-1.0.4-src.zip || die
-	doins -r modules || die
-	doins -r update_tracking || die
-	doins VERSION.txt || die
-
-	insinto ${INSTALL_DIR}/lib
-	doins lib/nbexec || die
+	dosym /usr/share/swing-layout-1/sources/swing-layout-src.zip ${INSTALL_DIR}/docs/swing-layout-1.0.4-src.zip
+	find "${D}"/${INSTALL_DIR} -name "*.exe" -delete
+	find "${D}"/${INSTALL_DIR} -name "*.dll" -delete
+	rm -fr "${D}"/modules/lib || die
 
 	popd >/dev/null || die
 
-	fperms 775 ${INSTALL_DIR}/lib/nbexec || die "Failed to change nbexec file permissions"
-	dosym ${INSTALL_DIR}/lib/nbexec /usr/bin/nbexec-${SLOT} || die "Failed to symlink nbexec"
+	fperms 775 ${INSTALL_DIR}/lib/nbexec
+	dosym ${INSTALL_DIR}/lib/nbexec /usr/bin/nbexec-${SLOT}
 
 	local instdir=${INSTALL_DIR}/modules/ext
 	pushd "${D}"/${instdir} >/dev/null || die

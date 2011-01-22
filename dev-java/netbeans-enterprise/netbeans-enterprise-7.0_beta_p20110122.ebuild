@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="3"
+EAPI="4"
 WANT_ANT_TASKS="ant-nodeps"
 inherit eutils java-pkg-2 java-ant-2
 
@@ -176,11 +176,11 @@ src_prepare() {
 src_install() {
 	pushd nbbuild/netbeans/enterprise >/dev/null || die
 
-	insinto ${INSTALL_DIR} || die
+	insinto ${INSTALL_DIR}
 
 	grep -E "/enterprise$" ../moduleCluster.properties > "${D}"/${INSTALL_DIR}/moduleCluster.properties || die
 
-	doins -r * || die
+	doins -r *
 
 	popd >/dev/null || die
 

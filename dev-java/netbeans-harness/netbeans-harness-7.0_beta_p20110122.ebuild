@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="3"
+EAPI="4"
 WANT_ANT_TASKS="ant-nodeps"
 inherit eutils java-pkg-2 java-ant-2
 
@@ -61,9 +61,11 @@ src_prepare() {
 	einfo "Linking in other clusters..."
 	mkdir "${S}"/nbbuild/netbeans || die
 	pushd "${S}"/nbbuild/netbeans >/dev/null || die
+
 	ln -s /usr/share/netbeans-platform-${SLOT} platform || die
 	cat /usr/share/netbeans-platform-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
 	touch nb.cluster.platform.built
+
 	popd >/dev/null || die
 
 	java-pkg-2_src_prepare
@@ -72,12 +74,12 @@ src_prepare() {
 src_install() {
 	pushd nbbuild/netbeans/harness >/dev/null || die
 
-	insinto ${INSTALL_DIR} || die
+	insinto ${INSTALL_DIR}
 
 	grep -E "/harness$" ../moduleCluster.properties > "${D}"/${INSTALL_DIR}/moduleCluster.properties || die
 
-	doins -r * || die
-	fperms 755 launchers/app.sh || die
+	doins -r *
+	fperms 755 launchers/app.sh
 	find "${D}" -name "*.exe" -type f -delete
 
 	popd >/dev/null || die

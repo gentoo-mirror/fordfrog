@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="3"
+EAPI="4"
 WANT_ANT_TASKS="ant-nodeps"
 inherit eutils java-pkg-2 java-ant-2
 
@@ -228,35 +228,33 @@ src_prepare() {
 src_install() {
 	pushd nbbuild/netbeans/ide >/dev/null || die
 
-	insinto ${INSTALL_DIR} || die
+	insinto ${INSTALL_DIR}
 
 	grep -E "/ide$" ../moduleCluster.properties > "${D}"/${INSTALL_DIR}/moduleCluster.properties || die
 
-	doins -r * || die
+	doins -r *
 	rm -fr "${D}"/${INSTALL_DIR}/bin/nativeexecution || die
 	rm -fr "${D}"/${INSTALL_DIR}/modules/lib || die
 
-	insinto ${INSTALL_DIR}/bin/nativeexecution || die
-	doins bin/nativeexecution/* || die
+	insinto ${INSTALL_DIR}/bin/nativeexecution
+	doins bin/nativeexecution/*
 
 	pushd "${D}"/${INSTALL_DIR}/bin/nativeexecution >/dev/null || die
 	for file in *.sh ; do
-		fperms 755 ${file} || die
+		fperms 755 ${file}
 	done
 	popd >/dev/null || die
 
 	if use x86 ; then
-		doins -r bin/nativeexecution/Linux-x86 || die
 		pushd "${D}"/${INSTALL_DIR}/bin/nativeexecution/Linux-x86 >/dev/null || die
 		for file in * ; do
-			fperms 755 ${file} || die
+			fperms 755 ${file}
 		done
 		popd >/dev/null || die
 	elif use amd64 ; then
-		doins -r bin/nativeexecution/Linux-x86_64 || die
 		pushd "${D}"/${INSTALL_DIR}/bin/nativeexecution/Linux-x86_64 >/dev/null || die
 		for file in * ; do
-			fperms 755 ${file} || die
+			fperms 755 ${file}
 		done
 		popd >/dev/null || die
 	fi

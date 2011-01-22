@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="3"
+EAPI="4"
 WANT_ANT_TASKS="ant-nodeps"
 inherit eutils java-pkg-2 java-ant-2
 
@@ -164,22 +164,22 @@ src_install() {
 	insinto ${INSTALL_DIR}
 	grep -E "/java$" ../moduleCluster.properties > "${D}"/${INSTALL_DIR}/moduleCluster.properties || die
 
-	doins -r * || die
+	doins -r *
 	rm "${D}"/${INSTALL_DIR}/docs/junit-4.8.2-src.jar || die
-	dosym /usr/share/junit-4/sources/junit-src.zip ${INSTALL_DIR}/docs/junit-4.8.2-src.jar || die
+	dosym /usr/share/junit-4/sources/junit-src.zip ${INSTALL_DIR}/docs/junit-4.8.2-src.jar
 	rm -fr "${D}"/${INSTALL_DIR}/ant/* || die
 	rm -fr "${D}"/${INSTALL_DIR}/maven || die
-	dosym /usr/share/maven-bin-3.0 ${INSTALL_DIR}/maven || die
+	dosym /usr/share/maven-bin-3.0 ${INSTALL_DIR}/maven
 
-	insinto ${INSTALL_DIR}/ant || die
-	dosym /usr/share/ant/bin ${INSTALL_DIR}/ant/bin || die
-	dosym /usr/share/ant/etc ${INSTALL_DIR}/ant/etc || die
-	doins -r ant/extra || die
-	dosym /usr/share/ant/lib ${INSTALL_DIR}/ant/lib || die
-	doins -r ant/nblib || die
-	dosym /usr/share/ant/tasks ${INSTALL_DIR}/ant/tasks || die
+	insinto ${INSTALL_DIR}/ant
+	dosym /usr/share/ant/bin ${INSTALL_DIR}/ant/bin
+	dosym /usr/share/ant/etc ${INSTALL_DIR}/ant/etc
+	doins -r ant/extra
+	dosym /usr/share/ant/lib ${INSTALL_DIR}/ant/lib
+	doins -r ant/nblib
+	dosym /usr/share/ant/tasks ${INSTALL_DIR}/ant/tasks
 	local vertasks=$(ls -d /usr/share/ant/tasks-*)
-	dosym ${vertasks} ${INSTALL_DIR}/ant/$(basename ${vertasks}) || die # it would be better if ant would have tasks-current dir
+	dosym ${vertasks} ${INSTALL_DIR}/ant/$(basename ${vertasks}) # it would be better if ant would have tasks-current dir
 
 	popd >/dev/null || die
 

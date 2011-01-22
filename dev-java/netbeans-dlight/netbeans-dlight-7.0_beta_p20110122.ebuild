@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="3"
+EAPI="4"
 WANT_ANT_TASKS="ant-nodeps"
 inherit eutils java-pkg-2 java-ant-2
 
@@ -80,18 +80,18 @@ src_prepare() {
 src_install() {
 	pushd nbbuild/netbeans/dlight >/dev/null || die
 
-	insinto ${INSTALL_DIR} || die
+	insinto ${INSTALL_DIR}
 
 	grep -E "/dlight$" ../moduleCluster.properties > "${D}"/${INSTALL_DIR}/moduleCluster.properties || die
 
-	doins -r * || die
+	doins -r *
 
 	for file in bin/SunOS*/* ; do
-		fperms 755 ${file} || die
+		fperms 755 ${file}
 	done
 
 	for file in tools/*/bin/* ; do
-		fperms 755 ${file} || die
+		fperms 755 ${file}
 	done
 
 	popd >/dev/null || die

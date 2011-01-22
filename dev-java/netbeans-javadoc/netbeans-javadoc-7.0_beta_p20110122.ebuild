@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="3"
+EAPI="4"
 WANT_ANT_TASKS="ant-nodeps"
 inherit eutils java-pkg-2 java-ant-2
 
@@ -11,8 +11,8 @@ HOMEPAGE="http://netbeans.org/"
 SLOT="7.0"
 SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/latest/zip/netbeans-trunk-nightly-201101220001-src.zip"
 SRC_URI="${SOURCE_URL}
-	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-${SLOT}-build.xml.patch.bz2"
-#	http://hg.netbeans.org/binaries/A806D99716C5E9441BFD8B401176FDDEFC673022-bindex-2.2.jar
+	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-${SLOT}-build.xml.patch.bz2
+	http://hg.netbeans.org/binaries/FF23DBB427D09AAEC3998B50D740C42B6A3FCD61-ant-libs-1.8.2.zip"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
@@ -49,9 +49,9 @@ src_unpack() {
 
 	unpack netbeans-7.0-build.xml.patch.bz2
 
-#	pushd "${S}" >/dev/null || die
-#	ln -s "${DISTDIR}"/A806D99716C5E9441BFD8B401176FDDEFC673022-bindex-2.2.jar apisupport.harness/external/bindex-2.2.jar || die
-#	popd >/dev/null || die
+	pushd "${S}" >/dev/null || die
+	ln -s "${DISTDIR}"/FF23DBB427D09AAEC3998B50D740C42B6A3FCD61-ant-libs-1.8.2.zip o.apache.tools.ant.module/external/ant-libs-1.8.2.zip || die
+	popd >/dev/null || die
 }
 
 src_prepare() {
@@ -112,7 +112,7 @@ src_prepare() {
         touch nb.cluster.mobility.built
 
         ln -s /usr/share/netbeans-nb-${SLOT}/nb nb || die
-        cat /usr/share/netbeans-nb-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
+        cat /usr/share/netbeans-nb-${SLOT}/nb/moduleCluster.properties >> moduleCluster.properties || die
         touch nb.cluster.nb.built
 
         ln -s /usr/share/netbeans-php-${SLOT} php || die

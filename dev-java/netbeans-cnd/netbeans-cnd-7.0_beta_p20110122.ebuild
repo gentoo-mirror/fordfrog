@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="3"
+EAPI="4"
 WANT_ANT_TASKS="ant-nodeps"
 inherit eutils java-pkg-2 java-ant-2
 
@@ -95,12 +95,12 @@ src_prepare() {
 src_install() {
 	pushd nbbuild/netbeans/cnd >/dev/null || die
 
-	insinto ${INSTALL_DIR} || die
+	insinto ${INSTALL_DIR}
 
 	grep -E "/cnd$" ../moduleCluster.properties > "${D}"/${INSTALL_DIR}/moduleCluster.properties || die
 
-	doins -r * || die
-	fperms 755 bin/dorun.sh || die
+	doins -r *
+	fperms 755 bin/dorun.sh
 
 	popd >/dev/null || die
 }
