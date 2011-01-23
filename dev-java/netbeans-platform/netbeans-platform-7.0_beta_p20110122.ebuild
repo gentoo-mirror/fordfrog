@@ -66,6 +66,19 @@ src_prepare() {
 	# upstream jna jar contains bundled binary libraries so we disable that feature
 	sed -i "/jnidispatch/d" libs.jna/nbproject/project.properties || die
 
+	# Support for custom patches
+	if [ -n "${NETBEANS70_PATCHES_DIR}" -a -d "${NETBEANS70_PATCHES_DIR}" ] ; then
+		local files=`find "${NETBEANS70_PATCHES_DIR}" -type f`
+
+		if [ -n "${files}" ] ; then
+			einfo "Applying custom patches:"
+
+			for file in ${files} ; do
+				epatch "${file}"
+			done
+		fi
+	fi
+
 	einfo "Symlinking external libraries..."
 	java-pkg_jar-from --into javahelp/external javahelp jhall.jar jhall-2.0_05.jar
 	java-pkg_jar-from --into libs.jna/external jna jna.jar jna-3.2.7.jar

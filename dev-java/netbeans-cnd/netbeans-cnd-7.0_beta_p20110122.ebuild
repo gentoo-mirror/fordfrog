@@ -61,6 +61,19 @@ src_prepare() {
 	epatch netbeans-7.0-build.xml.patch
 	sed -i "s%<classpath path=\"\${antlr3.jar}\"/>%<classpath path=\"\${antlr3.jar}:../libs.antlr3.devel/external/antlr-2.7.jar:../libs.antlr3.devel/external/stringtemplate-3.2.jar\"/>%" cnd.modelimpl/build.xml || die
 
+	# Support for custom patches
+	if [ -n "${NETBEANS70_PATCHES_DIR}" -a -d "${NETBEANS70_PATCHES_DIR}" ] ; then
+		local files=`find "${NETBEANS70_PATCHES_DIR}" -type f`
+
+		if [ -n "${files}" ] ; then
+			einfo "Applying custom patches:"
+
+			for file in ${files} ; do
+				epatch "${file}"
+			done
+		fi
+	fi
+
 	einfo "Symlinking external libraries..."
 	java-pkg_jar-from --build-only --into javahelp/external javahelp jhall.jar jhall-2.0_05.jar
 	java-pkg_jar-from --build-only --into libs.antlr3.devel/external antlr-3 antlr3.jar antlr-3.1.3.jar

@@ -81,6 +81,19 @@ src_prepare() {
 	epatch netbeans-7.0-build.xml.patch
 	sed -i "/release\.external.*nbactivesync\.dll/d" o.n.mobility.lib.activesync/nbproject/project.properties || die
 
+	# Support for custom patches
+	if [ -n "${NETBEANS70_PATCHES_DIR}" -a -d "${NETBEANS70_PATCHES_DIR}" ] ; then
+		local files=`find "${NETBEANS70_PATCHES_DIR}" -type f`
+
+		if [ -n "${files}" ] ; then
+			einfo "Applying custom patches:"
+
+			for file in ${files} ; do
+				epatch "${file}"
+			done
+		fi
+	fi
+
 	einfo "Symlinking external libraries..."
 	java-pkg_jar-from --into j2me.cdc.project.ricoh/external commons-codec commons-codec.jar commons-codec-1.3.jar
 	java-pkg_jar-from --into j2me.cdc.project.ricoh/external commons-httpclient-3 commons-httpclient.jar commons-httpclient-3.0.jar

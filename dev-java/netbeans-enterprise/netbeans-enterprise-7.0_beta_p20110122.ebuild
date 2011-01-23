@@ -131,6 +131,19 @@ src_prepare() {
 
 	epatch netbeans-7.0-build.xml.patch
 
+	# Support for custom patches
+	if [ -n "${NETBEANS70_PATCHES_DIR}" -a -d "${NETBEANS70_PATCHES_DIR}" ] ; then
+		local files=`find "${NETBEANS70_PATCHES_DIR}" -type f`
+
+		if [ -n "${files}" ] ; then
+			einfo "Applying custom patches:"
+
+			for file in ${files} ; do
+				epatch "${file}"
+			done
+		fi
+	fi
+
 	einfo "Symlinking external libraries..."
 	java-pkg_jar-from --build-only --into javahelp/external javahelp jhall.jar jhall-2.0_05.jar
 	java-pkg_jar-from --into j2eeapis/external glassfish-deployment-api-1.2 glassfish-deployment-api.jar jsr88javax.jar

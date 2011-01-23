@@ -60,6 +60,19 @@ src_prepare() {
 
 	epatch netbeans-7.0-build.xml.patch
 
+	# Support for custom patches
+	if [ -n "${NETBEANS70_PATCHES_DIR}" -a -d "${NETBEANS70_PATCHES_DIR}" ] ; then
+		local files=`find "${NETBEANS70_PATCHES_DIR}" -type f`
+
+		if [ -n "${files}" ] ; then
+			einfo "Applying custom patches:"
+
+			for file in ${files} ; do
+				epatch "${file}"
+			done
+		fi
+	fi
+
 	einfo "Symlinking external libraries..."
 	java-pkg_jar-from --build-only --into javahelp/external javahelp jhall.jar jhall-2.0_05.jar
 
@@ -67,69 +80,69 @@ src_prepare() {
 	mkdir "${S}"/nbbuild/netbeans || die
 	pushd "${S}"/nbbuild/netbeans >/dev/null || die
 
-        ln -s /usr/share/netbeans-apisupport-${SLOT} apisupport || die
-        cat /usr/share/netbeans-apisupport-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
-        touch nb.cluster.apisupport.built
+	ln -s /usr/share/netbeans-apisupport-${SLOT} apisupport || die
+	cat /usr/share/netbeans-apisupport-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
+	touch nb.cluster.apisupport.built
 
-        ln -s /usr/share/netbeans-cnd-${SLOT} cnd || die
-        cat /usr/share/netbeans-cnd-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
-        touch nb.cluster.cnd.built
+	ln -s /usr/share/netbeans-cnd-${SLOT} cnd || die
+	cat /usr/share/netbeans-cnd-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
+	touch nb.cluster.cnd.built
 
-        ln -s /usr/share/netbeans-dlight-${SLOT} dlight || die
-        cat /usr/share/netbeans-dlight-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
-        touch nb.cluster.dlight.built
+	ln -s /usr/share/netbeans-dlight-${SLOT} dlight || die
+	cat /usr/share/netbeans-dlight-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
+	touch nb.cluster.dlight.built
 
-        ln -s /usr/share/netbeans-enterprise-${SLOT} enterprise || die
-        cat /usr/share/netbeans-enterprise-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
-        touch nb.cluster.enterprise.built
+	ln -s /usr/share/netbeans-enterprise-${SLOT} enterprise || die
+	cat /usr/share/netbeans-enterprise-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
+	touch nb.cluster.enterprise.built
 
-        ln -s /usr/share/netbeans-ergonomics-${SLOT} ergonomics || die
-        cat /usr/share/netbeans-ergonomics-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
-        touch nb.cluster.ergonomics.built
+	ln -s /usr/share/netbeans-ergonomics-${SLOT} ergonomics || die
+	cat /usr/share/netbeans-ergonomics-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
+	touch nb.cluster.ergonomics.built
 
-        ln -s /usr/share/netbeans-groovy-${SLOT} groovy || die
-        cat /usr/share/netbeans-groovy-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
-        touch nb.cluster.groovy.built
+	ln -s /usr/share/netbeans-groovy-${SLOT} groovy || die
+	cat /usr/share/netbeans-groovy-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
+	touch nb.cluster.groovy.built
 
-        ln -s /usr/share/netbeans-harness-${SLOT} harness || die
-        cat /usr/share/netbeans-harness-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
-        touch nb.cluster.harness.built
+	ln -s /usr/share/netbeans-harness-${SLOT} harness || die
+	cat /usr/share/netbeans-harness-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
+	touch nb.cluster.harness.built
 
-        ln -s /usr/share/netbeans-ide-${SLOT} ide || die
-        cat /usr/share/netbeans-ide-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
-        touch nb.cluster.ide.built
+	ln -s /usr/share/netbeans-ide-${SLOT} ide || die
+	cat /usr/share/netbeans-ide-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
+	touch nb.cluster.ide.built
 
-        ln -s /usr/share/netbeans-java-${SLOT} java || die
-        cat /usr/share/netbeans-java-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
-        touch nb.cluster.java.built
+	ln -s /usr/share/netbeans-java-${SLOT} java || die
+	cat /usr/share/netbeans-java-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
+	touch nb.cluster.java.built
 
-        ln -s /usr/share/netbeans-javacard-${SLOT} javacard || die
-        cat /usr/share/netbeans-javacard-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
-        touch nb.cluster.javacard.built
+	ln -s /usr/share/netbeans-javacard-${SLOT} javacard || die
+	cat /usr/share/netbeans-javacard-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
+	touch nb.cluster.javacard.built
 
-        ln -s /usr/share/netbeans-mobility-${SLOT} mobility || die
-        cat /usr/share/netbeans-mobility-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
-        touch nb.cluster.mobility.built
+	ln -s /usr/share/netbeans-mobility-${SLOT} mobility || die
+	cat /usr/share/netbeans-mobility-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
+	touch nb.cluster.mobility.built
 
-        ln -s /usr/share/netbeans-nb-${SLOT}/nb nb || die
-        cat /usr/share/netbeans-nb-${SLOT}/nb/moduleCluster.properties >> moduleCluster.properties || die
-        touch nb.cluster.nb.built
+	ln -s /usr/share/netbeans-nb-${SLOT}/nb nb || die
+	cat /usr/share/netbeans-nb-${SLOT}/nb/moduleCluster.properties >> moduleCluster.properties || die
+	touch nb.cluster.nb.built
 
-        ln -s /usr/share/netbeans-php-${SLOT} php || die
-        cat /usr/share/netbeans-php-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
-        touch nb.cluster.php.built
+	ln -s /usr/share/netbeans-php-${SLOT} php || die
+	cat /usr/share/netbeans-php-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
+	touch nb.cluster.php.built
 
-        ln -s /usr/share/netbeans-platform-${SLOT} platform || die
-        cat /usr/share/netbeans-platform-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
-        touch nb.cluster.platform.built
+	ln -s /usr/share/netbeans-platform-${SLOT} platform || die
+	cat /usr/share/netbeans-platform-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
+	touch nb.cluster.platform.built
 
-        ln -s /usr/share/netbeans-profiler-${SLOT} profiler || die
-        cat /usr/share/netbeans-profiler-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
-        touch nb.cluster.profiler.built
+	ln -s /usr/share/netbeans-profiler-${SLOT} profiler || die
+	cat /usr/share/netbeans-profiler-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
+	touch nb.cluster.profiler.built
 
-        ln -s /usr/share/netbeans-websvccommon-${SLOT} websvccommon || die
-        cat /usr/share/netbeans-websvccommon-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
-        touch nb.cluster.websvccommon.built
+	ln -s /usr/share/netbeans-websvccommon-${SLOT} websvccommon || die
+	cat /usr/share/netbeans-websvccommon-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
+	touch nb.cluster.websvccommon.built
 
 	java-pkg-2_src_prepare
 }

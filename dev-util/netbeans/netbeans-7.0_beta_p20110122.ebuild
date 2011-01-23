@@ -58,35 +58,35 @@ IUSE_NETBEANS_MODULES="
 	netbeans_modules_profiler
 	+netbeans_modules_websvccommon"
 IUSE_LINGUAS="
-        linguas_af
-        linguas_ar
-        linguas_ca
-        linguas_cs
-        linguas_de
-        linguas_el
-        linguas_es
-        linguas_fr
-        linguas_gl
-        linguas_hi_IN
-        linguas_id
-        linguas_it
-        linguas_ja
-        linguas_ko
-        linguas_lt
-        linguas_nl
-        linguas_pl
-        linguas_pt_BR
-        linguas_pt_PT
-        linguas_ro
-        linguas_ru
-        linguas_sq
-        linguas_sr
-        linguas_sv
-        linguas_tl
-        linguas_tr
-        linguas_vi
-        linguas_zh_CN
-        linguas_zh_TW"
+	linguas_af
+	linguas_ar
+	linguas_ca
+	linguas_cs
+	linguas_de
+	linguas_el
+	linguas_es
+	linguas_fr
+	linguas_gl
+	linguas_hi_IN
+	linguas_id
+	linguas_it
+	linguas_ja
+	linguas_ko
+	linguas_lt
+	linguas_nl
+	linguas_pl
+	linguas_pt_BR
+	linguas_pt_PT
+	linguas_ro
+	linguas_ru
+	linguas_sq
+	linguas_sr
+	linguas_sv
+	linguas_tl
+	linguas_tr
+	linguas_vi
+	linguas_zh_CN
+	linguas_zh_TW"
 IUSE="doc ${IUSE_NETBEANS_MODULES} ${IUSE_LINGUAS}"
 S="${WORKDIR}"
 
@@ -160,6 +160,19 @@ src_prepare() {
 
 		epatch netbeans-7.0-build.xml.patch
 
+		# Support for custom patches
+		if [ -n "${NETBEANS70_PATCHES_DIR}" -a -d "${NETBEANS70_PATCHES_DIR}" ] ; then
+			local files=`find "${NETBEANS70_PATCHES_DIR}" -type f`
+
+			if [ -n "${files}" ] ; then
+				einfo "Applying custom patches:"
+
+				for file in ${files} ; do
+					epatch "${file}"
+				done
+			fi
+		fi
+
 		einfo "Symlinking external libraries..."
 		java-pkg_jar-from --build-only --into javahelp/external javahelp jhall.jar jhall-2.0_05.jar
 	fi
@@ -216,7 +229,7 @@ pkg_postinst() {
 	if use linguas_gl ; then
 		einfo
 		einfo "You selected Galician locale which has locale code gl:ES in Netbeans."
-        fi
+	fi
 
 	if use linguas_id ; then
 		einfo

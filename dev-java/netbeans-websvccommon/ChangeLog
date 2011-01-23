@@ -3,6 +3,10 @@
 # $Header: $
 
   22 Jan 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  netbeans-websvccommon-7.0_beta_p20110122.ebuild:
+  Added support for custom patches
+
+  22 Jan 2011; Miroslav Šulc <fordfrog@gentoo.org>
   netbeans-websvccommon-7.0_beta_p20110122.ebuild, +metadata.xml:
   Switched to EAPI4
 

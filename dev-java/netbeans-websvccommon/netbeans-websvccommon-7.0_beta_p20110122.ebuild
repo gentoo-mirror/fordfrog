@@ -48,12 +48,25 @@ src_prepare() {
 
 	epatch netbeans-7.0-build.xml.patch
 
+	# Support for custom patches
+	if [ -n "${NETBEANS70_PATCHES_DIR}" -a -d "${NETBEANS70_PATCHES_DIR}" ] ; then
+		local files=`find "${NETBEANS70_PATCHES_DIR}" -type f`
+
+		if [ -n "${files}" ] ; then
+			einfo "Applying custom patches:"
+
+			for file in ${files} ; do
+				epatch "${file}"
+			done
+		fi
+	fi
+
 	einfo "Symlinking external libraries..."
 	java-pkg_jar-from --build-only --into javahelp/external javahelp jhall.jar jhall-2.0_05.jar
 
 	einfo "Linking in other clusters..."
-	mkdir ${S}/nbbuild/netbeans || die
-	pushd ${S}/nbbuild/netbeans >/dev/null || die
+	mkdir "${S}"/nbbuild/netbeans || die
+	pushd "${S}"/nbbuild/netbeans >/dev/null || die
 
 	ln -s /usr/share/netbeans-platform-${SLOT} platform || die
 	cat /usr/share/netbeans-platform-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
@@ -72,7 +85,7 @@ src_install() {
 	pushd nbbuild/netbeans/websvccommon >/dev/null || die
 
 	insinto ${INSTALL_DIR}
-	grep -E "/websvccommon$" ../moduleCluster.properties > ${D}/${INSTALL_DIR}/moduleCluster.properties || die
+	grep -E "/websvccommon$" ../moduleCluster.properties > "${D}"/${INSTALL_DIR}/moduleCluster.properties || die
 	doins -r *
 
 	popd >/dev/null || die

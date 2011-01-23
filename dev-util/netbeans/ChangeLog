@@ -4,6 +4,10 @@
 
   22 Jan 2011; Miroslav Šulc <fordfrog@gentoo.org>
   netbeans-7.0_beta_p20110122.ebuild:
+  Added support for custom patches
+
+  22 Jan 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  netbeans-7.0_beta_p20110122.ebuild:
   Implemented support for netbeans localization
 
   22 Jan 2011; Miroslav Šulc <fordfrog@gentoo.org>

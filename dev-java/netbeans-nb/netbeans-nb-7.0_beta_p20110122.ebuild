@@ -55,6 +55,19 @@ src_prepare() {
 	epatch netbeans-7.0-build.xml.patch
 	use keychain && epatch "${FILESDIR}"/${SLOT}/keychain-support.patch
 
+	# Support for custom patches
+	if [ -n "${NETBEANS70_PATCHES_DIR}" -a -d "${NETBEANS70_PATCHES_DIR}" ] ; then
+		local files=`find "${NETBEANS70_PATCHES_DIR}" -type f`
+
+		if [ -n "${files}" ] ; then
+			einfo "Applying custom patches:"
+
+			for file in ${files} ; do
+				epatch "${file}"
+			done
+		fi
+	fi
+
 	einfo "Symlinking external libraries..."
 	java-pkg_jar-from --build-only --into javahelp/external javahelp jhall.jar jhall-2.0_05.jar
 
@@ -155,5 +168,5 @@ pkg_postinst() {
 		einfo "If on NetBeans startup key will not be handled by keychain yet, you will be asked"
 		einfo "for key password (only this time and never again). You can find more information"
 		einfo "about keychain at http://www.gentoo.org/doc/en/keychain-guide.xml"
-        fi
+	fi
 }
