@@ -259,12 +259,14 @@ src_install() {
 	popd >/dev/null || die
 
 	if use x86 ; then
+		doins -r bin/nativeexecution/Linux-x86
 		pushd "${D}"/${INSTALL_DIR}/bin/nativeexecution/Linux-x86 >/dev/null || die
 		for file in * ; do
 			fperms 755 ${file}
 		done
 		popd >/dev/null || die
 	elif use amd64 ; then
+		doins -r bin/nativeexecution/Linux-x86_64
 		pushd "${D}"/${INSTALL_DIR}/bin/nativeexecution/Linux-x86_64 >/dev/null || die
 		for file in * ; do
 			fperms 755 ${file}

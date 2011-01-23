@@ -2,6 +2,10 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  23 Jan 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  netbeans-ide-7.0_beta_p20110122.ebuild:
+  Fixed bug in installation
+
   22 Jan 2011; Miroslav Šulc <fordfrog@gentoo.org>
   netbeans-ide-7.0_beta_p20110122.ebuild:
   Added support for custom patches
