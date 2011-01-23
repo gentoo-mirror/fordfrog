@@ -5,7 +5,7 @@ NEW=${2}
 SOURCE_URL=${3}
 
 if [[ -z "${OLD}" ]] || [[ -z "${NEW}" ]] || [[ -z "${SOURCE_URL}" ]] ; then
-	echo "Missing argument!"
+	echo "Usage: <old_version_string> <new_version_string> <new_source_url>"
 	exit 1
 fi
 
