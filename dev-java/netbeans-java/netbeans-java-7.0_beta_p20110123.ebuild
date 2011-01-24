@@ -304,6 +304,8 @@ src_install() {
 	# toplink-essentials-agent.jar
 	# toplink-essentials.jar
 	popd >/dev/null || die
+
+	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/java
 }
 
 pkg_postinst() {

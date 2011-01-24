@@ -136,4 +136,6 @@ src_install() {
 	pushd "${D}"/${instdir} >/dev/null || die
 	# apduio.jar
 	popd >/dev/null || die
+
+	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/javacard
 }

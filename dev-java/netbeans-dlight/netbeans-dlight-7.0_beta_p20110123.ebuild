@@ -114,4 +114,6 @@ src_install() {
 	# derby-10.2.2.0.jar
 	# h2-1.0.79.jar
 	popd >/dev/null || die
+
+	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/dlight
 }

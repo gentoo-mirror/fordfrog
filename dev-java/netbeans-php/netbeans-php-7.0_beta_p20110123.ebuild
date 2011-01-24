@@ -114,4 +114,6 @@ src_install() {
 	pushd "${D}"/${instdir} >/dev/null || die
 	rm java-cup-11a.jar && dosym /usr/share/javacup/lib/javacup.jar ${instdir}/java-cup-11a.jar || die
 	popd >/dev/null || die
+
+	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/php
 }

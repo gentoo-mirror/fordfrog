@@ -300,4 +300,6 @@ src_install() {
 	# struts-taglib-1.3.8.jar
 	# struts-tiles-1.3.8.jar
 	popd >/dev/null || die
+
+	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/enterprise
 }

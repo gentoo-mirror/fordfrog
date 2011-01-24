@@ -96,4 +96,6 @@ src_install() {
 	doins -r *
 
 	popd >/dev/null || die
+
+	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/ergonomics
 }

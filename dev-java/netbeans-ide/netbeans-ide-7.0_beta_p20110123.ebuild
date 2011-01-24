@@ -351,4 +351,6 @@ src_install() {
 	# [[ -f jaxb-api.jar ]] && java-pkg_jar-from jaxb-2 jaxb-api.jar ${instdir}/jaxb-api.jar || die
 	rm jsr173_api.jar && dosym /usr/share/jsr173/lib/jsr173.jar ${instdir}/jsr173_api.jar || die
 	popd >/dev/null || die
+
+	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/ide
 }

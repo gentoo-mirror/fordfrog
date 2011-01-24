@@ -108,4 +108,6 @@ src_install() {
 	done
 
 	popd >/dev/null || die
+
+	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/profiler
 }

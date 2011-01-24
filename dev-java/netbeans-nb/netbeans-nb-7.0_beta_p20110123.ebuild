@@ -127,29 +127,6 @@ src_install() {
 
 	popd >/dev/null || die
 
-	pushd "${D}"/etc/netbeans-${SLOT} >/dev/null || die
-	rm netbeans.clusters || die
-	echo "/usr/share/netbeans-platform-${SLOT}" >> netbeans.clusters
-	echo "/usr/share/netbeans-nb-${SLOT}/nb" >> netbeans.clusters
-	echo "/usr/share/netbeans-ergonomics-${SLOT}" >> netbeans.clusters
-	echo "/usr/share/netbeans-apisupport-${SLOT}" >> netbeans.clusters
-	echo "/usr/share/netbeans-cnd-${SLOT}" >> netbeans.clusters
-	echo "/usr/share/netbeans-dlight-${SLOT}" >> netbeans.clusters
-	echo "/usr/share/netbeans-enterprise-${SLOT}" >> netbeans.clusters
-	echo "/usr/share/netbeans-groovy-${SLOT}" >> netbeans.clusters
-	echo "/usr/share/netbeans-harness-${SLOT}" >> netbeans.clusters
-	echo "/usr/share/netbeans-ide-${SLOT}" >> netbeans.clusters
-	echo "/usr/share/netbeans-identity-${SLOT}" >> netbeans.clusters
-	echo "/usr/share/netbeans-java-${SLOT}" >> netbeans.clusters
-	echo "/usr/share/netbeans-javacard-${SLOT}" >> netbeans.clusters
-	echo "/usr/share/netbeans-mobility-${SLOT}" >> netbeans.clusters
-	echo "/usr/share/netbeans-php-${SLOT}" >> netbeans.clusters
-	echo "/usr/share/netbeans-profiler-${SLOT}" >> netbeans.clusters
-	echo "/usr/share/netbeans-visualweb-${SLOT}" >> netbeans.clusters
-	echo "/usr/share/netbeans-websvccommon-${SLOT}" >> netbeans.clusters
-	echo "/usr/share/netbeans-xml-${SLOT}" >> netbeans.clusters
-	popd >/dev/null || die
-
 	make_desktop_entry netbeans-${SLOT} "Netbeans ${PV}" netbeans-${SLOT} Development
 
 	mkdir -p  "${D}"/${INSTALL_DIR}/nb/config || die

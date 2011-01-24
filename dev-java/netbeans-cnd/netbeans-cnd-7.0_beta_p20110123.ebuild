@@ -116,4 +116,6 @@ src_install() {
 	fperms 755 bin/dorun.sh
 
 	popd >/dev/null || die
+
+	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/cnd
 }

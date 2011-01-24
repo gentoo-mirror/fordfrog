@@ -186,4 +186,6 @@ src_install() {
 	# perseus-nb-1.0.jar
 	# RicohAntTasks-2.0.jar
 	popd >/dev/null || die
+
+	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/mobility
 }
