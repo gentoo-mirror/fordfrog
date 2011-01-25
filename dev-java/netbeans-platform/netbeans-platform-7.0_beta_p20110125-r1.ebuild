@@ -16,7 +16,6 @@ SRC_URI="${SOURCE_URL}
 	http://hg.netbeans.org/binaries/BD5615C6A15497B60A0AAA9A04D4F05E2BC42D07-felix-main-2.0.2.jar
 	http://hg.netbeans.org/binaries/972E6455724DC6ADB1C1912F53B5E3D7DF20C5FD-osgi.cmpn-4.2.jar
 	http://hg.netbeans.org/binaries/986195A7E31034EE73F7A896A36B24169692F142-osgi.core-4.2.jar
-	http://hg.netbeans.org/binaries/AF109BEA46056EF1D09172A96E968ADFA8CE74F1-platform-3.2.7.jar
 	http://hg.netbeans.org/binaries/1C7FE319052EF49126CF07D0DB6953CB7007229E-swing-layout-1.0.4-doc.zip"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
 KEYWORDS="~amd64 ~x86"
@@ -24,7 +23,7 @@ IUSE=""
 S="${WORKDIR}"
 
 CDEPEND="dev-java/javahelp:0
-	dev-java/jna:0
+	>=dev-java/jna-3.2.7:0
 	>=dev-java/junit-4.4:4
 	dev-java/swing-layout:1[source]"
 DEPEND=">=virtual/jdk-1.6
@@ -53,7 +52,6 @@ src_unpack() {
 	ln -s "${DISTDIR}"/BD5615C6A15497B60A0AAA9A04D4F05E2BC42D07-felix-main-2.0.2.jar libs.felix/external/felix-main-2.0.2.jar || die
 	ln -s "${DISTDIR}"/972E6455724DC6ADB1C1912F53B5E3D7DF20C5FD-osgi.cmpn-4.2.jar libs.osgi/external/osgi.cmpn-4.2.jar || die
 	ln -s "${DISTDIR}"/986195A7E31034EE73F7A896A36B24169692F142-osgi.core-4.2.jar libs.osgi/external/osgi.core-4.2.jar || die
-	ln -s "${DISTDIR}"/AF109BEA46056EF1D09172A96E968ADFA8CE74F1-platform-3.2.7.jar core.nativeaccess/external/platform-3.2.7.jar || die
 	ln -s "${DISTDIR}"/1C7FE319052EF49126CF07D0DB6953CB7007229E-swing-layout-1.0.4-doc.zip o.jdesktop.layout/external/swing-layout-1.0.4-doc.zip || die
 	popd >/dev/null || die
 }
@@ -80,6 +78,7 @@ src_prepare() {
 	fi
 
 	einfo "Symlinking external libraries..."
+	java-pkg_jar-from --into core.nativeaccess/external jna platform.jar platform-3.2.7.jar
 	java-pkg_jar-from --into javahelp/external javahelp jhall.jar jhall-2.0_05.jar
 	java-pkg_jar-from --into libs.jna/external jna jna.jar jna-3.2.7.jar
 	java-pkg_jar-from --into libs.junit4/external junit-4 junit.jar junit-4.8.2.jar
@@ -117,7 +116,7 @@ src_install() {
 	rm junit-4.8.2.jar && dosym /usr/share/junit-4/lib/junit.jar ${instdir}/junit-4.8.2.jar || die
 	# osgi.cmpn-4.2.jar
 	# osgi.core-4.2.jar
-	# platform-3.2.7.jar
+	rm platform-3.2.7.jar && dosym /usr/share/jna/lib/platform.jar ${instdir}/platform-3.2.7.jar || die
 	rm swing-layout-1.0.4.jar && dosym /usr/share/swing-layout-1/lib/swing-layout.jar ${instdir}/swing-layout-1.0.4.jar || die
 	# updater.jar
 	popd >/dev/null || die

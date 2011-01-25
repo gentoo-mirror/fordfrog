@@ -2,6 +2,13 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*netbeans-platform-7.0_beta_p20110125-r1 (25 Jan 2011)
+
+  25 Jan 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-platform-7.0_beta_p20110125.ebuild,
+  +netbeans-platform-7.0_beta_p20110125-r1.ebuild:
+  Switched to >=dev-java/jna-3.2.7 which provides also platform.jar
+
 *netbeans-platform-7.0_beta_p20110125 (25 Jan 2011)
 
   25 Jan 2011; Miroslav Šulc <fordfrog@gentoo.org>
