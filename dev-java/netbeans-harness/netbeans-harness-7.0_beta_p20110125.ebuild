@@ -6,25 +6,24 @@ EAPI="4"
 WANT_ANT_TASKS="ant-nodeps"
 inherit eutils java-pkg-2 java-ant-2
 
-DESCRIPTION="Netbeans API Support Cluster"
-HOMEPAGE="http://netbeans.org/projects/apisupport"
+DESCRIPTION="Netbeans Harness"
+HOMEPAGE="http://netbeans.org/features/platform/"
 SLOT="7.0"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/latest/zip/netbeans-trunk-nightly-201101230001-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/latest/zip/netbeans-trunk-nightly-201101250001-src.zip"
 SRC_URI="${SOURCE_URL}
-	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-${SLOT}-build.xml.patch.bz2"
+	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-${SLOT}-build.xml.patch.bz2
+	http://hg.netbeans.org/binaries/A806D99716C5E9441BFD8B401176FDDEFC673022-bindex-2.2.jar
+	http://hg.netbeans.org/binaries/418FC62C8A6EF5311987B01FE389B1F88EFDDCA2-jemmy-2.3.0.0.jar"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 S="${WORKDIR}"
 
-CDEPEND="~dev-java/netbeans-harness-${PV}
-	~dev-java/netbeans-ide-${PV}
-	~dev-java/netbeans-java-${PV}
-	~dev-java/netbeans-platform-${PV}"
+CDEPEND="~dev-java/netbeans-platform-${PV}
+	dev-java/javahelp:0"
 DEPEND=">=virtual/jdk-1.6
 	app-arch/unzip
-	${CDEPEND}
-	dev-java/javahelp:0"
+	${CDEPEND}"
 RDEPEND=">=virtual/jdk-1.6
 	${CDEPEND}"
 
@@ -32,7 +31,7 @@ INSTALL_DIR="/usr/share/${PN}-${SLOT}"
 
 EANT_BUILD_XML="nbbuild/build.xml"
 EANT_BUILD_TARGET="rebuild-cluster"
-EANT_EXTRA_ARGS="-Drebuild.cluster.name=nb.cluster.apisupport -Dext.binaries.downloaded=true"
+EANT_EXTRA_ARGS="-Drebuild.cluster.name=nb.cluster.harness -Dext.binaries.downloaded=true"
 JAVA_PKG_BSFIX="off"
 
 src_unpack() {
@@ -42,6 +41,11 @@ src_unpack() {
 	find -name "*.jar" -type f -delete
 
 	unpack netbeans-7.0-build.xml.patch.bz2
+
+	pushd "${S}" >/dev/null || die
+	ln -s "${DISTDIR}"/A806D99716C5E9441BFD8B401176FDDEFC673022-bindex-2.2.jar apisupport.harness/external/bindex-2.2.jar || die
+	ln -s "${DISTDIR}"/418FC62C8A6EF5311987B01FE389B1F88EFDDCA2-jemmy-2.3.0.0.jar jemmy/external/jemmy-2.3.0.0.jar || die
+	popd >/dev/null || die
 }
 
 src_prepare() {
@@ -64,23 +68,12 @@ src_prepare() {
 	fi
 
 	einfo "Symlinking external libraries..."
-	java-pkg_jar-from --build-only --into javahelp/external javahelp jhall.jar jhall-2.0_05.jar
+	java-pkg_jar-from --into javahelp/external javahelp jhall.jar jhall-2.0_05.jar
+	java-pkg_jar-from --into apisupport.harness/external javahelp jsearch.jar jsearch-2.0_05.jar
 
 	einfo "Linking in other clusters..."
 	mkdir "${S}"/nbbuild/netbeans || die
 	pushd "${S}"/nbbuild/netbeans >/dev/null || die
-
-	ln -s /usr/share/netbeans-harness-${SLOT} harness || die
-	cat /usr/share/netbeans-harness-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
-	touch nb.cluster.harness.built
-
-	ln -s /usr/share/netbeans-ide-${SLOT} ide || die
-	cat /usr/share/netbeans-ide-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
-	touch nb.cluster.ide.built
-
-	ln -s /usr/share/netbeans-java-${SLOT} java || die
-	cat /usr/share/netbeans-java-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
-	touch nb.cluster.java.built
 
 	ln -s /usr/share/netbeans-platform-${SLOT} platform || die
 	cat /usr/share/netbeans-platform-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
@@ -92,15 +85,23 @@ src_prepare() {
 }
 
 src_install() {
-	pushd nbbuild/netbeans/apisupport >/dev/null || die
+	pushd nbbuild/netbeans/harness >/dev/null || die
 
 	insinto ${INSTALL_DIR}
 
-	grep -E "/apisupport$" ../moduleCluster.properties > "${D}"/${INSTALL_DIR}/moduleCluster.properties || die
+	grep -E "/harness$" ../moduleCluster.properties > "${D}"/${INSTALL_DIR}/moduleCluster.properties || die
 
 	doins -r *
+	fperms 755 launchers/app.sh
+	find "${D}" -name "*.exe" -type f -delete
 
 	popd >/dev/null || die
 
-	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/apisupport
+	local instdir=${INSTALL_DIR}/antlib
+	pushd "${D}"/${instdir} >/dev/null || die
+	# bindex-2.2.jar
+	rm jsearch-2.0_05.jar && dosym /usr/share/javahelp/lib/jsearch.jar ${instdir}/jsearch-2.0_05.jar || die
+	popd >/dev/null || die
+
+	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/harness
 }

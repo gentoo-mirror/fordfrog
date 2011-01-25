@@ -2,6 +2,13 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*netbeans-harness-7.0_beta_p20110125 (25 Jan 2011)
+
+  25 Jan 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-7.0_beta_p20110123.ebuild,
+  +netbeans-harness-7.0_beta_p20110125.ebuild:
+  Bumped to latest nightly sources
+
   24 Jan 2011; Miroslav Šulc <fordfrog@gentoo.org>
   netbeans-harness-7.0_beta_p20110123.ebuild:
   Creating symlink to netbeans-nb dir as Netbeans needs all clusters in the

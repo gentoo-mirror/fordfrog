@@ -9,7 +9,7 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans PHP Cluster"
 HOMEPAGE="http://netbeans.org/projects/php"
 SLOT="7.0"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/latest/zip/netbeans-trunk-nightly-201101230001-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/latest/zip/netbeans-trunk-nightly-201101250001-src.zip"
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-${SLOT}-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/0702230EB3354A1687E4496D73A94F33A1E343BD-phpdocdesc.zip

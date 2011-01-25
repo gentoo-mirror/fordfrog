@@ -9,7 +9,7 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans Mobility Cluster"
 HOMEPAGE="http://netbeans.org/features/platform/"
 SLOT="7.0"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/latest/zip/netbeans-trunk-nightly-201101230001-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/latest/zip/netbeans-trunk-nightly-201101250001-src.zip"
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-${SLOT}-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/CEF99941E945D543DF0711F2C6AEF765B50F8501-jakarta-slide-ant-webdav-2.1.jar
@@ -34,8 +34,7 @@ CDEPEND="~dev-java/netbeans-apisupport-${PV}
 	dev-java/ant-contrib:0
 	dev-java/commons-codec:0
 	dev-java/commons-httpclient:3
-	dev-java/jdom:1.0
-	dev-java/proguard:0"
+	dev-java/jdom:1.0"
 DEPEND=">=virtual/jdk-1.6
 	app-arch/unzip
 	${CDEPEND}
@@ -101,7 +100,6 @@ src_prepare() {
 	java-pkg_jar-from --into mobility.antext/external ant-contrib ant-contrib.jar ant-contrib-1.0b3.jar
 	java-pkg_jar-from --into mobility.deployment.webdav/external commons-httpclient-3 commons-httpclient.jar commons-httpclient-3.0.1.jar
 	java-pkg_jar-from --into mobility.deployment.webdav/external jdom-1.0 jdom.jar jdom-1.0.jar
-	java-pkg_jar-from --into mobility.proguard/external proguard proguard.jar proguard4.4.jar
 
 	einfo "Linking in other clusters..."
 	mkdir "${S}"/nbbuild/netbeans || die
@@ -146,11 +144,6 @@ src_install() {
 	doins -r *
 	rm -rf "${D}"/${INSTALL_DIR}/modules/lib || die
 
-	popd >/dev/null || die
-
-	local instdir=${INSTALL_DIR}/external/proguard
-	pushd "${D}"/${instdir} >/dev/null || die
-	rm proguard4.4.jar && dosym /usr/share/proguard/lib/proguard.jar ${instdir}/proguard4.4.jar || die
 	popd >/dev/null || die
 
 	local instdir=${INSTALL_DIR}/modules/ext
