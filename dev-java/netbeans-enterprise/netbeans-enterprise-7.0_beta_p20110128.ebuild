@@ -9,7 +9,7 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans Enterprise cluster"
 HOMEPAGE="http://netbeans.org/"
 SLOT="7.0"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/latest/zip/netbeans-trunk-nightly-201101250001-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/latest/zip/netbeans-trunk-nightly-201101280000-src.zip"
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-${SLOT}-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/2EA8E5BDC70E1B1D738140E52E4793385B2567A3-el-impl.jar
@@ -54,7 +54,6 @@ CDEPEND="~dev-java/netbeans-harness-${PV}
 	~dev-java/netbeans-websvccommon-${PV}
 	dev-java/commons-fileupload:0
 	dev-java/glassfish-deployment-api:1.2
-	dev-java/httpunit:0
 	dev-java/jakarta-jstl:0"
 DEPEND=">=virtual/jdk-1.6
 	app-arch/unzip
@@ -148,7 +147,6 @@ src_prepare() {
 	java-pkg_jar-from --build-only --into javahelp/external javahelp jhall.jar jhall-2.0_05.jar
 	java-pkg_jar-from --into j2eeapis/external glassfish-deployment-api-1.2 glassfish-deployment-api.jar jsr88javax.jar
 	java-pkg_jar-from --into libs.commons_fileupload/external commons-fileupload commons-fileupload.jar commons-fileupload-1.0.jar
-	java-pkg_jar-from --into libs.httpunit/external httpunit httpunit.jar httpunit-1.6.2.jar
 	java-pkg_jar-from --into web.jstl11/external jakarta-jstl jstl.jar jstl-1.1.2.jar
 	java-pkg_jar-from --into web.jstl11/external jakarta-jstl standard.jar standard-1.1.2.jar
 	java-pkg_jar-from --build-only --into web.monitor/external tomcat-servlet-api-2.3 servlet.jar servlet-2.3.jar
@@ -202,7 +200,6 @@ src_install() {
 	# el-impl.jar
 	# glassfish-jspparser-3.0.jar
 	# glassfish-logging-2.0.jar
-	rm httpunit-1.6.2.jar && dosym /usr/share/httpunit/lib/httpunit.jar ${instdir}/httpunit-1.6.2.jar || die
 	# javaee-api-6.0.jar
 	# javaee-api-6.0-license.txt
 	# javaee-web-api-6.0.jar

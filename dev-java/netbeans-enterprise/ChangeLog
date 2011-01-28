@@ -2,6 +2,14 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*netbeans-enterprise-7.0_beta_p20110128 (28 Jan 2011)
+
+  28 Jan 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-enterprise-7.0_beta_p20110125.ebuild,
+  +netbeans-enterprise-7.0_beta_p20110128.ebuild:
+  Bumped to latest nightly sources. Dropped httpunit dependency as
+  libs.httpunit module has been moved to soa cluster
+
 *netbeans-enterprise-7.0_beta_p20110125 (25 Jan 2011)
 
   25 Jan 2011; Miroslav Šulc <fordfrog@gentoo.org>

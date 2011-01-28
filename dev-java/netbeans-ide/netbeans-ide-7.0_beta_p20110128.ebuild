@@ -9,7 +9,7 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans IDE Cluster"
 HOMEPAGE="http://netbeans.org/projects/ide"
 SLOT="7.0"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/latest/zip/netbeans-trunk-nightly-201101250001-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/latest/zip/netbeans-trunk-nightly-201101280000-src.zip"
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-${SLOT}-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/886FAF4B85054DD6E50D9B3438542F432B5F9251-bytelist-0.1.jar
@@ -80,7 +80,7 @@ CDEPEND="~dev-java/netbeans-harness-${PV}
 	dev-java/jvyamlb:0
 	dev-java/jzlib:0
 	dev-java/log4j:0
-	dev-java/lucene:2.9
+	dev-java/lucene:3.0
 	dev-java/sac:0
 	dev-java/saxon:9
 	dev-java/smack:2.2
@@ -224,7 +224,7 @@ src_prepare() {
 	java-pkg_jar-from --into libs.jsch/external jsch jsch.jar jsch-0.1.43.jar
 	java-pkg_jar-from --into libs.jvyamlb/external jvyamlb jvyamlb.jar jvyamlb-0.2.3.jar
 	java-pkg_jar-from --into libs.jzlib/external jzlib jzlib.jar jzlib-1.0.7.jar
-	java-pkg_jar-from --into libs.lucene/external lucene-2.9 lucene-core.jar lucene-core-2.9.3.jar
+	java-pkg_jar-from --into libs.lucene/external lucene-3.0 lucene-core.jar lucene-core-3.0.3.jar
 	java-pkg_jar-from --into libs.smack/external smack-2.2 smack.jar smack.jar
 	java-pkg_jar-from --into libs.smack/external smack-2.2 smackx.jar smackx.jar
 	java-pkg_jar-from --into libs.svnClientAdapter.javahl/external subversion svn-javahl.jar svnjavahl-1.6.0.jar
@@ -306,7 +306,7 @@ src_install() {
 	rm jzlib-1.0.7.jar && dosym /usr/share/jzlib/lib/jzlib.jar ${instdir}/jzlib-1.0.7.jar || die
 	# libpam4j-1.1.jar
 	rm log4j-1.2.15.jar && dosym /usr/share/log4j/lib/log4j.jar ${instdir}/log4j-1.2.15.jar || die
-	rm lucene-core-2.9.3.jar && dosym /usr/share/lucene-2.9/lib/lucene-core.jar ${instdir}/lucene-core-2.9.3.jar || die
+	rm lucene-core-3.0.3.jar && dosym /usr/share/lucene-3.0/lib/lucene-core.jar ${instdir}/lucene-core-3.0.3.jar || die
 	rm mysql-connector-java-5.1.13-bin.jar && dosym /usr/share/jdbc-mysql/lib/jdbc-mysql.jar ${instdir}/mysql-connector-java-5.1.13-bin.jar || die
 	# non-schema.jar
 	# org.eclipse.mylyn.bugzilla.core_3.3.1.jar

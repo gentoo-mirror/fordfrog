@@ -9,7 +9,7 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans Java Cluster"
 HOMEPAGE="http://netbeans.org/projects/java"
 SLOT="7.0"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/latest/zip/netbeans-trunk-nightly-201101250001-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/latest/zip/netbeans-trunk-nightly-201101280000-src.zip"
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-${SLOT}-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/FF23DBB427D09AAEC3998B50D740C42B6A3FCD61-ant-libs-1.8.2.zip
@@ -22,8 +22,8 @@ SRC_URI="${SOURCE_URL}
 	http://hg.netbeans.org/binaries/59FAD2A4D4A1CFECED8149854EEEC3A7B9668927-glassfish-persistence-v2-build-58g.jar
 	http://hg.netbeans.org/binaries/907363E301E2279930C82BEB466BF2053C6E993B-glassfish-persistence-v2ur1-build-09d.jar
 	http://hg.netbeans.org/binaries/C8A5E0D558EA7E7349F9D32B838553D5E7DD214F-hibernate-3.2.5-lib.zip
-	http://hg.netbeans.org/binaries/30DCFB82558DC5452AC135F267401E214A0E9859-indexer-artifact-3.1.0.jar
-	http://hg.netbeans.org/binaries/7AB67E6B20E5332A7FB4FDF2F019AEC4275846C2-indexer-core-3.1.0.jar
+	http://hg.netbeans.org/binaries/3AF24D401F76D153B77641865737DE53E41E60D6-indexer-artifact-4.0.0.jar
+	http://hg.netbeans.org/binaries/39E868B62080080DC349253E6050DF4B6ABAAE60-indexer-core-4.0.0.jar
 	http://hg.netbeans.org/binaries/996E701582423D2BD7AC331AA6CDF5084821BDE0-javac-api-nb-7.0-b07.jar
 	http://hg.netbeans.org/binaries/0D89350194F1A37196A5D54CE70B7C2EA734321C-javac-impl-nb-7.0-b07.jar
 	http://hg.netbeans.org/binaries/653A6AD1EF786BC577FC20F56E5F2B1D30423805-maven-dependency-tree-1.2.jar
@@ -101,8 +101,8 @@ src_unpack() {
 	ln -s "${DISTDIR}"/59FAD2A4D4A1CFECED8149854EEEC3A7B9668927-glassfish-persistence-v2-build-58g.jar j2ee.toplinklib/external/glassfish-persistence-v2-build-58g.jar || die
 	ln -s "${DISTDIR}"/907363E301E2279930C82BEB466BF2053C6E993B-glassfish-persistence-v2ur1-build-09d.jar j2ee.toplinklib/external/glassfish-persistence-v2ur1-build-09d.jar || die
 	ln -s "${DISTDIR}"/C8A5E0D558EA7E7349F9D32B838553D5E7DD214F-hibernate-3.2.5-lib.zip hibernatelib/external/hibernate-3.2.5-lib.zip || die
-	ln -s "${DISTDIR}"/30DCFB82558DC5452AC135F267401E214A0E9859-indexer-artifact-3.1.0.jar maven.indexer/external/indexer-artifact-3.1.0.jar || die
-	ln -s "${DISTDIR}"/7AB67E6B20E5332A7FB4FDF2F019AEC4275846C2-indexer-core-3.1.0.jar maven.indexer/external/indexer-core-3.1.0.jar || die
+	ln -s "${DISTDIR}"/3AF24D401F76D153B77641865737DE53E41E60D6-indexer-artifact-4.0.0.jar maven.indexer/external/indexer-artifact-4.0.0.jar || die
+	ln -s "${DISTDIR}"/39E868B62080080DC349253E6050DF4B6ABAAE60-indexer-core-4.0.0.jar maven.indexer/external/indexer-core-4.0.0.jar || die
 	ln -s "${DISTDIR}"/996E701582423D2BD7AC331AA6CDF5084821BDE0-javac-api-nb-7.0-b07.jar libs.javacapi/external/javac-api-nb-7.0-b07.jar || die
 	ln -s "${DISTDIR}"/0D89350194F1A37196A5D54CE70B7C2EA734321C-javac-impl-nb-7.0-b07.jar libs.javacimpl/external/javac-impl-nb-7.0-b07.jar || die
 	ln -s "${DISTDIR}"/653A6AD1EF786BC577FC20F56E5F2B1D30423805-maven-dependency-tree-1.2.jar maven.embedder/external/maven-dependency-tree-1.2.jar || die
