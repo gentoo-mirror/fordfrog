@@ -12,7 +12,7 @@ fi
 pushd $(dirname $(dirname $(dirname $(readlink -f ${0})))) >/dev/null || exit 1
 
 for file in */*/*${OLD}*.ebuild ; do
-	cp ${file} $(echo ${file} | sed "s/${OLD}/${NEW}/") || exit 1
+	cp ${file} $(echo ${file} | sed "s/${OLD}/${NEW}/" | sed -E "s/-r[[:digit:]]+//") || exit 1
 done
 
 sed -i "s%SOURCE_URL=.*%SOURCE_URL=\"${SOURCE_URL}\"%" */*/*${NEW}*.ebuild || exit 1
