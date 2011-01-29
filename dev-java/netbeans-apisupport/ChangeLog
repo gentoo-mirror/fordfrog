@@ -2,6 +2,13 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*netbeans-apisupport-7.0_beta_p20110129 (29 Jan 2011)
+
+  29 Jan 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-apisupport-7.0_beta_p20110128.ebuild,
+  +netbeans-apisupport-7.0_beta_p20110129.ebuild:
+  Bumped to latest nightly sources
+
 *netbeans-apisupport-7.0_beta_p20110128 (28 Jan 2011)
 
   28 Jan 2011; Miroslav Šulc <fordfrog@gentoo.org>
