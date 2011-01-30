@@ -6,19 +6,21 @@ EAPI="4"
 WANT_ANT_TASKS="ant-nodeps"
 inherit eutils java-pkg-2 java-ant-2
 
-DESCRIPTION="Netbeans Profiler Cluster"
-HOMEPAGE="http://netbeans.org/projects/profiler"
+DESCRIPTION="Netbeans D-Light Cluster"
+HOMEPAGE="http://netbeans.org/"
 SLOT="7.0"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/latest/zip/netbeans-trunk-nightly-201101290000-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/latest/zip/netbeans-trunk-nightly-201101300000-src.zip"
 SRC_URI="${SOURCE_URL}
-	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-${SLOT}-build.xml.patch.bz2"
+	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-${SLOT}-build.xml.patch.bz2
+	http://hg.netbeans.org/binaries/F787C9B484CD7526F866C21D8925C4DACE467F8A-derby-10.2.2.0.jar
+	http://hg.netbeans.org/binaries/F1AF5929CD612475CCF186F69E268F0CAAA2A90E-dtracectrl-0.1.zip
+	http://hg.netbeans.org/binaries/623DE5A3A60FEA313099D7C42256B146E2BEE9B2-h2-1.0.79.jar"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 S="${WORKDIR}"
 
 CDEPEND="~dev-java/netbeans-ide-${PV}
-	~dev-java/netbeans-java-${PV}
 	~dev-java/netbeans-platform-${PV}"
 DEPEND=">=virtual/jdk-1.6
 	app-arch/unzip
@@ -31,7 +33,7 @@ INSTALL_DIR="/usr/share/${PN}-${SLOT}"
 
 EANT_BUILD_XML="nbbuild/build.xml"
 EANT_BUILD_TARGET="rebuild-cluster"
-EANT_EXTRA_ARGS="-Drebuild.cluster.name=nb.cluster.profiler -Dext.binaries.downloaded=true"
+EANT_EXTRA_ARGS="-Drebuild.cluster.name=nb.cluster.dlight -Dext.binaries.downloaded=true"
 JAVA_PKG_BSFIX="off"
 
 src_unpack() {
@@ -41,6 +43,12 @@ src_unpack() {
 	find -name "*.jar" -type f -delete
 
 	unpack netbeans-7.0-build.xml.patch.bz2
+
+	pushd "${S}" >/dev/null || die
+	ln -s "${DISTDIR}"/F787C9B484CD7526F866C21D8925C4DACE467F8A-derby-10.2.2.0.jar dlight.db.derby/external/derby-10.2.2.0.jar || die
+	ln -s "${DISTDIR}"/F1AF5929CD612475CCF186F69E268F0CAAA2A90E-dtracectrl-0.1.zip dlight.dtrace/external/dtracectrl-0.1.zip || die
+	ln -s "${DISTDIR}"/623DE5A3A60FEA313099D7C42256B146E2BEE9B2-h2-1.0.79.jar dlight.libs.h2/external/h2-1.0.79.jar || die
+	popd >/dev/null || die
 }
 
 src_prepare() {
@@ -73,10 +81,6 @@ src_prepare() {
 	cat /usr/share/netbeans-ide-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
 	touch nb.cluster.ide.built
 
-	ln -s /usr/share/netbeans-java-${SLOT} java || die
-	cat /usr/share/netbeans-java-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
-	touch nb.cluster.java.built
-
 	ln -s /usr/share/netbeans-platform-${SLOT} platform || die
 	cat /usr/share/netbeans-platform-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
 	touch nb.cluster.platform.built
@@ -87,27 +91,29 @@ src_prepare() {
 }
 
 src_install() {
-	pushd nbbuild/netbeans/profiler >/dev/null || die
+	pushd nbbuild/netbeans/dlight >/dev/null || die
 
 	insinto ${INSTALL_DIR}
 
-	grep -E "/profiler$" ../moduleCluster.properties > "${D}"/${INSTALL_DIR}/moduleCluster.properties || die
+	grep -E "/dlight$" ../moduleCluster.properties > "${D}"/${INSTALL_DIR}/moduleCluster.properties || die
 
 	doins -r *
 
-	for file in lib/deployed/cvm/linux/*.so ; do
+	for file in bin/SunOS*/* ; do
 		fperms 755 ${file}
 	done
 
-	for file in lib/deployed/jdk*/linux*/*.so ; do
-		fperms 755 ${file}
-	done
-
-	for file in remote-pack-defs/*.sh ; do
+	for file in tools/*/bin/* ; do
 		fperms 755 ${file}
 	done
 
 	popd >/dev/null || die
 
-	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/profiler
+	local instdir=${INSTALL_DIR}/modules/ext
+	pushd "${D}"/${instdir} >/dev/null || die
+	# derby-10.2.2.0.jar
+	# h2-1.0.79.jar
+	popd >/dev/null || die
+
+	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/dlight
 }

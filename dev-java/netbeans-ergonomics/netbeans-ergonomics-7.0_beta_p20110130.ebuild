@@ -6,10 +6,10 @@ EAPI="4"
 WANT_ANT_TASKS="ant-nodeps"
 inherit eutils java-pkg-2 java-ant-2
 
-DESCRIPTION="Netbeans API Support Cluster"
-HOMEPAGE="http://netbeans.org/projects/apisupport"
+DESCRIPTION="Netbeans Ergonomics Cluster"
+HOMEPAGE="http://netbeans.org/"
 SLOT="7.0"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/latest/zip/netbeans-trunk-nightly-201101290000-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/latest/zip/netbeans-trunk-nightly-201101300000-src.zip"
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-${SLOT}-build.xml.patch.bz2"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
@@ -17,9 +17,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 S="${WORKDIR}"
 
-CDEPEND="~dev-java/netbeans-harness-${PV}
-	~dev-java/netbeans-ide-${PV}
-	~dev-java/netbeans-java-${PV}
+CDEPEND="~dev-java/netbeans-ide-${PV}
+	~dev-java/netbeans-nb-${PV}
 	~dev-java/netbeans-platform-${PV}"
 DEPEND=">=virtual/jdk-1.6
 	app-arch/unzip
@@ -32,7 +31,7 @@ INSTALL_DIR="/usr/share/${PN}-${SLOT}"
 
 EANT_BUILD_XML="nbbuild/build.xml"
 EANT_BUILD_TARGET="rebuild-cluster"
-EANT_EXTRA_ARGS="-Drebuild.cluster.name=nb.cluster.apisupport -Dext.binaries.downloaded=true"
+EANT_EXTRA_ARGS="-Drebuild.cluster.name=nb.cluster.ergonomics -Dext.binaries.downloaded=true"
 JAVA_PKG_BSFIX="off"
 
 src_unpack() {
@@ -70,17 +69,13 @@ src_prepare() {
 	mkdir "${S}"/nbbuild/netbeans || die
 	pushd "${S}"/nbbuild/netbeans >/dev/null || die
 
-	ln -s /usr/share/netbeans-harness-${SLOT} harness || die
-	cat /usr/share/netbeans-harness-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
-	touch nb.cluster.harness.built
-
 	ln -s /usr/share/netbeans-ide-${SLOT} ide || die
 	cat /usr/share/netbeans-ide-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
 	touch nb.cluster.ide.built
 
-	ln -s /usr/share/netbeans-java-${SLOT} java || die
-	cat /usr/share/netbeans-java-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
-	touch nb.cluster.java.built
+	ln -s /usr/share/netbeans-nb-${SLOT}/nb nb || die
+	cat /usr/share/netbeans-nb-${SLOT}/nb/moduleCluster.properties >> moduleCluster.properties || die
+	touch nb.cluster.nb.built
 
 	ln -s /usr/share/netbeans-platform-${SLOT} platform || die
 	cat /usr/share/netbeans-platform-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
@@ -92,15 +87,15 @@ src_prepare() {
 }
 
 src_install() {
-	pushd nbbuild/netbeans/apisupport >/dev/null || die
+	pushd nbbuild/netbeans/ergonomics >/dev/null || die
 
 	insinto ${INSTALL_DIR}
 
-	grep -E "/apisupport$" ../moduleCluster.properties > "${D}"/${INSTALL_DIR}/moduleCluster.properties || die
+	grep -E "/ergonomics$" ../moduleCluster.properties > "${D}"/${INSTALL_DIR}/moduleCluster.properties || die
 
 	doins -r *
 
 	popd >/dev/null || die
 
-	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/apisupport
+	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/ergonomics
 }
