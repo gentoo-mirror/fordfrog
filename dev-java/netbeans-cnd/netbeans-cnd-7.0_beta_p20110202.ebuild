@@ -6,26 +6,30 @@ EAPI="4"
 WANT_ANT_TASKS="ant-nodeps"
 inherit eutils java-pkg-2 java-ant-2
 
-DESCRIPTION="Netbeans D-Light Cluster"
-HOMEPAGE="http://netbeans.org/"
+DESCRIPTION="Netbeans CND Cluster"
+HOMEPAGE="http://netbeans.org/projects/cnd"
 SLOT="7.0"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/latest/zip/netbeans-trunk-nightly-201101300000-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/latest/zip/netbeans-trunk-nightly-201102020000-src.zip"
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-${SLOT}-build.xml.patch.bz2
-	http://hg.netbeans.org/binaries/F787C9B484CD7526F866C21D8925C4DACE467F8A-derby-10.2.2.0.jar
-	http://hg.netbeans.org/binaries/F1AF5929CD612475CCF186F69E268F0CAAA2A90E-dtracectrl-0.1.zip
-	http://hg.netbeans.org/binaries/623DE5A3A60FEA313099D7C42256B146E2BEE9B2-h2-1.0.79.jar"
+	http://hg.netbeans.org/binaries/3C8F28BB40B1DC5E2BB66C8CEDD9D5958ECBDBB8-cnd-rfs-1.0.zip
+	http://hg.netbeans.org/binaries/296C195B720404C2683BA2F65E2A423DD0611B8B-open-fortran-parser-0.7.1.2.zip"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 S="${WORKDIR}"
 
-CDEPEND="~dev-java/netbeans-ide-${PV}
+CDEPEND="~dev-java/netbeans-dlight-${PV}
+	~dev-java/netbeans-harness-${PV}
+	~dev-java/netbeans-ide-${PV}
 	~dev-java/netbeans-platform-${PV}"
 DEPEND=">=virtual/jdk-1.6
 	app-arch/unzip
 	${CDEPEND}
-	dev-java/javahelp:0"
+	dev-java/antlr:0[java]
+	dev-java/antlr:3
+	dev-java/javahelp:0
+	dev-java/stringtemplate:0"
 RDEPEND=">=virtual/jdk-1.6
 	${CDEPEND}"
 
@@ -33,7 +37,7 @@ INSTALL_DIR="/usr/share/${PN}-${SLOT}"
 
 EANT_BUILD_XML="nbbuild/build.xml"
 EANT_BUILD_TARGET="rebuild-cluster"
-EANT_EXTRA_ARGS="-Drebuild.cluster.name=nb.cluster.dlight -Dext.binaries.downloaded=true"
+EANT_EXTRA_ARGS="-Drebuild.cluster.name=nb.cluster.cnd -Dext.binaries.downloaded=true"
 JAVA_PKG_BSFIX="off"
 
 src_unpack() {
@@ -45,9 +49,8 @@ src_unpack() {
 	unpack netbeans-7.0-build.xml.patch.bz2
 
 	pushd "${S}" >/dev/null || die
-	ln -s "${DISTDIR}"/F787C9B484CD7526F866C21D8925C4DACE467F8A-derby-10.2.2.0.jar dlight.db.derby/external/derby-10.2.2.0.jar || die
-	ln -s "${DISTDIR}"/F1AF5929CD612475CCF186F69E268F0CAAA2A90E-dtracectrl-0.1.zip dlight.dtrace/external/dtracectrl-0.1.zip || die
-	ln -s "${DISTDIR}"/623DE5A3A60FEA313099D7C42256B146E2BEE9B2-h2-1.0.79.jar dlight.libs.h2/external/h2-1.0.79.jar || die
+	ln -s "${DISTDIR}"/3C8F28BB40B1DC5E2BB66C8CEDD9D5958ECBDBB8-cnd-rfs-1.0.zip cnd.remote/external/cnd-rfs-1.0.zip || die
+	ln -s "${DISTDIR}"/296C195B720404C2683BA2F65E2A423DD0611B8B-open-fortran-parser-0.7.1.2.zip cnd.modelimpl/external/open-fortran-parser-0.7.1.2.zip || die
 	popd >/dev/null || die
 }
 
@@ -56,6 +59,7 @@ src_prepare() {
 	find -name "*.class" -type f | xargs rm -vf
 
 	epatch netbeans-7.0-build.xml.patch
+	sed -i "s%<classpath path=\"\${antlr3.jar}\"/>%<classpath path=\"\${antlr3.jar}:../libs.antlr3.devel/external/antlr-2.7.jar:../libs.antlr3.devel/external/stringtemplate-3.2.jar\"/>%" cnd.modelimpl/build.xml || die
 
 	# Support for custom patches
 	if [ -n "${NETBEANS70_PATCHES_DIR}" -a -d "${NETBEANS70_PATCHES_DIR}" ] ; then
@@ -72,10 +76,21 @@ src_prepare() {
 
 	einfo "Symlinking external libraries..."
 	java-pkg_jar-from --build-only --into javahelp/external javahelp jhall.jar jhall-2.0_05.jar
+	java-pkg_jar-from --build-only --into libs.antlr3.devel/external antlr-3 antlr3.jar antlr-3.1.3.jar
+	java-pkg_jar-from --build-only --into libs.antlr3.devel/external antlr antlr.jar antlr-2.7.jar
+	java-pkg_jar-from --build-only --into libs.antlr3.devel/external stringtemplate stringtemplate.jar stringtemplate-3.2.jar
 
 	einfo "Linking in other clusters..."
 	mkdir "${S}"/nbbuild/netbeans || die
 	pushd "${S}"/nbbuild/netbeans >/dev/null || die
+
+	ln -s /usr/share/netbeans-dlight-${SLOT} dlight || die
+	cat /usr/share/netbeans-dlight-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
+	touch nb.cluster.dlight.built
+
+	ln -s /usr/share/netbeans-harness-${SLOT} harness || die
+	cat /usr/share/netbeans-harness-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
+	touch nb.cluster.harness.built
 
 	ln -s /usr/share/netbeans-ide-${SLOT} ide || die
 	cat /usr/share/netbeans-ide-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
@@ -91,29 +106,16 @@ src_prepare() {
 }
 
 src_install() {
-	pushd nbbuild/netbeans/dlight >/dev/null || die
+	pushd nbbuild/netbeans/cnd >/dev/null || die
 
 	insinto ${INSTALL_DIR}
 
-	grep -E "/dlight$" ../moduleCluster.properties > "${D}"/${INSTALL_DIR}/moduleCluster.properties || die
+	grep -E "/cnd$" ../moduleCluster.properties > "${D}"/${INSTALL_DIR}/moduleCluster.properties || die
 
 	doins -r *
-
-	for file in bin/SunOS*/* ; do
-		fperms 755 ${file}
-	done
-
-	for file in tools/*/bin/* ; do
-		fperms 755 ${file}
-	done
+	fperms 755 bin/dorun.sh
 
 	popd >/dev/null || die
 
-	local instdir=${INSTALL_DIR}/modules/ext
-	pushd "${D}"/${instdir} >/dev/null || die
-	# derby-10.2.2.0.jar
-	# h2-1.0.79.jar
-	popd >/dev/null || die
-
-	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/dlight
+	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/cnd
 }
