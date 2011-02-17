@@ -9,7 +9,7 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans Java Cluster"
 HOMEPAGE="http://netbeans.org/projects/java"
 SLOT="7.0"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/latest/zip/netbeans-trunk-nightly-201102080000-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/latest/zip/netbeans-trunk-nightly-201102160501-src.zip"
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-${SLOT}-build.xml-r1.patch.bz2
 	http://hg.netbeans.org/binaries/FF23DBB427D09AAEC3998B50D740C42B6A3FCD61-ant-libs-1.8.2.zip
@@ -49,8 +49,7 @@ CDEPEND="~dev-java/netbeans-platform-${PV}
 DEPEND=">=virtual/jdk-1.6
 	app-arch/unzip
 	${CDEPEND}
-	dev-java/javahelp:0
-	>=dev-java/junit-4.4:4"
+	dev-java/javahelp:0"
 RDEPEND=">=virtual/jdk-1.6
 	${CDEPEND}
 	dev-java/absolutelayout:0
@@ -134,7 +133,6 @@ src_prepare() {
 	einfo "Symlinking external libraries..."
 	java-pkg_jar-from --build-only --into javahelp/external javahelp jhall.jar jhall-2.0_05.jar
 	java-pkg_jar-from --into libs.cglib/external cglib-2.2 cglib.jar cglib-2.2.jar
-	java-pkg_jar-from --build-only --into libs.junit4/external junit-4 junit.jar junit-4.8.2.jar
 	java-pkg_jar-from --into maven.embedder/external jdom-1.0 jdom.jar jdom-1.0.jar
 	java-pkg_jar-from --into o.jdesktop.beansbinding/external beansbinding beansbinding.jar beansbinding-1.2.1.jar
 	java-pkg_jar-from --into swingapp/external appframework appframework.jar appframework-1.0.3.jar

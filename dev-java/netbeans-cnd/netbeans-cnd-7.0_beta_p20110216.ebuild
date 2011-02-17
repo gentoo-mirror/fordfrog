@@ -9,7 +9,7 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans CND Cluster"
 HOMEPAGE="http://netbeans.org/projects/cnd"
 SLOT="7.0"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/latest/zip/netbeans-trunk-nightly-201102080000-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/latest/zip/netbeans-trunk-nightly-201102160501-src.zip"
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-${SLOT}-build.xml-r1.patch.bz2
 	http://hg.netbeans.org/binaries/3C8F28BB40B1DC5E2BB66C8CEDD9D5958ECBDBB8-cnd-rfs-1.0.zip
@@ -29,7 +29,6 @@ DEPEND=">=virtual/jdk-1.6
 	dev-java/antlr:0[java]
 	dev-java/antlr:3
 	dev-java/javahelp:0
-	>=dev-java/junit-4.4:4
 	dev-java/stringtemplate:0"
 RDEPEND=">=virtual/jdk-1.6
 	${CDEPEND}"
@@ -80,7 +79,6 @@ src_prepare() {
 	java-pkg_jar-from --build-only --into libs.antlr3.devel/external antlr-3 antlr3.jar antlr-3.1.3.jar
 	java-pkg_jar-from --build-only --into libs.antlr3.devel/external antlr antlr.jar antlr-2.7.jar
 	java-pkg_jar-from --build-only --into libs.antlr3.devel/external stringtemplate stringtemplate.jar stringtemplate-3.2.jar
-	java-pkg_jar-from --build-only --into libs.junit4/external junit-4 junit.jar junit-4.8.2.jar
 
 	einfo "Linking in other clusters..."
 	mkdir "${S}"/nbbuild/netbeans || die

@@ -9,7 +9,7 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans IDE Cluster"
 HOMEPAGE="http://netbeans.org/projects/ide"
 SLOT="7.0"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/latest/zip/netbeans-trunk-nightly-201102080000-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/latest/zip/netbeans-trunk-nightly-201102160501-src.zip"
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-${SLOT}-build.xml-r1.patch.bz2
 	http://hg.netbeans.org/binaries/886FAF4B85054DD6E50D9B3438542F432B5F9251-bytelist-0.1.jar
@@ -77,7 +77,6 @@ CDEPEND="~dev-java/netbeans-harness-${PV}
 	dev-java/jdbc-postgresql:0
 	dev-java/jsch:0
 	dev-java/jsr173:0
-	>=dev-java/junit-4.4:4
 	dev-java/jvyamlb:0
 	dev-java/jzlib:0
 	dev-java/log4j:0
@@ -223,7 +222,6 @@ src_prepare() {
 	java-pkg_jar-from --into libs.jakarta_oro/external jakarta-oro-2.0 jakarta-oro.jar jakarta-oro-2.0.8.jar
 	# java-pkg_jar-from --into libs.jaxb/external jaxb-2 jaxb-impl.jar jaxb-impl.jar
 	java-pkg_jar-from --into libs.jsch/external jsch jsch.jar jsch-0.1.43.jar
-	java-pkg_jar-from --into libs.junit4/external junit-4 junit.jar junit-4.8.2.jar
 	java-pkg_jar-from --into libs.jvyamlb/external jvyamlb jvyamlb.jar jvyamlb-0.2.3.jar
 	java-pkg_jar-from --into libs.jzlib/external jzlib jzlib.jar jzlib-1.0.7.jar
 	java-pkg_jar-from --into libs.lucene/external lucene-3.0 lucene-core.jar lucene-core-3.0.3.jar
