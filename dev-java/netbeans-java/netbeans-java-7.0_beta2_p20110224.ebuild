@@ -9,7 +9,7 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans Java Cluster"
 HOMEPAGE="http://netbeans.org/projects/java"
 SLOT="7.0"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/latest/zip/netbeans-trunk-nightly-201102160501-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/latest/zip/netbeans-trunk-nightly-201102240001-src.zip"
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-${SLOT}-build.xml-r1.patch.bz2
 	http://hg.netbeans.org/binaries/FF23DBB427D09AAEC3998B50D740C42B6A3FCD61-ant-libs-1.8.2.zip
@@ -25,7 +25,7 @@ SRC_URI="${SOURCE_URL}
 	http://hg.netbeans.org/binaries/3AF24D401F76D153B77641865737DE53E41E60D6-indexer-artifact-4.0.0.jar
 	http://hg.netbeans.org/binaries/39E868B62080080DC349253E6050DF4B6ABAAE60-indexer-core-4.0.0.jar
 	http://hg.netbeans.org/binaries/03D05A90FFB98D4E5748AE96C99AE549224C1ABC-javac-api-nb-7.0-b07.jar
-	http://hg.netbeans.org/binaries/DF7DD830839D7D945FAA83EEC982627F5E687791-javac-impl-nb-7.0-b07.jar
+	http://hg.netbeans.org/binaries/6064AAC26952744D504BA531488C43DD22EA4A93-javac-impl-nb-7.0-b07.jar
 	http://hg.netbeans.org/binaries/653A6AD1EF786BC577FC20F56E5F2B1D30423805-maven-dependency-tree-1.2.jar
 	http://hg.netbeans.org/binaries/2F43A634A42CC4FD2EF9E24B488AFFD6984D3411-jaxws-2.2.zip
 	http://hg.netbeans.org/binaries/23E69F0F17757673C573EBD9899727B82EF7DB7F-jaxws-2.2-api.zip
@@ -100,7 +100,7 @@ src_unpack() {
 	ln -s "${DISTDIR}"/3AF24D401F76D153B77641865737DE53E41E60D6-indexer-artifact-4.0.0.jar maven.indexer/external/indexer-artifact-4.0.0.jar || die
 	ln -s "${DISTDIR}"/39E868B62080080DC349253E6050DF4B6ABAAE60-indexer-core-4.0.0.jar maven.indexer/external/indexer-core-4.0.0.jar || die
 	ln -s "${DISTDIR}"/03D05A90FFB98D4E5748AE96C99AE549224C1ABC-javac-api-nb-7.0-b07.jar libs.javacapi/external/javac-api-nb-7.0-b07.jar || die
-	ln -s "${DISTDIR}"/DF7DD830839D7D945FAA83EEC982627F5E687791-javac-impl-nb-7.0-b07.jar libs.javacimpl/external/javac-impl-nb-7.0-b07.jar || die
+	ln -s "${DISTDIR}"/6064AAC26952744D504BA531488C43DD22EA4A93-javac-impl-nb-7.0-b07.jar libs.javacimpl/external/javac-impl-nb-7.0-b07.jar || die
 	ln -s "${DISTDIR}"/653A6AD1EF786BC577FC20F56E5F2B1D30423805-maven-dependency-tree-1.2.jar maven.embedder/external/maven-dependency-tree-1.2.jar || die
 	ln -s "${DISTDIR}"/2F43A634A42CC4FD2EF9E24B488AFFD6984D3411-jaxws-2.2.zip websvc.jaxws21/external/jaxws-2.2.zip || die
 	ln -s "${DISTDIR}"/23E69F0F17757673C573EBD9899727B82EF7DB7F-jaxws-2.2-api.zip websvc.jaxws21api/external/jaxws-2.2-api.zip || die

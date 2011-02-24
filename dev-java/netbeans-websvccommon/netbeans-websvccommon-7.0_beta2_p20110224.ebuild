@@ -6,21 +6,19 @@ EAPI="4"
 WANT_ANT_TASKS="ant-nodeps"
 inherit eutils java-pkg-2 java-ant-2
 
-DESCRIPTION="Netbeans API Support Cluster"
-HOMEPAGE="http://netbeans.org/projects/apisupport"
+DESCRIPTION="Netbeans Web Services Common Cluster"
+HOMEPAGE="http://netbeans.org/"
 SLOT="7.0"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/latest/zip/netbeans-trunk-nightly-201102020000-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/latest/zip/netbeans-trunk-nightly-201102240001-src.zip"
 SRC_URI="${SOURCE_URL}
-	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-${SLOT}-build.xml.patch.bz2"
+	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-${SLOT}-build.xml-r1.patch.bz2"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 S="${WORKDIR}"
 
-CDEPEND="~dev-java/netbeans-harness-${PV}
-	~dev-java/netbeans-ide-${PV}
-	~dev-java/netbeans-java-${PV}
-	~dev-java/netbeans-platform-${PV}"
+CDEPEND="~dev-java/netbeans-platform-${PV}
+	~dev-java/netbeans-ide-${PV}"
 DEPEND=">=virtual/jdk-1.6
 	app-arch/unzip
 	${CDEPEND}
@@ -32,7 +30,7 @@ INSTALL_DIR="/usr/share/${PN}-${SLOT}"
 
 EANT_BUILD_XML="nbbuild/build.xml"
 EANT_BUILD_TARGET="rebuild-cluster"
-EANT_EXTRA_ARGS="-Drebuild.cluster.name=nb.cluster.apisupport -Dext.binaries.downloaded=true"
+EANT_EXTRA_ARGS="-Drebuild.cluster.name=nb.cluster.websvccommon -Dext.binaries.downloaded=true"
 JAVA_PKG_BSFIX="off"
 
 src_unpack() {
@@ -41,14 +39,14 @@ src_unpack() {
 	einfo "Deleting bundled jars..."
 	find -name "*.jar" -type f -delete
 
-	unpack netbeans-7.0-build.xml.patch.bz2
+	unpack netbeans-7.0-build.xml-r1.patch.bz2
 }
 
 src_prepare() {
 	einfo "Deleting bundled class files..."
 	find -name "*.class" -type f | xargs rm -vf
 
-	epatch netbeans-7.0-build.xml.patch
+	epatch netbeans-7.0-build.xml-r1.patch
 
 	# Support for custom patches
 	if [ -n "${NETBEANS70_PATCHES_DIR}" -a -d "${NETBEANS70_PATCHES_DIR}" ] ; then
@@ -70,21 +68,13 @@ src_prepare() {
 	mkdir "${S}"/nbbuild/netbeans || die
 	pushd "${S}"/nbbuild/netbeans >/dev/null || die
 
-	ln -s /usr/share/netbeans-harness-${SLOT} harness || die
-	cat /usr/share/netbeans-harness-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
-	touch nb.cluster.harness.built
+	ln -s /usr/share/netbeans-platform-${SLOT} platform || die
+	cat /usr/share/netbeans-platform-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
+	touch nb.cluster.platform.built
 
 	ln -s /usr/share/netbeans-ide-${SLOT} ide || die
 	cat /usr/share/netbeans-ide-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
 	touch nb.cluster.ide.built
-
-	ln -s /usr/share/netbeans-java-${SLOT} java || die
-	cat /usr/share/netbeans-java-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
-	touch nb.cluster.java.built
-
-	ln -s /usr/share/netbeans-platform-${SLOT} platform || die
-	cat /usr/share/netbeans-platform-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
-	touch nb.cluster.platform.built
 
 	popd >/dev/null || die
 
@@ -92,15 +82,13 @@ src_prepare() {
 }
 
 src_install() {
-	pushd nbbuild/netbeans/apisupport >/dev/null || die
+	pushd nbbuild/netbeans/websvccommon >/dev/null || die
 
 	insinto ${INSTALL_DIR}
-
-	grep -E "/apisupport$" ../moduleCluster.properties > "${D}"/${INSTALL_DIR}/moduleCluster.properties || die
-
+	grep -E "/websvccommon$" ../moduleCluster.properties > "${D}"/${INSTALL_DIR}/moduleCluster.properties || die
 	doins -r *
 
 	popd >/dev/null || die
 
-	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/apisupport
+	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/websvccommon
 }

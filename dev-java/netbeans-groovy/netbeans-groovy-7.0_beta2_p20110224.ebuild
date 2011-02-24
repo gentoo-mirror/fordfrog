@@ -6,19 +6,20 @@ EAPI="4"
 WANT_ANT_TASKS="ant-nodeps"
 inherit eutils java-pkg-2 java-ant-2
 
-DESCRIPTION="Netbeans Ergonomics Cluster"
-HOMEPAGE="http://netbeans.org/"
+DESCRIPTION="Netbeans Groovy Cluster"
+HOMEPAGE="http://netbeans.org/projects/groovy"
 SLOT="7.0"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/latest/zip/netbeans-trunk-nightly-201102160501-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/latest/zip/netbeans-trunk-nightly-201102240001-src.zip"
 SRC_URI="${SOURCE_URL}
-	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-${SLOT}-build.xml-r1.patch.bz2"
+	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-${SLOT}-build.xml-r1.patch.bz2
+	http://hg.netbeans.org/binaries/559C961A6CE793FAC94C8040253EA1FBD32B668B-groovy-all-1.6.4.jar"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 S="${WORKDIR}"
 
 CDEPEND="~dev-java/netbeans-ide-${PV}
-	~dev-java/netbeans-nb-${PV}
+	~dev-java/netbeans-java-${PV}
 	~dev-java/netbeans-platform-${PV}"
 DEPEND=">=virtual/jdk-1.6
 	app-arch/unzip
@@ -31,7 +32,7 @@ INSTALL_DIR="/usr/share/${PN}-${SLOT}"
 
 EANT_BUILD_XML="nbbuild/build.xml"
 EANT_BUILD_TARGET="rebuild-cluster"
-EANT_EXTRA_ARGS="-Drebuild.cluster.name=nb.cluster.ergonomics -Dext.binaries.downloaded=true"
+EANT_EXTRA_ARGS="-Drebuild.cluster.name=nb.cluster.groovy -Dext.binaries.downloaded=true"
 JAVA_PKG_BSFIX="off"
 
 src_unpack() {
@@ -41,6 +42,10 @@ src_unpack() {
 	find -name "*.jar" -type f -delete
 
 	unpack netbeans-7.0-build.xml-r1.patch.bz2
+
+	pushd "${S}" >/dev/null || die
+	ln -s "${DISTDIR}"/559C961A6CE793FAC94C8040253EA1FBD32B668B-groovy-all-1.6.4.jar groovy.editor/external/groovy-all-1.6.4.jar || die
+	popd >/dev/null || die
 }
 
 src_prepare() {
@@ -73,9 +78,9 @@ src_prepare() {
 	cat /usr/share/netbeans-ide-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
 	touch nb.cluster.ide.built
 
-	ln -s /usr/share/netbeans-nb-${SLOT}/nb nb || die
-	cat /usr/share/netbeans-nb-${SLOT}/nb/moduleCluster.properties >> moduleCluster.properties || die
-	touch nb.cluster.nb.built
+	ln -s /usr/share/netbeans-java-${SLOT} java || die
+	cat /usr/share/netbeans-java-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
+	touch nb.cluster.java.built
 
 	ln -s /usr/share/netbeans-platform-${SLOT} platform || die
 	cat /usr/share/netbeans-platform-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
@@ -87,15 +92,20 @@ src_prepare() {
 }
 
 src_install() {
-	pushd nbbuild/netbeans/ergonomics >/dev/null || die
+	pushd nbbuild/netbeans/groovy >/dev/null || die
 
 	insinto ${INSTALL_DIR}
 
-	grep -E "/ergonomics$" ../moduleCluster.properties > "${D}"/${INSTALL_DIR}/moduleCluster.properties || die
+	grep -E "/groovy$" ../moduleCluster.properties > "${D}"/${INSTALL_DIR}/moduleCluster.properties || die
 
 	doins -r *
 
 	popd >/dev/null || die
 
-	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/ergonomics
+	local instdir=${INSTALL_DIR}/modules/ext
+	pushd "${D}"/${instdir} >/dev/null || die
+	# groovy-all.jar
+	popd >/dev/null || die
+
+	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/groovy
 }

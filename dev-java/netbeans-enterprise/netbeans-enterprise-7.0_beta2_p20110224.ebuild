@@ -9,9 +9,9 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans Enterprise cluster"
 HOMEPAGE="http://netbeans.org/"
 SLOT="7.0"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/latest/zip/netbeans-trunk-nightly-201102020000-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/latest/zip/netbeans-trunk-nightly-201102240001-src.zip"
 SRC_URI="${SOURCE_URL}
-	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-${SLOT}-build.xml.patch.bz2
+	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-${SLOT}-build.xml-r1.patch.bz2
 	http://hg.netbeans.org/binaries/2EA8E5BDC70E1B1D738140E52E4793385B2567A3-el-impl.jar
 	http://hg.netbeans.org/binaries/7763236B189D9B910E2BDBA6822E6EB4DDDAC41B-glassfish-jspparser-3.0.jar
 	http://hg.netbeans.org/binaries/D813E05A06B587CD0FE36B00442EAB03C1431AA9-glassfish-logging-2.0.jar
@@ -27,14 +27,14 @@ SRC_URI="${SOURCE_URL}
 	http://hg.netbeans.org/binaries/F10ED4F2ECC7724F7C25D586DC9F25377581CCFC-jersey-multipart-1.3-javadoc.jar
 	http://hg.netbeans.org/binaries/123A7BAAE06D938E5E4533ED745EEE7377E73ED8-jersey-spring-1.3-javadoc.jar
 	http://hg.netbeans.org/binaries/B9DB1A789C301F1D31DD6CC524DA2EBD7F89190D-jsf-1.2.zip
-	http://hg.netbeans.org/binaries/7F8D0C26FEADDE01940E39B1D9CD175895A3243E-jsf-2.0.zip
+	http://hg.netbeans.org/binaries/6B90A110E1B1503C4623B13D3BB536212F1BF3DB-jsf-2.0.zip
 	http://hg.netbeans.org/binaries/93A58E37BA1D014375B1578F3D904736CB2D408F-jsf-api-docs.zip
 	http://hg.netbeans.org/binaries/FFE3425E304F0836912D2B8ABFB5302100B39423-jsr311-api-1.1.1-javadoc.jar
 	http://hg.netbeans.org/binaries/FDECFB78184C7D19E7E20130A7D7E88C1DF0BDD1-metro-1.4-doc.zip
 	http://hg.netbeans.org/binaries/16CD40905B389B27AFD81DAFF8F163CEC810FBC6-metro-2.0.zip
 	http://hg.netbeans.org/binaries/BAEA0B9171897175B0B3E20BDF532EF4CFD44CEE-oauth-client-1.3-javadoc.jar
 	http://hg.netbeans.org/binaries/4855C8481C6951F39DC117C44CA8EE70BF2B003F-oauth-signature-1.3-javadoc.jar
-	http://hg.netbeans.org/binaries/6017380527B332AD174FED03973C8FB8094E3258-primefaces-2.1.jar
+	http://hg.netbeans.org/binaries/6EFAF1644CA2EB06CAF502C49D1F6EC6E8477E6F-primefaces-2.2.jar
 	http://hg.netbeans.org/binaries/B9FA9CDC7FA5203E1DB5C4DBAAED0133596D524F-servlet3.0-jsp2.2-api.jar
 	http://hg.netbeans.org/binaries/1A48EDCF8DCFC76882C821931EB0529DB9AF5D9B-spring-webmvc-2.5.6.SEC01.jar
 	http://hg.netbeans.org/binaries/E11C2384FDEAE4F96E433C2A0339DCFC5202CC17-struts-1.3.8-javadoc.zip
@@ -59,6 +59,7 @@ DEPEND=">=virtual/jdk-1.6
 	app-arch/unzip
 	${CDEPEND}
 	dev-java/javahelp:0
+	>=dev-java/junit-4.4:4
 	dev-java/tomcat-servlet-api:2.3"
 RDEPEND=">=virtual/jdk-1.6
 	${CDEPEND}
@@ -89,7 +90,7 @@ src_unpack() {
 	einfo "Deleting bundled jars..."
 	find -name "*.jar" -type f -delete
 
-	unpack netbeans-7.0-build.xml.patch.bz2
+	unpack netbeans-7.0-build.xml-r1.patch.bz2
 
 	pushd "${S}" >/dev/null || die
 	ln -s "${DISTDIR}"/2EA8E5BDC70E1B1D738140E52E4793385B2567A3-el-impl.jar libs.elimpl/external/el-impl.jar || die
@@ -107,14 +108,14 @@ src_unpack() {
 	ln -s "${DISTDIR}"/F10ED4F2ECC7724F7C25D586DC9F25377581CCFC-jersey-multipart-1.3-javadoc.jar websvc.restlib/external/jersey-multipart-1.3-javadoc.jar || die
 	ln -s "${DISTDIR}"/123A7BAAE06D938E5E4533ED745EEE7377E73ED8-jersey-spring-1.3-javadoc.jar websvc.restlib/external/jersey-spring-1.3-javadoc.jar || die
 	ln -s "${DISTDIR}"/B9DB1A789C301F1D31DD6CC524DA2EBD7F89190D-jsf-1.2.zip web.jsf12/external/jsf-1.2.zip || die
-	ln -s "${DISTDIR}"/7F8D0C26FEADDE01940E39B1D9CD175895A3243E-jsf-2.0.zip web.jsf20/external/jsf-2.0.zip || die
+	ln -s "${DISTDIR}"/6B90A110E1B1503C4623B13D3BB536212F1BF3DB-jsf-2.0.zip web.jsf20/external/jsf-2.0.zip || die
 	ln -s "${DISTDIR}"/93A58E37BA1D014375B1578F3D904736CB2D408F-jsf-api-docs.zip web.jsf.editor/external/jsf-api-docs.zip || die
 	ln -s "${DISTDIR}"/FFE3425E304F0836912D2B8ABFB5302100B39423-jsr311-api-1.1.1-javadoc.jar websvc.restlib/external/jsr311-api-1.1.1-javadoc.jar || die
 	ln -s "${DISTDIR}"/FDECFB78184C7D19E7E20130A7D7E88C1DF0BDD1-metro-1.4-doc.zip websvc.metro.lib/external/metro-1.4-doc.zip || die
 	ln -s "${DISTDIR}"/16CD40905B389B27AFD81DAFF8F163CEC810FBC6-metro-2.0.zip websvc.metro.lib/external/metro-2.0.zip || die
 	ln -s "${DISTDIR}"/BAEA0B9171897175B0B3E20BDF532EF4CFD44CEE-oauth-client-1.3-javadoc.jar websvc.restlib/external/oauth-client-1.3-javadoc.jar || die
 	ln -s "${DISTDIR}"/4855C8481C6951F39DC117C44CA8EE70BF2B003F-oauth-signature-1.3-javadoc.jar websvc.restlib/external/oauth-signature-1.3-javadoc.jar || die
-	ln -s "${DISTDIR}"/6017380527B332AD174FED03973C8FB8094E3258-primefaces-2.1.jar web.primefaces/external/primefaces-2.1.jar || die
+	ln -s "${DISTDIR}"/6EFAF1644CA2EB06CAF502C49D1F6EC6E8477E6F-primefaces-2.2.jar web.primefaces/external/primefaces-2.2.jar || die
 	ln -s "${DISTDIR}"/B9FA9CDC7FA5203E1DB5C4DBAAED0133596D524F-servlet3.0-jsp2.2-api.jar servletjspapi/external/servlet3.0-jsp2.2-api.jar || die
 	ln -s "${DISTDIR}"/1A48EDCF8DCFC76882C821931EB0529DB9AF5D9B-spring-webmvc-2.5.6.SEC01.jar spring.webmvc/external/spring-webmvc-2.5.6.SEC01.jar || die
 	ln -s "${DISTDIR}"/E11C2384FDEAE4F96E433C2A0339DCFC5202CC17-struts-1.3.8-javadoc.zip web.struts/external/struts-1.3.8-javadoc.zip || die
@@ -128,7 +129,7 @@ src_prepare() {
 	einfo "Deleting bundled class files..."
 	find -name "*.class" -type f | xargs rm -vf
 
-	epatch netbeans-7.0-build.xml.patch
+	epatch netbeans-7.0-build.xml-r1.patch
 
 	# Support for custom patches
 	if [ -n "${NETBEANS70_PATCHES_DIR}" -a -d "${NETBEANS70_PATCHES_DIR}" ] ; then
@@ -149,6 +150,7 @@ src_prepare() {
 	java-pkg_jar-from --into libs.commons_fileupload/external commons-fileupload commons-fileupload.jar commons-fileupload-1.0.jar
 	java-pkg_jar-from --into web.jstl11/external jakarta-jstl jstl.jar jstl-1.1.2.jar
 	java-pkg_jar-from --into web.jstl11/external jakarta-jstl standard.jar standard-1.1.2.jar
+	java-pkg_jar-from --build-only --into libs.junit4/external junit-4 junit.jar junit-4.8.2.jar
 	java-pkg_jar-from --build-only --into web.monitor/external tomcat-servlet-api-2.3 servlet.jar servlet-2.3.jar
 
 	einfo "Linking in other clusters..."

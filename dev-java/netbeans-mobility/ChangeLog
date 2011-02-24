@@ -2,6 +2,14 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*netbeans-mobility-7.0_beta2_p20110224 (24 Feb 2011)
+
+  24 Feb 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-mobility-7.0_beta_p20110202.ebuild,
+  -netbeans-mobility-7.0_beta_p20110216.ebuild,
+  +netbeans-mobility-7.0_beta2_p20110224.ebuild:
+  Bumped to latest nightly sources and removed old versions
+
 *netbeans-mobility-7.0_beta2_p20110218 (18 Feb 2011)
 
   18 Feb 2011; Miroslav Šulc <fordfrog@gentoo.org>

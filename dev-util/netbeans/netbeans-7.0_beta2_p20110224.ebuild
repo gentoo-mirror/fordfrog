@@ -8,8 +8,8 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans IDE"
 HOMEPAGE="http://netbeans.org/"
 SLOT="7.0"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/latest/zip/netbeans-trunk-nightly-201102020000-src.zip"
-PATCHES_URL="http://dev.gentoo.org/~fordfrog/distfiles/netbeans-${SLOT}-build.xml.patch.bz2"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/latest/zip/netbeans-trunk-nightly-201102240001-src.zip"
+PATCHES_URL="http://dev.gentoo.org/~fordfrog/distfiles/netbeans-${SLOT}-build.xml-r1.patch.bz2"
 L10N_URL="http://dev.gentoo.org/~fordfrog/distfiles/netbeans-l10n-7.0-20101108.tar.bz2"
 ALL_URLS="${SOURCE_URL} ${PATCHES_URL} ${L10N_URL}"
 SRC_URI="linguas_af? ( ${ALL_URLS} )
@@ -149,7 +149,7 @@ src_unpack() {
 		einfo "Deleting bundled jars..."
 		find -name "*.jar" -type f -delete
 
-		unpack netbeans-7.0-build.xml.patch.bz2
+		unpack netbeans-7.0-build.xml-r1.patch.bz2
 	fi
 }
 
@@ -158,7 +158,7 @@ src_prepare() {
 		einfo "Deleting bundled class files..."
 		find -name "*.class" -type f | xargs rm -vf
 
-		epatch netbeans-7.0-build.xml.patch
+		epatch netbeans-7.0-build.xml-r1.patch
 
 		# Support for custom patches
 		if [ -n "${NETBEANS70_PATCHES_DIR}" -a -d "${NETBEANS70_PATCHES_DIR}" ] ; then

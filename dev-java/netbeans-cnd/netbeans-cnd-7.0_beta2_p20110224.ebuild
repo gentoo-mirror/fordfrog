@@ -9,9 +9,9 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans CND Cluster"
 HOMEPAGE="http://netbeans.org/projects/cnd"
 SLOT="7.0"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/latest/zip/netbeans-trunk-nightly-201102020000-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/latest/zip/netbeans-trunk-nightly-201102240001-src.zip"
 SRC_URI="${SOURCE_URL}
-	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-${SLOT}-build.xml.patch.bz2
+	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-${SLOT}-build.xml-r1.patch.bz2
 	http://hg.netbeans.org/binaries/3C8F28BB40B1DC5E2BB66C8CEDD9D5958ECBDBB8-cnd-rfs-1.0.zip
 	http://hg.netbeans.org/binaries/296C195B720404C2683BA2F65E2A423DD0611B8B-open-fortran-parser-0.7.1.2.zip"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
@@ -46,7 +46,7 @@ src_unpack() {
 	einfo "Deleting bundled jars..."
 	find -name "*.jar" -type f -delete
 
-	unpack netbeans-7.0-build.xml.patch.bz2
+	unpack netbeans-7.0-build.xml-r1.patch.bz2
 
 	pushd "${S}" >/dev/null || die
 	ln -s "${DISTDIR}"/3C8F28BB40B1DC5E2BB66C8CEDD9D5958ECBDBB8-cnd-rfs-1.0.zip cnd.remote/external/cnd-rfs-1.0.zip || die
@@ -58,7 +58,7 @@ src_prepare() {
 	einfo "Deleting bundled class files..."
 	find -name "*.class" -type f | xargs rm -vf
 
-	epatch netbeans-7.0-build.xml.patch
+	epatch netbeans-7.0-build.xml-r1.patch
 	sed -i "s%<classpath path=\"\${antlr3.jar}\"/>%<classpath path=\"\${antlr3.jar}:../libs.antlr3.devel/external/antlr-2.7.jar:../libs.antlr3.devel/external/stringtemplate-3.2.jar\"/>%" cnd.modelimpl/build.xml || die
 
 	# Support for custom patches
