@@ -1,0 +1,9 @@
+# ChangeLog for app-office/qtstalker
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*qtstalker-9999 (10 Mar 2011)
+
+  10 Mar 2011; Miroslav Šulc <fordfrog@gentoo.org> +qtstalker-9999.ebuild:
+  Initial ebuild. Plugins do not work.
+
