@@ -11,7 +11,7 @@ fi
 
 pushd $(dirname $(dirname $(dirname $(readlink -f ${0})))) >/dev/null || exit 1
 
-for file in */*/*${OLD}*.ebuild ; do
+for file in */*netbeans*/*${OLD}*.ebuild ; do
 	cp ${file} $(echo ${file} | sed "s/${OLD}/${NEW}/" | sed -E "s/-r[[:digit:]]+//") || exit 1
 done
 
