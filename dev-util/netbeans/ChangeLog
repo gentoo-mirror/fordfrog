@@ -2,6 +2,9 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  14 Mar 2011; Miroslav Šulc <fordfrog@gentoo.org> netbeans-7.0_beta2.ebuild:
+  Fixed issue with building when no locale is specified
+
   14 Mar 2011; Miroslav Šulc <fordfrog@gentoo.org>
   netbeans-7.0_beta2_p20110311.ebuild:
   Fixed issue with building when no locale is specified
