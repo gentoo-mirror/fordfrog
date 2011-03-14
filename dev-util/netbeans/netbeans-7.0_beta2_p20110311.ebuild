@@ -190,21 +190,23 @@ src_compile() {
 }
 
 src_install() {
-	pushd "${S}"/nbbuild/netbeans >/dev/null || die
+	if [ -n "${NBLOCALES}" ] ; then
+		pushd "${S}"/nbbuild/netbeans >/dev/null || die
 
-	for cluster in apisupport cnd dlight enterprise ergonomics groovy harness ide java javacard mobility php platform profiler websvccommon ; do
-		if [ -d "${cluster}" ] ; then
-			insinto /usr/share/netbeans-${cluster}-${SLOT}
-			doins -r ${cluster}/*
+		for cluster in apisupport cnd dlight enterprise ergonomics groovy harness ide java javacard mobility php platform profiler websvccommon ; do
+			if [ -d "${cluster}" ] ; then
+				insinto /usr/share/netbeans-${cluster}-${SLOT}
+				doins -r ${cluster}/*
+			fi
+		done
+
+		if [ -d nb ] ; then
+			insinto /usr/share/netbeans-nb-${SLOT}/nb
+			doins -r nb/*
 		fi
-	done
 
-	if [ -d nb ] ; then
-		insinto /usr/share/netbeans-nb-${SLOT}/nb
-		doins -r nb/*
+		popd >/dev/null || die
 	fi
-
-	popd >/dev/null || die
 }
 
 pkg_postinst() {
