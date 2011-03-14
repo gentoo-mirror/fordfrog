@@ -6,10 +6,10 @@ EAPI="4"
 WANT_ANT_TASKS="ant-nodeps"
 inherit eutils java-pkg-2 java-ant-2
 
-DESCRIPTION="Netbeans Profiler Cluster"
-HOMEPAGE="http://netbeans.org/projects/profiler"
+DESCRIPTION="Netbeans Ergonomics Cluster"
+HOMEPAGE="http://netbeans.org/"
 SLOT="7.0"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/latest/zip/netbeans-trunk-nightly-201103110400-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2011-03-14_04-00-17/zip/netbeans-trunk-nightly-201103140400-src.zip"
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-${SLOT}-build.xml-r1.patch.bz2"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
@@ -18,7 +18,7 @@ IUSE=""
 S="${WORKDIR}"
 
 CDEPEND="~dev-java/netbeans-ide-${PV}
-	~dev-java/netbeans-java-${PV}
+	~dev-java/netbeans-nb-${PV}
 	~dev-java/netbeans-platform-${PV}"
 DEPEND=">=virtual/jdk-1.6
 	app-arch/unzip
@@ -31,7 +31,7 @@ INSTALL_DIR="/usr/share/${PN}-${SLOT}"
 
 EANT_BUILD_XML="nbbuild/build.xml"
 EANT_BUILD_TARGET="rebuild-cluster"
-EANT_EXTRA_ARGS="-Drebuild.cluster.name=nb.cluster.profiler -Dext.binaries.downloaded=true"
+EANT_EXTRA_ARGS="-Drebuild.cluster.name=nb.cluster.ergonomics -Dext.binaries.downloaded=true"
 JAVA_PKG_BSFIX="off"
 
 src_unpack() {
@@ -73,9 +73,9 @@ src_prepare() {
 	cat /usr/share/netbeans-ide-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
 	touch nb.cluster.ide.built
 
-	ln -s /usr/share/netbeans-java-${SLOT} java || die
-	cat /usr/share/netbeans-java-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
-	touch nb.cluster.java.built
+	ln -s /usr/share/netbeans-nb-${SLOT}/nb nb || die
+	cat /usr/share/netbeans-nb-${SLOT}/nb/moduleCluster.properties >> moduleCluster.properties || die
+	touch nb.cluster.nb.built
 
 	ln -s /usr/share/netbeans-platform-${SLOT} platform || die
 	cat /usr/share/netbeans-platform-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
@@ -87,27 +87,15 @@ src_prepare() {
 }
 
 src_install() {
-	pushd nbbuild/netbeans/profiler >/dev/null || die
+	pushd nbbuild/netbeans/ergonomics >/dev/null || die
 
 	insinto ${INSTALL_DIR}
 
-	grep -E "/profiler$" ../moduleCluster.properties > "${D}"/${INSTALL_DIR}/moduleCluster.properties || die
+	grep -E "/ergonomics$" ../moduleCluster.properties > "${D}"/${INSTALL_DIR}/moduleCluster.properties || die
 
 	doins -r *
 
-	for file in lib/deployed/cvm/linux/*.so ; do
-		fperms 755 ${file}
-	done
-
-	for file in lib/deployed/jdk*/linux*/*.so ; do
-		fperms 755 ${file}
-	done
-
-	for file in remote-pack-defs/*.sh ; do
-		fperms 755 ${file}
-	done
-
 	popd >/dev/null || die
 
-	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/profiler
+	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/ergonomics
 }
