@@ -2,6 +2,10 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  21 Mar 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-enterprise-7.0_beta2_p20110314.ebuild:
+  Removed old version
+
 *netbeans-enterprise-7.0_beta2_p20110318 (18 Mar 2011)
 
   18 Mar 2011; Miroslav Šulc <fordfrog@gentoo.org>
