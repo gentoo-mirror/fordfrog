@@ -3,6 +3,10 @@
 # $Header: $
 
   30 Mar 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  netbeans-ide-7.0_rc1.ebuild, netbeans-ide-7.0_beta2_p20110324.ebuild:
+  Fixed bug #361357
+
+  30 Mar 2011; Miroslav Šulc <fordfrog@gentoo.org>
   -netbeans-ide-7.0_beta2.ebuild:
   Removed old beta release
 
