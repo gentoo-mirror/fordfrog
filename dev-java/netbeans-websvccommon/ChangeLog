@@ -2,6 +2,10 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  30 Mar 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-websvccommon-7.0_beta2.ebuild:
+  Removed old beta release
+
 *netbeans-websvccommon-7.0_rc1 (30 Mar 2011)
 
   30 Mar 2011; Miroslav Šulc <fordfrog@gentoo.org>
