@@ -2,6 +2,10 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  08 Apr 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-ide-7.0_rc1_p20110401.ebuild:
+  Removed old version
+
 *netbeans-ide-7.0_rc1_p20110406 (07 Apr 2011)
 
   07 Apr 2011; Miroslav Šulc <fordfrog@gentoo.org>
