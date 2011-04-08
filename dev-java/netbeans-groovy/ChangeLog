@@ -2,6 +2,10 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  08 Apr 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-groovy-7.0_rc1.ebuild:
+  Removed rc1
+
 *netbeans-groovy-7.0_rc2 (08 Apr 2011)
 
   08 Apr 2011; Miroslav Šulc <fordfrog@gentoo.org>
