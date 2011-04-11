@@ -21,6 +21,7 @@ S="${WORKDIR}"
 DEPEND=">=virtual/jdk-1.6
 	app-arch/unzip
 	dev-java/javahelp:0
+	dev-java/junit:4
 	~dev-java/netbeans-apisupport-${PV}
 	~dev-java/netbeans-cnd-${PV}
 	~dev-java/netbeans-dlight-${PV}
@@ -75,6 +76,7 @@ src_prepare() {
 
 	einfo "Symlinking external libraries..."
 	java-pkg_jar-from --build-only --into javahelp/external javahelp jhall.jar jhall-2.0_05.jar
+	java-pkg_jar-from --build-only --into libs.junit4/external junit-4 junit.jar junit-4.8.2.jar
 
 	einfo "Linking in other clusters..."
 	mkdir "${S}"/nbbuild/netbeans || die

@@ -2,6 +2,11 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  11 Apr 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  netbeans-javadoc-7.0_rc2.ebuild, netbeans-javadoc-7.0_rc1_p20110406.ebuild,
+  netbeans-javadoc-7.0_rc2_p20110409.ebuild:
+  Fixed bug #363099
+
 *netbeans-javadoc-7.0_rc2_p20110409 (10 Apr 2011)
 
   10 Apr 2011; Miroslav Šulc <fordfrog@gentoo.org>
