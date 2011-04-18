@@ -2,6 +2,11 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  18 Apr 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-platform-7.0_rc2_p20110409.ebuild,
+  -netbeans-platform-7.0_rc2_p20110411.ebuild:
+  Removed old versions
+
 *netbeans-platform-7.0_rc2_p20110417 (18 Apr 2011)
 
   18 Apr 2011; Miroslav Šulc <fordfrog@gentoo.org>
