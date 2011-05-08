@@ -2,6 +2,10 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  08 May 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-groovy-9999_p20110426.ebuild:
+  Removed obsolete version
+
 *netbeans-groovy-9999_p20110508 (08 May 2011)
 
   08 May 2011; Miroslav Šulc <fordfrog@gentoo.org>
