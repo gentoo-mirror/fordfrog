@@ -18,17 +18,17 @@ if [ ! -d "${NEW_DIR}" ] ; then
 	exit 1
 fi
 
-pushd "${NEW_DIR}"
+pushd "${NEW_DIR}" >> /dev/null
 
 for file in `ls */external/binaries-list`; do
 	RESULT=`diff "${OLD_DIR}"/$file $file`
 
 	if [ -n "${RESULT}" ] ; then
 		echo "${file}"
-		echo ${RESULT}
+		diff "${OLD_DIR}"/$file $file
 	fi
 done
 
-popd
+popd >> /dev/null
 
 echo "DONE."
