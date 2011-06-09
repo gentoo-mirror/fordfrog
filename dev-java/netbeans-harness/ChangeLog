@@ -2,6 +2,10 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  09 Jun 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-harness-9999_p20110529.ebuild:
+  Removed old version
+
 *netbeans-harness-9999_p20110604 (06 Jun 2011)
 
   06 Jun 2011; Miroslav Šulc <fordfrog@gentoo.org>
