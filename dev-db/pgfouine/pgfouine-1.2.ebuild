@@ -17,8 +17,8 @@ IUSE=""
 
 DEPEND=""
 
-# php 5.3 doesn't have pcre useflag anymore
-RDEPEND=">=dev-lang/php-4"
+# no idea how to specify that php must have gd OR gd-external enabled
+RDEPEND=">=dev-lang/php-4[gd,truetype]"
 
 src_prepare() {
 	find -name CVS -type d | xargs rm -fr

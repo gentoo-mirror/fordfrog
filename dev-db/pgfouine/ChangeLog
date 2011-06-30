@@ -2,6 +2,9 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  30 Jun 2011; Miroslav Šulc <fordfrog@gentoo.org> pgfouine-1.2.ebuild:
+  Added dependencies on php modules
+
 *pgfouine-1.2 (29 Jun 2011)
 
   29 Jun 2011; Miroslav Šulc <fordfrog@gentoo.org> +pgfouine-1.2.ebuild,
