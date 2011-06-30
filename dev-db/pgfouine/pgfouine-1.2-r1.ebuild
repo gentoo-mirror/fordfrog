@@ -22,6 +22,9 @@ RDEPEND=">=dev-lang/php-4[gd,truetype]"
 
 src_prepare() {
 	find -name CVS -type d | xargs rm -fr
+	# some logs may contain hints even for non-error log lines
+	# this patch disables adding hints to log objects that do not have appendHint() method
+	epatch ${FILESDIR}/disable-hints-for-non-errors.patch
 }
 
 src_configure() {

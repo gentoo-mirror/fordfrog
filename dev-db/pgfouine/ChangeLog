@@ -2,6 +2,12 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*pgfouine-1.2-r1 (30 Jun 2011)
+
+  30 Jun 2011; Miroslav Šulc <fordfrog@gentoo.org> -pgfouine-1.2.ebuild,
+  +pgfouine-1.2-r1.ebuild, +files/disable-hints-for-non-errors.patch:
+  Fixed error with hints existing for non-error log lines
+
   30 Jun 2011; Miroslav Šulc <fordfrog@gentoo.org> pgfouine-1.2.ebuild:
   Added dependencies on php modules
 
