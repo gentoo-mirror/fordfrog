@@ -2,6 +2,12 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*netbeans-enterprise-9999_p20110717 (18 Jul 2011)
+
+  18 Jul 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-enterprise-9999_p20110717.ebuild:
+  Bumped to latest nightly sources
+
   11 Jul 2011; Miroslav Šulc <fordfrog@gentoo.org>
   -netbeans-enterprise-9999_p20110626.ebuild,
   -netbeans-enterprise-9999_p20110701.ebuild:
