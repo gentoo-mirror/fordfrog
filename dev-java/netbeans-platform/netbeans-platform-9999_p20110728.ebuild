@@ -86,6 +86,11 @@ src_prepare() {
 	java-pkg-2_src_prepare
 }
 
+src_compile() {
+	unset DISPLAY
+	eant -f ${EANT_BUILD_XML} ${EANT_EXTRA_ARGS} ${EANT_BUILD_TARGET} || die "Compilation failed"
+}
+
 src_install() {
 	pushd nbbuild/netbeans/platform >/dev/null || die
 
