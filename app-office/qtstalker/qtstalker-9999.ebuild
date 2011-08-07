@@ -49,7 +49,8 @@ src_prepare() {
 }
 
 src_compile() {
-	emake || die "emake failed."
+	QTDIR=${get_libdir}
+	emake -j1 || die "emake failed."
 }
 
 src_install() {
