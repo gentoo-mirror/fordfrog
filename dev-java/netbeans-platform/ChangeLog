@@ -3,6 +3,10 @@
 # $Header: $
 
   07 Aug 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-platform-9999_p20110722.ebuild:
+  Removed obsolete version
+
+  07 Aug 2011; Miroslav Šulc <fordfrog@gentoo.org>
   netbeans-platform-7.0.ebuild, netbeans-platform-7.0.1.ebuild,
   netbeans-platform-9999_p20110722.ebuild,
   netbeans-platform-9999_p20110728.ebuild:
