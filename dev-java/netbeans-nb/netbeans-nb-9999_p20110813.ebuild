@@ -115,14 +115,14 @@ src_install() {
 
 	# fix paths per bug# 163483
 	if [[ -e "${D}"/${INSTALL_DIR}/bin/netbeans ]]; then
-		sed -i -e 's:"$progdir"/../etc/:/etc/netbeans-7.0/:' "${D}"/${INSTALL_DIR}/bin/netbeans
-		sed -i -e 's:"${userdir}"/etc/:/etc/netbeans-7.0/:' "${D}"/${INSTALL_DIR}/bin/netbeans
+		sed -i -e 's:"$progdir"/../etc/:/etc/netbeans-9999/:' "${D}"/${INSTALL_DIR}/bin/netbeans
+		sed -i -e 's:"${userdir}"/etc/:/etc/netbeans-9999/:' "${D}"/${INSTALL_DIR}/bin/netbeans
 	fi
 
 	dodir /usr/share/icons/hicolor/32x32/apps
 	dosym ${INSTALL_DIR}/nb/netbeans.png /usr/share/icons/hicolor/32x32/apps/netbeans-${SLOT}.png
 	dodir /usr/share/icons/hicolor/128x128/apps
-	cp "${DISTDIR}"/netbeans-${SLOT}.png "${D}"/usr/share/icons/hicolor/128x128/apps/netbeans-${SLOT}.png
+	cp "${DISTDIR}"/netbeans-7.0.png "${D}"/usr/share/icons/hicolor/128x128/apps/netbeans-${SLOT}.png || die
 	dosym /usr/share/icons/hicolor/128x128/apps/netbeans-${SLOT}.png /usr/share/pixmaps/netbeans-${SLOT}.png
 
 	popd >/dev/null || die

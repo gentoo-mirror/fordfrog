@@ -2,6 +2,10 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  15 Aug 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  netbeans-nb-9999_p20110807.ebuild, netbeans-nb-9999_p20110813.ebuild:
+  Fixed configuration path and icon path
+
 *netbeans-nb-9999_p20110813 (13 Aug 2011)
 
   13 Aug 2011; Miroslav Šulc <fordfrog@gentoo.org>
