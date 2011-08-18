@@ -115,8 +115,8 @@ src_install() {
 
 	# fix paths per bug# 163483
 	if [[ -e "${D}"/${INSTALL_DIR}/bin/netbeans ]]; then
-		sed -i -e 's:"$progdir"/../etc/:/etc/netbeans-7.0/:' "${D}"/${INSTALL_DIR}/bin/netbeans
-		sed -i -e 's:"${userdir}"/etc/:/etc/netbeans-7.0/:' "${D}"/${INSTALL_DIR}/bin/netbeans
+		sed -i -e "s:\"\$progdir\"/../etc/:/etc/netbeans-${SLOT}/:" "${D}"/${INSTALL_DIR}/bin/netbeans
+		sed -i -e "s:\"\${userdir}\"/etc/:/etc/netbeans-${SLOT}/:" "${D}"/${INSTALL_DIR}/bin/netbeans
 	fi
 
 	dodir /usr/share/icons/hicolor/32x32/apps
