@@ -105,7 +105,7 @@ INSTALL_DIR="/usr/share/${PN}-${SLOT}"
 
 EANT_BUILD_XML="nbbuild/build.xml"
 EANT_BUILD_TARGET="rebuild-cluster"
-EANT_EXTRA_ARGS="-Drebuild.cluster.name=nb.cluster.ide -Dext.binaries.downloaded=true"
+EANT_EXTRA_ARGS="-Drebuild.cluster.name=nb.cluster.ide -Dext.binaries.downloaded=true -Djava.awt.headless=true"
 JAVA_PKG_BSFIX="off"
 
 src_unpack() {
@@ -236,6 +236,11 @@ src_prepare() {
 	java-pkg_jar-from --into xml.jaxb.api/external jsr173 jsr173.jar jsr173_api.jar
 
 	java-pkg-2_src_prepare
+}
+
+src_compile() {
+	unset DISPLAY
+	eant -f ${EANT_BUILD_XML} ${EANT_EXTRA_ARGS} ${EANT_BUILD_TARGET} || die "Compilation failed"
 }
 
 src_install() {
