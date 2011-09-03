@@ -2,6 +2,10 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  03 Sep 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-nb-9999_p20110821.ebuild:
+  Removed obsolete version
+
 *netbeans-nb-9999_p20110902 (03 Sep 2011)
 
   03 Sep 2011; Miroslav Šulc <fordfrog@gentoo.org>
