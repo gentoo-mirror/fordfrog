@@ -2,6 +2,12 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*netbeans-platform-9999_p20110904 (05 Sep 2011)
+
+  05 Sep 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-platform-9999_p20110904.ebuild:
+  Bumped to latest nightly sources
+
   03 Sep 2011; Miroslav Šulc <fordfrog@gentoo.org>
   -netbeans-platform-9999_p20110821.ebuild:
   Removed obsolete version
