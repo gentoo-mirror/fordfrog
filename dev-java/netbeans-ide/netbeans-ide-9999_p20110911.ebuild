@@ -108,7 +108,7 @@ CDEPEND="~dev-java/netbeans-harness-${PV}
 #	dev-java/ini4j:0 our version is too old
 #	java-virtuals/jaf:0 could use this instead of sun-jaf but it returns empty classpath
 #	dev-java/trilead-ssh2:0 in overlay
-DEPEND=">=virtual/jdk-1.6
+DEPEND="=virtual/jdk-1.6
 	app-arch/unzip
 	dev-java/commons-codec:0
 	dev-java/jsch:0

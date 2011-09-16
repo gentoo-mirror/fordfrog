@@ -90,7 +90,7 @@ IUSE_LINGUAS="
 IUSE="doc ${IUSE_NETBEANS_MODULES} ${IUSE_LINGUAS}"
 S="${WORKDIR}"
 
-DEPEND=">=virtual/jdk-1.6
+DEPEND="=virtual/jdk-1.6
 	dev-java/javahelp:0"
 RDEPEND=">=virtual/jdk-1.6
 	~dev-java/netbeans-harness-${PV}

@@ -2,6 +2,11 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  16 Sep 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  netbeans-profiler-7.0.1.ebuild, netbeans-profiler-9999_p20110911.ebuild,
+  netbeans-profiler-9999_p20110913.ebuild:
+  NetBeans compilation is supported only with JDK 1.6
+
 *netbeans-profiler-9999_p20110913 (13 Sep 2011)
 
   13 Sep 2011; Miroslav Šulc <fordfrog@gentoo.org>

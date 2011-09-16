@@ -20,7 +20,7 @@ S="${WORKDIR}"
 
 CDEPEND="~dev-java/netbeans-ide-${PV}
 	~dev-java/netbeans-platform-${PV}"
-DEPEND=">=virtual/jdk-1.6
+DEPEND="=virtual/jdk-1.6
 	app-arch/unzip
 	${CDEPEND}
 	dev-java/javahelp:0"

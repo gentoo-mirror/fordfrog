@@ -46,7 +46,7 @@ CDEPEND="~dev-java/netbeans-platform-${PV}
 	dev-java/cglib:2.2
 	dev-java/jdom:1.0
 	dev-java/swing-worker:0"
-DEPEND=">=virtual/jdk-1.6
+DEPEND="=virtual/jdk-1.6
 	app-arch/unzip
 	${CDEPEND}
 	dev-java/javahelp:0"
