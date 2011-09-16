@@ -4,6 +4,10 @@
 
   16 Sep 2011; Miroslav Šulc <fordfrog@gentoo.org> netbeans-php-7.0.1.ebuild,
   netbeans-php-9999_p20110911.ebuild, netbeans-php-9999_p20110913.ebuild:
+  Fixed dependency on jdk
+
+  16 Sep 2011; Miroslav Šulc <fordfrog@gentoo.org> netbeans-php-7.0.1.ebuild,
+  netbeans-php-9999_p20110911.ebuild, netbeans-php-9999_p20110913.ebuild:
   NetBeans compilation is supported only with JDK 1.6
 
 *netbeans-php-9999_p20110913 (13 Sep 2011)

@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 S="${WORKDIR}"
 
-DEPEND="=virtual/jdk-1.6
+DEPEND="virtual/jdk:1.6
 	app-arch/unzip
 	dev-java/javahelp:0
 	dev-java/junit:4

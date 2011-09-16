@@ -35,7 +35,7 @@ CDEPEND="~dev-java/netbeans-apisupport-${PV}
 	dev-java/commons-codec:0
 	dev-java/commons-httpclient:3
 	dev-java/jdom:1.0"
-DEPEND="=virtual/jdk-1.6
+DEPEND="virtual/jdk:1.6
 	app-arch/unzip
 	${CDEPEND}
 	dev-java/javahelp:0"

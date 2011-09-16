@@ -24,7 +24,7 @@ CDEPEND="~dev-java/netbeans-dlight-${PV}
 	~dev-java/netbeans-harness-${PV}
 	~dev-java/netbeans-ide-${PV}
 	~dev-java/netbeans-platform-${PV}"
-DEPEND="=virtual/jdk-1.6
+DEPEND="virtual/jdk:1.6
 	app-arch/unzip
 	${CDEPEND}
 	dev-java/antlr:0[java]

@@ -25,7 +25,7 @@ S="${WORKDIR}"
 CDEPEND="dev-java/javahelp:0
 	>=dev-java/jna-3.2.7:0
 	dev-java/swing-layout:1[source]"
-DEPEND="=virtual/jdk-1.6
+DEPEND="virtual/jdk:1.6
 	app-arch/unzip
 	${CDEPEND}"
 RDEPEND=">=virtual/jdk-1.6

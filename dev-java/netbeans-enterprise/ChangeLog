@@ -5,6 +5,11 @@
   16 Sep 2011; Miroslav Šulc <fordfrog@gentoo.org>
   netbeans-enterprise-7.0.1.ebuild, netbeans-enterprise-9999_p20110911.ebuild,
   netbeans-enterprise-9999_p20110913.ebuild:
+  Fixed dependency on jdk
+
+  16 Sep 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  netbeans-enterprise-7.0.1.ebuild, netbeans-enterprise-9999_p20110911.ebuild,
+  netbeans-enterprise-9999_p20110913.ebuild:
   NetBeans compilation is supported only with JDK 1.6
 
 *netbeans-enterprise-9999_p20110913 (13 Sep 2011)

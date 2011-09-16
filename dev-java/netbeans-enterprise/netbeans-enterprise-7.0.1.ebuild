@@ -55,7 +55,7 @@ CDEPEND="~dev-java/netbeans-harness-${PV}
 	dev-java/commons-fileupload:0
 	dev-java/glassfish-deployment-api:1.2
 	dev-java/jakarta-jstl:0"
-DEPEND="=virtual/jdk-1.6
+DEPEND="virtual/jdk:1.6
 	app-arch/unzip
 	${CDEPEND}
 	dev-java/javahelp:0
