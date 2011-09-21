@@ -2,6 +2,11 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  21 Sep 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-apisupport-9999_p20110911.ebuild,
+  -netbeans-apisupport-9999_p20110913.ebuild:
+  Removed obsolete versions
+
 *netbeans-apisupport-9999_p20110920 (21 Sep 2011)
 
   21 Sep 2011; Miroslav Šulc <fordfrog@gentoo.org>
