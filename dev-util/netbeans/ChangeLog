@@ -2,6 +2,11 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*netbeans-7.1_beta (04 Oct 2011)
+
+  04 Oct 2011; Miroslav Šulc <fordfrog@gentoo.org> +netbeans-7.1_beta.ebuild:
+  Added ebuild for NetBeans 7.1 beta
+
 *netbeans-9999_p20111002-r1 (03 Oct 2011)
 *netbeans-7.0.1-r1 (03 Oct 2011)
 
