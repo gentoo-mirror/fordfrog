@@ -24,11 +24,11 @@ src_prepare() {
 	find -name CVS -type d | xargs rm -fr
 	# some logs may contain hints even for non-error log lines
 	# this patch disables adding hints to log objects that do not have appendHint() method
-	epatch ${FILESDIR}/disable-hints-for-non-errors.patch
+	epatch "${FILESDIR}/disable-hints-for-non-errors.patch"
 	# PostgreSQL version 9.0 added extra field to csvlog but pgFouine ignores such lines
 	# as they have 23 columns and not 22
 	# Patch by Matt Saunders: http://pgfoundry.org/forum/forum.php?thread_id=2948&forum_id=555
-	epatch ${FILESDIR}/support-9.0-csvlog.patch
+	epatch "${FILESDIR}/support-9.0-csvlog.patch"
 }
 
 src_configure() {
