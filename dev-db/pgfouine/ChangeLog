@@ -2,6 +2,14 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*pgfouine-1.2-r2 (22 Oct 2011)
+
+  22 Oct 2011; Miroslav Šulc <fordfrog@gentoo.org> -pgfouine-1.2-r1.ebuild,
+  +pgfouine-1.2-r2.ebuild, +files/support-9.0-csvlog.patch:
+  Added patch from Matt Saunders
+  (http://pgfoundry.org/forum/forum.php?thread_id=2948&forum_id=555) which
+  enables to parse cvslog log files from PostgreSQL version 9.0 and above
+
 *pgfouine-1.2-r1 (30 Jun 2011)
 
   30 Jun 2011; Miroslav Šulc <fordfrog@gentoo.org> -pgfouine-1.2.ebuild,
