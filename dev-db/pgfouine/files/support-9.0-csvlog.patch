@@ -7,7 +7,7 @@ index cbd18df..e4a5744 100644
  			$lineParsedCounter ++;
  			
 -			if(count($csvLine) == 22) {
-+			if(count($csvLine) == 22 || (count($csvLine) == 23) {
++			if(count($csvLine) == 22 || count($csvLine) == 23) {
  				$lines =& $lineParser->parse($csvLine);
  				
  				if($lines) {
