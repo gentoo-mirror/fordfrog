@@ -2,6 +2,10 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  24 Oct 2011; Miroslav Šulc <fordfrog@gentoo.org> netbeans-cnd-7.0.1.ebuild,
+  netbeans-cnd-7.1_beta.ebuild, netbeans-cnd-9999_p20111019.ebuild:
+  Filtering ecj compilers as compilation does not work with them
+
   24 Oct 2011; Miroslav Šulc <fordfrog@gentoo.org>
   -netbeans-cnd-9999_p20111016.ebuild, -netbeans-cnd-9999_p20111017.ebuild,
   -netbeans-cnd-9999_p20111018.ebuild:

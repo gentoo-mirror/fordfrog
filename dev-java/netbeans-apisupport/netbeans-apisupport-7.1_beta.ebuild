@@ -33,6 +33,7 @@ INSTALL_DIR="/usr/share/${PN}-${SLOT}"
 EANT_BUILD_XML="nbbuild/build.xml"
 EANT_BUILD_TARGET="rebuild-cluster"
 EANT_EXTRA_ARGS="-Drebuild.cluster.name=nb.cluster.apisupport -Dext.binaries.downloaded=true"
+EANT_FILTER_COMPILER="ecj-3.3 ecj-3.4 ecj-3.5 ecj-3.6 ecj-3.7"
 JAVA_PKG_BSFIX="off"
 
 src_unpack() {

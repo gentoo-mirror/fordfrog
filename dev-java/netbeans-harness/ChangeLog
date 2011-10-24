@@ -3,6 +3,11 @@
 # $Header: $
 
   24 Oct 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  netbeans-harness-7.0.1.ebuild, netbeans-harness-7.1_beta.ebuild,
+  netbeans-harness-9999_p20111019.ebuild:
+  Filtering ecj compilers as compilation does not work with them
+
+  24 Oct 2011; Miroslav Šulc <fordfrog@gentoo.org>
   -netbeans-harness-9999_p20111016.ebuild,
   -netbeans-harness-9999_p20111017.ebuild,
   -netbeans-harness-9999_p20111018.ebuild:
