@@ -145,6 +145,8 @@ pkg_setup() {
 			fi
 		fi
 	done
+
+	java-pkg-2_pkg_setup
 }
 
 src_unpack() {

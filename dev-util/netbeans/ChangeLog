@@ -2,6 +2,18 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*netbeans-9999_p20111029-r1 (01 Nov 2011)
+*netbeans-9999_p20111025-r1 (01 Nov 2011)
+*netbeans-7.1_beta-r1 (01 Nov 2011)
+*netbeans-7.0.1-r2 (01 Nov 2011)
+
+  01 Nov 2011; Miroslav Šulc <fordfrog@gentoo.org> -netbeans-7.0.1-r1.ebuild,
+  +netbeans-7.0.1-r2.ebuild, -netbeans-7.1_beta.ebuild,
+  +netbeans-7.1_beta-r1.ebuild, -netbeans-9999_p20111025.ebuild,
+  +netbeans-9999_p20111025-r1.ebuild, -netbeans-9999_p20111029.ebuild,
+  +netbeans-9999_p20111029-r1.ebuild:
+  Added missing call to overriden pkg_setup (thx sera for noticing this
+
   01 Nov 2011; Miroslav Šulc <fordfrog@gentoo.org>
   -netbeans-9999_p20111019.ebuild:
   Removed obsolete version
