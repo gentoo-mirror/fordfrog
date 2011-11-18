@@ -2,6 +2,10 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  18 Nov 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-profiler-9999_p20111109.ebuild:
+  Removed obsolete versions
+
 *netbeans-profiler-9999_p20111116 (18 Nov 2011)
 
   18 Nov 2011; Miroslav Šulc <fordfrog@gentoo.org>
