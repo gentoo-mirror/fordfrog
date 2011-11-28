@@ -2,6 +2,12 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*netbeans-java-7.1_rc1 (28 Nov 2011)
+
+  28 Nov 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-java-7.1_rc1.ebuild:
+  Bumped 7.1 branch to rc1
+
   26 Nov 2011; Miroslav Šulc <fordfrog@gentoo.org>
   -netbeans-java-9999_p20111113.ebuild, -netbeans-java-9999_p20111116.ebuild:
   Removed obsolete versions
