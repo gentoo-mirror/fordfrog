@@ -2,6 +2,12 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*netbeans-websvccommon-9999_p20111211 (11 Dec 2011)
+
+  11 Dec 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-websvccommon-9999_p20111211.ebuild:
+  Bumped to latest nightly sources
+
   11 Dec 2011; Miroslav Šulc <fordfrog@gentoo.org>
   -netbeans-websvccommon-9999_p20111129.ebuild,
   -netbeans-websvccommon-9999_p20111201.ebuild:
