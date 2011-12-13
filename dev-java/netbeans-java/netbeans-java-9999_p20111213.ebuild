@@ -11,7 +11,7 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans Java Cluster"
 HOMEPAGE="http://netbeans.org/projects/java"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2011-12-11_06-00-36/zip/netbeans-trunk-nightly-201112110600-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2011-12-13_06-00-36/zip/netbeans-trunk-nightly-201112130600-src.zip"
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r1-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/FF23DBB427D09AAEC3998B50D740C42B6A3FCD61-ant-libs-1.8.2.zip
@@ -173,6 +173,8 @@ src_install() {
 	rm -fr "${D}"/${INSTALL_DIR}/ant/* || die
 	#rm -fr "${D}"/${INSTALL_DIR}/maven || die
 	#dosym /usr/share/maven-bin-3.0 ${INSTALL_DIR}/maven
+	fperms 755 ${INSTALL_DIR}/maven/bin/mvn* || die
+	rm -fr "${D}"/${INSTALL_DIR}/maven/bin/*.bat || die
 
 	insinto ${INSTALL_DIR}/ant
 	dosym /usr/share/ant/bin ${INSTALL_DIR}/ant/bin
