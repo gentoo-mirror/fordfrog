@@ -2,6 +2,12 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*netbeans-php-9999_p20111225 (26 Dec 2011)
+
+  26 Dec 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-php-9999_p20111225.ebuild:
+  Bumped to latest nightly sources
+
 *netbeans-php-9999_p20111223 (24 Dec 2011)
 
   24 Dec 2011; Miroslav Šulc <fordfrog@gentoo.org>
