@@ -1,6 +1,10 @@
 # ChangeLog for dev-java/netbeans-ergonomics
-# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  02 Jan 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-ergonomics-9999_p20111218.ebuild:
+  Removed obsolete version
 
 *netbeans-ergonomics-9999_p20111225 (26 Dec 2011)
 
