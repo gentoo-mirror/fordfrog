@@ -185,8 +185,6 @@ src_prepare() {
 		java-pkg_jar-from --build-only --into javahelp/external javahelp jhall.jar jhall-2.0_05.jar
 	fi
 
-	addpredict /proc/self/coredump_filter
-
 	java-pkg-2_src_prepare
 }
 

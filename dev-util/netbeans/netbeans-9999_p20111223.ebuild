@@ -1,4 +1,4 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -184,8 +184,6 @@ src_prepare() {
 		einfo "Symlinking external libraries..."
 		java-pkg_jar-from --build-only --into javahelp/external javahelp jhall.jar jhall-2.0_05.jar
 	fi
-
-	addpredict /proc/self/coredump_filter
 
 	java-pkg-2_src_prepare
 }
