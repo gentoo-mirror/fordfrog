@@ -32,6 +32,7 @@ DEPEND="virtual/jdk:1.6
 	~dev-java/netbeans-ide-${PV}
 	~dev-java/netbeans-java-${PV}
 	~dev-java/netbeans-javacard-${PV}
+	~dev-java/netbeans-javafx-${PV}
 	~dev-java/netbeans-mobility-${PV}
 	~dev-java/netbeans-nb-${PV}
 	~dev-java/netbeans-php-${PV}
