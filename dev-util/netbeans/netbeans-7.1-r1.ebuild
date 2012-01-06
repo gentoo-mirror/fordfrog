@@ -10,7 +10,7 @@ HOMEPAGE="http://netbeans.org/"
 SLOT="7.1"
 SOURCE_URL="http://dlc.sun.com.edgesuite.net/netbeans/7.1/final/zip/netbeans-7.1-201112071828-src.zip"
 PATCHES_URL="http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r1-build.xml.patch.bz2"
-L10N_URL="http://dev.gentoo.org/~fordfrog/distfiles/netbeans-l10n-7.1-20111129010014.tar.bz2"
+L10N_URL="http://dev.gentoo.org/~fordfrog/distfiles/netbeans-l10n-7.1-20111205215624.tar.bz2"
 ALL_URLS="${SOURCE_URL} ${PATCHES_URL} ${L10N_URL}"
 SRC_URI="linguas_af? ( ${ALL_URLS} )
 	linguas_ar? ( ${ALL_URLS} )
