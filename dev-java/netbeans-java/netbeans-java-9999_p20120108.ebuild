@@ -173,7 +173,7 @@ src_install() {
 	rm -fr "${D}"/${INSTALL_DIR}/ant/* || die
 	#rm -fr "${D}"/${INSTALL_DIR}/maven || die
 	#dosym /usr/share/maven-bin-3.0 ${INSTALL_DIR}/maven
-	fperms 755 ${INSTALL_DIR}/maven/bin/mvn* || die
+	chmod 755 "${D}"/${INSTALL_DIR}/maven/bin/mvn* || die
 	rm -fr "${D}"/${INSTALL_DIR}/maven/bin/*.bat || die
 
 	insinto ${INSTALL_DIR}/ant
