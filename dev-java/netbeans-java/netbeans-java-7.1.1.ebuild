@@ -77,6 +77,29 @@ EANT_EXTRA_ARGS="-Drebuild.cluster.name=nb.cluster.java -Dext.binaries.downloade
 EANT_FILTER_COMPILER="ecj-3.3 ecj-3.4 ecj-3.5 ecj-3.6 ecj-3.7"
 JAVA_PKG_BSFIX="off"
 
+pkg_pretend() {
+	local die_now=""
+
+	if [ -n "$(find /usr/share/netbeans-java-${SLOT}/ant -type l)" ]; then
+		eerror "Please remove following symlinks and run emerge again:"
+		find /usr/share/netbeans-java-${SLOT}/ant -type l
+		die_now="1"
+	fi
+
+	if [ -L /usr/share/netbeans-java-${SLOT}/maven ]; then
+		if [ -z "${die_now}" ]; then
+			eerror "Please remove following symlinks and run emerge again:"
+		fi
+
+		echo "/usr/share/netbeans-java-${SLOT}/maven"
+		die_now="1"
+	fi
+
+	if [ -n "${die_now}" ]; then
+		die "Symlinks exist"
+	fi
+}
+
 src_unpack() {
 	unpack $(basename ${SOURCE_URL})
 
@@ -167,21 +190,21 @@ src_install() {
 	grep -E "/java$" ../moduleCluster.properties > "${D}"/${INSTALL_DIR}/moduleCluster.properties || die
 
 	doins -r *
-	rm -fr "${D}"/${INSTALL_DIR}/ant/* || die
+	#rm -fr "${D}"/${INSTALL_DIR}/ant/* || die
 	#rm -fr "${D}"/${INSTALL_DIR}/maven || die
 	#dosym /usr/share/maven-bin-3.0 ${INSTALL_DIR}/maven
 	chmod 755 "${D}"/${INSTALL_DIR}/maven/bin/mvn* || die
 	rm -fr "${D}"/${INSTALL_DIR}/maven/bin/*.bat || die
 
-	insinto ${INSTALL_DIR}/ant
-	dosym /usr/share/ant/bin ${INSTALL_DIR}/ant/bin
-	dosym /usr/share/ant/etc ${INSTALL_DIR}/ant/etc
-	doins -r ant/extra
-	dosym /usr/share/ant/lib ${INSTALL_DIR}/ant/lib
-	doins -r ant/nblib
-	dosym /usr/share/ant/tasks ${INSTALL_DIR}/ant/tasks
-	local vertasks=$(ls -d /usr/share/ant/tasks-*)
-	dosym ${vertasks} ${INSTALL_DIR}/ant/$(basename ${vertasks}) # it would be better if ant would have tasks-current dir
+	#insinto ${INSTALL_DIR}/ant
+	#dosym /usr/share/ant/bin ${INSTALL_DIR}/ant/bin
+	#dosym /usr/share/ant/etc ${INSTALL_DIR}/ant/etc
+	#doins -r ant/extra
+	#dosym /usr/share/ant/lib ${INSTALL_DIR}/ant/lib
+	#doins -r ant/nblib
+	#dosym /usr/share/ant/tasks ${INSTALL_DIR}/ant/tasks
+	#local vertasks=$(ls -d /usr/share/ant/tasks-*)
+	#dosym ${vertasks} ${INSTALL_DIR}/ant/$(basename ${vertasks}) # it would be better if ant would have tasks-current dir
 
 	popd >/dev/null || die
 
@@ -292,10 +315,4 @@ src_install() {
 	popd >/dev/null || die
 
 	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/java
-}
-
-pkg_postinst() {
-	elog "Note that if you change your version of ant, you have to re-emerge"
-	elog "this package to get updated the link to ant tasks of that specific"
-	elog "version."
 }
