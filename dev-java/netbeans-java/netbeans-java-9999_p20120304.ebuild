@@ -68,7 +68,6 @@ RDEPEND=">=virtual/jdk-1.6
 	dev-java/jsr250:0
 	dev-java/jta:0
 	dev-java/jtidy:0
-	>=dev-java/maven-bin-3.0.3:3.0
 	dev-java/saaj:0
 	dev-java/stax-ex:0
 	dev-java/xmlstreambuffer:0"

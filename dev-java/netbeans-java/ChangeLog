@@ -3,6 +3,10 @@
 # $Header: $
 
   05 Mar 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  netbeans-java-9999_p20120304.ebuild:
+  Removed dependency on maven-bin
+
+  05 Mar 2012; Miroslav Šulc <fordfrog@gentoo.org>
   -netbeans-java-7.1-r1.ebuild:
   Removed NetBeans 7.1
 
