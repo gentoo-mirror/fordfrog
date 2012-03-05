@@ -3,6 +3,10 @@
 # $Header: $
 
   05 Mar 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-java-7.1-r1.ebuild:
+  Removed NetBeans 7.1
+
+  05 Mar 2012; Miroslav Šulc <fordfrog@gentoo.org>
   -netbeans-java-9999_p20120219.ebuild, -netbeans-java-9999_p20120222.ebuild,
   -netbeans-java-9999_p20120227.ebuild, -netbeans-java-9999_p20120301.ebuild,
   -netbeans-java-9999_p20120303.ebuild:
