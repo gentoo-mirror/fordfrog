@@ -2,6 +2,14 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*netbeans-java-7.1.1-r1 (22 Mar 2012)
+*netbeans-java-7.0.1-r1 (22 Mar 2012)
+
+  22 Mar 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-java-7.0.1-r1.ebuild, +netbeans-java-7.1.1-r1.ebuild:
+  Switched to dev-java/jta to dev-java/glassfish-transaction-api (thanks to
+  sera for pointing this out)
+
 *netbeans-java-9999_p20120321 (22 Mar 2012)
 
   22 Mar 2012; Miroslav Šulc <fordfrog@gentoo.org>
