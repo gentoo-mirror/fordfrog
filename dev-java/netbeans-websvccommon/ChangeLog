@@ -2,6 +2,12 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*netbeans-websvccommon-7.2_beta (24 May 2012)
+
+  24 May 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-websvccommon-7.2_beta.ebuild:
+  Netbeans 7.2 beta released
+
 *netbeans-websvccommon-9999_p20120524 (24 May 2012)
 
   24 May 2012; Miroslav Šulc <fordfrog@gentoo.org>
