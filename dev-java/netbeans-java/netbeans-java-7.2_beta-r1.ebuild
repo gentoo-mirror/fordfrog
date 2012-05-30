@@ -243,7 +243,7 @@ src_install() {
 	# hibernate3.jar
 	rm javassist.jar && dosym /usr/share/javassist-3/lib/javassist.jar ${instdir}/javassist.jar || die
 	# jdbc2_0-stdext.jar
-	rm jta.jar && dosym /usr/share/jta/lib/jta.jar ${instdir}/jta.jar || die
+	rm jta.jar && dosym /usr/share/glassfish-transaction-api/lib/jta.jar ${instdir}/jta.jar || die
 	rm jtidy-r8-20060801.jar && dosym /usr/share/jtidy/lib/Tidy.jar ${instdir}/jtidy-r8-20060801.jar || die
 	popd >/dev/null || die
 
