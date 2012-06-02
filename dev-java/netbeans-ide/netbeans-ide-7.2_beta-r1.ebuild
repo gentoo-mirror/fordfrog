@@ -8,10 +8,10 @@ inherit eutils java-pkg-2 java-ant-2
 
 DESCRIPTION="Netbeans IDE Cluster"
 HOMEPAGE="http://netbeans.org/projects/ide"
-SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2012-05-30_00-01-54/zip/netbeans-trunk-nightly-201205300001-src.zip"
+SLOT="7.2"
+SOURCE_URL="http://dlc.sun.com.edgesuite.net/netbeans/7.2/beta/zip/netbeans-7.2beta-201205031832-src.zip"
 SRC_URI="${SOURCE_URL}
-	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r6-build.xml.patch.bz2
+	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-7.2-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/B7ADB35C7BC16AFA8AE49C4D61F87E607BDADB41-antlr-runtime-3.3.jar
 	http://hg.netbeans.org/binaries/886FAF4B85054DD6E50D9B3438542F432B5F9251-bytelist-0.1.jar
 	http://hg.netbeans.org/binaries/A8762D07E76CFDE2395257A5DA47BA7C1DBD3DCE-commons-io-1.4.jar
@@ -28,17 +28,15 @@ SRC_URI="${SOURCE_URL}
 	http://hg.netbeans.org/binaries/0DCC973606CBD9737541AA5F3E76DED6E3F4D0D0-iri.jar
 	http://hg.netbeans.org/binaries/FACC6D84B0B0A650B1D44FED941E9ADD9F326862-isorelax20041111.jar
 	http://hg.netbeans.org/binaries/F90E3DA5259DB07F36E6987EFDED647A5231DE76-ispell-enwl-3.1.20.zip
-	http://hg.netbeans.org/binaries/71F434378F822B09A57174AF6C75D37408687C57-jaxb-api.jar
+	http://hg.netbeans.org/binaries/BCF23B1D858C6F69D67C851D497984D25345D0B1-jaxb-api.jar
 	http://hg.netbeans.org/binaries/27FAE927B5B9AE53A5B0ED825575DD8217CE7042-jaxb-api-doc.zip
-	http://hg.netbeans.org/binaries/387BE740EAEF52B3F6E6EE2F140757E7632584CE-jaxb-impl.jar
-	http://hg.netbeans.org/binaries/C3787DAB0DDFBD9E98086ED2F219859B0CB77EF7-jaxb-xjc.jar
-	http://hg.netbeans.org/binaries/F4DB465F207907A2406B0BF5C8FFEE22A5C3E4E3-jaxb1-impl.jar
+	http://hg.netbeans.org/binaries/2EC69BD69B66B0DABEA392DE713A11F975001760-jaxb-impl.jar
+	http://hg.netbeans.org/binaries/64D468922B85A9626178AEDF564FFDBDE980B3EC-jaxb-xjc.jar
+	http://hg.netbeans.org/binaries/F02664A059617D060BEC3EBA0BC002B2102AEB84-jaxb1-impl.jar
 	http://hg.netbeans.org/binaries/C0C5653D2200F2BD2E834B26DFDBC830D07FA0F4-jing.jar
-	http://hg.netbeans.org/binaries/71F7D2D5A3CF17CECBD15049A856BC0245C95C56-js.jar
 	http://hg.netbeans.org/binaries/098B14300B35E1053AA9945FF2C1CDA164F43B33-js-domstubs.zip
 	http://hg.netbeans.org/binaries/5756AA27E54A3EC6C8CDAE32F49BCA7BC139EB15-jsstubs.zip
 	http://hg.netbeans.org/binaries/2E07375E5CA3A452472F0E87FB33F243F7A5C08C-libpam4j-1.1.jar
-	http://hg.netbeans.org/binaries/90FF0731FAFB05C01FEE4F2247140D56E9C30A3B-lucene-core-3.5.0.jar
 	http://hg.netbeans.org/binaries/A1C0ED8C43A306E3FB7676E7463204B9DA9BE290-non-schema.jar
 	http://hg.netbeans.org/binaries/DF8DD2981C9C3EBEDB059CA98450B587E784AF58-org.eclipse.core.contenttype-3.4.100.jar
 	http://hg.netbeans.org/binaries/A71B23F287BB0CB27E3A5B7808AC07D45BE44841-org.eclipse.core.jobs-3.5.1.jar
@@ -93,6 +91,8 @@ CDEPEND="~dev-java/netbeans-harness-${PV}
 	dev-java/jsr173:0
 	dev-java/jvyamlb:0
 	dev-java/log4j:0
+	dev-java/lucene:3.5
+	dev-java/rhino:1.6
 	dev-java/saxon:9
 	dev-java/smack:2.2
 	dev-java/sun-jaf:0
@@ -100,11 +100,11 @@ CDEPEND="~dev-java/netbeans-harness-${PV}
 	dev-java/ws-commons-util:0
 	dev-java/xerces:2
 	dev-vcs/subversion:0[java]"
-#	dev-java/lucene:3.5 we do not have slot 3.5 yet
-#	dev-java/jaxb:2 upstream version contains more stuff so websvccommon does not compile with ours
 #	app-text/jing:0 our version is probably too old
+#	dev-java/commons-io fails with following error:
+#	Missing manifest tag OpenIDE-Module; /var/tmp/portage/dev-java/netbeans-ide-9999_p20110911/work/nbbuild/netbeans/ide/modules/org-apache-commons-io.jar is not a module
 #	dev-java/ini4j:0 our version is too old
-#	java-virtuals/jaf:0 could use this instead of sun-jaf but it returns empty classpath
+#	dev-java/jaxb:2 upstream version contains more stuff so websvccommon does not compile with ours
 #	dev-java/trilead-ssh2:0 in overlay
 DEPEND="virtual/jdk:1.6
 	app-arch/unzip
@@ -131,14 +131,12 @@ src_unpack() {
 	einfo "Deleting bundled jars..."
 	find -name "*.jar" -type f -delete
 
-	unpack netbeans-9999-r6-build.xml.patch.bz2
+	unpack netbeans-7.2-build.xml.patch.bz2
 
 	pushd "${S}" >/dev/null || die
 	ln -s "${DISTDIR}"/B7ADB35C7BC16AFA8AE49C4D61F87E607BDADB41-antlr-runtime-3.3.jar libs.antlr3.runtime/external/antlr-runtime-3.3.jar || die
 	ln -s "${DISTDIR}"/886FAF4B85054DD6E50D9B3438542F432B5F9251-bytelist-0.1.jar libs.bytelist/external/bytelist-0.1.jar || die
 	ln -s "${DISTDIR}"/643CC426B9F75AA111FAC0FAC0E52FF5D991A337-commons-net-3.0.1.jar libs.commons_net/external/commons-net-3.0.1.jar || die
-	# system commons-io fails with following error:
-	# Missing manifest tag OpenIDE-Module; /var/tmp/portage/dev-java/netbeans-ide-9999_p20110911/work/nbbuild/netbeans/ide/modules/org-apache-commons-io.jar is not a module
 	ln -s "${DISTDIR}"/A8762D07E76CFDE2395257A5DA47BA7C1DBD3DCE-commons-io-1.4.jar o.apache.commons.io/external/commons-io-1.4.jar ||die
 	ln -s "${DISTDIR}"/901D8F815922C435D985DA3814D20E34CC7622CB-css21-spec.zip css.editor/external/css21-spec.zip || die
 	ln -s "${DISTDIR}"/53AFD6CAA1B476204557B0626E7D673FBD5D245C-css3-spec.zip css.editor/external/css3-spec.zip || die
@@ -152,17 +150,15 @@ src_unpack() {
 	ln -s "${DISTDIR}"/0DCC973606CBD9737541AA5F3E76DED6E3F4D0D0-iri.jar html.validation/external/iri.jar || die
 	ln -s "${DISTDIR}"/FACC6D84B0B0A650B1D44FED941E9ADD9F326862-isorelax20041111.jar html.validation/external/isorelax20041111.jar || die
 	ln -s "${DISTDIR}"/F90E3DA5259DB07F36E6987EFDED647A5231DE76-ispell-enwl-3.1.20.zip spellchecker.dictionary_en/external/ispell-enwl-3.1.20.zip || die
-	ln -s "${DISTDIR}"/71F434378F822B09A57174AF6C75D37408687C57-jaxb-api.jar xml.jaxb.api/external/jaxb-api.jar || die
+	ln -s "${DISTDIR}"/BCF23B1D858C6F69D67C851D497984D25345D0B1-jaxb-api.jar xml.jaxb.api/external/jaxb-api.jar || die
 	ln -s "${DISTDIR}"/27FAE927B5B9AE53A5B0ED825575DD8217CE7042-jaxb-api-doc.zip libs.jaxb/external/jaxb-api-doc.zip || die
-	ln -s "${DISTDIR}"/387BE740EAEF52B3F6E6EE2F140757E7632584CE-jaxb-impl.jar libs.jaxb/external/jaxb-impl.jar || die
-	ln -s "${DISTDIR}"/C3787DAB0DDFBD9E98086ED2F219859B0CB77EF7-jaxb-xjc.jar libs.jaxb/external/jaxb-xjc.jar || die
-	ln -s "${DISTDIR}"/F4DB465F207907A2406B0BF5C8FFEE22A5C3E4E3-jaxb1-impl.jar libs.jaxb/external/jaxb1-impl.jar || die
+	ln -s "${DISTDIR}"/2EC69BD69B66B0DABEA392DE713A11F975001760-jaxb-impl.jar libs.jaxb/external/jaxb-impl.jar || die
+	ln -s "${DISTDIR}"/64D468922B85A9626178AEDF564FFDBDE980B3EC-jaxb-xjc.jar libs.jaxb/external/jaxb-xjc.jar || die
+	ln -s "${DISTDIR}"/F02664A059617D060BEC3EBA0BC002B2102AEB84-jaxb1-impl.jar libs.jaxb/external/jaxb1-impl.jar || die
 	ln -s "${DISTDIR}"/C0C5653D2200F2BD2E834B26DFDBC830D07FA0F4-jing.jar html.validation/external/jing.jar || die
-	ln -s "${DISTDIR}"/71F7D2D5A3CF17CECBD15049A856BC0245C95C56-js.jar html.validation/external/js.jar || die
 	ln -s "${DISTDIR}"/098B14300B35E1053AA9945FF2C1CDA164F43B33-js-domstubs.zip javascript.editing/external/js-domstubs.zip || die
 	ln -s "${DISTDIR}"/5756AA27E54A3EC6C8CDAE32F49BCA7BC139EB15-jsstubs.zip javascript.editing/external/jsstubs.zip || die
 	ln -s "${DISTDIR}"/2E07375E5CA3A452472F0E87FB33F243F7A5C08C-libpam4j-1.1.jar extexecution.destroy/external/libpam4j-1.1.jar || die
-	ln -s "${DISTDIR}"/90FF0731FAFB05C01FEE4F2247140D56E9C30A3B-lucene-core-3.5.0.jar libs.lucene/external/lucene-core-3.5.0.jar || die
 	ln -s "${DISTDIR}"/A1C0ED8C43A306E3FB7676E7463204B9DA9BE290-non-schema.jar html.validation/external/non-schema.jar || die
 	ln -s "${DISTDIR}"/DF8DD2981C9C3EBEDB059CA98450B587E784AF58-org.eclipse.core.contenttype-3.4.100.jar o.eclipse.core.contenttype/external/org.eclipse.core.contenttype-3.4.100.jar || die
 	ln -s "${DISTDIR}"/A71B23F287BB0CB27E3A5B7808AC07D45BE44841-org.eclipse.core.jobs-3.5.1.jar o.eclipse.core.jobs/external/org.eclipse.core.jobs-3.5.1.jar || die
@@ -208,11 +204,11 @@ src_prepare() {
 	einfo "Deleting bundled class files..."
 	find -name "*.class" -type f | xargs rm -vf
 
-	epatch netbeans-9999-r6-build.xml.patch
+	epatch netbeans-7.2-build.xml.patch
 
 	# Support for custom patches
-	if [ -n "${NETBEANS9999_PATCHES_DIR}" -a -d "${NETBEANS9999_PATCHES_DIR}" ] ; then
-		local files=`find "${NETBEANS9999_PATCHES_DIR}" -type f`
+	if [ -n "${NETBEANS72_PATCHES_DIR}" -a -d "${NETBEANS72_PATCHES_DIR}" ] ; then
+		local files=`find "${NETBEANS72_PATCHES_DIR}" -type f`
 
 		if [ -n "${files}" ] ; then
 			einfo "Applying custom patches:"
@@ -247,20 +243,15 @@ src_prepare() {
 	java-pkg_jar-from --build-only --into db.sql.visualeditor/external javacc javacc.jar javacc-3.2.jar
 	java-pkg_jar-from --into extexecution.destroy/external commons-io-1 commons-io.jar commons-io-1.4.jar
 	java-pkg_jar-from --into html.parser/external icu4j-4.4 icu4j.jar icu4j-4_0.jar
-	# java-pkg_jar-from --into html.validation/external jing jing.jar jing.jar
 	java-pkg_jar-from --into html.validation/external log4j log4j.jar log4j-1.2.15.jar
+	java-pkg_jar-from --into html.validation/external rhino-1.6 js.jar js.jar
 	java-pkg_jar-from --into html.validation/external saxon-9 saxon.jar saxon9B.jar
-	# java-pkg_jar-from --into libs.antlr3.runtime/external antlr-3 antlr3.jar antlr-runtime-3.1.3.jar
-	# java-pkg_jar-from --into libs.commons_net/external commons-net commons-net.jar commons-net-1.4.1.jar
 	java-pkg_jar-from --into libs.freemarker/external freemarker-2.3 freemarker.jar freemarker-2.3.8.jar
-	# java-pkg_jar-from --into libs.ini4j/external ini4j ini4j.jar ini4j-0.5.1.jar
-	# java-pkg_jar-from --into libs.jaxb/external jaxb-2 jaxb-impl.jar jaxb-impl.jar
 	java-pkg_jar-from --into libs.jvyamlb/external jvyamlb jvyamlb.jar jvyamlb-0.2.3.jar
-	# java-pkg_jar-from --into libs.lucene/external lucene-3.5 lucene-core.jar lucene-core-3.5.0.jar
+	java-pkg_jar-from --into libs.lucene/external lucene-3.5 lucene-core.jar lucene-core-3.5.0.jar
 	java-pkg_jar-from --into libs.smack/external smack-2.2 smack.jar smack.jar
 	java-pkg_jar-from --into libs.smack/external smack-2.2 smackx.jar smackx.jar
 	java-pkg_jar-from --into libs.svnClientAdapter.javahl/external subversion svn-javahl.jar svnjavahl-1.7.2.jar
-	# java-pkg_jar-from --into libs.svnClientAdapter.svnkit/external trilead-ssh2 trilead-ssh2.jar trilead.jar
 	java-pkg_jar-from --into libs.xerces/external xerces-2 xercesImpl.jar xerces-2.8.0.jar
 	java-pkg_jar-from --build-only --into o.apache.commons.codec/external commons-codec commons-codec.jar apache-commons-codec-1.3.jar
 	java-pkg_jar-from --into o.apache.commons.httpclient/external commons-httpclient-3 commons-httpclient.jar commons-httpclient-3.1.jar
@@ -269,8 +260,7 @@ src_prepare() {
 	java-pkg_jar-from --into o.apache.ws.commons.util/external ws-commons-util ws-commons-util.jar ws-commons-util-1.0.1.jar
 	java-pkg_jar-from --into servletapi/external tomcat-servlet-api-2.2 servlet.jar servlet-2.2.jar
 	java-pkg_jar-from --into xml.jaxb.api/external sun-jaf activation.jar activation.jar
-	# java-pkg_jar-from --into xml.jaxb.api/external jaxb-2 jaxb-api.jar jaxb-api.jar
-	java-pkg_jar-from --into xml.jaxb.api/external jsr173 jsr173.jar jsr173_1.0_api.jar
+	java-pkg_jar-from --into xml.jaxb.api/external jsr173 jsr173.jar jsr173_api.jar
 
 	java-pkg-2_src_prepare
 }
@@ -320,66 +310,30 @@ src_install() {
 
 	local instdir=${INSTALL_DIR}/modules/ext
 	pushd "${D}"/${instdir} >/dev/null || die
-	# rm antlr-runtime-3.1.3.jar && dosym /usr/share/antlr-3/lib/antlr3.jar ${instdir}/antlr-runtime-3.1.3.jar || die
-	# bytelist-0.1.jar
-	# rm commons-net-1.4.1.jar && dosym /usr/share/commons-net/lib/commons-net.jar ${instdir}/commons-net-1.4.1.jar || die
-	# ddl.jar
 	rm freemarker-2.3.8.jar && dosym /usr/share/freemarker-2.3/lib/freemarker.jar ${instdir}/freemarker-2.3.8.jar || die
-	# html5-datatypes.jar
-	# html5-parser.jar
 	rm icu4j-4_0.jar && dosym /usr/share/icu4j-4.4/lib/icu4j.jar ${instdir}/icu4j-4_0.jar || die
-	# [[ -f ini4j-0.5.1.jar ]] && java-pkg_jar-from ini4j ini4j.jar ${instdir}/ini4j-0.5.1.jar || die
-	# io-xml-util.jar
-	# iri.jar
-	# isorelax20041111.jar
-	# [[ -f jing.jar ]] && java-pkg_jar-from jing jing.jar ${instdir}/jing.jar || die
-	# js.jar
+	rm js.jar && dosym /usr/share/rhino-1.6/lib/js.jar ${instdir}/js.jar || die
 	rm jvyamlb-0.2.3.jar && dosym /usr/share/jvyamlb/lib/jvyamlb.jar ${instdir}/jvyamlb-0.2.3.jar || die
-	# libpam4j-1.1.jar
 	rm log4j-1.2.15.jar && dosym /usr/share/log4j/lib/log4j.jar ${instdir}/log4j-1.2.15.jar || die
-	# rm lucene-core-3.5.0.jar && dosym /usr/share/lucene-3.5/lib/lucene-core.jar ${instdir}/lucene-core-3.5.0.jar || die
+	rm lucene-core-3.5.0.jar && dosym /usr/share/lucene-3.5/lib/lucene-core.jar ${instdir}/lucene-core-3.5.0.jar || die
 	rm mysql-connector-java-5.1.18-bin.jar && dosym /usr/share/jdbc-mysql/lib/jdbc-mysql.jar ${instdir}/mysql-connector-java-5.1.18-bin.jar || die
-	# non-schema.jar
-	# org.eclipse.mylyn.bugzilla.core_3.3.1.jar
-	# org.eclipse.mylyn.commons.core_3.3.1.jar
-	# org.eclipse.mylyn.commons.net_3.3.0.jar
-	# org.eclipse.mylyn.tasks.core_3.3.1.jar
-	# org-netbeans-tax.jar
 	rm postgresql-9.1-901.jdbc4.jar && dosym /usr/share/jdbc-postgresql/lib/jdbc-postgresql.jar ${instdir}/postgresql-9.1-901.jdbc4.jar || die
-	# processtreekiller-1.0.1.jar
-	# resolver-1.2.jar
 	rm saxon9B.jar && dosym /usr/share/saxon-9/lib/saxon.jar ${instdir}/saxon9B.jar || die
 	rm servlet-2.2.jar && dosym /usr/share/tomcat-servlet-api-2.2/lib/servlet.jar ${instdir}/servlet-2.2.jar || die
 	rm smack.jar && dosym /usr/share/smack-2.2/lib/smack.jar ${instdir}/smack.jar || die
 	rm smackx.jar && dosym /usr/share/smack-2.2/lib/smackx.jar ${instdir}/smackx.jar || die
-	# sqljet-1.0.3.jar
-	# svnClientAdapter-javahl-1.6.13.jar
-	# svnClientAdapter-main-1.6.13.jar
-	# svnClientAdapter-svnkit-1.6.13.jar
 	rm svnjavahl-1.7.2.jar && dosym /usr/share/subversion/lib/svn-javahl.jar ${instdir}/svnjavahl-1.7.2.jar || die
-	# svnkit-javahl.jar
-	# svnkit-1.3.4.jar
-	# swingx-0.9.5.jar
-	# [[ -f trilead.jar ]] && java-pkg_jar-from trilead-ssh2 trilead-ssh2.jar ${instdir}/trilead.jar || die
-	# ValidationAPI.jar
-	# validator.jar
-	# webserver.jar
-	# winp-1.14-patched.jar
 	rm xerces-2.8.0.jar && dosym /usr/share/xerces-2/lib/xercesImpl.jar ${instdir}/xerces-2.8.0.jar || die
 	popd >/dev/null || die
 
 	local instdir=${INSTALL_DIR}/modules/ext/jaxb
 	pushd "${D}"/${instdir} >/dev/null || die
 	rm activation.jar && dosym /usr/share/sun-jaf/lib/activation.jar ${instdir}/activation.jar || die
-	# [[ -f jaxb-impl.jar ]] && java-pkg_jar-from jaxb-2 jaxb-impl.jar ${instdir}/jaxb-impl.jar || die
-	# jaxb-xjc.jar
-	# jaxb1-impl.jar
 	popd >/dev/null || die
 
 	local instdir=${INSTALL_DIR}/modules/ext/jaxb/api
 	pushd "${D}"/${instdir} >/dev/null || die
-	# [[ -f jaxb-api.jar ]] && java-pkg_jar-from jaxb-2 jaxb-api.jar ${instdir}/jaxb-api.jar || die
-	rm jsr173_1.0_api.jar && dosym /usr/share/jsr173/lib/jsr173.jar ${instdir}/jsr173_1.0_api.jar || die
+	rm jsr173_api.jar && dosym /usr/share/jsr173/lib/jsr173.jar ${instdir}/jsr173_api.jar || die
 	popd >/dev/null || die
 
 	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/ide
