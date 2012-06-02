@@ -65,6 +65,7 @@ RDEPEND=">=virtual/jdk-1.6
 	dev-java/jsr181:0
 	dev-java/glassfish-transaction-api:0
 	dev-java/jtidy:0
+	dev-java/mimepull:0
 	dev-java/saaj:0
 	dev-java/stax-ex:0
 	dev-java/xmlstreambuffer:0"
@@ -189,21 +190,8 @@ src_install() {
 	grep -E "/java$" ../moduleCluster.properties > "${D}"/${INSTALL_DIR}/moduleCluster.properties || die
 
 	doins -r *
-	#rm -fr "${D}"/${INSTALL_DIR}/ant/* || die
-	#rm -fr "${D}"/${INSTALL_DIR}/maven || die
-	#dosym /usr/share/maven-bin-3.0 ${INSTALL_DIR}/maven
 	chmod 755 "${D}"/${INSTALL_DIR}/maven/bin/mvn* || die
 	rm -fr "${D}"/${INSTALL_DIR}/maven/bin/*.bat || die
-
-	#insinto ${INSTALL_DIR}/ant
-	#dosym /usr/share/ant/bin ${INSTALL_DIR}/ant/bin
-	#dosym /usr/share/ant/etc ${INSTALL_DIR}/ant/etc
-	#doins -r ant/extra
-	#dosym /usr/share/ant/lib ${INSTALL_DIR}/ant/lib
-	#doins -r ant/nblib
-	#dosym /usr/share/ant/tasks ${INSTALL_DIR}/ant/tasks
-	#local vertasks=$(ls -d /usr/share/ant/tasks-*)
-	#dosym ${vertasks} ${INSTALL_DIR}/ant/$(basename ${vertasks}) # it would be better if ant would have tasks-current dir
 
 	popd >/dev/null || die
 
@@ -212,17 +200,6 @@ src_install() {
 	rm AbsoluteLayout.jar  && dosym /usr/share/absolutelayout/lib/absolutelayout.jar ${instdir}/AbsoluteLayout.jar || die
 	rm beansbinding-1.2.1.jar && dosym /usr/share/beansbinding/lib/beansbinding.jar ${instdir}/beansbinding-1.2.1.jar || die
 	rm cglib-2.2.jar && dosym /usr/share/cglib-2.2/lib/cglib.jar ${instdir}/cglib-2.2.jar || die
-	# javac-api-nb-7.0-b07.jar
-	# javac-impl-nb-7.0-b07.jar
-	# org-netbeans-modules-java-j2seplatform-probe.jar
-	popd >/dev/null || die
-
-	local instdir=${INSTALL_DIR}/modules/ext/eclipselink
-	pushd "${D}"/${instdir} >/dev/null || die
-	# dir: eclipselink
-	# eclipselink-javax.persistence-2.0.jar
-	# eclipselink-jpa-modelgen-2.2.0.jar
-	# eclipselink-2.2.0.jar
 	popd >/dev/null || die
 
 	local instdir=${INSTALL_DIR}/modules/ext/hibernate
@@ -234,14 +211,7 @@ src_install() {
 	rm commons-collections-2.1.1.jar && dosym /usr/share/commons-collections/lib/commons-collections.jar ${instdir}/commons-collections-2.1.1.jar || die
 	rm dom4j-1.6.1.jar && dosym /usr/share/dom4j-1/lib/dom4j.jar ${instdir}/dom4j-1.6.1.jar || die
 	rm ehcache-1.2.3.jar && dosym /usr/share/ehcache-1.2/lib/ehcache.jar ${instdir}/ehcache-1.2.3.jar || die
-	# ejb3-persistence.jar
-	# hibernate-annotations.jar
-	# hibernate-commons-annotations.jar
-	# hibernate-entitymanager.jar
-	# hibernate-tools.jar
-	# hibernate3.jar
 	rm javassist.jar && dosym /usr/share/javassist-3/lib/javassist.jar ${instdir}/javassist.jar || die
-	# jdbc2_0-stdext.jar
 	rm jta.jar && dosym /usr/share/glassfish-transaction-api/lib/jta.jar ${instdir}/jta.jar || die
 	rm jtidy-r8-20060801.jar && dosym /usr/share/jtidy/lib/Tidy.jar ${instdir}/jtidy-r8-20060801.jar || die
 	popd >/dev/null || die
@@ -249,62 +219,22 @@ src_install() {
 	local instdir=/${INSTALL_DIR}/modules/ext/jaxws22
 	pushd "${D}"/${instdir} >/dev/null || die
 	rm FastInfoset.jar && dosym /usr/share/fastinfoset/lib/fastinfoset.jar ${instdir}/FastInfoset.jar || die
-	# gmbal-api-only.jar
-	# http.jar
-	# jaxws-rt.jar
-	# jaxws-tools.jar
-	# management-api.jar
-	# mimepull.jar
-	# policy.jar
+	rm mimepull.jar && dosym /usr/share/mimepull/lib/mimepull.jar ${instdir}/mimepull.jar || die
 	rm saaj-impl.jar && dosym /usr/share/saaj/lib/saaj.jar ${instdir}/saaj-impl.jar || die
 	rm stax-ex.jar && dosym /usr/share/stax-ex/lib/stax-ex.jar ${instdir}/stax-ex.jar || die
 	rm streambuffer.jar && dosym /usr/share/xmlstreambuffer/lib/streambuffer.jar ${instdir}/streambuffer.jar || die
-	# woodstox.jar
 	popd >/dev/null || die
 
 	local instdir=${INSTALL_DIR}/modules/ext/jaxws22/api
 	pushd "${D}"/${instdir} >/dev/null || die
-	# jaxws-api.jar
 	rm jsr181-api.jar && dosym /usr/share/jsr181/lib/jsr181.jar ${instdir}/jsr181-api.jar || die
 	rm saaj-api.jar && dosym /usr/share/jsr67/lib/jsr67.jar ${instdir}/saaj-api.jar || die
 	popd >/dev/null || die
 
 	local instdir=${INSTALL_DIR}/modules/ext/maven
 	pushd "${D}"/${instdir} >/dev/null || die
-	# indexer-artifact-4.1.1.jar
-	# indexer-core-4.1.1.jar
 	rm jdom-1.0.jar && dosym /usr/share/jdom-1.0/lib/jdom.jar ${instdir}/jdom-1.0.jar || die
 	rm lucene-core-3.0.3.jar && dosym /usr/share/lucene-3.0/lib/lucene-core.jar ${instdir}/lucene-core-3.0.3.jar || die
-	# maven-dependency-tree-1.2.jar
-	popd >/dev/null || die
-
-	local instdir=${INSTALL_DIR}/modules/ext/spring
-	pushd "${D}"/${instdir} >/dev/null || die
-	# spring-2.5.6.SEC01.jar
-	popd >/dev/null || die
-
-	local instdir=${INSTALL_DIR}/modules/ext/spring-3.0
-	pushd "${D}"/${instdir} >/dev/null || die
-	# spring-aop-3.0.2.RELEASE.jar
-	# spring-asm-3.0.2.RELEASE.jar
-	# spring-aspects-3.0.2.RELEASE.jar
-	# spring-beans-3.0.2.RELEASE.jar
-	# spring-context-support-3.0.2.RELEASE.jar
-	# spring-context-3.0.2.RELEASE.jar
-	# spring-core-3.0.2.RELEASE.jar
-	# spring-expression-3.0.2.RELEASE.jar
-	# spring-instrument-tomcat-3.0.2.RELEASE.jar
-	# spring-instrument-3.0.2.RELEASE.jar
-	# spring-jdbc-3.0.2.RELEASE.jar
-	# spring-jms-3.0.2.RELEASE.jar
-	# spring-orm-3.0.2.RELEASE.jar
-	# spring-oxm-3.0.2.RELEASE.jar
-	# spring-struts-3.0.2.RELEASE.jar
-	# spring-test-3.0.2.RELEASE.jar
-	# spring-tx-3.0.2.RELEASE.jar
-	# spring-webmvc-portlet-3.0.2.RELEASE.jar
-	# spring-webmvc-3.0.2.RELEASE.jar
-	# spring-web-3.0.2.RELEASE.jar
 	popd >/dev/null || die
 
 	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/java
