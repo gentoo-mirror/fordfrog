@@ -103,10 +103,5 @@ src_install() {
 
 	popd >/dev/null || die
 
-	local instdir=${INSTALL_DIR}/modules/ext
-	pushd "${D}"/${instdir} >/dev/null || die
-	# groovy-all.jar
-	popd >/dev/null || die
-
 	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/groovy
 }
