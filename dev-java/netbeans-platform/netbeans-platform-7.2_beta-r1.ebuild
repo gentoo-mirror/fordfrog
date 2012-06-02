@@ -15,7 +15,6 @@ SRC_URI="${SOURCE_URL}
 	http://hg.netbeans.org/binaries/14F630EDF137F54188636B5139432986D5FB19B7-felix-4.0.2.jar
 	http://hg.netbeans.org/binaries/2D80F93B8803250F232902C46EBA850BF1F3E67F-org.eclipse.osgi_3.7.1.R37x_v20110808-1106.jar
 	http://hg.netbeans.org/binaries/972E6455724DC6ADB1C1912F53B5E3D7DF20C5FD-osgi.cmpn-4.2.jar
-	http://hg.netbeans.org/binaries/30B192ADACF0EBA1096F18B3AC445123E212CFC9-osgi.core-4.3.jar
 	http://hg.netbeans.org/binaries/1C7FE319052EF49126CF07D0DB6953CB7007229E-swing-layout-1.0.4-doc.zip
 	http://hg.netbeans.org/binaries/CFF0A34484AAF26F18BC15D0B2C226FD66769EAA-testng-6.5.1-dist.jar
 	http://hg.netbeans.org/binaries/D9B2EEC6413BDD174D047F9B7804C2EA440B79A5-testng-6.5.1-javadoc.zip"
@@ -26,6 +25,7 @@ S="${WORKDIR}"
 
 CDEPEND="dev-java/javahelp:0
 	>=dev-java/jna-3.4:0
+	dev-java/osgi-core-api:0
 	dev-java/swing-layout:1[source]"
 DEPEND="virtual/jdk:1.6
 	app-arch/unzip
@@ -53,7 +53,6 @@ src_unpack() {
 	ln -s "${DISTDIR}"/14F630EDF137F54188636B5139432986D5FB19B7-felix-4.0.2.jar libs.felix/external/felix-4.0.2.jar || die
 	ln -s "${DISTDIR}"/2D80F93B8803250F232902C46EBA850BF1F3E67F-org.eclipse.osgi_3.7.1.R37x_v20110808-1106.jar netbinox/external/org.eclipse.osgi_3.7.1.R37x_v20110808-1106.jar || die
 	ln -s "${DISTDIR}"/972E6455724DC6ADB1C1912F53B5E3D7DF20C5FD-osgi.cmpn-4.2.jar libs.osgi/external/osgi.cmpn-4.2.jar || die
-	ln -s "${DISTDIR}"/30B192ADACF0EBA1096F18B3AC445123E212CFC9-osgi.core-4.3.jar libs.osgi/external/osgi.core-4.3.jar || die
 	ln -s "${DISTDIR}"/1C7FE319052EF49126CF07D0DB6953CB7007229E-swing-layout-1.0.4-doc.zip o.jdesktop.layout/external/swing-layout-1.0.4-doc.zip || die
 	ln -s "${DISTDIR}"/CFF0A34484AAF26F18BC15D0B2C226FD66769EAA-testng-6.5.1-dist.jar libs.testng/external/testng-6.5.1-dist.jar || die
 	ln -s "${DISTDIR}"/D9B2EEC6413BDD174D047F9B7804C2EA440B79A5-testng-6.5.1-javadoc.zip libs.testng/external/testng-6.5.1-javadoc.zip || die
@@ -64,8 +63,8 @@ src_prepare() {
 	einfo "Deleting bundled class files..."
 	find -name "*.class" -type f | xargs rm -vf
 
-	epatch netbeans-7.2-build.xml.patch
 	# upstream jna jar contains bundled binary libraries so we disable that feature
+	epatch netbeans-7.2-build.xml.patch
 
 	# Support for custom patches
 	if [ -n "${NETBEANS72_PATCHES_DIR}" -a -d "${NETBEANS72_PATCHES_DIR}" ] ; then
@@ -84,6 +83,7 @@ src_prepare() {
 	java-pkg_jar-from --into core.nativeaccess/external jna platform.jar platform-3.4.0.jar
 	java-pkg_jar-from --into javahelp/external javahelp jhall.jar jhall-2.0_05.jar
 	java-pkg_jar-from --into libs.jna/external jna jna.jar jna-3.4.0.jar
+	java-pkg_jar-from --into libs.osgi/external osgi-core-api osgi-core-api.jar osgi.core-4.3.jar
 	java-pkg_jar-from --into o.jdesktop.layout/external swing-layout-1 swing-layout.jar swing-layout-1.0.4.jar
 	ln -s /usr/share/swing-layout-1/sources/swing-layout-src.zip o.jdesktop.layout/external/swing-layout-1.0.4-src.zip || die
 
@@ -116,15 +116,11 @@ src_install() {
 
 	local instdir=${INSTALL_DIR}/modules/ext
 	pushd "${D}"/${instdir} >/dev/null || die
-	# felix-main-2.0.2.jar
-	# felix-4.0.2.jar
 	rm jhall-2.0_05.jar && dosym /usr/share/javahelp/lib/jhall.jar ${instdir}/jhall-2.0_05.jar || die
 	rm jna-3.4.0.jar && dosym /usr/share/jna/lib/jna.jar ${instdir}/jna-3.4.0.jar || die
-	# osgi.cmpn-4.2.jar
-	# osgi.core-4.3.jar
+	rm osgi.core-4.3.jar && dosym /usr/share/osgi-core-api/lib/osgi-core-api.jar ${instdir}/osgi.core-4.3.jar || die
 	rm platform-3.4.0.jar && dosym /usr/share/jna/lib/platform.jar ${instdir}/platform-3.4.0.jar || die
 	rm swing-layout-1.0.4.jar && dosym /usr/share/swing-layout-1/lib/swing-layout.jar ${instdir}/swing-layout-1.0.4.jar || die
-	# updater.jar
 	popd >/dev/null || die
 
 	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/platform
