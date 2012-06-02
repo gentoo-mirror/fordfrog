@@ -142,33 +142,8 @@ src_install() {
 	local instdir=${INSTALL_DIR}/modules/ext
 	pushd "${D}"/${instdir} >/dev/null || die
 	rm ant-contrib-1.0b3.jar && dosym /usr/share/ant-contrib/lib/ant-contrib.jar ${instdir}/ant-contrib-1.0b3.jar || die
-	# cdc-agui-swing-layout.jar
-	# cdc-pp-awt-layout.jar
 	rm commons-httpclient-3.0.1.jar && dosym /usr/share/commons-httpclient-3/lib/commons-httpclient.jar ${instdir}/commons-httpclient-3.0.1.jar || die
-	# jakarta-slide-ant-webdav-2.1.jar
-	# jakarta-slide-webdavlib-2.1.jar
 	rm jdom-1.0.jar && dosym /usr/share/jdom-1.0/lib/jdom.jar ${instdir}/jdom-1.0.jar || die
-	# jmunit4cldc10-1.2.1.jar
-	# jmunit4cldc11-1.2.1.jar
-	# nbactivesync-5.0.jar
-	# nb_svg_midp_components.jar
-	# netbeans_databindingme.jar
-	# netbeans_databindingme_pim.jar
-	# netbeans_databindingme_svg.jar
-	# netbeans_midp_components_basic.jar
-	# netbeans_midp_components_pda.jar
-	# netbeans_midp_components_wma.jar
-	# org-netbeans-modules-deployment-deviceanywhere.jar
-	# org-netbeans-modules-j2me-cdc-platform-nsicom-probe.jar
-	# org-netbeans-modules-j2me-cdc-project.jar
-	# org-netbeans-modules-j2me-cdc-project-nokiaS80.jar
-	# org-netbeans-modules-j2me-cdc-project-ojec.jar
-	# org-netbeans-modules-j2me-cdc-project-ricoh.jar
-	# org-netbeans-modules-j2me-cdc-project-savaje.jar
-	# org-netbeans-modules-j2me-cdc-project-semc.jar
-	# org-netbeans-modules-j2me-cdc-project-sjmc.jar
-	# perseus-nb-1.0.1.jar
-	# RicohAntTasks-2.0.jar
 	popd >/dev/null || die
 
 	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/mobility
