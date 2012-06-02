@@ -231,18 +231,8 @@ src_install() {
 	local instdir=${INSTALL_DIR}/modules/ext
 	pushd "${D}"/${instdir} >/dev/null || die
 	rm commons-fileupload-1.0.jar && dosym /usr/share/commons-fileupload/lib/commons-fileupload.jar ${instdir}/commons-fileupload-1.0.jar || die
-	# el-impl.jar
-	# glassfish-jspparser-3.0.jar
-	# glassfish-logging-2.0.jar
-	# javaee-api-6.0.jar
-	# javaee-api-6.0-license.txt
-	# javaee-web-api-6.0.jar
-	# javaee-web-api-6.0-license.txt
-	# jsp-parser-ext.jar
 	rm jsr88javax.jar && dosym /usr/share/glassfish-deployment-api-1.2/lib/glassfish-deployment-api.jar ${instdir}/jsr88javax.jar || die
 	rm jstl.jar && dosym /usr/share/jakarta-jstl/lib/jstl.jar ${instdir}/jstl.jar || die
-	# org-netbeans-modules-web-httpmonitor.jar
-	# servlet3.0-jsp2.2-api.jar
 	rm standard.jar && dosym /usr/share/jakarta-jstl/lib/standard.jar ${instdir}/standard.jar || die
 	popd >/dev/null || die
 
@@ -252,66 +242,19 @@ src_install() {
 	rm commons-logging-1.1.1.jar && dosym /usr/share/commons-logging/lib/commons-logging.jar ${instdir}/commons-logging-1.1.1.jar || die
 	popd >/dev/null || die
 
-	local instdir=${INSTALL_DIR}/modules/ext/javaee6-endorsed
-	pushd "${D}"/${instdir} >/dev/null || die
-	# javax.annotation.jar
-	# javax.annotation-license.txt
-	# jaxb-api-osgi.jar
-	# jaxb-api-osgi-license.txt
-	# webservices-api-osgi.jar
-	# webservices-api-osgi-license.txt
-	popd >/dev/null || die
-
 	local instdir=${INSTALL_DIR}/modules/ext/jsf-1_2
 	pushd "${D}"/${instdir} >/dev/null || die
 	rm commons-beanutils.jar && dosym /usr/share/commons-beanutils-1.7/lib/commons-beanutils.jar ${instdir}/commons-beanutils.jar || die
 	rm commons-collections.jar && dosym /usr/share/commons-collections/lib/commons-collections.jar ${instdir}/commons-collections.jar || die
 	rm commons-digester.jar && dosym /usr/share/commons-digester/lib/commons-digester.jar ${instdir}/commons-digester.jar || die
 	rm commons-logging.jar && dosym /usr/share/commons-logging/lib/commons-logging.jar ${instdir}/commons-logging.jar || die
-	# jsf-api.jar
-	# jsf-impl.jar
-	popd >/dev/null || die
-
-	local instdir=${INSTALL_DIR}/modules/ext/jsf-2_1
-	pushd "${D}"/${instdir} >/dev/null || die
-	# jsf-api.jar
-	# jsf-impl.jar
-	popd >/dev/null || die
-
-	local instdir=${INSTALL_DIR}/modules/ext/metro
-	pushd "${D}"/${instdir} >/dev/null || die
-	# webservices-api.jar
-	# webservices-extra-api.jar
-	# webservices-extra.jar
-	# webservices-rt.jar
-	# webservices-tools.jar
-	popd >/dev/null || die
-
-	local instdir=${INSTALL_DIR}/modules/ext/primefaces
-	pushd "${D}"/${instdir} >/dev/null || die
-	# primefaces-2.1.jar
 	popd >/dev/null || die
 
 	local instdir=${INSTALL_DIR}/modules/ext/rest
 	pushd "${D}"/${instdir} >/dev/null || die
 	rm asm-3.1.jar && dosym /usr/share/asm-3/lib/asm.jar ${instdir}/asm-3.1.jar || die
-	# jackson-core-asl-1.1.1.jar
-	# jersey-client-1.3.jar
-	# jersey-core-1.3.jar
-	# jersey-json-1.3.jar
-	# jersey-multipart-1.3.jar
-	# jersey-server-1.3.jar
-	# jersey-spring-1.3.jar
 	rm jettison-1.1.jar && dosym /usr/share/jettison/lib/jettison.jar ${instdir}/jettison-1.1.jar || die
 	rm jsr311-api-1.1.1.jar && dosym /usr/share/jsr311-api/lib/jsr311-api.jar ${instdir}/jsr311-api-1.1.1.jar || die
-	# mimepull-1.4.jar
-	# oauth-client-1.3.jar
-	# oauth-signature-1.3.jar
-	popd >/dev/null || die
-
-	local instdir=${INSTALL_DIR}/modules/ext/spring
-	pushd "${D}"/${instdir} >/dev/null || die
-	# spring-webmvc-2.5.6.SEC01.jar
 	popd >/dev/null || die
 
 	local instdir=${INSTALL_DIR}/modules/ext/struts
@@ -321,21 +264,12 @@ src_install() {
 	rm commons-beanutils-1.8.0.jar && dosym /usr/share/commons-beanutils-1.7/lib/commons-beanutils.jar ${instdir}/commons-beanutils-1.8.0.jar || die
 	rm commons-digester-1.8.jar && dosym /usr/share/commons-digester/lib/commons-digester.jar ${instdir}/commons-digester-1.8.jar || die
 	rm commons-fileupload-1.1.1.jar && dosym /usr/share/commons-fileupload/lib/commons-fileupload.jar ${instdir}/commons-fileupload-1.1.1.jar || die
-	# rm commons-chain-1.1.jar && dosym /usr/share/commons-chain-1.1/lib/commons-chain.jar ${instdir}/commons-chain-1.1.jar || die
 	rm commons-io-1.1.jar && dosym /usr/share/commons-io-1/lib/commons-io.jar ${instdir}/commons-io-1.1.jar || die
 	rm commons-logging-1.0.4.jar && dosym /usr/share/commons-logging/lib/commons-logging.jar ${instdir}/commons-logging-1.0.4.jar || die
 	rm commons-validator-1.3.1.jar && dosym /usr/share/commons-validator/lib/commons-validator.jar ${instdir}/commons-validator-1.3.1.jar || die
 	rm jstl-1.0.2.jar && dosym /usr/share/jakarta-jstl/lib/jstl.jar ${instdir}/jstl-1.0.2.jar || die
 	rm oro-2.0.8.jar && dosym /usr/share/jakarta-oro-2.0/lib/jakarta-oro.jar ${instdir}/oro-2.0.8.jar || die
 	rm standard-1.0.6.jar && dosym /usr/share/jakarta-jstl/lib/standard.jar ${instdir}/standard-1.0.6.jar || die
-	# struts-core-1.3.8.jar
-	# struts-el-1.3.8.jar
-	# struts-extras-1.3.8.jar
-	# struts-faces-1.3.8.jar
-	# struts-mailreader-dao-1.3.8.jar
-	# struts-scripting-1.3.8.jar
-	# struts-taglib-1.3.8.jar
-	# struts-tiles-1.3.8.jar
 	popd >/dev/null || die
 
 	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/enterprise
