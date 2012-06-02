@@ -102,13 +102,7 @@ src_install() {
 
 	local instdir=${INSTALL_DIR}/antlib
 	pushd "${D}"/${instdir} >/dev/null || die
-	# bindex-2.2.jar
 	rm jsearch-2.0_05.jar && dosym /usr/share/javahelp/lib/jsearch.jar ${instdir}/jsearch-2.0_05.jar || die
-	popd >/dev/null || die
-
-	local instdir=${INSTALL_DIR}/modules/ext
-	pushd "${D}"/${instdir} >/dev/null || die
-	# jemmy-2.3.0.0.jar
 	popd >/dev/null || die
 
 	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/harness
