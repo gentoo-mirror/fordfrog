@@ -8,11 +8,10 @@ inherit eutils java-pkg-2 java-ant-2
 
 DESCRIPTION="Netbeans D-Light Cluster"
 HOMEPAGE="http://netbeans.org/"
-SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2012-05-30_00-01-54/zip/netbeans-trunk-nightly-201205300001-src.zip"
+SLOT="7.2"
+SOURCE_URL="http://dlc.sun.com.edgesuite.net/netbeans/7.2/beta/zip/netbeans-7.2beta-201205031832-src.zip"
 SRC_URI="${SOURCE_URL}
-	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r6-build.xml.patch.bz2
-	http://hg.netbeans.org/binaries/F787C9B484CD7526F866C21D8925C4DACE467F8A-derby-10.2.2.0.jar"
+	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-7.2-build.xml.patch.bz2"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
@@ -41,22 +40,18 @@ src_unpack() {
 	einfo "Deleting bundled jars..."
 	find -name "*.jar" -type f -delete
 
-	unpack netbeans-9999-r6-build.xml.patch.bz2
-
-	pushd "${S}" >/dev/null || die
-	ln -s "${DISTDIR}"/F787C9B484CD7526F866C21D8925C4DACE467F8A-derby-10.2.2.0.jar db/external/derby-10.2.2.0.jar || die
-	popd >/dev/null || die
+	unpack netbeans-7.2-build.xml.patch.bz2
 }
 
 src_prepare() {
 	einfo "Deleting bundled class files..."
 	find -name "*.class" -type f | xargs rm -vf
 
-	epatch netbeans-9999-r6-build.xml.patch
+	epatch netbeans-7.2-build.xml.patch
 
 	# Support for custom patches
-	if [ -n "${NETBEANS9999_PATCHES_DIR}" -a -d "${NETBEANS9999_PATCHES_DIR}" ] ; then
-		local files=`find "${NETBEANS9999_PATCHES_DIR}" -type f`
+	if [ -n "${NETBEANS72_PATCHES_DIR}" -a -d "${NETBEANS72_PATCHES_DIR}" ] ; then
+		local files=`find "${NETBEANS72_PATCHES_DIR}" -type f`
 
 		if [ -n "${files}" ] ; then
 			einfo "Applying custom patches:"
