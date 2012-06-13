@@ -2,6 +2,13 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  13 Jun 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-javadoc-9999_p20120530.ebuild,
+  -netbeans-javadoc-9999_p20120604.ebuild,
+  -netbeans-javadoc-9999_p20120606.ebuild,
+  -netbeans-javadoc-9999_p20120608.ebuild:
+  removed obsolete ebuilds
+
 *netbeans-javadoc-9999_p20120612 (12 Jun 2012)
 
   12 Jun 2012; Miroslav Šulc <fordfrog@gentoo.org>
