@@ -3,6 +3,10 @@
 # $Header: $
 
   19 Jul 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  netbeans-cnd-9999_p20120718.ebuild:
+  bumped to latest nightly sources
+
+  19 Jul 2012; Miroslav Šulc <fordfrog@gentoo.org>
   -netbeans-cnd-9999_p20120702.ebuild, -netbeans-cnd-9999_p20120706.ebuild,
   -netbeans-cnd-9999_p20120711.ebuild:
   removed obsolete ebuild
