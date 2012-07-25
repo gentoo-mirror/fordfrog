@@ -2,6 +2,10 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  25 Jul 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-webcommon-7.2_beta.ebuild, -netbeans-webcommon-7.2_rc1.ebuild:
+  removed obsolete ebuilds from slot 7.2
+
 *netbeans-webcommon-7.2 (25 Jul 2012)
 
   25 Jul 2012; Miroslav Šulc <fordfrog@gentoo.org>
