@@ -2,6 +2,12 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*netbeans-apisupport-7.2 (25 Jul 2012)
+
+  25 Jul 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-apisupport-7.2.ebuild:
+  bumped to netbeans 7.2
+
 *netbeans-apisupport-9999_p20120719 (19 Jul 2012)
 
   19 Jul 2012; Miroslav Šulc <fordfrog@gentoo.org>
