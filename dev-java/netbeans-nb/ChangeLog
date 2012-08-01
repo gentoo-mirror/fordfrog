@@ -2,6 +2,12 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*netbeans-nb-9999_p20120801 (01 Aug 2012)
+
+  01 Aug 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-nb-9999_p20120801.ebuild:
+  bumped to latest nightly sources
+
   28 Jul 2012; Miroslav Šulc <fordfrog@gentoo.org>
   +files/7.2/keychain-support.patch:
   added missing keychain patch for slot 7.2
