@@ -14,6 +14,7 @@ L10N_URL="http://dev.gentoo.org/~fordfrog/distfiles/netbeans-l10n-7.2-20120725.t
 ALL_URLS="${SOURCE_URL} ${PATCHES_URL} ${L10N_URL}"
 SRC_URI="linguas_af? ( ${ALL_URLS} )
 	linguas_ar? ( ${ALL_URLS} )
+	linguas_bg? ( ${ALL_URLS} )
 	linguas_ca? ( ${ALL_URLS} )
 	linguas_cs? ( ${ALL_URLS} )
 	linguas_de? ( ${ALL_URLS} )
