@@ -6,10 +6,10 @@ EAPI="4"
 WANT_ANT_TASKS="ant-nodeps"
 inherit eutils java-pkg-2 java-ant-2
 
-DESCRIPTION="Netbeans Web Services Common Cluster"
+DESCRIPTION="Netbeans Web Services Cluster"
 HOMEPAGE="http://netbeans.org/"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2012-08-19_00-01-28/zip/netbeans-trunk-nightly-201208190001-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2012-08-27_00-01-28/zip/netbeans-trunk-nightly-201208270001-src.zip"
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r7-build.xml.patch.bz2"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
@@ -30,7 +30,7 @@ INSTALL_DIR="/usr/share/${PN}-${SLOT}"
 
 EANT_BUILD_XML="nbbuild/build.xml"
 EANT_BUILD_TARGET="rebuild-cluster"
-EANT_EXTRA_ARGS="-Drebuild.cluster.name=nb.cluster.websvccommon -Dext.binaries.downloaded=true"
+EANT_EXTRA_ARGS="-Drebuild.cluster.name=nb.cluster.webcommon -Dext.binaries.downloaded=true"
 EANT_FILTER_COMPILER="ecj-3.3 ecj-3.4 ecj-3.5 ecj-3.6 ecj-3.7"
 JAVA_PKG_BSFIX="off"
 
@@ -83,13 +83,13 @@ src_prepare() {
 }
 
 src_install() {
-	pushd nbbuild/netbeans/websvccommon >/dev/null || die
+	pushd nbbuild/netbeans/webcommon >/dev/null || die
 
 	insinto ${INSTALL_DIR}
-	grep -E "/websvccommon$" ../moduleCluster.properties > "${D}"/${INSTALL_DIR}/moduleCluster.properties || die
+	grep -E "/webcommon$" ../moduleCluster.properties > "${D}"/${INSTALL_DIR}/moduleCluster.properties || die
 	doins -r *
 
 	popd >/dev/null || die
 
-	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/websvccommon
+	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/webcommon
 }

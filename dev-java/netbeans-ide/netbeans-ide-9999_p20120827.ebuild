@@ -9,7 +9,7 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans IDE Cluster"
 HOMEPAGE="http://netbeans.org/projects/ide"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2012-08-19_00-01-28/zip/netbeans-trunk-nightly-201208190001-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2012-08-27_00-01-28/zip/netbeans-trunk-nightly-201208270001-src.zip"
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r7-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/4E74C6BE42FE89871A878C7C4D6158F21A6D8010-antlr-runtime-3.4.jar
@@ -19,6 +19,7 @@ SRC_URI="${SOURCE_URL}
 	http://hg.netbeans.org/binaries/901D8F815922C435D985DA3814D20E34CC7622CB-css21-spec.zip
 	http://hg.netbeans.org/binaries/53AFD6CAA1B476204557B0626E7D673FBD5D245C-css3-spec.zip
 	http://hg.netbeans.org/binaries/C9A6304FAA121C97CB2458B93D30B1FD6F0F7691-derbysampledb.zip
+	http://hg.netbeans.org/binaries/61D2DF890CB74051C324354D82BAECDDA28D248C-glassfish-tooling-sdk-0.2-SNAPSHOT.jar
 	http://hg.netbeans.org/binaries/23123BB29025254556B6E573023FCDF0F6715A66-html-4.01.zip
 	http://hg.netbeans.org/binaries/77DB1AFF3C0730C144D30C9935A1CD8DCD2488A9-html5-datatypes.jar
 	http://hg.netbeans.org/binaries/4388C34B9F085A42FBEA06C5B00FDF0A251171EC-html5doc.zip
@@ -32,12 +33,13 @@ SRC_URI="${SOURCE_URL}
 	http://hg.netbeans.org/binaries/387BE740EAEF52B3F6E6EE2F140757E7632584CE-jaxb-impl.jar
 	http://hg.netbeans.org/binaries/C3787DAB0DDFBD9E98086ED2F219859B0CB77EF7-jaxb-xjc.jar
 	http://hg.netbeans.org/binaries/F4DB465F207907A2406B0BF5C8FFEE22A5C3E4E3-jaxb1-impl.jar
+	http://hg.netbeans.org/binaries/8267834DD6908F6055702422CA873C68D6648378-jettison-1.3.2.jar
 	http://hg.netbeans.org/binaries/C0C5653D2200F2BD2E834B26DFDBC830D07FA0F4-jing.jar
 	http://hg.netbeans.org/binaries/38FE8364B234F427E5303BCC73CD4D089D7916C4-js-corestubs.zip
 	http://hg.netbeans.org/binaries/7B2746C7E8F42F88F0EE19A65FAAAF73CC26C1EB-js-domstubs.zip
 	http://hg.netbeans.org/binaries/4D5E25514C75F85858097BB381DA8B44630743ED-js-reststubs.zip
 	http://hg.netbeans.org/binaries/2E07375E5CA3A452472F0E87FB33F243F7A5C08C-libpam4j-1.1.jar
-	http://hg.netbeans.org/binaries/3B0990ECF4FB35A45E1818D5D30D06EBCE98EB8B-nashorn.jar
+	http://hg.netbeans.org/binaries/214164E73842461CCDDEFF4DD46B8833848A2213-nashorn.jar
 	http://hg.netbeans.org/binaries/A1C0ED8C43A306E3FB7676E7463204B9DA9BE290-non-schema.jar
 	http://hg.netbeans.org/binaries/DF8DD2981C9C3EBEDB059CA98450B587E784AF58-org.eclipse.core.contenttype-3.4.100.jar
 	http://hg.netbeans.org/binaries/B19A4D998C76FE7A30830C96B9E3A47682F320FC-org.eclipse.core.jobs-3.5.101.jar
@@ -142,6 +144,7 @@ src_unpack() {
 	ln -s "${DISTDIR}"/901D8F815922C435D985DA3814D20E34CC7622CB-css21-spec.zip css.editor/external/css21-spec.zip || die
 	ln -s "${DISTDIR}"/53AFD6CAA1B476204557B0626E7D673FBD5D245C-css3-spec.zip css.editor/external/css3-spec.zip || die
 	ln -s "${DISTDIR}"/C9A6304FAA121C97CB2458B93D30B1FD6F0F7691-derbysampledb.zip derby/external/derbysampledb.zip || die
+	ln -s "${DISTDIR}"/61D2DF890CB74051C324354D82BAECDDA28D248C-glassfish-tooling-sdk-0.2-SNAPSHOT.jar libs.glassfish.sdk/external/glassfish-tooling-sdk-0.2-SNAPSHOT.jar || die
 	ln -s "${DISTDIR}"/23123BB29025254556B6E573023FCDF0F6715A66-html-4.01.zip html.editor/external/html-4.01.zip || die
 	ln -s "${DISTDIR}"/77DB1AFF3C0730C144D30C9935A1CD8DCD2488A9-html5-datatypes.jar html.validation/external/html5-datatypes.jar || die
 	ln -s "${DISTDIR}"/4388C34B9F085A42FBEA06C5B00FDF0A251171EC-html5doc.zip html.parser/external/html5doc.zip || die
@@ -155,12 +158,13 @@ src_unpack() {
 	ln -s "${DISTDIR}"/387BE740EAEF52B3F6E6EE2F140757E7632584CE-jaxb-impl.jar libs.jaxb/external/jaxb-impl.jar || die
 	ln -s "${DISTDIR}"/C3787DAB0DDFBD9E98086ED2F219859B0CB77EF7-jaxb-xjc.jar libs.jaxb/external/jaxb-xjc.jar || die
 	ln -s "${DISTDIR}"/F4DB465F207907A2406B0BF5C8FFEE22A5C3E4E3-jaxb1-impl.jar libs.jaxb/external/jaxb1-impl.jar || die
+	ln -s "${DISTDIR}"/8267834DD6908F6055702422CA873C68D6648378-jettison-1.3.2.jar libs.glassfish.sdk/external/jettison-1.3.2.jar || die
 	ln -s "${DISTDIR}"/C0C5653D2200F2BD2E834B26DFDBC830D07FA0F4-jing.jar html.validation/external/jing.jar || die
 	ln -s "${DISTDIR}"/38FE8364B234F427E5303BCC73CD4D089D7916C4-js-corestubs.zip javascript2.editor/external/js-corestubs.zip || die
 	ln -s "${DISTDIR}"/7B2746C7E8F42F88F0EE19A65FAAAF73CC26C1EB-js-domstubs.zip javascript2.editor/external/js-domstubs.zip || die
 	ln -s "${DISTDIR}"/4D5E25514C75F85858097BB381DA8B44630743ED-js-reststubs.zip javascript2.editor/external/js-reststubs.zip || die
 	ln -s "${DISTDIR}"/2E07375E5CA3A452472F0E87FB33F243F7A5C08C-libpam4j-1.1.jar extexecution.destroy/external/libpam4j-1.1.jar || die
-	ln -s "${DISTDIR}"/3B0990ECF4FB35A45E1818D5D30D06EBCE98EB8B-nashorn.jar libs.nashorn/external/nashorn.jar || die
+	ln -s "${DISTDIR}"/214164E73842461CCDDEFF4DD46B8833848A2213-nashorn.jar libs.nashorn/external/nashorn.jar || die
 	ln -s "${DISTDIR}"/A1C0ED8C43A306E3FB7676E7463204B9DA9BE290-non-schema.jar html.validation/external/non-schema.jar || die
 	ln -s "${DISTDIR}"/DF8DD2981C9C3EBEDB059CA98450B587E784AF58-org.eclipse.core.contenttype-3.4.100.jar o.eclipse.core.contenttype/external/org.eclipse.core.contenttype-3.4.100.jar || die
 	ln -s "${DISTDIR}"/B19A4D998C76FE7A30830C96B9E3A47682F320FC-org.eclipse.core.jobs-3.5.101.jar o.eclipse.core.jobs/external/org.eclipse.core.jobs-3.5.101.jar || die

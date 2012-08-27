@@ -6,10 +6,10 @@ EAPI="4"
 WANT_ANT_TASKS="ant-nodeps"
 inherit eutils java-pkg-2 java-ant-2
 
-DESCRIPTION="Netbeans Harness"
-HOMEPAGE="http://netbeans.org/features/platform/"
+DESCRIPTION="Netbeans JavaFX Cluster"
+HOMEPAGE="http://netbeans.org/projects/javafx"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2012-08-19_00-01-28/zip/netbeans-trunk-nightly-201208190001-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2012-08-27_00-01-28/zip/netbeans-trunk-nightly-201208270001-src.zip"
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r7-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/A806D99716C5E9441BFD8B401176FDDEFC673022-bindex-2.2.jar
@@ -21,12 +21,14 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 S="${WORKDIR}"
 
-CDEPEND="~dev-java/netbeans-platform-${PV}
-	dev-java/javahelp:0"
+CDEPEND="~dev-java/netbeans-ide-${PV}
+	~dev-java/netbeans-java-${PV}
+	~dev-java/netbeans-platform-${PV}"
 DEPEND="virtual/jdk:1.6
 	app-arch/unzip
 	${CDEPEND}
-	>=dev-java/junit-4.4:4"
+	dev-java/javahelp:0
+	dev-java/junit:4"
 RDEPEND=">=virtual/jdk-1.6
 	${CDEPEND}"
 
@@ -34,7 +36,7 @@ INSTALL_DIR="/usr/share/${PN}-${SLOT}"
 
 EANT_BUILD_XML="nbbuild/build.xml"
 EANT_BUILD_TARGET="rebuild-cluster"
-EANT_EXTRA_ARGS="-Drebuild.cluster.name=nb.cluster.harness -Dext.binaries.downloaded=true"
+EANT_EXTRA_ARGS="-Drebuild.cluster.name=nb.cluster.javafx -Dext.binaries.downloaded=true"
 EANT_FILTER_COMPILER="ecj-3.3 ecj-3.4 ecj-3.5 ecj-3.6 ecj-3.7"
 JAVA_PKG_BSFIX="off"
 
@@ -74,13 +76,21 @@ src_prepare() {
 	fi
 
 	einfo "Symlinking external libraries..."
-	java-pkg_jar-from --into javahelp/external javahelp jhall.jar jhall-2.0_05.jar
-	java-pkg_jar-from --into apisupport.harness/external javahelp jsearch.jar jsearch-2.0_05.jar
+	java-pkg_jar-from --build-only --into apisupport.harness/external javahelp jsearch.jar jsearch-2.0_05.jar
+	java-pkg_jar-from --build-only --into javahelp/external javahelp jhall.jar jhall-2.0_05.jar
 	java-pkg_jar-from --build-only --into libs.junit4/external junit-4 junit.jar junit-4.10.jar
 
 	einfo "Linking in other clusters..."
 	mkdir "${S}"/nbbuild/netbeans || die
 	pushd "${S}"/nbbuild/netbeans >/dev/null || die
+
+	ln -s /usr/share/netbeans-ide-${SLOT} ide || die
+	cat /usr/share/netbeans-ide-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
+	touch nb.cluster.ide.built
+
+	ln -s /usr/share/netbeans-java-${SLOT} java || die
+	cat /usr/share/netbeans-java-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
+	touch nb.cluster.java.built
 
 	ln -s /usr/share/netbeans-platform-${SLOT} platform || die
 	cat /usr/share/netbeans-platform-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
@@ -92,22 +102,15 @@ src_prepare() {
 }
 
 src_install() {
-	pushd nbbuild/netbeans/harness >/dev/null || die
+	pushd nbbuild/netbeans/javafx >/dev/null || die
 
 	insinto ${INSTALL_DIR}
 
-	grep -E "/harness$" ../moduleCluster.properties > "${D}"/${INSTALL_DIR}/moduleCluster.properties || die
+	grep -E "/javafx$" ../moduleCluster.properties > "${D}"/${INSTALL_DIR}/moduleCluster.properties || die
 
 	doins -r *
-	fperms 755 launchers/app.sh
-	find "${D}" -name "*.exe" -type f -delete
 
 	popd >/dev/null || die
 
-	local instdir=${INSTALL_DIR}/antlib
-	pushd "${D}"/${instdir} >/dev/null || die
-	rm jsearch-2.0_05.jar && dosym /usr/share/javahelp/lib/jsearch.jar ${instdir}/jsearch-2.0_05.jar || die
-	popd >/dev/null || die
-
-	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/harness
+	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/javafx
 }
