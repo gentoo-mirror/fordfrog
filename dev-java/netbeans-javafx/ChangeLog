@@ -2,6 +2,12 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*netbeans-javafx-9999_p20120831 (31 Aug 2012)
+
+  31 Aug 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-javafx-9999_p20120831.ebuild:
+  bumped to latest nightly sources
+
 *netbeans-javafx-9999_p20120830 (30 Aug 2012)
 
   30 Aug 2012; Miroslav Šulc <fordfrog@gentoo.org>
