@@ -2,6 +2,11 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*netbeans-profiler-9999_p20121113 (13 Nov 2012)
+
+  13 Nov 2012; <fordfrog@gentoo.org> +netbeans-profiler-9999_p20121113.ebuild:
+  bumped to latest nightly sources
+
 *netbeans-profiler-9999_p20121112 (12 Nov 2012)
 
   12 Nov 2012; <fordfrog@gentoo.org> +netbeans-profiler-9999_p20121112.ebuild:
