@@ -2,6 +2,11 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*netbeans-dlight-9999_p20121119 (19 Nov 2012)
+
+  19 Nov 2012; <fordfrog@gentoo.org> +netbeans-dlight-9999_p20121119.ebuild:
+  bumped to latest nightly sources
+
 *netbeans-dlight-9999_p20121117 (17 Nov 2012)
 
   17 Nov 2012; <fordfrog@gentoo.org> +netbeans-dlight-9999_p20121117.ebuild:
