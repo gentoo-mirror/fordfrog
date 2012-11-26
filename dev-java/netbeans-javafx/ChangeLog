@@ -2,6 +2,15 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  26 Nov 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-javafx-9999_p20121108.ebuild,
+  -netbeans-javafx-9999_p20121111.ebuild,
+  -netbeans-javafx-9999_p20121112.ebuild,
+  -netbeans-javafx-9999_p20121113.ebuild,
+  -netbeans-javafx-9999_p20121114.ebuild,
+  -netbeans-javafx-9999_p20121115.ebuild:
+  removed obsolete ebuilds
+
   24 Nov 2012; Miroslav Šulc <fordfrog@gentoo.org>
   -netbeans-javafx-7.3_beta.ebuild:
   removed 7.3_beta ebuild
