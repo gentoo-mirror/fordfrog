@@ -1,4 +1,4 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -16,6 +16,9 @@ LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 S="${WORKDIR}"
+
+# Binary files needed for remote profiling
+QA_PREBUILT="usr/share/netbeans-profiler-${SLOT}/lib/deployed/*"
 
 CDEPEND="~dev-java/netbeans-ide-${PV}
 	~dev-java/netbeans-java-${PV}
