@@ -2,6 +2,11 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  06 Dec 2012; Miroslav Šulc <fordfrog@gentoo.org> netbeans-cnd-7.0.1.ebuild,
+  netbeans-cnd-7.1.2.ebuild, netbeans-cnd-7.2.ebuild,
+  netbeans-cnd-7.3_beta2.ebuild, netbeans-cnd-9999_p20121206.ebuild:
+  added QA_PREBUILT for bundled binary files (bug #430036)
+
 *netbeans-cnd-9999_p20121206 (06 Dec 2012)
 
   06 Dec 2012; Miroslav Šulc <fordfrog@gentoo.org>
