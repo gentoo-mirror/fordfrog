@@ -22,6 +22,9 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 S="${WORKDIR}"
 
+# These files are for remote development and debugging
+QA_PREBUILT="usr/share/netbeans-cnd-${SLOT}/bin/*"
+
 CDEPEND="~dev-java/netbeans-dlight-${PV}
 	~dev-java/netbeans-harness-${PV}
 	~dev-java/netbeans-ide-${PV}

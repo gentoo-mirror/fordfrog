@@ -82,7 +82,7 @@ JAVA_PKG_BSFIX="off"
 pkg_pretend() {
 	local die_now=""
 
-	if [ -n "$(find /usr/share/netbeans-java-${SLOT}/ant -type l)" ]; then
+	if [ -d /usr/share/netbeans-java-${SLOT}/ant -a -n "$(find /usr/share/netbeans-java-${SLOT}/ant -type l)" ]; then
 		eerror "Please remove following symlinks and run emerge again:"
 		find /usr/share/netbeans-java-${SLOT}/ant -type l
 		die_now="1"

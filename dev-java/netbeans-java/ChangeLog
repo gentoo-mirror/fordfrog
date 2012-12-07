@@ -2,6 +2,11 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  07 Dec 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  netbeans-java-7.1.2-r1.ebuild, netbeans-java-7.2.ebuild,
+  netbeans-java-7.3_beta2.ebuild, netbeans-java-9999_p20121206.ebuild:
+  bumped to latest nightly sources
+
   06 Dec 2012; Miroslav Šulc <fordfrog@gentoo.org>
   netbeans-java-7.1.2-r1.ebuild, netbeans-java-7.2.ebuild,
   netbeans-java-7.3_beta2.ebuild, netbeans-java-9999_p20121206.ebuild:
