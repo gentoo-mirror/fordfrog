@@ -1,6 +1,12 @@
 # ChangeLog for dev-java/netbeans-nb
-# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+*netbeans-nb-9999_p20130101 (01 Jan 2013)
+
+  01 Jan 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-nb-9999_p20130101.ebuild:
+  bumped to latest nightly sources
 
 *netbeans-nb-9999_p20121231 (31 Dec 2012)
 
