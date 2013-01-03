@@ -2,6 +2,19 @@
 # Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  03 Jan 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-9999_p20121203.ebuild, -netbeans-9999_p20121204.ebuild,
+  -netbeans-9999_p20121205.ebuild, -netbeans-9999_p20121206.ebuild,
+  -netbeans-9999_p20121207.ebuild, -netbeans-9999_p20121208.ebuild,
+  -netbeans-9999_p20121209.ebuild, -netbeans-9999_p20121211.ebuild,
+  -netbeans-9999_p20121212.ebuild, -netbeans-9999_p20121213.ebuild,
+  -netbeans-9999_p20121214.ebuild, -netbeans-9999_p20121218.ebuild,
+  -netbeans-9999_p20121219.ebuild, -netbeans-9999_p20121221.ebuild,
+  -netbeans-9999_p20121222.ebuild, -netbeans-9999_p20121223.ebuild,
+  -netbeans-9999_p20121224.ebuild, -netbeans-9999_p20121226.ebuild,
+  -netbeans-9999_p20121227.ebuild, -netbeans-9999_p20121228.ebuild:
+  removed obsolete ebuilds
+
 *netbeans-9999_p20130101 (01 Jan 2013)
 
   01 Jan 2013; Miroslav Šulc <fordfrog@gentoo.org>
