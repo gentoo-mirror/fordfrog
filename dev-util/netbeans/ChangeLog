@@ -2,6 +2,12 @@
 # Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*netbeans-9999_p20130121 (21 Jan 2013)
+
+  21 Jan 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-9999_p20130121.ebuild:
+  bumped to latest nightly sources
+
 *netbeans-9999_p20131220 (20 Jan 2013)
 
   20 Jan 2013; Miroslav Šulc <fordfrog@gentoo.org>
