@@ -2,6 +2,26 @@
 # Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  08 Feb 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-dlight-9999_p20130108.ebuild,
+  -netbeans-dlight-9999_p20130109.ebuild,
+  -netbeans-dlight-9999_p20130110.ebuild,
+  -netbeans-dlight-9999_p20130111.ebuild,
+  -netbeans-dlight-9999_p20130112.ebuild,
+  -netbeans-dlight-9999_p20130116.ebuild,
+  -netbeans-dlight-9999_p20130117.ebuild,
+  -netbeans-dlight-9999_p20130119.ebuild,
+  -netbeans-dlight-9999_p20130120.ebuild,
+  -netbeans-dlight-9999_p20130121.ebuild,
+  -netbeans-dlight-9999_p20130122.ebuild,
+  -netbeans-dlight-9999_p20130123.ebuild,
+  -netbeans-dlight-9999_p20130124.ebuild,
+  -netbeans-dlight-9999_p20130125.ebuild,
+  -netbeans-dlight-9999_p20130126.ebuild,
+  -netbeans-dlight-9999_p20130129.ebuild,
+  -netbeans-dlight-9999_p20130131.ebuild:
+  removed obsolete ebuilds
+
 *netbeans-dlight-9999_p20130207 (07 Feb 2013)
 
   07 Feb 2013; Miroslav Šulc <fordfrog@gentoo.org>
