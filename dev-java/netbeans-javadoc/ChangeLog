@@ -3,6 +3,14 @@
 # $Header: $
 
   21 Feb 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-javadoc-7.3_beta2.ebuild, -netbeans-javadoc-7.3_rc1.ebuild,
+  -netbeans-javadoc-7.3_rc2.ebuild, -netbeans-javadoc-9999_p20130205.ebuild,
+  -netbeans-javadoc-9999_p20130207.ebuild,
+  -netbeans-javadoc-9999_p20130208.ebuild,
+  -netbeans-javadoc-9999_p20130209.ebuild:
+  removed obsolete ebuilds
+
+  21 Feb 2013; Miroslav Šulc <fordfrog@gentoo.org>
   netbeans-javadoc-7.3_beta2.ebuild, netbeans-javadoc-7.3_rc1.ebuild,
   netbeans-javadoc-7.3_rc2.ebuild:
   bumped to final in slot 7.3
