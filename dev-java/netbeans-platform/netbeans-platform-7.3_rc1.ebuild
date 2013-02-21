@@ -9,7 +9,7 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans Platform"
 HOMEPAGE="http://netbeans.org/features/platform/"
 SLOT="7.3"
-SOURCE_URL="http://dlc.sun.com.edgesuite.net/netbeans/7.3/rc1/zip/netbeans-7.3rc1-201301240957-src.zip"
+SOURCE_URL="http://download.netbeans.org/netbeans/7.3/final/zip/netbeans-7.3-201302132200-src.zip"
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r8-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/14F630EDF137F54188636B5139432986D5FB19B7-felix-4.0.2.jar

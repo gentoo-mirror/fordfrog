@@ -2,6 +2,11 @@
 # Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  21 Feb 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  netbeans-harness-7.3_beta2.ebuild, netbeans-harness-7.3_rc1.ebuild,
+  netbeans-harness-7.3_rc2.ebuild:
+  bumped to final in slot 7.3
+
 *netbeans-harness-9999_p20130218 (19 Feb 2013)
 
   19 Feb 2013; Miroslav Šulc <fordfrog@gentoo.org>
