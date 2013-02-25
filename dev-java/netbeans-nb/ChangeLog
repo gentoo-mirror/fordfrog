@@ -2,6 +2,10 @@
 # Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  25 Feb 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +files/7.3/keychain-support.patch:
+  added missing patch
+
 *netbeans-nb-9999_p20130224 (25 Feb 2013)
 
   25 Feb 2013; Miroslav Šulc <fordfrog@gentoo.org>
