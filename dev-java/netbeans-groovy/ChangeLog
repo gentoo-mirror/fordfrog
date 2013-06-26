@@ -2,6 +2,22 @@
 # Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  26 Jun 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-groovy-9999_p20130521.ebuild,
+  -netbeans-groovy-9999_p20130523.ebuild,
+  -netbeans-groovy-9999_p20130525.ebuild,
+  -netbeans-groovy-9999_p20130526.ebuild,
+  -netbeans-groovy-9999_p20130529.ebuild,
+  -netbeans-groovy-9999_p20130530.ebuild,
+  -netbeans-groovy-9999_p20130531.ebuild,
+  -netbeans-groovy-9999_p20130601.ebuild,
+  -netbeans-groovy-9999_p20130602.ebuild,
+  -netbeans-groovy-9999_p20130603.ebuild,
+  -netbeans-groovy-9999_p20130605.ebuild,
+  -netbeans-groovy-9999_p20130607.ebuild,
+  -netbeans-groovy-9999_p20130608.ebuild:
+  removed obsolete ebuilds
+
 *netbeans-groovy-9999_p20130610 (10 Jun 2013)
 
   10 Jun 2013; Miroslav Šulc <fordfrog@gentoo.org>
