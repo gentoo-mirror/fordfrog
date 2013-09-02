@@ -2,6 +2,11 @@
 # Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  02 Sep 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-java-9999_p20130802.ebuild, -netbeans-java-9999_p20130804.ebuild,
+  -netbeans-java-9999_p20130805.ebuild, -netbeans-java-9999_p20130809.ebuild:
+  removed obsolete ebuilds
+
 *netbeans-java-9999_p20130828 (28 Aug 2013)
 
   28 Aug 2013; Miroslav Šulc <fordfrog@gentoo.org>
