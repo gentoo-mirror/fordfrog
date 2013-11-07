@@ -2,6 +2,13 @@
 # Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  07 Nov 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-ergonomics-9999_p20131011.ebuild,
+  -netbeans-ergonomics-9999_p20131016.ebuild,
+  -netbeans-ergonomics-9999_p20131017.ebuild,
+  -netbeans-ergonomics-9999_p20131018.ebuild:
+  removed obsolete ebuilds
+
 *netbeans-ergonomics-9999_p20131030 (30 Oct 2013)
 *netbeans-ergonomics-9999_p20131024 (30 Oct 2013)
 
