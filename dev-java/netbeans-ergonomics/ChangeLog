@@ -2,6 +2,12 @@
 # Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*netbeans-ergonomics-9999_p20140129 (29 Jan 2014)
+
+  29 Jan 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-ergonomics-9999_p20140129.ebuild:
+  bumped to latest nightly sources
+
 *netbeans-ergonomics-9999_p20140128 (28 Jan 2014)
 
   28 Jan 2014; Miroslav Šulc <fordfrog@gentoo.org>
