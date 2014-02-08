@@ -2,6 +2,12 @@
 # Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*netbeans-extide-9999_p20140208 (08 Feb 2014)
+
+  08 Feb 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-extide-9999_p20140208.ebuild:
+  bumped to latest nightly sources
+
   08 Feb 2014; Miroslav Šulc <fordfrog@gentoo.org>
   -netbeans-extide-9999_p20131231.ebuild,
   -netbeans-extide-9999_p20140102.ebuild,
