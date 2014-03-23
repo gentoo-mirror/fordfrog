@@ -2,6 +2,12 @@
 # Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*netbeans-dlight-8.0 (23 Mar 2014)
+
+  23 Mar 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-dlight-8.0.ebuild:
+  bumped to version 8.0 in new slot
+
 *netbeans-dlight-9999_p20140323 (23 Mar 2014)
 
   23 Mar 2014; Miroslav Šulc <fordfrog@gentoo.org>
