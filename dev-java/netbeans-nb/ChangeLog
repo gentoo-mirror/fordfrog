@@ -2,6 +2,10 @@
 # Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  23 Mar 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +files/8.0/keychain-support.patch:
+  added missing file for version 8.0
+
 *netbeans-nb-8.0 (23 Mar 2014)
 
   23 Mar 2014; Miroslav Šulc <fordfrog@gentoo.org> +netbeans-nb-8.0.ebuild:
