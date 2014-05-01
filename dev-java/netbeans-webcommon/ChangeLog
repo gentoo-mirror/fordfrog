@@ -2,6 +2,25 @@
 # Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  01 May 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-webcommon-9999_p20140321.ebuild,
+  -netbeans-webcommon-9999_p20140323.ebuild,
+  -netbeans-webcommon-9999_p20140324.ebuild,
+  -netbeans-webcommon-9999_p20140325.ebuild,
+  -netbeans-webcommon-9999_p20140326.ebuild,
+  -netbeans-webcommon-9999_p20140327.ebuild,
+  -netbeans-webcommon-9999_p20140328.ebuild,
+  -netbeans-webcommon-9999_p20140330.ebuild,
+  -netbeans-webcommon-9999_p20140331.ebuild,
+  -netbeans-webcommon-9999_p20140401.ebuild,
+  -netbeans-webcommon-9999_p20140403.ebuild,
+  -netbeans-webcommon-9999_p20140404.ebuild,
+  -netbeans-webcommon-9999_p20140405.ebuild,
+  -netbeans-webcommon-9999_p20140407.ebuild,
+  -netbeans-webcommon-9999_p20140408.ebuild,
+  -netbeans-webcommon-9999_p20140409.ebuild:
+  removed obsolete ebuilds
+
 *netbeans-webcommon-9999_p20140429 (29 Apr 2014)
 
   29 Apr 2014; Miroslav Šulc <fordfrog@gentoo.org>
