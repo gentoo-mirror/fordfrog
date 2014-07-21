@@ -2,6 +2,12 @@
 # Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*netbeans-harness-9999_p20140721 (21 Jul 2014)
+
+  21 Jul 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-harness-9999_p20140721.ebuild:
+  bumped to the latest sources
+
   21 Jul 2014; Miroslav Šulc <fordfrog@gentoo.org>
   -netbeans-harness-9999_p20140520.ebuild,
   -netbeans-harness-9999_p20140521.ebuild,
