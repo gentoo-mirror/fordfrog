@@ -2,6 +2,12 @@
 # Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*netbeans-java-9999_p20140803 (03 Aug 2014)
+
+  03 Aug 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-java-9999_p20140803.ebuild:
+  bumped to the latest sources
+
 *netbeans-java-9999_p20140801 (01 Aug 2014)
 
   01 Aug 2014; Miroslav Šulc <fordfrog@gentoo.org>
