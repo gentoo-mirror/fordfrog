@@ -2,6 +2,12 @@
 # Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*netbeans-javacard-9999_p20140805 (05 Aug 2014)
+
+  05 Aug 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-javacard-9999_p20140805.ebuild:
+  bumped to the latest sources
+
 *netbeans-javacard-9999_p20140804 (04 Aug 2014)
 
   04 Aug 2014; Miroslav Šulc <fordfrog@gentoo.org>
