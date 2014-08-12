@@ -2,6 +2,21 @@
 # Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  12 Aug 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-enterprise-9999_p20140613.ebuild,
+  -netbeans-enterprise-9999_p20140616.ebuild,
+  -netbeans-enterprise-9999_p20140617.ebuild,
+  -netbeans-enterprise-9999_p20140618.ebuild,
+  -netbeans-enterprise-9999_p20140619.ebuild,
+  -netbeans-enterprise-9999_p20140623.ebuild,
+  -netbeans-enterprise-9999_p20140624.ebuild,
+  -netbeans-enterprise-9999_p20140627.ebuild,
+  -netbeans-enterprise-9999_p20140702.ebuild,
+  -netbeans-enterprise-9999_p20140707.ebuild,
+  -netbeans-enterprise-9999_p20140708.ebuild,
+  -netbeans-enterprise-9999_p20140709.ebuild:
+  removed obsolete ebuilds
+
 *netbeans-enterprise-9999_p20140811 (11 Aug 2014)
 
   11 Aug 2014; Miroslav Šulc <fordfrog@gentoo.org>
