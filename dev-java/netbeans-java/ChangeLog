@@ -2,6 +2,25 @@
 # Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  23 Sep 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-java-9999_p20140721.ebuild, -netbeans-java-9999_p20140722.ebuild,
+  -netbeans-java-9999_p20140724.ebuild, -netbeans-java-9999_p20140725.ebuild,
+  -netbeans-java-9999_p20140726.ebuild, -netbeans-java-9999_p20140728.ebuild,
+  -netbeans-java-9999_p20140801.ebuild, -netbeans-java-9999_p20140803.ebuild,
+  -netbeans-java-9999_p20140804.ebuild, -netbeans-java-9999_p20140805.ebuild,
+  -netbeans-java-9999_p20140806.ebuild, -netbeans-java-9999_p20140807.ebuild,
+  -netbeans-java-9999_p20140808.ebuild, -netbeans-java-9999_p20140810.ebuild,
+  -netbeans-java-9999_p20140811.ebuild, -netbeans-java-9999_p20140812.ebuild,
+  -netbeans-java-9999_p20140813.ebuild, -netbeans-java-9999_p20140814.ebuild,
+  -netbeans-java-9999_p20140815.ebuild, -netbeans-java-9999_p20140816.ebuild,
+  -netbeans-java-9999_p20140817.ebuild, -netbeans-java-9999_p20140818.ebuild,
+  -netbeans-java-9999_p20140819.ebuild, -netbeans-java-9999_p20140822.ebuild,
+  -netbeans-java-9999_p20140823.ebuild, -netbeans-java-9999_p20140824.ebuild,
+  -netbeans-java-9999_p20140826.ebuild, -netbeans-java-9999_p20140827.ebuild,
+  -netbeans-java-9999_p20140828.ebuild, -netbeans-java-9999_p20140830.ebuild,
+  -netbeans-java-9999_p20140831.ebuild:
+  removed obsolete ebuilds
+
 *netbeans-java-9999_p20140903 (03 Sep 2014)
 
   03 Sep 2014; Miroslav Šulc <fordfrog@gentoo.org>
