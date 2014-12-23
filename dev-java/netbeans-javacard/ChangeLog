@@ -2,6 +2,28 @@
 # Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  23 Dec 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-javacard-9999_p20141001.ebuild,
+  -netbeans-javacard-9999_p20141003.ebuild,
+  -netbeans-javacard-9999_p20141006.ebuild,
+  -netbeans-javacard-9999_p20141007.ebuild,
+  -netbeans-javacard-9999_p20141009.ebuild,
+  -netbeans-javacard-9999_p20141010.ebuild,
+  -netbeans-javacard-9999_p20141013.ebuild,
+  -netbeans-javacard-9999_p20141015.ebuild,
+  -netbeans-javacard-9999_p20141016.ebuild,
+  -netbeans-javacard-9999_p20141017.ebuild,
+  -netbeans-javacard-9999_p20141019.ebuild,
+  -netbeans-javacard-9999_p20141030.ebuild,
+  -netbeans-javacard-9999_p20141031.ebuild,
+  -netbeans-javacard-9999_p20141103.ebuild,
+  -netbeans-javacard-9999_p20141105.ebuild,
+  -netbeans-javacard-9999_p20141106.ebuild,
+  -netbeans-javacard-9999_p20141107.ebuild,
+  -netbeans-javacard-9999_p20141108.ebuild,
+  -netbeans-javacard-9999_p20141109.ebuild:
+  removed obsolete ebuilds
+
 *netbeans-javacard-9999_p20141219 (19 Dec 2014)
 
   19 Dec 2014; Miroslav Šulc <fordfrog@gentoo.org>
