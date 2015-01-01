@@ -1,6 +1,12 @@
 # ChangeLog for dev-java/netbeans-websvccommon
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+*netbeans-websvccommon-9999_p20150101 (01 Jan 2015)
+
+  01 Jan 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-websvccommon-9999_p20150101.ebuild:
+  bumped to the latest sources
 
 *netbeans-websvccommon-9999_p20141231 (31 Dec 2014)
 
