@@ -2,6 +2,12 @@
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*netbeans-ide-9999_p20150106 (06 Jan 2015)
+
+  06 Jan 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-ide-9999_p20150106.ebuild:
+  bumped to the latest sources
+
   06 Jan 2015; Miroslav Šulc <fordfrog@gentoo.org>
   -netbeans-ide-9999_p20141110.ebuild, -netbeans-ide-9999_p20141111.ebuild,
   -netbeans-ide-9999_p20141112.ebuild, -netbeans-ide-9999_p20141113.ebuild,
