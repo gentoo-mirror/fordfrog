@@ -2,6 +2,35 @@
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  06 Jan 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-dlight-9999_p20141110.ebuild,
+  -netbeans-dlight-9999_p20141111.ebuild,
+  -netbeans-dlight-9999_p20141112.ebuild,
+  -netbeans-dlight-9999_p20141113.ebuild,
+  -netbeans-dlight-9999_p20141114.ebuild,
+  -netbeans-dlight-9999_p20141115.ebuild,
+  -netbeans-dlight-9999_p20141117.ebuild,
+  -netbeans-dlight-9999_p20141118.ebuild,
+  -netbeans-dlight-9999_p20141119.ebuild,
+  -netbeans-dlight-9999_p20141120.ebuild,
+  -netbeans-dlight-9999_p20141121.ebuild,
+  -netbeans-dlight-9999_p20141123.ebuild,
+  -netbeans-dlight-9999_p20141124.ebuild,
+  -netbeans-dlight-9999_p20141125.ebuild,
+  -netbeans-dlight-9999_p20141126.ebuild,
+  -netbeans-dlight-9999_p20141127.ebuild,
+  -netbeans-dlight-9999_p20141128.ebuild,
+  -netbeans-dlight-9999_p20141129.ebuild,
+  -netbeans-dlight-9999_p20141130.ebuild,
+  -netbeans-dlight-9999_p20141201.ebuild,
+  -netbeans-dlight-9999_p20141202.ebuild,
+  -netbeans-dlight-9999_p20141203.ebuild,
+  -netbeans-dlight-9999_p20141204.ebuild,
+  -netbeans-dlight-9999_p20141207.ebuild,
+  -netbeans-dlight-9999_p20141208.ebuild,
+  -netbeans-dlight-9999_p20141209.ebuild:
+  removed obsolete ebuilds
+
 *netbeans-dlight-9999_p20150105 (05 Jan 2015)
 
   05 Jan 2015; Miroslav Šulc <fordfrog@gentoo.org>
