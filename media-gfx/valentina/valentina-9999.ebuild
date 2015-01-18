@@ -29,21 +29,14 @@ RDEPEND="${CDEPEND}"
 DEPEND="${CDEPEND}
 	dev-util/ccache"
 
+src_prepare() {
+	epatch ${FILESDIR}/app.pro.patch
+}
+
 src_configure() {
-        eqmake5
-	mkdir -p ${S}/src/app/bin/translations
-	use linguas_cs && lrelease ${S}/share/translations/valentina_cs_CZ.ts -qm ${S}/src/app/bin/translations/valentina_cs_CZ.qm
-	use linguas_de && lrelease ${S}/share/translations/valentina_de_DE.ts -qm ${S}/src/app/bin/translations/valentina_de_DE.qm
-	use linguas_fr && lrelease ${S}/share/translations/valentina_fr_FR.ts -qm ${S}/src/app/bin/translations/valentina_fr_FR.qm
-	use linguas_he && lrelease ${S}/share/translations/valentina_he_IL.ts -qm ${S}/src/app/bin/translations/valentina_he_IL.qm
-	use linguas_id && lrelease ${S}/share/translations/valentina_id_ID.ts -qm ${S}/src/app/bin/translations/valentina_id_ID.qm
-	use linguas_it && lrelease ${S}/share/translations/valentina_it_IT.ts -qm ${S}/src/app/bin/translations/valentina_it_IT.qm
-	use linguas_nl && lrelease ${S}/share/translations/valentina_nl_NL.ts -qm ${S}/src/app/bin/translations/valentina_nl_NL.qm
-	use linguas_ru && lrelease ${S}/share/translations/valentina_ru_RU.ts -qm ${S}/src/app/bin/translations/valentina_ru_RU.qm
-	use linguas_uk && lrelease ${S}/share/translations/valentina_uk_UA.ts -qm ${S}/src/app/bin/translations/valentina_uk_UA.qm
+        eqmake5 -r
 }
 
 src_install() {
         emake install INSTALL_ROOT="${D}"
-	cp -Rv ${S}/src/app/bin/translations ${D}/usr/share/
 }
