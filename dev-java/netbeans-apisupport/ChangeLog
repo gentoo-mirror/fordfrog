@@ -2,6 +2,18 @@
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  19 Jan 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-apisupport-9999_p20141210.ebuild,
+  -netbeans-apisupport-9999_p20141212.ebuild,
+  -netbeans-apisupport-9999_p20141213.ebuild,
+  -netbeans-apisupport-9999_p20141214.ebuild,
+  -netbeans-apisupport-9999_p20141215.ebuild,
+  -netbeans-apisupport-9999_p20141216.ebuild,
+  -netbeans-apisupport-9999_p20141217.ebuild,
+  -netbeans-apisupport-9999_p20141218.ebuild,
+  -netbeans-apisupport-9999_p20141219.ebuild:
+  removed obsolete ebuilds
+
 *netbeans-apisupport-9999_p20150118 (18 Jan 2015)
 
   18 Jan 2015; Miroslav Šulc <fordfrog@gentoo.org>
