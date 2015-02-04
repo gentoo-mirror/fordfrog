@@ -42,9 +42,9 @@ src_unpack() {
 
 	unpack netbeans-8.0.2-build.xml.patch.bz2
 
-        pushd "${S}" >/dev/null || die
-        ln -s "${DISTDIR}"/457A4C66AE33D1D5887BB1F359EEA41A10EBB2AB-fs_server-1.0.zip dlight.remote.impl/external/fs_server-1.0.zip || die
-        popd >/dev/null || die
+	pushd "${S}" >/dev/null || die
+	ln -s "${DISTDIR}"/457A4C66AE33D1D5887BB1F359EEA41A10EBB2AB-fs_server-1.0.zip dlight.remote.impl/external/fs_server-1.0.zip || die
+	popd >/dev/null || die
 }
 
 src_prepare() {

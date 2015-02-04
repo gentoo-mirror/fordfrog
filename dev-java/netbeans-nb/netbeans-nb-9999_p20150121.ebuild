@@ -143,6 +143,6 @@ pkg_postinst() {
 		einfo "id_dsa_gentoo"
 		einfo "If on NetBeans startup key will not be handled by keychain yet, you will be asked"
 		einfo "for key password (only this time and never again). You can find more information"
-		einfo "about keychain at http://www.gentoo.org/doc/en/keychain-guide.xml"
+		einfo "about keychain at https://wiki.gentoo.org/wiki/Keychain"
 	fi
 }

@@ -4,6 +4,10 @@
 
   04 Feb 2015; Miroslav Šulc <fordfrog@gentoo.org>
   netbeans-dlight-8.0.2.ebuild:
+  removed spaces
+
+  04 Feb 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  netbeans-dlight-8.0.2.ebuild:
   restricted compilation to jdk7
 
 *netbeans-dlight-9999_p20150204 (04 Feb 2015)
