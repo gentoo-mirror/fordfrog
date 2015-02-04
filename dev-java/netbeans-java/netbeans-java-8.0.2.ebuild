@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -47,7 +47,7 @@ CDEPEND="~dev-java/netbeans-platform-${PV}
 	dev-java/beansbinding:0
 	dev-java/cglib:2.2
 	dev-java/jdom:1.0"
-DEPEND=">=virtual/jdk-1.7
+DEPEND="virtual/jdk:1.7
 	app-arch/unzip
 	${CDEPEND}
 	dev-java/javahelp:0

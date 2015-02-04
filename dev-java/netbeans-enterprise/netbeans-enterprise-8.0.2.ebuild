@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -60,7 +60,7 @@ CDEPEND="~dev-java/netbeans-ide-${PV}
 	dev-java/commons-fileupload:0
 	dev-java/commons-logging:0
 	dev-java/glassfish-deployment-api:1.2"
-DEPEND=">=virtual/jdk-1.7
+DEPEND="virtual/jdk:1.7
 	app-arch/unzip
 	${CDEPEND}
 	dev-java/javahelp:0

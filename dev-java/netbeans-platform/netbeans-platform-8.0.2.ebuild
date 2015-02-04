@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -26,7 +26,7 @@ CDEPEND="dev-java/javahelp:0
 	>=dev-java/jna-3.4:0
 	>=dev-java/osgi-core-api-5:0
 	dev-java/swing-layout:1[source]"
-DEPEND=">=virtual/jdk-1.7
+DEPEND="virtual/jdk:1.7
 	app-arch/unzip
 	${CDEPEND}"
 RDEPEND=">=virtual/jdk-1.7

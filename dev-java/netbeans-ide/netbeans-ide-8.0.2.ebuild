@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -119,7 +119,7 @@ CDEPEND="~dev-java/netbeans-harness-${PV}
 #	dev-java/ini4j:0 our version is too old
 #	dev-java/jaxb:2 upstream version contains more stuff so websvccommon does not compile with ours
 #	dev-java/trilead-ssh2:0 in overlay
-DEPEND=">=virtual/jdk-1.7
+DEPEND="virtual/jdk:1.7
 	app-arch/unzip
 	dev-java/commons-codec:0
 	>=dev-java/jsch-0.1.46:0

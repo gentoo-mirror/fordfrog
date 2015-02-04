@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -99,7 +99,7 @@ IUSE_LINGUAS="
 IUSE="doc ${IUSE_NETBEANS_MODULES} ${IUSE_LINGUAS}"
 S="${WORKDIR}"
 
-DEPEND=">=virtual/jdk-1.7
+DEPEND="virtual/jdk:1.7
 	dev-java/javahelp:0"
 RDEPEND=">=virtual/jdk-1.7
 	~dev-java/netbeans-harness-${PV}
