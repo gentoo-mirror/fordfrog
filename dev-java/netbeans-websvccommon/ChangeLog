@@ -2,6 +2,19 @@
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  03 Mar 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-websvccommon-9999_p20150123.ebuild,
+  -netbeans-websvccommon-9999_p20150124.ebuild,
+  -netbeans-websvccommon-9999_p20150125.ebuild,
+  -netbeans-websvccommon-9999_p20150126.ebuild,
+  -netbeans-websvccommon-9999_p20150127.ebuild,
+  -netbeans-websvccommon-9999_p20150128.ebuild,
+  -netbeans-websvccommon-9999_p20150129.ebuild,
+  -netbeans-websvccommon-9999_p20150130.ebuild,
+  -netbeans-websvccommon-9999_p20150201.ebuild,
+  -netbeans-websvccommon-9999_p20150202.ebuild:
+  removed obsolete ebuilds
+
 *netbeans-websvccommon-9999_p20150302 (02 Mar 2015)
 
   02 Mar 2015; Miroslav Šulc <fordfrog@gentoo.org>
