@@ -2,6 +2,27 @@
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  26 Mar 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-extide-9999_p20150203.ebuild,
+  -netbeans-extide-9999_p20150204.ebuild,
+  -netbeans-extide-9999_p20150205.ebuild,
+  -netbeans-extide-9999_p20150206.ebuild,
+  -netbeans-extide-9999_p20150207.ebuild,
+  -netbeans-extide-9999_p20150208.ebuild,
+  -netbeans-extide-9999_p20150209.ebuild,
+  -netbeans-extide-9999_p20150210.ebuild,
+  -netbeans-extide-9999_p20150211.ebuild,
+  -netbeans-extide-9999_p20150212.ebuild,
+  -netbeans-extide-9999_p20150213.ebuild,
+  -netbeans-extide-9999_p20150216.ebuild,
+  -netbeans-extide-9999_p20150217.ebuild,
+  -netbeans-extide-9999_p20150219.ebuild,
+  -netbeans-extide-9999_p20150220.ebuild,
+  -netbeans-extide-9999_p20150223.ebuild,
+  -netbeans-extide-9999_p20150225.ebuild,
+  -netbeans-extide-9999_p20150226.ebuild:
+  removed obsolete ebuilds
+
 *netbeans-extide-9999_p20150325 (25 Mar 2015)
 
   25 Mar 2015; Miroslav Šulc <fordfrog@gentoo.org>
