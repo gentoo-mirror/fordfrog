@@ -45,7 +45,7 @@ CDEPEND="~dev-java/netbeans-platform-${PV}
 	~dev-java/netbeans-ide-${PV}
 	~dev-java/netbeans-websvccommon-${PV}
 	dev-java/beansbinding:0
-	dev-java/cglib:2.2
+	dev-java/cglib:3
 	dev-java/jdom:1.0"
 DEPEND=">=virtual/jdk-1.7
 	app-arch/unzip
@@ -58,7 +58,6 @@ RDEPEND=">=virtual/jdk-1.7
 	dev-java/absolutelayout:0
 	dev-java/antlr:0[java]
 	dev-java/c3p0:0
-	dev-java/cglib:2.1
 	dev-java/commons-collections:0
 	dev-java/dom4j:1
 	dev-java/fastinfoset:0
@@ -161,7 +160,7 @@ src_prepare() {
 
 	einfo "Symlinking external libraries..."
 	java-pkg_jar-from --build-only --into javahelp/external javahelp jhall.jar jhall-2.0_05.jar
-	java-pkg_jar-from --into libs.cglib/external cglib-2.2 cglib.jar cglib-2.2.jar
+	java-pkg_jar-from --into libs.cglib/external cglib-3 cglib.jar cglib-2.2.jar
 	java-pkg_jar-from --build-only --into libs.json_simple/external json-simple json-simple.jar json-simple-1.1.1.jar
 	java-pkg_jar-from --build-only --into libs.junit4/external junit-4 junit.jar junit-4.10.jar
 	java-pkg_jar-from --into maven.embedder/external jdom-1.0 jdom.jar jdom-1.0.jar
@@ -212,14 +211,14 @@ src_install() {
 	pushd "${D}"/${instdir} >/dev/null || die
 	rm AbsoluteLayout.jar  && dosym /usr/share/absolutelayout/lib/absolutelayout.jar ${instdir}/AbsoluteLayout.jar || die
 	rm beansbinding-1.2.1.jar && dosym /usr/share/beansbinding/lib/beansbinding.jar ${instdir}/beansbinding-1.2.1.jar || die
-	rm cglib-2.2.jar && dosym /usr/share/cglib-2.2/lib/cglib.jar ${instdir}/cglib-2.2.jar || die
+	rm cglib-2.2.jar && dosym /usr/share/cglib-3/lib/cglib.jar ${instdir}/cglib-2.2.jar || die
 	popd >/dev/null || die
 
 	local instdir=${INSTALL_DIR}/modules/ext/hibernate4
 	pushd "${D}"/${instdir} >/dev/null || die
 	rm antlr-2.7.7.jar && dosym /usr/share/antlr/lib/antlr.jar ${instdir}/antlr-2.7.7.jar || die
 	rm c3p0-0.9.2.1.jar && dosym /usr/share/c3p0/lib/c3p0.jar ${instdir}/c3p0-0.9.2.1.jar || die
-	rm cglib-2.2.jar && dosym /usr/share/cglib-2.1/lib/cglib.jar ${instdir}/cglib-2.2.jar || die
+	rm cglib-2.2.jar && dosym /usr/share/cglib-3/lib/cglib.jar ${instdir}/cglib-2.2.jar || die
 	rm commons-collections-3.2.1.jar && dosym /usr/share/commons-collections/lib/commons-collections.jar ${instdir}/commons-collections-3.2.1.jar || die
 	rm dom4j-1.6.1.jar && dosym /usr/share/dom4j-1/lib/dom4j.jar ${instdir}/dom4j-1.6.1.jar || die
 	rm javassist-3.18.1-GA.jar && dosym /usr/share/javassist-3/lib/javassist.jar ${instdir}/javassist-3.18.1-GA.jar || die
