@@ -3,6 +3,10 @@
 # $Header: $
 
   16 Jun 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  netbeans-cnd-9999_p20150615.ebuild, +netbeans-cnd-9999_p20150616.ebuild:
+  bumped to the latest sources
+
+  16 Jun 2015; Miroslav Šulc <fordfrog@gentoo.org>
   -netbeans-cnd-9999_p20150512.ebuild, -netbeans-cnd-9999_p20150513.ebuild,
   -netbeans-cnd-9999_p20150514.ebuild:
   removed obsolete ebuilds
