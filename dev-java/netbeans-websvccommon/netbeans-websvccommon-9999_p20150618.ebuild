@@ -1,16 +1,16 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/netbeans-websvccommon/netbeans-websvccommon-8.0.2.ebuild,v 1.5 2015/06/17 10:48:09 fordfrog Exp $
+# $Header: $
 
 EAPI="4"
 inherit eutils java-pkg-2 java-ant-2
 
 DESCRIPTION="Netbeans Web Services Common Cluster"
 HOMEPAGE="http://netbeans.org/"
-SLOT="8.0"
-SOURCE_URL="http://download.netbeans.org/netbeans/8.0.2/final/zip/netbeans-8.0.2-201411181905-src.zip"
+SLOT="9999"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2015-06-18_00-01-56/zip/netbeans-trunk-nightly-201506180001-src.zip"
 SRC_URI="${SOURCE_URL}
-	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-8.0.2-build.xml.patch.bz2"
+	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r14-build.xml.patch.bz2"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
@@ -18,7 +18,7 @@ S="${WORKDIR}"
 
 CDEPEND="~dev-java/netbeans-platform-${PV}
 	~dev-java/netbeans-ide-${PV}"
-DEPEND="virtual/jdk:1.7
+DEPEND=">=virtual/jdk-1.7
 	app-arch/unzip
 	${CDEPEND}
 	dev-java/javahelp:0"
@@ -29,7 +29,7 @@ INSTALL_DIR="/usr/share/${PN}-${SLOT}"
 
 EANT_BUILD_XML="nbbuild/build.xml"
 EANT_BUILD_TARGET="rebuild-cluster"
-EANT_EXTRA_ARGS="-Drebuild.cluster.name=nb.cluster.websvccommon -Dext.binaries.downloaded=true"
+EANT_EXTRA_ARGS="-Drebuild.cluster.name=nb.cluster.websvccommon -Dext.binaries.downloaded=true -Dpermit.jdk8.builds=true"
 EANT_FILTER_COMPILER="ecj-3.3 ecj-3.4 ecj-3.5 ecj-3.6 ecj-3.7"
 JAVA_PKG_BSFIX="off"
 
@@ -39,19 +39,18 @@ src_unpack() {
 	einfo "Deleting bundled jars..."
 	find -name "*.jar" -type f -delete
 
-	unpack netbeans-8.0.2-build.xml.patch.bz2
+	unpack netbeans-9999-r14-build.xml.patch.bz2
 }
 
 src_prepare() {
 	einfo "Deleting bundled class files..."
 	find -name "*.class" -type f | xargs rm -vf
 
-	epatch netbeans-8.0.2-build.xml.patch
-	epatch "${FILESDIR}/italian-patch.patch"
+	epatch netbeans-9999-r14-build.xml.patch
 
 	# Support for custom patches
-	if [ -n "${NETBEANS80_PATCHES_DIR}" -a -d "${NETBEANS80_PATCHES_DIR}" ] ; then
-		local files=`find "${NETBEANS80_PATCHES_DIR}" -type f`
+	if [ -n "${NETBEANS9999_PATCHES_DIR}" -a -d "${NETBEANS9999_PATCHES_DIR}" ] ; then
+		local files=`find "${NETBEANS9999_PATCHES_DIR}" -type f`
 
 		if [ -n "${files}" ] ; then
 			einfo "Applying custom patches:"
