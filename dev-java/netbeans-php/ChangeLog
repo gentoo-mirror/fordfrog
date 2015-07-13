@@ -2,6 +2,21 @@
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*netbeans-php-9999_p20150713 (13 Jul 2015)
+
+  13 Jul 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-php-9999_p20150713.ebuild:
+  updated to the latest sources
+
+  13 Jul 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-php-9999_p20150518.ebuild, -netbeans-php-9999_p20150519.ebuild,
+  -netbeans-php-9999_p20150520.ebuild, -netbeans-php-9999_p20150521.ebuild,
+  -netbeans-php-9999_p20150522.ebuild, -netbeans-php-9999_p20150525.ebuild,
+  -netbeans-php-9999_p20150526.ebuild, -netbeans-php-9999_p20150527.ebuild,
+  -netbeans-php-9999_p20150528.ebuild, -netbeans-php-9999_p20150529.ebuild,
+  -netbeans-php-9999_p20150530.ebuild:
+  removed obsolete ebuilds
+
 *netbeans-php-9999_p20150710 (10 Jul 2015)
 
   10 Jul 2015; Miroslav Šulc <fordfrog@gentoo.org>
