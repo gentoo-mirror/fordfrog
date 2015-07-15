@@ -47,7 +47,6 @@ src_prepare() {
 	find -name "*.class" -type f | xargs rm -vf
 
 	epatch netbeans-8.0.2-build.xml.patch
-	epatch "${FILESDIR}/italian-patch.patch"
 
 	# Support for custom patches
 	if [ -n "${NETBEANS80_PATCHES_DIR}" -a -d "${NETBEANS80_PATCHES_DIR}" ] ; then

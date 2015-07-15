@@ -2,6 +2,10 @@
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  15 Jul 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  netbeans-websvccommon-8.0.2.ebuild, -files/italian-patch.patch:
+  removed italian.patch as it does not apply
+
 *netbeans-websvccommon-9999_p20150715 (15 Jul 2015)
 
   15 Jul 2015; Miroslav Šulc <fordfrog@gentoo.org>
