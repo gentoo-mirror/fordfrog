@@ -2,6 +2,12 @@
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*netbeans-groovy-9999_p20150716 (16 Jul 2015)
+
+  16 Jul 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-groovy-9999_p20150716.ebuild:
+  updated to the latest sources
+
   16 Jul 2015; Miroslav Šulc <fordfrog@gentoo.org>
   -netbeans-groovy-9999_p20150601.ebuild,
   -netbeans-groovy-9999_p20150602.ebuild,
