@@ -2,6 +2,26 @@
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*netbeans-javafx-9999_p20150805 (05 Aug 2015)
+
+  05 Aug 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-javafx-9999_p20150805.ebuild:
+  updated to the latest sources
+
+  05 Aug 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-javafx-9999_p20150615.ebuild,
+  -netbeans-javafx-9999_p20150616.ebuild,
+  -netbeans-javafx-9999_p20150618.ebuild,
+  -netbeans-javafx-9999_p20150619.ebuild,
+  -netbeans-javafx-9999_p20150622.ebuild,
+  -netbeans-javafx-9999_p20150623.ebuild,
+  -netbeans-javafx-9999_p20150624.ebuild,
+  -netbeans-javafx-9999_p20150625.ebuild,
+  -netbeans-javafx-9999_p20150627.ebuild,
+  -netbeans-javafx-9999_p20150629.ebuild,
+  -netbeans-javafx-9999_p20150630.ebuild:
+  removed obsolete ebuilds
+
 *netbeans-javafx-9999_p20150804 (04 Aug 2015)
 
   04 Aug 2015; Miroslav Šulc <fordfrog@gentoo.org>
