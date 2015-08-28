@@ -30,10 +30,6 @@ RDEPEND="${CDEPEND}"
 DEPEND="${CDEPEND}
 	dev-util/ccache"
 
-src_prepare() {
-	epatch ${FILESDIR}/app.pro.patch
-}
-
 src_configure() {
         eqmake5 -r
 }
