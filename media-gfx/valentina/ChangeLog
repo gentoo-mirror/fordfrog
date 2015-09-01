@@ -1,7 +1,0 @@
-# ChangeLog for media-gfx/valentina
-# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: $
-
-  06 Feb 2015; Miroslav Šulc <fordfrog@gentoo.org> valentina-9999.ebuild:
-  switched to develop branch
-
