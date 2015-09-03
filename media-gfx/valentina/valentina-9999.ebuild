@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/hugin/hugin-9999.ebuild,v 1.6 2014/12/20 16:36:16 maekke Exp $
+# $Id$
 
 EAPI=5
 
@@ -31,9 +31,9 @@ DEPEND="${CDEPEND}
 	dev-util/ccache"
 
 src_configure() {
-        eqmake5 -r
+	eqmake5 -r
 }
 
 src_install() {
-        emake install INSTALL_ROOT="${D}"
+	emake install INSTALL_ROOT="${D}"
 }
