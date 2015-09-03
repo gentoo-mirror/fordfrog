@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 
 EAPI="4"
 inherit eutils java-pkg-2 java-ant-2
@@ -42,9 +42,9 @@ src_unpack() {
 
 	unpack netbeans-9999-r14-build.xml.patch.bz2
 
-        pushd "${S}" >/dev/null || die
-        ln -s "${DISTDIR}"/6396ED8427E5068B5331C0A3A03A2235135D6D75-fs_server-1.0.zip dlight.remote.impl/external/fs_server-1.0.zip || die
-        popd >/dev/null || die
+	pushd "${S}" >/dev/null || die
+	ln -s "${DISTDIR}"/6396ED8427E5068B5331C0A3A03A2235135D6D75-fs_server-1.0.zip dlight.remote.impl/external/fs_server-1.0.zip || die
+	popd >/dev/null || die
 }
 
 src_prepare() {
