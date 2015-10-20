@@ -1,0 +1,66 @@
+diff --git a/analysis/kuromoji/build.xml b/analysis/kuromoji/build.xml
+index 0bce4b4..1781dc9 100644
+--- a/analysis/kuromoji/build.xml
++++ b/analysis/kuromoji/build.xml
+@@ -58,7 +58,7 @@
+ 
+   <target name="compile-core" depends="jar-analyzers-common, common.compile-core" />
+   <target name="download-dict" depends="ivy-availability-check,ivy-fail,ivy-configure" unless="dict.available">
+-     <ivy:retrieve pattern="${build.dir}/${dict.src.file}" conf="${ipadic.type}" symlink="${ivy.symlink}"/>
++     <!-- <ivy:retrieve pattern="${build.dir}/${dict.src.file}" conf="${ipadic.type}" symlink="${ivy.symlink}"/> -->
+      <!-- TODO: we should checksum too -->
+      <gunzip src="${build.dir}/${dict.src.file}"/>
+      <untar src="${build.dir}/${ipadic.version}.tar" dest="${build.dir}"/>
+diff --git a/common-build.xml b/common-build.xml
+index 581a42d..f593715 100644
+--- a/common-build.xml
++++ b/common-build.xml
+@@ -49,6 +49,8 @@
+ 
+   <property name="Name" value="Lucene"/>
+   <property name="name" value="${ant.project.name}"/>
++
++  <property name="ivy.available" value="true"/>
+   
+   <!-- include version number from property file (includes "version.*" properties) -->
+   <loadproperties srcFile="${common.dir}/version.properties"/>
+@@ -427,8 +429,8 @@
+   <target name="resolve" depends="ivy-availability-check,ivy-configure">
+     <!-- todo, make this a property or something. 
+          only special cases need bundles -->
+-    <ivy:retrieve type="jar,bundle,test,test-jar,tests" log="download-only" symlink="${ivy.symlink}"
+-                  conf="${ivy.default.configuration}" sync="${ivy.sync}"/>
++    <!-- <ivy:retrieve type="jar,bundle,test,test-jar,tests" log="download-only" symlink="${ivy.symlink}"
++                  conf="${ivy.default.configuration}" sync="${ivy.sync}"/> -->
+   </target>
+ 
+   <property name="ivy_install_path" location="${user.home}/.ant/lib" />
+diff --git a/queryparser/build.xml b/queryparser/build.xml
+index 671e344..8f15c39 100644
+--- a/queryparser/build.xml
++++ b/queryparser/build.xml
+@@ -142,9 +142,9 @@ import org.apache.lucene.queryparser.flexible.core.messages.*;"
+ 
+   <target name="resolve-javacc" xmlns:ivy="antlib:org.apache.ivy.ant">
+     <!-- setup a "fake" JavaCC distribution folder in ${build.dir} to make JavaCC ANT task happy: -->
+-    <ivy:retrieve organisation="net.java.dev.javacc" module="javacc" revision="5.0" symlink="${ivy.symlink}"
++    <!-- <ivy:retrieve organisation="net.java.dev.javacc" module="javacc" revision="5.0" symlink="${ivy.symlink}"
+       inline="true" conf="default" transitive="false" type="jar" sync="true"
+-      pattern="${build.dir}/javacc/bin/lib/[artifact].[ext]"/>
++      pattern="${build.dir}/javacc/bin/lib/[artifact].[ext]"/> -->
+   </target>
+ 
+   <macrodef name="invoke-javacc">
+diff --git a/replicator/build.xml b/replicator/build.xml
+index 32f281e..4a1a036 100644
+--- a/replicator/build.xml
++++ b/replicator/build.xml
+@@ -35,7 +35,7 @@
+ 	<target name="resolve" depends="common.resolve">
+ 		<sequential>
+ 	    <!-- javax.servlet jar -->
+-	    <ivy:retrieve conf="servlet" log="download-only" type="orbit" symlink="${ivy.symlink}"/>
++	    <!-- <ivy:retrieve conf="servlet" log="download-only" type="orbit" symlink="${ivy.symlink}"/> -->
+ 		</sequential>
+ 	</target>
+ 
