@@ -10,7 +10,8 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Apache Lucene Core"
 HOMEPAGE="http://lucene.apache.org/core/"
 SRC_URI="mirror://apache/lucene/java/${PV}/lucene-${PV}-src.tgz
-	doc? ( http://docs.oracle.com/javase/7/docs/api/package-list -> java7-package-list )"
+	http://dev.gentoo.org/~fordfrog/distfiles/lucene-5-build.patch.bz2
+	doc? ( http://dev.gentoo.org/~fordfrog/distfiles/lucene-java7-package-list.bz2 )"
 LICENSE="Apache-2.0"
 SLOT="5"
 KEYWORDS="~amd64 ~x86"
@@ -22,17 +23,16 @@ RDEPEND=">=virtual/jre-1.7"
 
 S=${WORKDIR}/lucene-${PV}
 
-java_prepare() {
-	epatch "${FILESDIR}/build.patch"
-}
+EANT_BUILD_XML="core/build.xml"
+EANT_BUILD_TARGET="jar-core"
+EANT_DOC_TARGET="javadocs"
 
-src_compile() {
-	eant jar-core
+java_prepare() {
+	epatch "${WORKDIR}/lucene-5-build.patch"
 
 	if use doc ; then
-		mkdir -p tools/javadoc/java7 || die "failed to create dir"
-		ln -s "${DISTDIR}/java7-package-list" tools/javadoc/java7/package-list || die "failed to create symlink"
-		eant -f core/build.xml javadocs
+		mkdir tools/javadoc/java7 || die "failed to create dir"
+		mv "${WORKDIR}/lucene-java7-package-list" tools/javadoc/java7/package-list || die "failed to move file"
 	fi
 }
 
