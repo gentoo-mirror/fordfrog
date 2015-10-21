@@ -36,7 +36,6 @@ RDEPEND=">=virtual/jre-1.7
 	dev-java/jackson:2
 	dev-java/joda-time:0
 	dev-java/junit:4
-	dev-java/log4j:0
 	dev-java/lucene-core:5
 	dev-java/slf4j-api:0
 	dev-java/slf4j-log4j12:0
@@ -74,6 +73,11 @@ pkg_setup() {
 }
 
 src_install() {
+	local randpw=$(echo ${RANDOM}|md5sum|cut -c 1-15)
+	newinitd "${FILESDIR}/solr.initd" ${MY_PN}-bin
+	newconfd "${FILESDIR}/solr.confd" ${MY_PN}-bin
+	sed -i "s/solrrocks/${randpw}/g" "${D}/etc/init.d/${MY_PN}-bin" "${D}/etc/conf.d/${MY_PN}-bin"
+
 	# remove files that are not needed on linux
 	find \( -name "*.bat" -o -name "*.cmd" \) -delete
 
@@ -108,7 +112,7 @@ src_install() {
 
 	# /opt/solr/server
 	insinto /opt/${MY_PN}/server
-	doins -r server/{README.txt,lib,modules,scripts,solr-webapp}
+	doins -r server/{README.txt,start.jar,lib,modules,scripts,solr-webapp}
 	dosym /etc/${MY_PN}/server /opt/${MY_PN}/server/etc
 	dosym /etc/${MY_PN}/contexts /opt/${MY_PN}/server/contexts
 	dosym /etc/${MY_PN}/resources /opt/${MY_PN}/server/resources
@@ -116,7 +120,7 @@ src_install() {
 
 	# /var/lib/solr
 	insinto /var/lib/${MY_PN}
-	doins -r server/solr
+	doins -r server/solr/*
 	fperms 750 /var/lib/${MY_PN}
 	fowners solr:solr /var/lib/${MY_PN}
 
@@ -146,7 +150,7 @@ src_install() {
 	local instdir="${D}/opt/${MY_PN}/server/lib/ext"
 	# jcl-over-slf4j-1.7.7.jar
 	# jul-to-slf4j-1.7.7.jar
-	rm "${instdir}/log4j-1.2.17.jar" && java-pkg_jar-from --into "${instdir}" log4j || die "failed to unbundle jar"
+	# log4j-1.2.17.jar - our library does not contain org/apache/log4j/pattern/BridgePatternParser
 	rm "${instdir}/slf4j-api-1.7.7.jar" && java-pkg_jar-from --into "${instdir}" slf4j-api || die "failed to unbundle jar"
 	rm "${instdir}/slf4j-log4j12-1.7.7.jar" && java-pkg_jar-from --into "${instdir}" slf4j-log4j12 || die "failed to unbundle jar"
 
