@@ -1,3 +1,4 @@
+dev-db/apache-solr-bin 5.3.1: The popular, blazing fast open source enterprise search platform from the Apache Lucene project.
 dev-db/pgfouine 1.2-r2: pgFouine is a PostgreSQL log analyzer used to generate detailed reports from a PostgreSQL log file
 dev-java/lucene-core 5.3.1: Apache Lucene Core
 dev-java/netbeans-apisupport 8.0.2 8.1_rc2 9999_p20150914 9999_p20150915 9999_p20150917 9999_p20150918 9999_p20150921 9999_p20150922 9999_p20150923 9999_p20150924 9999_p20150925 9999_p20150929 9999_p20151001 9999_p20151002 9999_p20151003 9999_p20151004 9999_p20151006 9999_p20151007 9999_p20151008 9999_p20151009 9999_p20151012 9999_p20151014 9999_p20151015 9999_p20151016 9999_p20151018 9999_p20151019 9999_p20151020 9999_p20151021: Netbeans API Support Cluster
