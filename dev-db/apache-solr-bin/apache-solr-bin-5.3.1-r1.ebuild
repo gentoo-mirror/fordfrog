@@ -53,6 +53,7 @@ RDEPEND=">=virtual/jre-1.7
 		dev-java/icu4j:52
 		dev-java/jdom:1.0
 		dev-java/jempbox:1.7
+		dev-java/pdfbox:1.8
 		dev-java/rome:0
 		dev-java/saxon:9
 		dev-java/sun-jaf:0
@@ -271,7 +272,7 @@ src_install() {
 		# jmatio-1.0.jar
 		# juniversalchardet-1.0.3.jar
 		# metadata-extractor-2.6.2.jar - the one in tree too old
-		# pdfbox-1.8.8.jar
+		rm "${instdir}/pdfbox-1.8.8.jar" && java-pkg_jar-from --into "${instdir}" pdfbox-1.8 || die "failed to unbundle jar"
 		# poi-ooxml-schemas-3.11.jar - the one in tree too old
 		# poi-ooxml-3.11.jar - the one in tree too old
 		# poi-scratchpad-3.11.jar - the one in tree too old
