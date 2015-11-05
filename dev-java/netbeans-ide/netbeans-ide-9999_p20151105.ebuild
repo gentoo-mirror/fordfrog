@@ -8,7 +8,7 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans IDE Cluster"
 HOMEPAGE="http://netbeans.org/projects/ide"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2015-10-02_00-02-28/zip/netbeans-trunk-nightly-201510020002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2015-11-05_00-02-04/zip/netbeans-trunk-nightly-201511050002-src.zip"
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r14-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/4E74C6BE42FE89871A878C7C4D6158F21A6D8010-antlr-runtime-3.4.jar
@@ -70,7 +70,7 @@ SRC_URI="${SOURCE_URL}
 	http://hg.netbeans.org/binaries/01CD242F06F6F7E4E61C9E05ABBE07318E501D51-org.eclipse.mylyn.wikitext.core_1.9.0.20131007-2055_nosignature.jar
 	http://hg.netbeans.org/binaries/75928E4368CA748131A6767BA1A97D9DA643C306-org.eclipse.mylyn.wikitext.textile.core_1.9.0.20131007-2055_nosignature.jar
 	http://hg.netbeans.org/binaries/8307A44D3F150F1BB317532097A0C7D125C00F2D-org.tmatesoft.svnkit_1.8.10.r10446_v20150526_1454.jar
-	http://hg.netbeans.org/binaries/E90EF50215FFD23928B3308DC76A17B7DADE5F33-processtreekiller-1.0.5.jar
+	http://hg.netbeans.org/binaries/6819C79348FCF4F5125C834E7D3B742582DCA34D-processtreekiller-1.0.7.jar
 	http://hg.netbeans.org/binaries/B0D0FCBAC68826D2AFA3C7C89FC4D57B95A000C3-resolver-1.2.jar
 	http://hg.netbeans.org/binaries/D08E473A4D0510FB329D64E4CC4F2963D000699C-svnClientAdapter-javahl-1.10.3.jar
 	http://hg.netbeans.org/binaries/2CD487DCDE4C4FC38D1C9EBCD45418A1B5EF188D-svnClientAdapter-main-1.10.3.jar
@@ -209,7 +209,7 @@ src_unpack() {
 	ln -s "${DISTDIR}"/01CD242F06F6F7E4E61C9E05ABBE07318E501D51-org.eclipse.mylyn.wikitext.core_1.9.0.20131007-2055_nosignature.jar o.eclipse.mylyn.wikitext.core/external/org.eclipse.mylyn.wikitext.core_1.9.0.20131007-2055_nosignature.jar || die
 	ln -s "${DISTDIR}"/75928E4368CA748131A6767BA1A97D9DA643C306-org.eclipse.mylyn.wikitext.textile.core_1.9.0.20131007-2055_nosignature.jar o.eclipse.mylyn.wikitext.textile.core/external/org.eclipse.mylyn.wikitext.textile.core_1.9.0.20131007-2055_nosignature.jar  || die
 	ln -s "${DISTDIR}"/8307A44D3F150F1BB317532097A0C7D125C00F2D-org.tmatesoft.svnkit_1.8.10.r10446_v20150526_1454.jar libs.svnClientAdapter.svnkit/external/org.tmatesoft.svnkit_1.8.10.r10446_v20150526_1454.jar || die
-	ln -s "${DISTDIR}"/E90EF50215FFD23928B3308DC76A17B7DADE5F33-processtreekiller-1.0.5.jar extexecution.process/external/processtreekiller-1.0.5.jar || die
+	ln -s "${DISTDIR}"/6819C79348FCF4F5125C834E7D3B742582DCA34D-processtreekiller-1.0.7.jar extexecution.process/external/processtreekiller-1.0.7.jar || die
 	ln -s "${DISTDIR}"/4F94E5B4F14B4571A1D8E37885A3037C91F7C02C-svnkit_1.7.8.r9538_v20130107_2001.jar libs.svnClientAdapter.svnkit/external/svnkit_1.7.8.r9538_v20130107_2001.jar || die
 	ln -s "${DISTDIR}"/B0D0FCBAC68826D2AFA3C7C89FC4D57B95A000C3-resolver-1.2.jar o.apache.xml.resolver/external/resolver-1.2.jar || die
 	ln -s "${DISTDIR}"/EDE7FBABD4C96D34E48FDA0E8FECED24C98CEDCA-sqljet-1.1.10.jar libs.svnClientAdapter.svnkit/external/sqljet-1.1.10.jar || die
