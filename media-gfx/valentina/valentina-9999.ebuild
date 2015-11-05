@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit base mercurial qmake-utils
+inherit mercurial qmake-utils
 
 DESCRIPTION="Cloth patternmaking software"
 HOMEPAGE="http://valentinaproject.bitbucket.org/"
