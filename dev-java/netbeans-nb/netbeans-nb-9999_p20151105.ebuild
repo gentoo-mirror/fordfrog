@@ -14,7 +14,7 @@ SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-7.0.png"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
 KEYWORDS="~amd64 ~x86"
-IUSE="keychain"
+IUSE=""
 S="${WORKDIR}"
 
 CDEPEND="~dev-java/netbeans-platform-${PV}
@@ -25,11 +25,7 @@ DEPEND=">=virtual/jdk-1.7
 	${CDEPEND}
 	dev-java/javahelp:0"
 RDEPEND=">=virtual/jdk-1.7
-	${CDEPEND}
-	keychain? (
-		net-misc/keychain:0
-		net-misc/x11-ssh-askpass:0
-	)"
+	${CDEPEND}"
 
 INSTALL_DIR="/usr/share/${PN}-${SLOT}"
 
@@ -53,7 +49,6 @@ src_prepare() {
 	find -name "*.class" -type f | xargs rm -vf
 
 	epatch netbeans-9999-r14-build.xml.patch
-	use keychain && epatch "${FILESDIR}"/${SLOT}/keychain-support.patch
 
 	# Support for custom patches
 	if [ -n "${NETBEANS9999_PATCHES_DIR}" -a -d "${NETBEANS9999_PATCHES_DIR}" ] ; then
@@ -130,19 +125,4 @@ src_install() {
 
 	mkdir -p  "${D}"/${INSTALL_DIR}/nb/config || die
 	echo "NBGNT" > "${D}"/${INSTALL_DIR}/nb/config/productid || die
-}
-
-pkg_postinst() {
-	if use keychain ; then
-		einfo "You enabled keychain support, that means NetBeans will use keychain for managing"
-		einfo "your keys while connecting to ssh protected repositories. If you want to load some"
-		einfo "keys on NetBeans startup, create file keychain-keys.txt in your userdir"
-		einfo "(~/.netbeans/${SLOT}/keychain-keys.txt) and put names of your keys in the file,"
-		einfo "each key on single line, for example:"
-		einfo "id_dsa"
-		einfo "id_dsa_gentoo"
-		einfo "If on NetBeans startup key will not be handled by keychain yet, you will be asked"
-		einfo "for key password (only this time and never again). You can find more information"
-		einfo "about keychain at https://wiki.gentoo.org/wiki/Keychain"
-	fi
 }
