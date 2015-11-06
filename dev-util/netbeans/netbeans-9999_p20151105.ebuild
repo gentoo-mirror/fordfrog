@@ -14,21 +14,25 @@ L10N_URL="http://dev.gentoo.org/~fordfrog/distfiles/netbeans-l10n-9999-20131010.
 ALL_URLS="${SOURCE_URL} ${PATCHES_URL} ${L10N_URL}"
 SRC_URI="linguas_af? ( ${ALL_URLS} )
 	linguas_ar? ( ${ALL_URLS} )
+	linguas_ar_SA? ( ${ALL_URLS} )
 	linguas_bg? ( ${ALL_URLS} )
 	linguas_ca? ( ${ALL_URLS} )
 	linguas_cs? ( ${ALL_URLS} )
 	linguas_de? ( ${ALL_URLS} )
 	linguas_el? ( ${ALL_URLS} )
 	linguas_es? ( ${ALL_URLS} )
+	linguas_es_CO? ( ${ALL_URLS} )
+	linguas_fil? ( ${ALL_URLS} )
 	linguas_fr? ( ${ALL_URLS} )
 	linguas_gl? ( ${ALL_URLS} )
 	linguas_hi_IN? ( ${ALL_URLS} )
-	linguas_id? ( ${ALL_URLS} )
+	linguas_id_ID? ( ${ALL_URLS} )
 	linguas_it? ( ${ALL_URLS} )
 	linguas_ja? ( ${ALL_URLS} )
 	linguas_ko? ( ${ALL_URLS} )
 	linguas_lt? ( ${ALL_URLS} )
-	linguas_nl? ( ${ALL_URLS} )
+	linguas_nl_BE? ( ${ALL_URLS} )
+	linguas_nl_NL? ( ${ALL_URLS} )
 	linguas_pl? ( ${ALL_URLS} )
 	linguas_pt_BR? ( ${ALL_URLS} )
 	linguas_pt_PT? ( ${ALL_URLS} )
@@ -39,7 +43,6 @@ SRC_URI="linguas_af? ( ${ALL_URLS} )
 	linguas_sr? ( ${ALL_URLS} )
 	linguas_sv? ( ${ALL_URLS} )
 	linguas_ta_IN? ( ${ALL_URLS} )
-	linguas_tl? ( ${ALL_URLS} )
 	linguas_tr? ( ${ALL_URLS} )
 	linguas_vi? ( ${ALL_URLS} )
 	linguas_zh_CN? ( ${ALL_URLS} )
@@ -66,21 +69,25 @@ IUSE_NETBEANS_MODULES="
 IUSE_LINGUAS="
 	linguas_af
 	linguas_ar
+	linguas_ar_SA
 	linguas_bg
 	linguas_ca
 	linguas_cs
 	linguas_de
 	linguas_el
 	linguas_es
+	linguas_es_CO
+	linguas_fil
 	linguas_fr
 	linguas_gl
 	linguas_hi_IN
-	linguas_id
+	linguas_id_ID
 	linguas_it
 	linguas_ja
 	linguas_ko
 	linguas_lt
-	linguas_nl
+	linguas_nl_BE
+	linguas_nl_NL
 	linguas_pl
 	linguas_pt_BR
 	linguas_pt_PT
@@ -91,7 +98,6 @@ IUSE_LINGUAS="
 	linguas_sr
 	linguas_sv
 	linguas_ta_IN
-	linguas_tl
 	linguas_tr
 	linguas_vi
 	linguas_zh_CN
@@ -133,14 +139,12 @@ pkg_setup() {
 			lang="ar_EG,ar_SA"
 		elif [[ "${lang}" = "es" ]] ; then
 			lang="es,es_CO"
+		elif [[ "${lang}" = "fil" ]] ; then
+			lang="fil_PH"
 		elif [[ "${lang}" = "gl" ]] ; then
 			lang="gl_ES"
-		elif [[ "${lang}" = "id" ]] ; then
+		elif [[ "${lang}" = "id_ID" ]] ; then
 			lang="in_ID"
-		elif [[ "${lang}" = "nl" ]] ; then
-			lang="nl_BE,nl_NL"
-		elif [[ "${lang}" = "tl" ]] ; then
-			lang="fil_PH"
 		fi
 
 		if use ${lingua} ; then
@@ -242,23 +246,8 @@ pkg_postinst() {
 		einfo "You selected Spanish locale so you can choose either es or es:CO variant."
 	fi
 
-	if use linguas_gl ; then
-		einfo
-		einfo "You selected Galician locale which has locale code gl:ES in Netbeans."
-	fi
-
-	if use linguas_id ; then
+	if use linguas_id_ID ; then
 		einfo
 		einfo "You selected Indonesian locale which has locale code in:ID in Netbeans."
-	fi
-
-	if use linguas_nl ; then
-		einfo
-		einfo "You selected Dutch locale so you can choose either nl:BE or nl:NL variant."
-	fi
-
-	if use linguas_tl ; then
-		einfo
-		einfo "You selected Tagalog locale which has for Filipino locale code fil:PH in Netbeans."
 	fi
 }
