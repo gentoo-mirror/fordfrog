@@ -7,18 +7,18 @@ inherit eutils java-pkg-2 java-ant-2
 
 DESCRIPTION="Netbeans JavaDocs"
 HOMEPAGE="http://netbeans.org/"
-SLOT="8.1"
-SOURCE_URL="http://download.netbeans.org/netbeans/8.1/rc2/zip/netbeans-8.1rc2-201510122201-src.zip"
+SLOT="9999"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2015-11-08_00-02-04/zip/netbeans-trunk-nightly-201511080002-src.zip"
 SRC_URI="${SOURCE_URL}
-	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-8.1-build.xml.patch.bz2
+	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r14-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/22CB933E3A1450B092C45785C187837E97523F5C-ant-libs-1.9.4.zip"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 S="${WORKDIR}"
 
-# oracle-jdk-bin is needed because other jdks do not contain jre/lib/ext/jfxrt.jar
-DEPEND="dev-java/oracle-jdk-bin:1.7
+# oracle-jdk-bin is needed because of javafx which is not currently packaged separately
+DEPEND="dev-java/oracle-jdk-bin:1.8[javafx]
 	app-arch/unzip
 	dev-java/javahelp:0
 	dev-java/junit:4
@@ -42,7 +42,7 @@ DEPEND="dev-java/oracle-jdk-bin:1.7
 RDEPEND=""
 
 JAVA_PKG_BSFIX="off"
-JAVA_PKG_WANT_BUILD_VM="oracle-jdk-bin-1.7"
+JAVA_PKG_WANT_BUILD_VM="oracle-jdk-bin-1.8"
 JAVA_PKG_WANT_SOURCE="1.7"
 JAVA_PKG_WANT_TARGET="1.7"
 
@@ -52,7 +52,7 @@ src_unpack() {
 	einfo "Deleting bundled jars..."
 	find -name "*.jar" -type f -delete
 
-	unpack netbeans-8.1-build.xml.patch.bz2
+	unpack netbeans-9999-r14-build.xml.patch.bz2
 
 	pushd "${S}" >/dev/null || die
 	ln -s "${DISTDIR}"/22CB933E3A1450B092C45785C187837E97523F5C-ant-libs-1.9.4.zip o.apache.tools.ant.module/external/ant-libs-1.9.4.zip || die
@@ -63,7 +63,7 @@ src_prepare() {
 	einfo "Deleting bundled class files..."
 	find -name "*.class" -type f | xargs rm -vf
 
-	epatch netbeans-8.1-build.xml.patch
+	epatch netbeans-9999-r14-build.xml.patch
 
 	# Support for custom patches
 	if [ -n "${NETBEANS9999_PATCHES_DIR}" -a -d "${NETBEANS9999_PATCHES_DIR}" ] ; then
@@ -158,8 +158,8 @@ src_prepare() {
 }
 
 src_compile() {
-	eant -f nbbuild/build.xml bootstrap || die
-	ANT_OPTS="-Xmx1536m" eant -f nbbuild/javadoctools/build.xml build-javadoc
+	eant -Dpermit.jdk8.builds=true -f nbbuild/build.xml bootstrap || die
+	ANT_OPTS="-Xmx1536m" eant -Dpermit.jdk8.builds=true -f nbbuild/javadoctools/build.xml build-javadoc
 }
 
 src_install() {

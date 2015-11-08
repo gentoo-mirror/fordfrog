@@ -9,11 +9,12 @@ inherit eutils java-pkg-2 java-ant-2
 
 DESCRIPTION="Netbeans Java Cluster"
 HOMEPAGE="http://netbeans.org/projects/java"
-SLOT="8.1"
-SOURCE_URL="http://download.netbeans.org/netbeans/8.1/rc2/zip/netbeans-8.1rc2-201510122201-src.zip"
+SLOT="9999"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2015-11-08_00-02-04/zip/netbeans-trunk-nightly-201511080002-src.zip"
 # jarjar-1.4 contains also asm libraries
 SRC_URI="${SOURCE_URL}
-	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-8.1-build.xml.patch.bz2
+	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r14-build.xml.patch.bz2
+	http://hg.netbeans.org/binaries/839F93A5213FB3E233B09BFD6D6B95669F7043C0-aether-api-1.0.2.v20150114.jar
 	http://hg.netbeans.org/binaries/694F57282D92C434800F79218E64704E5947008A-apache-maven-3.0.5-bin.zip
 	http://hg.netbeans.org/binaries/F7BD95641780C2AAE8CB9BED1686441A1CE5E749-beansbinding-1.2.1-doc.zip
 	http://hg.netbeans.org/binaries/CD2211635F3011E300CA8FEDC1CE0E1CF61C175B-eclipselink.jar
@@ -30,8 +31,7 @@ SRC_URI="${SOURCE_URL}
 	http://hg.netbeans.org/binaries/A90682C6BC0B9E105BD260C9A041FEFEA9579E46-lucene-highlighter-3.6.2.jar
 	http://hg.netbeans.org/binaries/BF206C4AA93C74A739FBAF1F1C78E3AD5F167245-maven-dependency-tree-2.0.jar
 	http://hg.netbeans.org/binaries/B2EB2006BCDB022420BDB4C2D596564539C65699-nb-javac-api.jar
-	http://hg.netbeans.org/binaries/7B98BEC9E6D1A447C9C3DDC61EF6658BA000008C-nb-javac-impl.jar
-	http://hg.netbeans.org/binaries/CA4F4DB7B6C140E36B0001873BEEA7C26489D2A1-netbeans-cos.jar
+	http://hg.netbeans.org/binaries/61EFAA681DB4565984F8FB85AA95CCA5F7CE88D1-nb-javac-impl.jar
 	http://hg.netbeans.org/binaries/29AF1D338CBB76290D1A96F5A6610F1E8C319AE5-org.eclipse.persistence.jpa.jpql_2.5.2.v20140319-9ad6abd.jar
 	http://hg.netbeans.org/binaries/3CE04BDB48FE315736B1DCE407362C57DFAE286D-org.eclipse.persistence.jpa.modelgen_2.5.2.v20140319-9ad6abd.jar
 	http://hg.netbeans.org/binaries/7666B94C1004AFFFE88E5328BD70EBA6F60125F4-spring-framework-3.2.7.RELEASE.zip
@@ -121,9 +121,10 @@ src_unpack() {
 	einfo "Deleting bundled jars..."
 	find -name "*.jar" -type f -delete
 
-	unpack netbeans-8.1-build.xml.patch.bz2
+	unpack netbeans-9999-r14-build.xml.patch.bz2
 
 	pushd "${S}" >/dev/null || die
+	ln -s "${DISTDIR}"/839F93A5213FB3E233B09BFD6D6B95669F7043C0-aether-api-1.0.2.v20150114.jar maven/external/aether-api-1.0.2.v20150114.jar || die
 	ln -s "${DISTDIR}"/694F57282D92C434800F79218E64704E5947008A-apache-maven-3.0.5-bin.zip maven.embedder/external/apache-maven-3.0.5-bin.zip || die
 	ln -s "${DISTDIR}"/F7BD95641780C2AAE8CB9BED1686441A1CE5E749-beansbinding-1.2.1-doc.zip o.jdesktop.beansbinding/external/beansbinding-1.2.1-doc.zip || die
 	ln -s "${DISTDIR}"/CD2211635F3011E300CA8FEDC1CE0E1CF61C175B-eclipselink.jar j2ee.eclipselink/external/eclipselink.jar || die
@@ -140,7 +141,7 @@ src_unpack() {
 	ln -s "${DISTDIR}"/A90682C6BC0B9E105BD260C9A041FEFEA9579E46-lucene-highlighter-3.6.2.jar maven.indexer/external/lucene-highlighter-3.6.2.jar || die
 	ln -s "${DISTDIR}"/BF206C4AA93C74A739FBAF1F1C78E3AD5F167245-maven-dependency-tree-2.0.jar maven.embedder/external/maven-dependency-tree-2.0.jar || die
 	ln -s "${DISTDIR}"/B2EB2006BCDB022420BDB4C2D596564539C65699-nb-javac-api.jar libs.javacapi/external/nb-javac-api.jar || die
-	ln -s "${DISTDIR}"/7B98BEC9E6D1A447C9C3DDC61EF6658BA000008C-nb-javac-impl.jar libs.javacimpl/external/nb-javac-impl.jar || die
+	ln -s "${DISTDIR}"/61EFAA681DB4565984F8FB85AA95CCA5F7CE88D1-nb-javac-impl.jar libs.javacimpl/external/nb-javac-impl.jar || die
 	ln -s "${DISTDIR}"/CA4F4DB7B6C140E36B0001873BEEA7C26489D2A1-netbeans-cos.jar maven/external/netbeans-cos.jar || die
 	ln -s "${DISTDIR}"/29AF1D338CBB76290D1A96F5A6610F1E8C319AE5-org.eclipse.persistence.jpa.jpql_2.5.2.v20140319-9ad6abd.jar j2ee.eclipselink/external/org.eclipse.persistence.jpa.jpql_2.5.2.v20140319-9ad6abd.jar || die
 	ln -s "${DISTDIR}"/3CE04BDB48FE315736B1DCE407362C57DFAE286D-org.eclipse.persistence.jpa.modelgen_2.5.2.v20140319-9ad6abd.jar j2ee.eclipselinkmodelgen/external/org.eclipse.persistence.jpa.modelgen_2.5.2.v20140319-9ad6abd.jar || die
@@ -154,7 +155,7 @@ src_prepare() {
 	einfo "Deleting bundled class files..."
 	find -name "*.class" -type f | xargs rm -vf
 
-	epatch netbeans-8.1-build.xml.patch
+	epatch netbeans-9999-r14-build.xml.patch
 
 	# Support for custom patches
 	if [ -n "${NETBEANS9999_PATCHES_DIR}" -a -d "${NETBEANS9999_PATCHES_DIR}" ] ; then

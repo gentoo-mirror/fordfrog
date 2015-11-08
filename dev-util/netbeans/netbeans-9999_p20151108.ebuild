@@ -7,10 +7,10 @@ inherit eutils java-pkg-2 java-ant-2
 
 DESCRIPTION="Netbeans IDE"
 HOMEPAGE="http://netbeans.org/"
-SLOT="8.1"
-SOURCE_URL="http://download.netbeans.org/netbeans/8.1/rc2/zip/netbeans-8.1rc2-201510122201-src.zip"
-PATCHES_URL="http://dev.gentoo.org/~fordfrog/distfiles/netbeans-8.1-build.xml.patch.bz2"
-L10N_URL="http://dev.gentoo.org/~fordfrog/distfiles/netbeans-l10n-8.1-20151014.tar.bz2"
+SLOT="9999"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2015-11-08_00-02-04/zip/netbeans-trunk-nightly-201511080002-src.zip"
+PATCHES_URL="http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r14-build.xml.patch.bz2"
+L10N_URL="http://dev.gentoo.org/~fordfrog/distfiles/netbeans-l10n-9999-20131010.tar.bz2"
 ALL_URLS="${SOURCE_URL} ${PATCHES_URL} ${L10N_URL}"
 SRC_URI="linguas_af? ( ${ALL_URLS} )
 	linguas_ar? ( ${ALL_URLS} )
@@ -167,7 +167,7 @@ src_unpack() {
 		einfo "Deleting bundled jars..."
 		find -name "*.jar" -type f -delete
 
-		unpack netbeans-8.1-build.xml.patch.bz2
+		unpack netbeans-9999-r14-build.xml.patch.bz2
 	fi
 }
 
@@ -176,7 +176,7 @@ src_prepare() {
 		einfo "Deleting bundled class files..."
 		find -name "*.class" -type f | xargs rm -vf
 
-		epatch netbeans-8.1-build.xml.patch
+		epatch netbeans-9999-r14-build.xml.patch
 
 		# Support for custom patches
 		if [ -n "${NETBEANS9999_PATCHES_DIR}" -a -d "${NETBEANS9999_PATCHES_DIR}" ] ; then

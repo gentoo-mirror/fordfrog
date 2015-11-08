@@ -7,10 +7,10 @@ inherit eutils java-pkg-2 java-ant-2
 
 DESCRIPTION="Netbeans Platform"
 HOMEPAGE="http://netbeans.org/features/platform/"
-SLOT="8.1"
-SOURCE_URL="http://download.netbeans.org/netbeans/8.1/rc2/zip/netbeans-8.1rc2-201510122201-src.zip"
+SLOT="9999"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2015-11-08_00-02-04/zip/netbeans-trunk-nightly-201511080002-src.zip"
 SRC_URI="${SOURCE_URL}
-	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-8.1-build.xml.patch.bz2
+	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r14-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/2F7553F50B0D14ED811B849C282DA8C1FFC32AAE-asm-all-5.0.1.jar
 	http://hg.netbeans.org/binaries/1BA97A9FFD4A1DFF3E75B76CD3AE3D0EFF8493B7-felix-4.2.1.jar
 	http://hg.netbeans.org/binaries/941A8BE4506C65F0A9001C08812FB7DA1E505E21-junit-4.12-javadoc.jar
@@ -30,6 +30,11 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 S="${WORKDIR}"
 
+# oracle-jdk-bin is needed for now because of javafx which is not packaged separately yet
+# [parseprojectxml] Distilling /var/tmp/portage/dev-java/netbeans-platform-9999_p20151108/work/nbbuild/build/public-package-jars/org-netbeans-libs-javafx.jar from [/var/tmp/portage/dev-java/netbeans-platform-9999_p20151108/work/nbbuild/netbeans/platform/modules/org-netbeans-libs-javafx.jar, /usr/lib64/icedtea8/jre/lib/ext/jfxrt.jar]
+# [parseprojectxml] Classpath entry /usr/lib64/icedtea8/jre/lib/ext/jfxrt.jar does not exist; skipping
+#  [nbmerge] Failed to build target: all-api.htmlui
+
 CDEPEND="dev-java/hamcrest-core:1.3
 	dev-java/javahelp:0
 	>=dev-java/jna-3.4:0
@@ -38,13 +43,7 @@ CDEPEND="dev-java/hamcrest-core:1.3
 	dev-java/osgi-compendium:0
 	dev-java/swing-layout:1[source]
 	dev-java/testng:0"
-# oracle-jdk-bin is needed because other jdks do not contain file jre/lib/ext/jfxrt.jar
-# the error:
-#  [parseprojectxml] Distilling /var/tmp/portage/dev-java/netbeans-platform-9999_p20140922/work/nbbuild/build/public-package-jars/org-netbeans-libs-javafx.jar from [/var/tmp/portage/dev-java/netbeans-platform-9999_p20140922/work/nbbuild/netbeans/platform/modules/org-netbeans-libs-javafx.jar, /opt/icedtea-bin-7.2.4.7/jre/lib/ext/jfxrt.jar]
-#  [parseprojectxml] Classpath entry /opt/icedtea-bin-7.2.4.7/jre/lib/ext/jfxrt.jar does not exist; skipping
-#  [nbmerge] Failed to build target: all-api.html4j
-
-DEPEND="dev-java/oracle-jdk-bin:1.7
+DEPEND="dev-java/oracle-jdk-bin:1.8[javafx]
 	app-arch/unzip
 	${CDEPEND}"
 RDEPEND=">=virtual/jdk-1.7
@@ -57,7 +56,7 @@ EANT_BUILD_TARGET="rebuild-cluster"
 EANT_EXTRA_ARGS="-Drebuild.cluster.name=nb.cluster.platform -Dext.binaries.downloaded=true -Djava.awt.headless=true -Dpermit.jdk8.builds=true"
 EANT_FILTER_COMPILER="ecj-3.3 ecj-3.4 ecj-3.5 ecj-3.6 ecj-3.7"
 JAVA_PKG_BSFIX="off"
-JAVA_PKG_WANT_BUILD_VM="oracle-jdk-bin-1.7"
+JAVA_PKG_WANT_BUILD_VM="oracle-jdk-bin-1.8"
 JAVA_PKG_WANT_SOURCE="1.7"
 JAVA_PKG_WANT_TARGET="1.7"
 
@@ -67,7 +66,7 @@ src_unpack() {
 	einfo "Deleting bundled jars..."
 	find -name "*.jar" -type f -delete
 
-	unpack netbeans-8.1-build.xml.patch.bz2
+	unpack netbeans-9999-r14-build.xml.patch.bz2
 
 	pushd "${S}" >/dev/null || die
 	ln -s "${DISTDIR}"/2F7553F50B0D14ED811B849C282DA8C1FFC32AAE-asm-all-5.0.1.jar libs.asm/external/asm-all-5.0.1.jar || die
@@ -92,7 +91,7 @@ src_prepare() {
 	find -name "*.class" -type f | xargs rm -vf
 
 	# upstream jna jar contains bundled binary libraries so we disable that feature
-	epatch netbeans-8.1-build.xml.patch
+	epatch netbeans-9999-r14-build.xml.patch
 
 	# Support for custom patches
 	if [ -n "${NETBEANS9999_PATCHES_DIR}" -a -d "${NETBEANS9999_PATCHES_DIR}" ] ; then
