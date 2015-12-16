@@ -219,56 +219,55 @@ src_install() {
 
 	popd >/dev/null || die
 
-	local instdir=/${INSTALL_DIR}/maven/lib
-	pushd "${D}"/${instdir} >/dev/null || die
-	rm commons-cli-1.2.jar && dosym /usr/share/commons-cli-1/lib/commons-cli.jar ${instdir}/commons-cli-1.2.jar || die
+	local instdir="${D}"/${INSTALL_DIR}/maven/lib
+	pushd "${instdir}" >/dev/null || die
+	rm commons-cli-1.2.jar && java-pkg_jar-from --into "${instdir}" commons-cli-1 commons-cli.jar commons-cli-1.2.jar
 	popd >/dev/null || die
 
-	local instdir=/${INSTALL_DIR}/modules/ext
-	pushd "${D}"/${instdir} >/dev/null || die
-	rm AbsoluteLayout.jar  && dosym /usr/share/absolutelayout/lib/absolutelayout.jar ${instdir}/AbsoluteLayout.jar || die
-	rm beansbinding-1.2.1.jar && dosym /usr/share/beansbinding/lib/beansbinding.jar ${instdir}/beansbinding-1.2.1.jar || die
-	rm cglib-2.2.jar && dosym /usr/share/cglib-3/lib/cglib.jar ${instdir}/cglib-2.2.jar || die
+	local instdir="${D}"/${INSTALL_DIR}/modules/ext
+	pushd "${instdir}" >/dev/null || die
+	rm AbsoluteLayout.jar  && java-pkg_jar-from --into "${instdir}" absolutelayout absolutelayout.jar AbsoluteLayout.jar
+	rm beansbinding-1.2.1.jar && java-pkg_jar-from --into "${instdir}" beansbinding beansbinding.jar beansbinding-1.2.1.jar
+	rm cglib-2.2.jar && java-pkg_jar-from --into "${instdir}" cglib-3 cglib.jar cglib-2.2.jar
 	popd >/dev/null || die
 
-	local instdir=${INSTALL_DIR}/modules/ext/hibernate4
-	local dinstdir="${D}/${instdir}"
-	pushd "${D}"/${instdir} >/dev/null || die
-	rm antlr-2.7.7.jar && dosym /usr/share/antlr/lib/antlr.jar ${instdir}/antlr-2.7.7.jar || die
-	rm c3p0-0.9.2.1.jar && dosym /usr/share/c3p0/lib/c3p0.jar ${instdir}/c3p0-0.9.2.1.jar || die
-	rm cglib-2.2.jar && dosym /usr/share/cglib-3/lib/cglib.jar ${instdir}/cglib-2.2.jar || die
-	rm commons-collections-3.2.1.jar && dosym /usr/share/commons-collections/lib/commons-collections.jar ${instdir}/commons-collections-3.2.1.jar || die
-	rm dom4j-1.6.1.jar && dosym /usr/share/dom4j-1/lib/dom4j.jar ${instdir}/dom4j-1.6.1.jar || die
-	rm javassist-3.18.1-GA.jar && dosym /usr/share/javassist-3/lib/javassist.jar ${instdir}/javassist-3.18.1-GA.jar || die
-	rm jboss-logging-3.1.3.GA.jar && dosym /usr/share/jboss-logging/lib/jboss-logging.jar ${instdir}/jboss-logging-3.1.3.GA.jar || die
-	rm jboss-transaction-api_1.2_spec-1.0.0.Final.jar && dosym /usr/share/glassfish-transaction-api/lib/jta.jar ${instdir}/jboss-transaction-api_1.2_spec-1.0.0.Final.jar || die
-	rm jtidy-r8-20060801.jar && java-pkg_jar-from --into "${dinstdir}" jtidy jtidy.jar jtidy-r8-20060801.jar
-	rm log4j-1.2.12.jar && dosym /usr/share/log4j/lib/log4j.jar ${instdir}/log4j-1.2.12.jar || die
-	rm slf4j-api-1.6.1.jar && dosym /usr/share/slf4j-api/lib/slf4j-api.jar ${instdir}/slf4j-api-1.6.1.jar || die
-	rm slf4j-log4j12-1.6.1.jar && dosym /usr/share/slf4j-log4j12/lib/slf4j-log4j12.jar ${instdir}/slf4j-log4j12-1.6.1.jar || die
-	rm slf4j-simple-1.6.1.jar && dosym /usr/share/slf4j-simple/lib/slf4j-simple.jar ${instdir}/slf4j-simple-1.6.1.jar || die
+	local instdir="${D}"/${INSTALL_DIR}/modules/ext/hibernate4
+	pushd "${instdir}" >/dev/null || die
+	rm antlr-2.7.7.jar && java-pkg_jar-from --into "${instdir}" antlr antlr.jar antlr-2.7.7.jar
+	rm c3p0-0.9.2.1.jar && java-pkg_jar-from --into "${instdir}" c3p0 c3p0.jar c3p0-0.9.2.1.jar
+	rm cglib-2.2.jar && java-pkg_jar-from --into "${instdir}" cglib-3 cglib.jar cglib-2.2.jar
+	rm commons-collections-3.2.1.jar && java-pkg_jar-from --into "${instdir}" commons-collections commons-collections.jar commons-collections-3.2.1.jar
+	rm dom4j-1.6.1.jar && java-pkg_jar-from --into "${instdir}" dom4j-1 dom4j.jar dom4j-1.6.1.jar
+	rm javassist-3.18.1-GA.jar && java-pkg_jar-from --into "${instdir}" javassist-3 javassist.jar javassist-3.18.1-GA.jar
+	rm jboss-logging-3.1.3.GA.jar && java-pkg_jar-from --into "${instdir}" jboss-logging jboss-logging.jar jboss-logging-3.1.3.GA.jar
+	rm jboss-transaction-api_1.2_spec-1.0.0.Final.jar && java-pkg_jar-from --into "${instdir}" glassfish-transaction-api jta.jar jboss-transaction-api_1.2_spec-1.0.0.Final.jar
+	rm jtidy-r8-20060801.jar && java-pkg_jar-from --into "${instdir}" jtidy jtidy.jar jtidy-r8-20060801.jar
+	rm log4j-1.2.12.jar && java-pkg_jar-from --into "${instdir}" log4j log4j.jar log4j-1.2.12.jar
+	rm slf4j-api-1.6.1.jar && java-pkg_jar-from --into "${instdir}" slf4j-api slf4j-api.jar slf4j-api-1.6.1.jar
+	rm slf4j-log4j12-1.6.1.jar && java-pkg_jar-from --into "${instdir}" slf4j-log4j12 slf4j-log4j12.jar slf4j-log4j12-1.6.1.jar
+	rm slf4j-simple-1.6.1.jar && java-pkg_jar-from --into "${instdir}" slf4j-simple slf4j-simple.jar slf4j-simple-1.6.1.jar
 	popd >/dev/null || die
 
-	local instdir=/${INSTALL_DIR}/modules/ext/jaxws22
-	pushd "${D}"/${instdir} >/dev/null || die
-	rm FastInfoset.jar && dosym /usr/share/fastinfoset/lib/fastinfoset.jar ${instdir}/FastInfoset.jar || die
-	rm javax.mail_1.4.jar && dosym /usr/share/oracle-javamail/lib/mail.jar ${instdir}/javax.mail_1.4.jar || die
-	rm mimepull.jar && dosym /usr/share/mimepull/lib/mimepull.jar ${instdir}/mimepull.jar || die
-	rm saaj-impl.jar && dosym /usr/share/saaj/lib/saaj.jar ${instdir}/saaj-impl.jar || die
-	rm stax-ex.jar && dosym /usr/share/stax-ex/lib/stax-ex.jar ${instdir}/stax-ex.jar || die
-	rm stax2-api.jar && dosym /usr/share/stax2-api/lib/stax2-api.jar ${instdir}/stax2-api.jar || die
-	rm streambuffer.jar && dosym /usr/share/xmlstreambuffer/lib/xmlstreambuffer.jar ${instdir}/streambuffer.jar || die
+	local instdir="${D}"/${INSTALL_DIR}/modules/ext/jaxws22
+	pushd "${instdir}" >/dev/null || die
+	rm FastInfoset.jar && java-pkg_jar-from --into "${instdir}" fastinfoset fastinfoset.jar FastInfoset.jar
+	rm javax.mail_1.4.jar && java-pkg_jar-from --into "${instdir}" oracle-javamail mail.jar javax.mail_1.4.jar
+	rm mimepull.jar && java-pkg_jar-from --into "${instdir}" mimepull mimepull.jar
+	rm saaj-impl.jar && java-pkg_jar-from --into "${instdir}" saaj saaj.jar saaj-impl.jar
+	rm stax-ex.jar && java-pkg_jar-from --into "${instdir}" stax-ex stax-ex.jar
+	rm stax2-api.jar && java-pkg_jar-from --into "${instdir}" stax2-api stax2-api.jar
+	rm streambuffer.jar && java-pkg_jar-from --into "${instdir}" xmlstreambuffer xmlstreambuffer.jar streambuffer.jar
 	popd >/dev/null || die
 
-	local instdir=${INSTALL_DIR}/modules/ext/jaxws22/api
-	pushd "${D}"/${instdir} >/dev/null || die
-	rm jsr181-api.jar && dosym /usr/share/jsr181/lib/jsr181.jar ${instdir}/jsr181-api.jar || die
-	rm saaj-api.jar && dosym /usr/share/jsr67/lib/jsr67.jar ${instdir}/saaj-api.jar || die
+	local instdir="${D}"/${INSTALL_DIR}/modules/ext/jaxws22/api
+	pushd "${instdir}" >/dev/null || die
+	rm jsr181-api.jar && java-pkg_jar-from --into "${instdir}" jsr181 jsr181.jar jsr181-api.jar
+	rm saaj-api.jar && java-pkg_jar-from --into "${instdir}" jsr67 jsr67.jar saaj-api.jar
 	popd >/dev/null || die
 
-	local instdir=${INSTALL_DIR}/modules/ext/maven
-	pushd "${D}"/${instdir} >/dev/null || die
-	rm jdom-1.0.jar && dosym /usr/share/jdom/lib/jdom.jar ${instdir}/jdom-1.0.jar || die
+	local instdir="${D}"/${INSTALL_DIR}/modules/ext/maven
+	pushd "${instdir}" >/dev/null || die
+	rm jdom-1.0.jar && java-pkg_jar-from --into "${instdir}" jdom jdom.jar jdom-1.0.jar
 	popd >/dev/null || die
 
 	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/java

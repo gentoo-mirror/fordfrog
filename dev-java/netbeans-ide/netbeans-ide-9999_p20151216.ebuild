@@ -345,39 +345,39 @@ src_install() {
 
 	popd >/dev/null || die
 
-	local instdir=${INSTALL_DIR}/modules
-	pushd "${D}"/${instdir} >/dev/null || die
-	rm com-jcraft-jsch.jar && dosym /usr/share/jsch/lib/jsch.jar ${instdir}/com-jcraft-jsch.jar || die
+	local instdir="${D}"/${INSTALL_DIR}/modules
+	pushd "${instdir}" >/dev/null || die
+	rm com-jcraft-jsch.jar && java-pkg_jar-from --into "${instdir}" jsch jsch.jar com-jcraft-jsch.jar
 	popd >/dev/null || die
 
-	local instdir=${INSTALL_DIR}/modules/ext
-	pushd "${D}"/${instdir} >/dev/null || die
-	rm commons-compress-1.8.1.jar && dosym /usr/share/commons-compress/lib/commons-compress.jar ${instdir}/commons-compress-1.8.1.jar || die
+	local instdir="${D}"/${INSTALL_DIR}/modules/ext
+	pushd "${instdir}" >/dev/null || die
+	rm commons-compress-1.8.1.jar && java-pkg_jar-from --into "${instdir}" commons-compress commons-compress.jar commons-compress-1.8.1.jar
 	# rm freemarker-2.3.19.jar && dosym /usr/share/freemarker-2.3/lib/freemarker.jar ${instdir}/freemarker-2.3.19.jar || die
-	rm icu4j-4_4_2.jar && dosym /usr/share/icu4j-4.4/lib/icu4j.jar ${instdir}/icu4j-4_4_2.jar || die
-	rm isorelax.jar && dosym /usr/share/iso-relax/lib/isorelax.jar ${instdir}/isorelax.jar || die
-	rm json-simple-1.1.1.jar && dosym /usr/share/json-simple/lib/json-simple.jar ${instdir}/json-simple-1.1.1.jar || die
-	rm jvyamlb-0.2.7.jar && dosym /usr/share/jvyamlb/lib/jvyamlb.jar ${instdir}/jvyamlb-0.2.7.jar || die
-	rm log4j-1.2.15.jar && dosym /usr/share/log4j/lib/log4j.jar ${instdir}/log4j-1.2.15.jar || die
-	rm lucene-core-3.5.0.jar && dosym /usr/share/lucene-3.5/lib/lucene-core.jar ${instdir}/lucene-core-3.5.0.jar || die
-	rm mysql-connector-java-5.1.23-bin.jar && dosym /usr/share/jdbc-mysql/lib/jdbc-mysql.jar ${instdir}/mysql-connector-java-5.1.23-bin.jar || die
-	rm postgresql-9.2-1002.jdbc4.jar && dosym /usr/share/jdbc-postgresql/lib/jdbc-postgresql.jar ${instdir}/postgresql-9.2-1002.jdbc4.jar || die
-	rm saxon9B.jar && dosym /usr/share/saxon-9/lib/saxon.jar ${instdir}/saxon9B.jar || die
-	rm servlet-2.2.jar && dosym /usr/share/tomcat-servlet-api-2.2/lib/servlet.jar ${instdir}/servlet-2.2.jar || die
-	rm smack.jar && dosym /usr/share/smack-2.2/lib/smack.jar ${instdir}/smack.jar || die
-	rm smackx.jar && dosym /usr/share/smack-2.2/lib/smackx.jar ${instdir}/smackx.jar || die
+	rm icu4j-4_4_2.jar && java-pkg_jar-from --into "${instdir}" icu4j-4.4 icu4j.jar icu4j-4_4_2.jar
+	rm isorelax.jar && java-pkg_jar-from --into "${instdir}" iso-relax isorelax.jar
+	rm json-simple-1.1.1.jar && java-pkg_jar-from --into "${instdir}" json-simple json-simple.jar json-simple-1.1.1.jar
+	rm jvyamlb-0.2.7.jar && java-pkg_jar-from --into "${instdir}" jvyamlb jvyamlb.jar jvyamlb-0.2.7.jar
+	rm log4j-1.2.15.jar && java-pkg_jar-from --into "${instdir}" log4j log4j.jar log4j-1.2.15.jar
+	rm lucene-core-3.5.0.jar && java-pkg_jar-from --into "${instdir}" lucene-3.5 lucene-core.jar lucene-core-3.5.0.jar
+	rm mysql-connector-java-5.1.23-bin.jar && java-pkg_jar-from --into "${instdir}" jdbc-mysql jdbc-mysql.jar mysql-connector-java-5.1.23-bin.jar
+	rm postgresql-9.2-1002.jdbc4.jar && java-pkg_jar-from --into "${instdir}" jdbc-postgresql jdbc-postgresql.jar postgresql-9.2-1002.jdbc4.jar
+	rm saxon9B.jar && java-pkg_jar-from --into "${instdir}" saxon-9 saxon.jar saxon9B.jar
+	rm servlet-2.2.jar && java-pkg_jar-from --into "${instdir}" tomcat-servlet-api-2.2 servlet.jar servlet-2.2.jar
+	rm smack.jar && java-pkg_jar-from --into "${instdir}" smack-2.2 smack.jar
+	rm smackx.jar && java-pkg_jar-from --into "${instdir}" smack-2.2 smackx.jar
 	# rm svnjavahl.jar && dosym /usr/share/subversion/lib/svn-javahl.jar ${instdir}/svnjavahl.jar || die
-	rm xerces-2.8.0.jar && dosym /usr/share/xerces-2/lib/xercesImpl.jar ${instdir}/xerces-2.8.0.jar || die
+	rm xerces-2.8.0.jar && java-pkg_jar-from --into "${instdir}" xerces-2 xercesImpl.jar xerces-2.8.0.jar
 	popd >/dev/null || die
 
-	local instdir=${INSTALL_DIR}/modules/ext/jaxb
-	pushd "${D}"/${instdir} >/dev/null || die
-	rm activation.jar && dosym /usr/share/sun-jaf/lib/activation.jar ${instdir}/activation.jar || die
+	local instdir="${D}"/${INSTALL_DIR}/modules/ext/jaxb
+	pushd "${instdir}" >/dev/null || die
+	rm activation.jar && java-pkg_jar-from --into "${instdir}" sun-jaf activation.jar
 	popd >/dev/null || die
 
-	local instdir=${INSTALL_DIR}/modules/ext/jaxb/api
-	pushd "${D}"/${instdir} >/dev/null || die
-	rm jsr173_1.0_api.jar && dosym /usr/share/jsr173/lib/jsr173.jar ${instdir}/jsr173_1.0_api.jar || die
+	local instdir="${D}"/${INSTALL_DIR}/modules/ext/jaxb/api
+	pushd "${instdir}" >/dev/null || die
+	rm jsr173_1.0_api.jar && java-pkg_jar-from --into "${instdir}" jsr173 jsr173.jar jsr173_1.0_api.jar
 	popd >/dev/null || die
 
 	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/ide

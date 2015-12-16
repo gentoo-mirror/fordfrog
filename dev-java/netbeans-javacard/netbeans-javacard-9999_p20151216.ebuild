@@ -119,15 +119,15 @@ src_install() {
 
 	popd >/dev/null || die
 
-	local instdir=${INSTALL_DIR}/JCDK3.0.2_ConnectedEdition/lib
-	pushd "${D}"/${instdir} >/dev/null || die
-	rm ant-contrib-1.0b3.jar && dosym /usr/share/ant-contrib/lib/ant-contrib.jar ${instdir}/ant-contrib-1.0b3.jar || die
-	rm asm-all-3.1.jar && dosym /usr/share/asm-3/lib/asm.jar ${instdir}/asm-all-3.1.jar || die
-	rm bcel-5.2.jar && dosym /usr/share/bcel/lib/bcel.jar ${instdir}/bcel-5.2.jar || die
-	rm commons-cli-1.0.jar && dosym /usr/share/commons-cli-1/lib/commons-cli.jar ${instdir}/commons-cli-1.0.jar || die
-	rm commons-codec-1.3.jar && dosym /usr/share/commons-codec/lib/commons-codec.jar ${instdir}/commons-codec-1.3.jar || die
-	rm commons-httpclient-3.0.jar && dosym /usr/share/commons-httpclient-3/lib/commons-httpclient.jar ${instdir}/commons-httpclient-3.0.jar || die
-	rm commons-logging-1.1.jar && dosym /usr/share/commons-logging/lib/commons-logging.jar ${instdir}/commons-logging-1.1.jar || die
+	local instdir="${D}"/${INSTALL_DIR}/JCDK3.0.2_ConnectedEdition/lib
+	pushd "${instdir}" >/dev/null || die
+	rm ant-contrib-1.0b3.jar && java-pkg_jar-from --into "${instdir}" ant-contrib ant-contrib.jar ant-contrib-1.0b3.jar
+	rm asm-all-3.1.jar && java-pkg_jar-from --into "${instdir}" asm-3 asm.jar asm-all-3.1.jar
+	rm bcel-5.2.jar && java-pkg_jar-from --into "${instdir}" bcel bcel.jar bcel-5.2.jar
+	rm commons-cli-1.0.jar && java-pkg_jar-from --into "${instdir}" commons-cli-1 commons-cli.jar commons-cli-1.0.jar
+	rm commons-codec-1.3.jar && java-pkg_jar-from --into "${instdir}" commons-codec commons-codec.jar commons-codec-1.3.jar
+	rm commons-httpclient-3.0.jar && java-pkg_jar-from --into "${instdir}" commons-httpclient-3 commons-httpclient.jar commons-httpclient-3.0.jar
+	rm commons-logging-1.1.jar && java-pkg_jar-from --into "${instdir}" commons-logging commons-logging.jar commons-logging-1.1.jar
 	popd >/dev/null || die
 
 	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/javacard

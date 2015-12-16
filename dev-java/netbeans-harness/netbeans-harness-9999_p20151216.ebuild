@@ -105,9 +105,9 @@ src_install() {
 
 	popd >/dev/null || die
 
-	local instdir=${INSTALL_DIR}/antlib
-	pushd "${D}"/${instdir} >/dev/null || die
-	rm jsearch-2.0_05.jar && dosym /usr/share/javahelp/lib/jsearch.jar ${instdir}/jsearch-2.0_05.jar || die
+	local instdir="${D}"/${INSTALL_DIR}/antlib
+	pushd "${instdir}" >/dev/null || die
+	rm jsearch-2.0_05.jar && java-pkg_jar-from --into "${instdir}" javahelp jsearch.jar jsearch-2.0_05.jar
 	popd >/dev/null || die
 
 	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/harness

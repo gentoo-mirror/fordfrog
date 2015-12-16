@@ -118,9 +118,9 @@ src_install() {
 
 	popd >/dev/null || die
 
-	local instdir=${INSTALL_DIR}/modules/ext
-	pushd "${D}"/${instdir} >/dev/null || die
-	rm java-cup-11a.jar && dosym /usr/share/javacup/lib/javacup.jar ${instdir}/java-cup-11a.jar || die
+	local instdir="${D}"/${INSTALL_DIR}/modules/ext
+	pushd "${instdir}" >/dev/null || die
+	rm java-cup-11a.jar && java-pkg_jar-from --into "${instdir}" javacup javacup.jar java-cup-11a.jar
 	popd >/dev/null || die
 
 	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/php
