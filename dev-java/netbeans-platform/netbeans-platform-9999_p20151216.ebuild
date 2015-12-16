@@ -148,17 +148,17 @@ src_install() {
 	fperms 775 ${INSTALL_DIR}/lib/nbexec
 	dosym ${INSTALL_DIR}/lib/nbexec /usr/bin/nbexec-${SLOT}
 
-	local instdir=${INSTALL_DIR}/modules/ext
-	pushd "${D}"/${instdir} >/dev/null || die
-	rm hamcrest-core-1.3.jar && dosym /usr/share/hamcrest-core-1.3/lib/hamcrest-core.jar ${instdir}/hamcrest-core-1.3.jar || die
-	rm jhall-2.0_05.jar && dosym /usr/share/javahelp/lib/jhall.jar ${instdir}/jhall-2.0_05.jar || die
-	rm jna-4.1.0.jar && dosym /usr/share/jna/lib/jna.jar ${instdir}/jna-4.1.0.jar || die
-	rm jna-platform-4.1.0.jar && dosym /usr/share/jna/lib/platform.jar ${instdir}/jna-platform-4.1.0.jar || die
-	rm junit-4.12.jar && dosym /usr/share/junit-4/lib/junit.jar ${instdir}/junit-4.12.jar || die
-	rm osgi.cmpn-4.2.jar && dosym /usr/share/osgi-compendium/lib/osgi-compendium.jar ${instdir}/osgi.cmpn-4.2.jar || die
-	rm osgi.core-5.0.0.jar && dosym /usr/share/osgi-core-api/lib/osgi-core-api.jar ${instdir}/osgi.core-5.0.0.jar || die
-	rm swing-layout-1.0.4.jar && dosym /usr/share/swing-layout-1/lib/swing-layout.jar ${instdir}/swing-layout-1.0.4.jar || die
-	rm testng-6.8.1-dist.jar && dosym /usr/share/testng/lib/testng.jar ${instdir}/testng-6.8.1-dist.jar || die
+	local instdir="${D}"/${INSTALL_DIR}/modules/ext
+	pushd "${instdir}" >/dev/null || die
+	rm hamcrest-core-1.3.jar && java-pkg_jar-from --into "${instdir}" hamcrest-core-1.3 hamcrest-core.jar hamcrest-core-1.3.jar
+	rm jhall-2.0_05.jar && java-pkg_jar-from --into "${instdir}" javahelp jhall.jar jhall-2.0_05.jar
+	rm jna-4.1.0.jar && java-pkg_jar-from --into "${instdir}" jna jna.jar jna-4.1.0.jar
+	rm jna-platform-4.1.0.jar && java-pkg_jar-from --into "${instdir}" jna platform.jar jna-platform-4.1.0.jar
+	rm junit-4.12.jar && java-pkg_jar-from --into "${instdir}" junit-4 junit.jar junit-4.12.jar
+	rm osgi.cmpn-4.2.jar && java-pkg_jar-from --into "${instdir}" osgi-compendium osgi-compendium.jar osgi.cmpn-4.2.jar
+	rm osgi.core-5.0.0.jar && java-pkg_jar-from --into "${instdir}" osgi-core-api osgi-core-api.jar osgi.core-5.0.0.jar
+	rm swing-layout-1.0.4.jar && java-pkg_jar-from --into "${instdir}" swing-layout-1 swing-layout.jar swing-layout-1.0.4.jar
+	rm testng-6.8.1-dist.jar && java-pkg_jar-from --into "${instdir}" testng testng.jar testng-6.8.1-dist.jar
 	popd >/dev/null || die
 
 	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/platform

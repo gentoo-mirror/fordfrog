@@ -58,12 +58,12 @@ CDEPEND="~dev-java/netbeans-ide-${PV}
 	dev-java/commons-codec:0
 	dev-java/commons-fileupload:0
 	dev-java/commons-logging:0
-	dev-java/glassfish-deployment-api:1.2"
+	dev-java/glassfish-deployment-api:1.2
+	dev-java/jsr181:0"
 DEPEND=">=virtual/jdk-1.7
 	app-arch/unzip
 	${CDEPEND}
 	dev-java/javahelp:0
-	dev-java/jsr181:0
 	>=dev-java/junit-4.4:4
 	dev-java/tomcat-servlet-api:2.3"
 RDEPEND=">=virtual/jdk-1.7
@@ -159,7 +159,7 @@ src_prepare() {
 	java-pkg_jar-from --into libs.amazon/external commons-codec commons-codec.jar commons-codec-1.3.jar
 	java-pkg_jar-from --into libs.amazon/external commons-logging commons-logging.jar commons-logging-1.1.1.jar
 	java-pkg_jar-from --into libs.commons_fileupload/external commons-fileupload commons-fileupload.jar commons-fileupload-1.3.jar
-	java-pkg_jar-from --build-only --into javaee7.api/external jsr181 jsr181.jar jsr181-api.jar
+	java-pkg_jar-from --into javaee7.api/external jsr181 jsr181.jar jsr181-api.jar
 	java-pkg_jar-from --build-only --into libs.junit4/external junit-4 junit.jar junit-4.12.jar
 	java-pkg_jar-from --build-only --into web.monitor/external tomcat-servlet-api-2.3 servlet.jar servlet-2.3.jar
 
@@ -215,51 +215,51 @@ src_install() {
 
 	popd >/dev/null || die
 
-	local instdir=${INSTALL_DIR}/modules/ext
-	pushd "${D}"/${instdir} >/dev/null || die
-	rm commons-fileupload-1.3.jar && dosym /usr/share/commons-fileupload/lib/commons-fileupload.jar ${instdir}/commons-fileupload-1.3.jar || die
-	rm jsr88javax.jar && dosym /usr/share/glassfish-deployment-api-1.2/lib/glassfish-deployment-api.jar ${instdir}/jsr88javax.jar || die
+	local instdir="${D}"/${INSTALL_DIR}/modules/ext
+	pushd "${instdir}" >/dev/null || die
+	rm commons-fileupload-1.3.jar && java-pkg_jar-from --into "${instdir}" commons-fileupload commons-fileupload.jar commons-fileupload-1.3.jar
+	rm jsr88javax.jar && java-pkg_jar-from --into "${instdir}" glassfish-deployment-api-1.2 glassfish-deployment-api.jar jsr88javax.jar
 	popd >/dev/null || die
 
-	local instdir=${INSTALL_DIR}/modules/ext/aws-sdk
-	pushd "${D}"/${instdir} >/dev/null || die
-	rm commons-codec-1.3.jar && dosym /usr/share/commons-codec/lib/commons-codec.jar ${instdir}/commons-codec-1.3.jar || die
-	rm commons-logging-1.1.1.jar && dosym /usr/share/commons-logging/lib/commons-logging.jar ${instdir}/commons-logging-1.1.1.jar || die
+	local instdir="${D}"/${INSTALL_DIR}/modules/ext/aws-sdk
+	pushd "${instdir}" >/dev/null || die
+	rm commons-codec-1.3.jar && java-pkg_jar-from --into "${instdir}" commons-codec commons-codec.jar commons-codec-1.3.jar
+	rm commons-logging-1.1.1.jar && java-pkg_jar-from --into "${instdir}" commons-logging commons-logging.jar commons-logging-1.1.1.jar
 	popd >/dev/null || die
 
-	local instdir=${INSTALL_DIR}/modules/ext/javaee7-endorsed
-	pushd "${D}"/${instdir} >/dev/null || die
-	rm jsr181-api.jar && dosym /usr/share/jsr181/lib/jsr181.jar ${instdir}/jsr181-api.jar || die
+	local instdir="${D}"/${INSTALL_DIR}/modules/ext/javaee7-endorsed
+	pushd "${instdir}" >/dev/null || die
+	rm jsr181-api.jar && java-pkg_jar-from --into "${instdir}" jsr181 jsr181.jar jsr181-api.jar
 	popd >/dev/null || die
 
-	local instdir=${INSTALL_DIR}/modules/ext/jersey2/ext
-	pushd "${D}"/${instdir} >/dev/null || die
-	rm cglib-2.2.0-b21.jar && dosym /usr/share/cglib-3/lib/cglib.jar ${instdir}/cglib-2.2.0-b21.jar || die
-	rm guava-14.0.1.jar && dosym /usr/share/guava-14/lib/guava.jar ${instdir}/guava-14.0.1.jar || die
-	rm org.osgi.core-4.2.0.jar && dosym /usr/share/osgi-core-api/lib/osgi-core-api.jar ${instdir}/org.osgi.core-4.2.0.jar || die
-	rm persistence-api-1.0.jar && dosym /usr/share/glassfish-persistence/lib/glassfish-persistence.jar ${instdir}/persistence-api-1.0.jar || die
-	rm validation-api-1.1.0.Final.jar && dosym /usr/share/validation-api-1.0/lib/validation-api.jar ${instdir}/validation-api-1.1.0.Final.jar || die
+	local instdir="${D}"/${INSTALL_DIR}/modules/ext/jersey2/ext
+	pushd "${instdir}" >/dev/null || die
+	rm cglib-2.2.0-b21.jar && java-pkg_jar-from --into "${instdir}" cglib-3 cglib.jar cglib-2.2.0-b21.jar
+	rm guava-14.0.1.jar && java-pkg_jar-from --into "${instdir}" guava-14 guava.jar guava-14.0.1.jar
+	rm org.osgi.core-4.2.0.jar && java-pkg_jar-from --into "${instdir}" osgi-core-api osgi-core-api.jar org.osgi.core-4.2.0.jar
+	rm persistence-api-1.0.jar && java-pkg_jar-from --into "${instdir}" glassfish-persistence glassfish-persistence.jar persistence-api-1.0.jar
+	rm validation-api-1.1.0.Final.jar && java-pkg_jar-from --into "${instdir}" validation-api-1.0 validation-api.jar validation-api-1.1.0.Final.jar
 	popd >/dev/null || die
 
-	local instdir=${INSTALL_DIR}/modules/ext/jsf-1_2
-	pushd "${D}"/${instdir} >/dev/null || die
-	rm commons-beanutils.jar && dosym /usr/share/commons-beanutils-1.7/lib/commons-beanutils.jar ${instdir}/commons-beanutils.jar || die
-	rm commons-collections.jar && dosym /usr/share/commons-collections/lib/commons-collections.jar ${instdir}/commons-collections.jar || die
-	rm commons-digester.jar && dosym /usr/share/commons-digester/lib/commons-digester.jar ${instdir}/commons-digester.jar || die
-	rm commons-logging.jar && dosym /usr/share/commons-logging/lib/commons-logging.jar ${instdir}/commons-logging.jar || die
+	local instdir="${D}"/${INSTALL_DIR}/modules/ext/jsf-1_2
+	pushd "${instdir}" >/dev/null || die
+	rm commons-beanutils.jar && java-pkg_jar-from --into "${instdir}" commons-beanutils-1.7 commons-beanutils.jar
+	rm commons-collections.jar && java-pkg_jar-from --into "${instdir}" commons-collections commons-collections.jar
+	rm commons-digester.jar && java-pkg_jar-from --into "${instdir}" commons-digester commons-digester.jar
+	rm commons-logging.jar && java-pkg_jar-from --into "${instdir}" commons-logging commons-logging.jar
 	popd >/dev/null || die
 
-	local instdir=${INSTALL_DIR}/modules/ext/struts
-	pushd "${D}"/${instdir} >/dev/null || die
-	rm antlr-2.7.2.jar && dosym /usr/share/antlr/lib/antlr.jar ${instdir}/antlr-2.7.2.jar || die
-	rm bsf-2.3.0.jar && dosym /usr/share/bsf-2.3/lib/bsf.jar ${instdir}/bsf-2.3.0.jar || die
-	rm commons-beanutils-1.8.0.jar && dosym /usr/share/commons-beanutils-1.7/lib/commons-beanutils.jar ${instdir}/commons-beanutils-1.8.0.jar || die
-	rm commons-digester-1.8.jar && dosym /usr/share/commons-digester/lib/commons-digester.jar ${instdir}/commons-digester-1.8.jar || die
-	rm commons-fileupload-1.1.1.jar && dosym /usr/share/commons-fileupload/lib/commons-fileupload.jar ${instdir}/commons-fileupload-1.1.1.jar || die
-	rm commons-io-1.1.jar && dosym /usr/share/commons-io-1/lib/commons-io.jar ${instdir}/commons-io-1.1.jar || die
-	rm commons-logging-1.0.4.jar && dosym /usr/share/commons-logging/lib/commons-logging.jar ${instdir}/commons-logging-1.0.4.jar || die
-	rm commons-validator-1.3.1.jar && dosym /usr/share/commons-validator/lib/commons-validator.jar ${instdir}/commons-validator-1.3.1.jar || die
-	rm oro-2.0.8.jar && dosym /usr/share/jakarta-oro-2.0/lib/jakarta-oro.jar ${instdir}/oro-2.0.8.jar || die
+	local instdir="${D}"/${INSTALL_DIR}/modules/ext/struts
+	pushd "${instdir}" >/dev/null || die
+	rm antlr-2.7.2.jar && java-pkg_jar-from --into "${instdir}" antlr antlr.jar antlr-2.7.2.jar
+	rm bsf-2.3.0.jar && java-pkg_jar-from --into "${instdir}" bsf-2.3 bsf.jar bsf-2.3.0.jar
+	rm commons-beanutils-1.8.0.jar && java-pkg_jar-from --into "${instdir}" commons-beanutils-1.7 commons-beanutils.jar commons-beanutils-1.8.0.jar
+	rm commons-digester-1.8.jar && java-pkg_jar-from --into "${instdir}" commons-digester commons-digester.jar commons-digester-1.8.jar
+	rm commons-fileupload-1.1.1.jar && java-pkg_jar-from --into "${instdir}" commons-fileupload commons-fileupload.jar commons-fileupload-1.1.1.jar
+	rm commons-io-1.1.jar && java-pkg_jar-from --into "${instdir}" commons-io-1 commons-io.jar commons-io-1.1.jar
+	rm commons-logging-1.0.4.jar && java-pkg_jar-from --into "${instdir}" commons-logging commons-logging.jar commons-logging-1.0.4.jar
+	rm commons-validator-1.3.1.jar && java-pkg_jar-from --into "${instdir}" commons-validator commons-validator.jar commons-validator-1.3.1.jar
+	rm oro-2.0.8.jar && java-pkg_jar-from --into "${instdir}" jakarta-oro-2.0 jakarta-oro.jar oro-2.0.8.jar
 	popd >/dev/null || die
 
 	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/enterprise
