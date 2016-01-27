@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,16 +8,16 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans Web Services Cluster"
 HOMEPAGE="http://netbeans.org/"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2015-12-22_00-02-04/zip/netbeans-trunk-nightly-201512220002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-01-27_00-02-15/zip/netbeans-trunk-nightly-201601270002-src.zip"
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r14-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/59631804B5A7FF3CEAA3F0E113584AF7E1BB6E9B-dd-plist.jar
 	http://hg.netbeans.org/binaries/7C4A82593A85524A3541E55A4A9C906B773ABAD6-ios-sim
-	http://hg.netbeans.org/binaries/9D29F2A9722C91A403F32971E97DD0E49E97B02E-libiDeviceNativeBinding.dylib
-	http://hg.netbeans.org/binaries/9F0D0D95F57E73C0110FA023813A4F9756D543B1-libimobiledevice.4.dylib
+	http://hg.netbeans.org/binaries/0929AC5F40B5A8667021408748D64F30F77B3165-libiDeviceNativeBinding.dylib
+	http://hg.netbeans.org/binaries/2A38DA3DB5D36DBBDC0B03990B46810F72430D5E-libimobiledevice.4.dylib
 	http://hg.netbeans.org/binaries/480C9E376169E21EA3BDA5D5841425BD7CC054D7-libplist.1.dylib
 	http://hg.netbeans.org/binaries/08FE518AB60FFA2E5440B75B4D9F8502E0791B3C-libs.jstestdriver-ext.jar
-	http://hg.netbeans.org/binaries/D05B7274396C8EED185207399B6D0400DE347DB7-libusbmuxd.2.dylib
+	http://hg.netbeans.org/binaries/C1BB9FF4232248B0054E5A26A33474A251EA19CB-libusbmuxd.2.dylib
 	http://hg.netbeans.org/binaries/D4BD3F62EADB61216A47EF96B3152EDD35A56005-ojetdocs-1_0_0.zip
 	http://hg.netbeans.org/binaries/1EFED55F8C442E4DB1C2338A5C35D494364F9ECD-ojetdocs-1_1_2.zip
 	http://hg.netbeans.org/binaries/456736E6988B164BFC5C740605237A76A18A963E-ojetdocs-1_2_0-Dev10192015.zip"
@@ -55,11 +55,11 @@ src_unpack() {
 	pushd "${S}" >/dev/null || die
 	ln -s "${DISTDIR}"/59631804B5A7FF3CEAA3F0E113584AF7E1BB6E9B-dd-plist.jar libs.plist/external/dd-plist.jar || die
 	ln -s "${DISTDIR}"/7C4A82593A85524A3541E55A4A9C906B773ABAD6-ios-sim cordova.platforms.ios/external/ios-sim || die
-	ln -s "${DISTDIR}"/9D29F2A9722C91A403F32971E97DD0E49E97B02E-libiDeviceNativeBinding.dylib cordova.platforms.ios/external/libiDeviceNativeBinding.dylib || die
-	ln -s "${DISTDIR}"/9F0D0D95F57E73C0110FA023813A4F9756D543B1-libimobiledevice.4.dylib cordova.platforms.ios/external/libimobiledevice.4.dylib || die
+	ln -s "${DISTDIR}"/0929AC5F40B5A8667021408748D64F30F77B3165-libiDeviceNativeBinding.dylib cordova.platforms.ios/external/libiDeviceNativeBinding.dylib || die
+	ln -s "${DISTDIR}"/2A38DA3DB5D36DBBDC0B03990B46810F72430D5E-libimobiledevice.4.dylib cordova.platforms.ios/external/libimobiledevice.4.dylib || die
 	ln -s "${DISTDIR}"/480C9E376169E21EA3BDA5D5841425BD7CC054D7-libplist.1.dylib cordova.platforms.ios/external/libplist.1.dylib || die
 	ln -s "${DISTDIR}"/08FE518AB60FFA2E5440B75B4D9F8502E0791B3C-libs.jstestdriver-ext.jar libs.jstestdriver/external/libs.jstestdriver-ext.jar || die
-	ln -s "${DISTDIR}"/D05B7274396C8EED185207399B6D0400DE347DB7-libusbmuxd.2.dylib cordova.platforms.ios/external/libusbmuxd.2.dylib || die
+	ln -s "${DISTDIR}"/C1BB9FF4232248B0054E5A26A33474A251EA19CB-libusbmuxd.2.dylib cordova.platforms.ios/external/libusbmuxd.2.dylib || die
 	ln -s "${DISTDIR}"/D4BD3F62EADB61216A47EF96B3152EDD35A56005-ojetdocs-1_0_0.zip html.ojet/external/ojetdocs-1_0_0.zip || die
 	ln -s "${DISTDIR}"/1EFED55F8C442E4DB1C2338A5C35D494364F9ECD-ojetdocs-1_1_2.zip html.ojet/external/ojetdocs-1_1_2.zip || die
 	ln -s "${DISTDIR}"/456736E6988B164BFC5C740605237A76A18A963E-ojetdocs-1_2_0-Dev10192015.zip html.ojet/external/ojetdocs-1_2_0-Dev10192015.zip || die

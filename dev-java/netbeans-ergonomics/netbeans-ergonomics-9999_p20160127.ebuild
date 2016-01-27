@@ -1,29 +1,28 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI="4"
 inherit eutils java-pkg-2 java-ant-2
 
-DESCRIPTION="Netbeans ExtIDE Cluster"
-HOMEPAGE="http://netbeans.org/projects/ide"
+DESCRIPTION="Netbeans Ergonomics Cluster"
+HOMEPAGE="http://netbeans.org/"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2015-12-22_00-02-04/zip/netbeans-trunk-nightly-201512220002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-01-27_00-02-15/zip/netbeans-trunk-nightly-201601270002-src.zip"
 SRC_URI="${SOURCE_URL}
-	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r14-build.xml.patch.bz2
-	http://hg.netbeans.org/binaries/22CB933E3A1450B092C45785C187837E97523F5C-ant-libs-1.9.4.zip
-	http://hg.netbeans.org/binaries/95CCE237B1E9390FBED0440B601822813DB220E6-ant-misc-1.9.4.zip"
+	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r14-build.xml.patch.bz2"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 S="${WORKDIR}"
 
 CDEPEND="~dev-java/netbeans-ide-${PV}
+	~dev-java/netbeans-nb-${PV}
 	~dev-java/netbeans-platform-${PV}"
 DEPEND=">=virtual/jdk-1.7
 	app-arch/unzip
-	dev-java/javahelp:0
-	${CDEPEND}"
+	${CDEPEND}
+	dev-java/javahelp:0"
 RDEPEND=">=virtual/jdk-1.7
 	${CDEPEND}"
 
@@ -31,7 +30,7 @@ INSTALL_DIR="/usr/share/${PN}-${SLOT}"
 
 EANT_BUILD_XML="nbbuild/build.xml"
 EANT_BUILD_TARGET="rebuild-cluster"
-EANT_EXTRA_ARGS="-Drebuild.cluster.name=nb.cluster.extide -Dext.binaries.downloaded=true -Djava.awt.headless=true -Dpermit.jdk8.builds=true"
+EANT_EXTRA_ARGS="-Drebuild.cluster.name=nb.cluster.ergonomics -Dext.binaries.downloaded=true -Dpermit.jdk8.builds=true"
 EANT_FILTER_COMPILER="ecj-3.3 ecj-3.4 ecj-3.5 ecj-3.6 ecj-3.7"
 JAVA_PKG_BSFIX="off"
 
@@ -42,11 +41,6 @@ src_unpack() {
 	find -name "*.jar" -type f -delete
 
 	unpack netbeans-9999-r14-build.xml.patch.bz2
-
-	pushd "${S}" >/dev/null || die
-	ln -s "${DISTDIR}"/22CB933E3A1450B092C45785C187837E97523F5C-ant-libs-1.9.4.zip o.apache.tools.ant.module/external/ant-libs-1.9.4.zip || die
-	ln -s "${DISTDIR}"/95CCE237B1E9390FBED0440B601822813DB220E6-ant-misc-1.9.4.zip o.apache.tools.ant.module/external/ant-misc-1.9.4.zip || die
-	popd >/dev/null || die
 }
 
 src_prepare() {
@@ -79,6 +73,10 @@ src_prepare() {
 	cat /usr/share/netbeans-ide-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
 	touch nb.cluster.ide.built
 
+	ln -s /usr/share/netbeans-nb-${SLOT}/nb nb || die
+	cat /usr/share/netbeans-nb-${SLOT}/nb/moduleCluster.properties >> moduleCluster.properties || die
+	touch nb.cluster.nb.built
+
 	ln -s /usr/share/netbeans-platform-${SLOT} platform || die
 	cat /usr/share/netbeans-platform-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
 	touch nb.cluster.platform.built
@@ -88,21 +86,16 @@ src_prepare() {
 	java-pkg-2_src_prepare
 }
 
-src_compile() {
-	unset DISPLAY
-	eant -f ${EANT_BUILD_XML} ${EANT_EXTRA_ARGS} ${EANT_BUILD_TARGET} || die "Compilation failed"
-}
-
 src_install() {
-	pushd nbbuild/netbeans/extide >/dev/null || die
+	pushd nbbuild/netbeans/ergonomics >/dev/null || die
 
 	insinto ${INSTALL_DIR}
 
-	grep -E "/extide$" ../moduleCluster.properties > "${D}"/${INSTALL_DIR}/moduleCluster.properties || die
+	grep -E "/ergonomics$" ../moduleCluster.properties > "${D}"/${INSTALL_DIR}/moduleCluster.properties || die
 
 	doins -r *
 
 	popd >/dev/null || die
 
-	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/extide
+	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/ergonomics
 }

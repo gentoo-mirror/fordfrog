@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,10 +8,10 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans D-Light Cluster"
 HOMEPAGE="http://netbeans.org/"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2015-12-22_00-02-04/zip/netbeans-trunk-nightly-201512220002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-01-27_00-02-15/zip/netbeans-trunk-nightly-201601270002-src.zip"
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r14-build.xml.patch.bz2
-	http://hg.netbeans.org/binaries/D84D17804FB0587297CCB4CFF3918561212671A0-fs_server-1.0.zip"
+	http://hg.netbeans.org/binaries/AE86A01A66ADBA4126F61A340A97B093FDFC1F47-fs_server-1.0.zip"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
@@ -43,7 +43,7 @@ src_unpack() {
 	unpack netbeans-9999-r14-build.xml.patch.bz2
 
 	pushd "${S}" >/dev/null || die
-	ln -s "${DISTDIR}"/D84D17804FB0587297CCB4CFF3918561212671A0-fs_server-1.0.zip dlight.remote.impl/external/fs_server-1.0.zip || die
+	ln -s "${DISTDIR}"/AE86A01A66ADBA4126F61A340A97B093FDFC1F47-fs_server-1.0.zip dlight.remote.impl/external/fs_server-1.0.zip || die
 	popd >/dev/null || die
 }
 
