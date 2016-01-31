@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,7 +8,7 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans IDE Cluster"
 HOMEPAGE="http://netbeans.org/projects/ide"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2015-12-27_00-02-04/zip/netbeans-trunk-nightly-201512270002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-01-31_00-02-15/zip/netbeans-trunk-nightly-201601310002-src.zip"
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r14-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/4E74C6BE42FE89871A878C7C4D6158F21A6D8010-antlr-runtime-3.4.jar
@@ -25,11 +25,9 @@ SRC_URI="${SOURCE_URL}
 	http://hg.netbeans.org/binaries/5EEAAC41164FEBCB79C73BEBD678A7B6C10C3E80-freemarker-2.3.19.jar
 	http://hg.netbeans.org/binaries/ED727A8D9F247E2050281CB083F1C77B09DCB5CD-guava-15.0.jar
 	http://hg.netbeans.org/binaries/23123BB29025254556B6E573023FCDF0F6715A66-html-4.01.zip
-	http://hg.netbeans.org/binaries/F4A1696661E6233F8C27EE323CAEF9CB052666F1-html5-datatypes.jar
 	http://hg.netbeans.org/binaries/2541D025F428A361110C4D656CDD99B5C5C5DFCE-html5doc.zip
 	http://hg.netbeans.org/binaries/D528B44AE7593D2275927396BF930B28078C5220-htmlparser-1.2.1.jar
 	http://hg.netbeans.org/binaries/8E737D82ECAC9BA6100A9BBA71E92A381B75EFDC-ini4j-0.5.1.jar
-	http://hg.netbeans.org/binaries/A2862B7795EF0E0F0716BEC84528FA3B629E479C-io-xml-util.jar
 	http://hg.netbeans.org/binaries/0DCC973606CBD9737541AA5F3E76DED6E3F4D0D0-iri.jar
 	http://hg.netbeans.org/binaries/F90E3DA5259DB07F36E6987EFDED647A5231DE76-ispell-enwl-3.1.20.zip
 	http://hg.netbeans.org/binaries/ECEAF316A8FAF0E794296EBE158AE110C7D72A5A-JavaEWAH-0.7.9.jar
@@ -50,7 +48,6 @@ SRC_URI="${SOURCE_URL}
 	http://hg.netbeans.org/binaries/F406B7784A0DA5C4670B038BF55A4DCD4AF30AEB-jzlib-1.0.7.jar
 	http://hg.netbeans.org/binaries/2E07375E5CA3A452472F0E87FB33F243F7A5C08C-libpam4j-1.1.jar
 	http://hg.netbeans.org/binaries/76E901A1F432323E7E90FC86FDB2534A28952293-nashorn-02f810c26ff9-patched.jar
-	http://hg.netbeans.org/binaries/010FC8BD229B7F68C8C4D5BDE399475373096601-non-schema.jar
 	http://hg.netbeans.org/binaries/AA2671239EBB762FEEE8B908E9F35473A72AFE1B-org.eclipse.core.contenttype_3.4.100.v20110423-0524_nosignature.jar
 	http://hg.netbeans.org/binaries/1605B38BB28EAE32C11EAB8F9E238A497754A5B8-org.eclipse.core.jobs-3.5.101_nosignature.jar
 	http://hg.netbeans.org/binaries/20800206EB8B490F3CE5BB8AC8A7C3B9E8004A30-org.eclipse.core.net_1.2.100.I20110511-0800_nosignature.jar
@@ -70,7 +67,7 @@ SRC_URI="${SOURCE_URL}
 	http://hg.netbeans.org/binaries/50F0A49BDF7C5610E3E602609926065D47A16C6E-org.eclipse.mylyn.commons.xmlrpc_3.17.0.v20150625-2042.jar
 	http://hg.netbeans.org/binaries/4F2E28BDB091E2DD215FB9B16C8708513288F16A-org.eclipse.mylyn.tasks.core_3.17.0.v20150828-2026.jar
 	http://hg.netbeans.org/binaries/11D1982BE23B06B2721240F424DBEF9F5FDE7F45-org.eclipse.mylyn.wikitext.confluence.core_2.6.0.v20150901-2143.jar
-	http://hg.netbeans.org/binaries/3A7012C03E61CAF9539DAD8326659EB4CE3EA436-org.eclipse.mylyn.wikitext.core_2.6.0.v20150901-2143.jar
+	http://hg.netbeans.org/binaries/A3FEF6144ED1622E4CDD506B9D745527CC675D8D-org.eclipse.mylyn.wikitext.core_2.6.0.v20150901-2143-patched-nosignature.jar
 	http://hg.netbeans.org/binaries/C3024631DD14008D2FF35A576C3D82AC6FCB2E10-org.eclipse.mylyn.wikitext.textile.core_2.6.0.v20150901-2143.jar
 	http://hg.netbeans.org/binaries/8307A44D3F150F1BB317532097A0C7D125C00F2D-org.tmatesoft.svnkit_1.8.10.r10446_v20150526_1454.jar
 	http://hg.netbeans.org/binaries/6819C79348FCF4F5125C834E7D3B742582DCA34D-processtreekiller-1.0.7.jar
@@ -84,7 +81,7 @@ SRC_URI="${SOURCE_URL}
 	http://hg.netbeans.org/binaries/EDE7FBABD4C96D34E48FDA0E8FECED24C98CEDCA-sqljet-1.1.10.jar
 	http://hg.netbeans.org/binaries/CD5B5996B46CB8D96C8F0F89A7A734B3C01F3DF7-tomcat-webserver-3.2.jar
 	http://hg.netbeans.org/binaries/89BC047153217F5254506F4C622A771A78883CBC-ValidationAPI.jar
-	http://hg.netbeans.org/binaries/6FC6098C230D7CBA5730106D379CBBB42F6EC48A-validator.jar
+	http://hg.netbeans.org/binaries/5C322A10E13FADE0451263035B7AA26B63AAFA47-validator.jar
 	http://hg.netbeans.org/binaries/C9757EFB2CFBA523A7375A78FA9ECFAF0D0AC505-winp-1.14-patched.jar
 	http://hg.netbeans.org/binaries/64F5BEEADD2A239C4BC354B8DFDB97CF7FDD9983-xmlrpc-client-3.0.jar
 	http://hg.netbeans.org/binaries/8FA16AD28B5E79A7CD52B8B72985B0AE8CCD6ADF-xmlrpc-common-3.0.jar
@@ -169,11 +166,9 @@ src_unpack() {
 	ln -s "${DISTDIR}"/5EEAAC41164FEBCB79C73BEBD678A7B6C10C3E80-freemarker-2.3.19.jar libs.freemarker/external/freemarker-2.3.19.jar || die
 	ln -s "${DISTDIR}"/ED727A8D9F247E2050281CB083F1C77B09DCB5CD-guava-15.0.jar c.google.guava/external/guava-15.0.jar || die
 	ln -s "${DISTDIR}"/23123BB29025254556B6E573023FCDF0F6715A66-html-4.01.zip html.editor/external/html-4.01.zip || die
-	ln -s "${DISTDIR}"/F4A1696661E6233F8C27EE323CAEF9CB052666F1-html5-datatypes.jar html.validation/external/html5-datatypes.jar || die
 	ln -s "${DISTDIR}"/2541D025F428A361110C4D656CDD99B5C5C5DFCE-html5doc.zip html.parser/external/html5doc.zip || die
 	ln -s "${DISTDIR}"/D528B44AE7593D2275927396BF930B28078C5220-htmlparser-1.2.1.jar html.parser/external/htmlparser-1.2.1.jar || die
 	ln -s "${DISTDIR}"/8E737D82ECAC9BA6100A9BBA71E92A381B75EFDC-ini4j-0.5.1.jar libs.ini4j/external/ini4j-0.5.1.jar || die
-	ln -s "${DISTDIR}"/A2862B7795EF0E0F0716BEC84528FA3B629E479C-io-xml-util.jar html.validation/external/io-xml-util.jar || die
 	ln -s "${DISTDIR}"/0DCC973606CBD9737541AA5F3E76DED6E3F4D0D0-iri.jar html.validation/external/iri.jar || die
 	ln -s "${DISTDIR}"/F90E3DA5259DB07F36E6987EFDED647A5231DE76-ispell-enwl-3.1.20.zip spellchecker.dictionary_en/external/ispell-enwl-3.1.20.zip || die
 	ln -s "${DISTDIR}"/ECEAF316A8FAF0E794296EBE158AE110C7D72A5A-JavaEWAH-0.7.9.jar c.googlecode.javaewah.JavaEWAH/external/JavaEWAH-0.7.9.jar || die
@@ -194,7 +189,6 @@ src_unpack() {
 	ln -s "${DISTDIR}"/F406B7784A0DA5C4670B038BF55A4DCD4AF30AEB-jzlib-1.0.7.jar c.jcraft.jzlib/external/jzlib-1.0.7.jar || die
 	ln -s "${DISTDIR}"/2E07375E5CA3A452472F0E87FB33F243F7A5C08C-libpam4j-1.1.jar extexecution.process/external/libpam4j-1.1.jar || die
 	ln -s "${DISTDIR}"/76E901A1F432323E7E90FC86FDB2534A28952293-nashorn-02f810c26ff9-patched.jar libs.nashorn/external/nashorn-02f810c26ff9-patched.jar || die
-	ln -s "${DISTDIR}"/010FC8BD229B7F68C8C4D5BDE399475373096601-non-schema.jar html.validation/external/non-schema.jar || die
 	ln -s "${DISTDIR}"/AA2671239EBB762FEEE8B908E9F35473A72AFE1B-org.eclipse.core.contenttype_3.4.100.v20110423-0524_nosignature.jar o.eclipse.core.contenttype/external/org.eclipse.core.contenttype_3.4.100.v20110423-0524_nosignature.jar || die
 	ln -s "${DISTDIR}"/1605B38BB28EAE32C11EAB8F9E238A497754A5B8-org.eclipse.core.jobs-3.5.101_nosignature.jar o.eclipse.core.jobs/external/org.eclipse.core.jobs-3.5.101_nosignature.jar || die
 	ln -s "${DISTDIR}"/20800206EB8B490F3CE5BB8AC8A7C3B9E8004A30-org.eclipse.core.net_1.2.100.I20110511-0800_nosignature.jar o.eclipse.core.net/external/org.eclipse.core.net_1.2.100.I20110511-0800_nosignature.jar || die
@@ -214,7 +208,7 @@ src_unpack() {
 	ln -s "${DISTDIR}"/50F0A49BDF7C5610E3E602609926065D47A16C6E-org.eclipse.mylyn.commons.xmlrpc_3.17.0.v20150625-2042.jar o.eclipse.mylyn.commons.xmlrpc/external/org.eclipse.mylyn.commons.xmlrpc_3.17.0.v20150625-2042.jar || die
 	ln -s "${DISTDIR}"/4F2E28BDB091E2DD215FB9B16C8708513288F16A-org.eclipse.mylyn.tasks.core_3.17.0.v20150828-2026.jar o.eclipse.mylyn.tasks.core/external/org.eclipse.mylyn.tasks.core_3.17.0.v20150828-2026.jar || die
 	ln -s "${DISTDIR}"/11D1982BE23B06B2721240F424DBEF9F5FDE7F45-org.eclipse.mylyn.wikitext.confluence.core_2.6.0.v20150901-2143.jar o.eclipse.mylyn.wikitext.confluence.core/external/org.eclipse.mylyn.wikitext.confluence.core_2.6.0.v20150901-2143.jar || die
-	ln -s "${DISTDIR}"/3A7012C03E61CAF9539DAD8326659EB4CE3EA436-org.eclipse.mylyn.wikitext.core_2.6.0.v20150901-2143.jar o.eclipse.mylyn.wikitext.core/external/org.eclipse.mylyn.wikitext.core_2.6.0.v20150901-2143.jar || die
+	ln -s "${DISTDIR}"/A3FEF6144ED1622E4CDD506B9D745527CC675D8D-org.eclipse.mylyn.wikitext.core_2.6.0.v20150901-2143-patched-nosignature.jar o.eclipse.mylyn.wikitext.core/external/org.eclipse.mylyn.wikitext.core_2.6.0.v20150901-2143-patched-nosignature.jar || die
 	ln -s "${DISTDIR}"/C3024631DD14008D2FF35A576C3D82AC6FCB2E10-org.eclipse.mylyn.wikitext.textile.core_2.6.0.v20150901-2143.jar o.eclipse.mylyn.wikitext.textile.core/external/org.eclipse.mylyn.wikitext.textile.core_2.6.0.v20150901-2143.jar || die
 	ln -s "${DISTDIR}"/8307A44D3F150F1BB317532097A0C7D125C00F2D-org.tmatesoft.svnkit_1.8.10.r10446_v20150526_1454.jar libs.svnClientAdapter.svnkit/external/org.tmatesoft.svnkit_1.8.10.r10446_v20150526_1454.jar || die
 	ln -s "${DISTDIR}"/6819C79348FCF4F5125C834E7D3B742582DCA34D-processtreekiller-1.0.7.jar extexecution.process/external/processtreekiller-1.0.7.jar || die
@@ -230,7 +224,7 @@ src_unpack() {
 	ln -s "${DISTDIR}"/C0D8A3265D194CC886BAFD585117B6465FD97DCE-swingx-all-1.6.4.jar libs.swingx/external/swingx-all-1.6.4.jar || die
 	ln -s "${DISTDIR}"/CD5B5996B46CB8D96C8F0F89A7A734B3C01F3DF7-tomcat-webserver-3.2.jar httpserver/external/tomcat-webserver-3.2.jar || die
 	ln -s "${DISTDIR}"/89BC047153217F5254506F4C622A771A78883CBC-ValidationAPI.jar swing.validation/external/ValidationAPI.jar || die
-	ln -s "${DISTDIR}"/6FC6098C230D7CBA5730106D379CBBB42F6EC48A-validator.jar html.validation/external/validator.jar || die
+	ln -s "${DISTDIR}"/5C322A10E13FADE0451263035B7AA26B63AAFA47-validator.jar html.validation/external/validator.jar || die
 	ln -s "${DISTDIR}"/C9757EFB2CFBA523A7375A78FA9ECFAF0D0AC505-winp-1.14-patched.jar extexecution.process/external/winp-1.14-patched.jar || die
 	ln -s "${DISTDIR}"/64F5BEEADD2A239C4BC354B8DFDB97CF7FDD9983-xmlrpc-client-3.0.jar o.apache.xmlrpc/external/xmlrpc-client-3.0.jar || die
 	ln -s "${DISTDIR}"/8FA16AD28B5E79A7CD52B8B72985B0AE8CCD6ADF-xmlrpc-common-3.0.jar o.apache.xmlrpc/external/xmlrpc-common-3.0.jar || die
