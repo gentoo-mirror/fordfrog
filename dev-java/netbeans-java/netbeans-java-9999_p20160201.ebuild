@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,7 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans Java Cluster"
 HOMEPAGE="http://netbeans.org/projects/java"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2015-12-28_00-02-04/zip/netbeans-trunk-nightly-201512280002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-02-01_00-02-15/zip/netbeans-trunk-nightly-201602010002-src.zip"
 # jarjar-1.4 contains also asm libraries
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r14-build.xml.patch.bz2
@@ -31,7 +31,7 @@ SRC_URI="${SOURCE_URL}
 	http://hg.netbeans.org/binaries/A90682C6BC0B9E105BD260C9A041FEFEA9579E46-lucene-highlighter-3.6.2.jar
 	http://hg.netbeans.org/binaries/BF206C4AA93C74A739FBAF1F1C78E3AD5F167245-maven-dependency-tree-2.0.jar
 	http://hg.netbeans.org/binaries/5D007C6037A8501E73A3D3FB98A1F6AE5768C3DD-nb-javac-api.jar
-	http://hg.netbeans.org/binaries/450929B1252E7AFEAFD7FCCBE7D1DCA6AE153ED5-nb-javac-impl.jar
+	http://hg.netbeans.org/binaries/37781101C4BAF40437CA4D1A16149647B4082F3B-nb-javac-impl.jar
 	http://hg.netbeans.org/binaries/29AF1D338CBB76290D1A96F5A6610F1E8C319AE5-org.eclipse.persistence.jpa.jpql_2.5.2.v20140319-9ad6abd.jar
 	http://hg.netbeans.org/binaries/3CE04BDB48FE315736B1DCE407362C57DFAE286D-org.eclipse.persistence.jpa.modelgen_2.5.2.v20140319-9ad6abd.jar
 	http://hg.netbeans.org/binaries/7666B94C1004AFFFE88E5328BD70EBA6F60125F4-spring-framework-3.2.7.RELEASE.zip
@@ -141,7 +141,7 @@ src_unpack() {
 	ln -s "${DISTDIR}"/A90682C6BC0B9E105BD260C9A041FEFEA9579E46-lucene-highlighter-3.6.2.jar maven.indexer/external/lucene-highlighter-3.6.2.jar || die
 	ln -s "${DISTDIR}"/BF206C4AA93C74A739FBAF1F1C78E3AD5F167245-maven-dependency-tree-2.0.jar maven.embedder/external/maven-dependency-tree-2.0.jar || die
 	ln -s "${DISTDIR}"/5D007C6037A8501E73A3D3FB98A1F6AE5768C3DD-nb-javac-api.jar libs.javacapi/external/nb-javac-api.jar || die
-	ln -s "${DISTDIR}"/450929B1252E7AFEAFD7FCCBE7D1DCA6AE153ED5-nb-javac-impl.jar libs.javacimpl/external/nb-javac-impl.jar || die
+	ln -s "${DISTDIR}"/37781101C4BAF40437CA4D1A16149647B4082F3B-nb-javac-impl.jar libs.javacimpl/external/nb-javac-impl.jar || die
 	ln -s "${DISTDIR}"/CA4F4DB7B6C140E36B0001873BEEA7C26489D2A1-netbeans-cos.jar maven/external/netbeans-cos.jar || die
 	ln -s "${DISTDIR}"/29AF1D338CBB76290D1A96F5A6610F1E8C319AE5-org.eclipse.persistence.jpa.jpql_2.5.2.v20140319-9ad6abd.jar j2ee.eclipselink/external/org.eclipse.persistence.jpa.jpql_2.5.2.v20140319-9ad6abd.jar || die
 	ln -s "${DISTDIR}"/3CE04BDB48FE315736B1DCE407362C57DFAE286D-org.eclipse.persistence.jpa.modelgen_2.5.2.v20140319-9ad6abd.jar j2ee.eclipselinkmodelgen/external/org.eclipse.persistence.jpa.modelgen_2.5.2.v20140319-9ad6abd.jar || die
