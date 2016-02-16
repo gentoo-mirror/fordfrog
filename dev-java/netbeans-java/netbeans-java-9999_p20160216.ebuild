@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,7 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans Java Cluster"
 HOMEPAGE="http://netbeans.org/projects/java"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-01-13_00-02-04/zip/netbeans-trunk-nightly-201601130002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-02-16_00-02-15/zip/netbeans-trunk-nightly-201602160002-src.zip"
 # jarjar-1.4 contains also asm libraries
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r14-build.xml.patch.bz2
