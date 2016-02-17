@@ -8,7 +8,7 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans IDE Cluster"
 HOMEPAGE="http://netbeans.org/projects/ide"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-01-14_00-02-04/zip/netbeans-trunk-nightly-201601140002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-02-17_00-02-15/zip/netbeans-trunk-nightly-201602170002-src.zip"
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r14-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/4E74C6BE42FE89871A878C7C4D6158F21A6D8010-antlr-runtime-3.4.jar
@@ -67,7 +67,7 @@ SRC_URI="${SOURCE_URL}
 	http://hg.netbeans.org/binaries/50F0A49BDF7C5610E3E602609926065D47A16C6E-org.eclipse.mylyn.commons.xmlrpc_3.17.0.v20150625-2042.jar
 	http://hg.netbeans.org/binaries/4F2E28BDB091E2DD215FB9B16C8708513288F16A-org.eclipse.mylyn.tasks.core_3.17.0.v20150828-2026.jar
 	http://hg.netbeans.org/binaries/11D1982BE23B06B2721240F424DBEF9F5FDE7F45-org.eclipse.mylyn.wikitext.confluence.core_2.6.0.v20150901-2143.jar
-	http://hg.netbeans.org/binaries/3A7012C03E61CAF9539DAD8326659EB4CE3EA436-org.eclipse.mylyn.wikitext.core_2.6.0.v20150901-2143.jar
+	http://hg.netbeans.org/binaries/A3FEF6144ED1622E4CDD506B9D745527CC675D8D-org.eclipse.mylyn.wikitext.core_2.6.0.v20150901-2143-patched-nosignature.jar
 	http://hg.netbeans.org/binaries/C3024631DD14008D2FF35A576C3D82AC6FCB2E10-org.eclipse.mylyn.wikitext.textile.core_2.6.0.v20150901-2143.jar
 	http://hg.netbeans.org/binaries/8307A44D3F150F1BB317532097A0C7D125C00F2D-org.tmatesoft.svnkit_1.8.10.r10446_v20150526_1454.jar
 	http://hg.netbeans.org/binaries/6819C79348FCF4F5125C834E7D3B742582DCA34D-processtreekiller-1.0.7.jar
@@ -208,7 +208,7 @@ src_unpack() {
 	ln -s "${DISTDIR}"/50F0A49BDF7C5610E3E602609926065D47A16C6E-org.eclipse.mylyn.commons.xmlrpc_3.17.0.v20150625-2042.jar o.eclipse.mylyn.commons.xmlrpc/external/org.eclipse.mylyn.commons.xmlrpc_3.17.0.v20150625-2042.jar || die
 	ln -s "${DISTDIR}"/4F2E28BDB091E2DD215FB9B16C8708513288F16A-org.eclipse.mylyn.tasks.core_3.17.0.v20150828-2026.jar o.eclipse.mylyn.tasks.core/external/org.eclipse.mylyn.tasks.core_3.17.0.v20150828-2026.jar || die
 	ln -s "${DISTDIR}"/11D1982BE23B06B2721240F424DBEF9F5FDE7F45-org.eclipse.mylyn.wikitext.confluence.core_2.6.0.v20150901-2143.jar o.eclipse.mylyn.wikitext.confluence.core/external/org.eclipse.mylyn.wikitext.confluence.core_2.6.0.v20150901-2143.jar || die
-	ln -s "${DISTDIR}"/3A7012C03E61CAF9539DAD8326659EB4CE3EA436-org.eclipse.mylyn.wikitext.core_2.6.0.v20150901-2143.jar o.eclipse.mylyn.wikitext.core/external/org.eclipse.mylyn.wikitext.core_2.6.0.v20150901-2143.jar || die
+	ln -s "${DISTDIR}"/A3FEF6144ED1622E4CDD506B9D745527CC675D8D-org.eclipse.mylyn.wikitext.core_2.6.0.v20150901-2143-patched-nosignature.jar o.eclipse.mylyn.wikitext.core/external/org.eclipse.mylyn.wikitext.core_2.6.0.v20150901-2143-patched-nosignature.jar || die
 	ln -s "${DISTDIR}"/C3024631DD14008D2FF35A576C3D82AC6FCB2E10-org.eclipse.mylyn.wikitext.textile.core_2.6.0.v20150901-2143.jar o.eclipse.mylyn.wikitext.textile.core/external/org.eclipse.mylyn.wikitext.textile.core_2.6.0.v20150901-2143.jar || die
 	ln -s "${DISTDIR}"/8307A44D3F150F1BB317532097A0C7D125C00F2D-org.tmatesoft.svnkit_1.8.10.r10446_v20150526_1454.jar libs.svnClientAdapter.svnkit/external/org.tmatesoft.svnkit_1.8.10.r10446_v20150526_1454.jar || die
 	ln -s "${DISTDIR}"/6819C79348FCF4F5125C834E7D3B742582DCA34D-processtreekiller-1.0.7.jar extexecution.process/external/processtreekiller-1.0.7.jar || die
