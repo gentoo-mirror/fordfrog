@@ -38,7 +38,7 @@ DEPEND="${CDEPEND}
 S=${WORKDIR}/dismine-${PN}-44d43351cb59
 
 src_prepare() {
-	epatch ${FILESDIR}/locales.patch
+	epatch "${FILESDIR}/locales.patch"
 }
 
 src_configure() {
