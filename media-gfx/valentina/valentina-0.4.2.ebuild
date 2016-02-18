@@ -4,13 +4,11 @@
 
 EAPI=5
 
-inherit mercurial qmake-utils
+inherit qmake-utils
 
 DESCRIPTION="Cloth patternmaking software"
 HOMEPAGE="http://valentinaproject.bitbucket.org/"
-SRC_URI=""
-EHG_REPO_URI="https://bitbucket.org/dismine/valentina"
-EHG_REVISION="develop"
+SRC_URI="https://bitbucket.org/dismine/valentina/get/v0.4.2.zip -> ${P}.zip"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -34,7 +32,14 @@ CDEPEND="
 	dev-qt/qtxml:5
 	dev-qt/qtxmlpatterns:5"
 RDEPEND="${CDEPEND}"
-DEPEND="${CDEPEND}"
+DEPEND="${CDEPEND}
+	app-arch/unzip"
+
+S=${WORKDIR}/dismine-${PN}-44d43351cb59
+
+src_prepare() {
+	epatch "${FILESDIR}/locales.patch"
+}
 
 src_configure() {
 	local locales=""
