@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,9 +14,24 @@ EHG_REVISION="develop"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 
-IUSE="linguas_cs linguas_de linguas_fr linguas_he linguas_id linguas_it linguas_nl linguas_ru linguas_uk"
+# en_IN not supported in Gentoo so not added here
+IUSE="linguas_cs_CZ
+	linguas_de_DE
+	linguas_en_CA
+	linguas_en_US
+	linguas_es_ES
+	linguas_fi_FI
+	linguas_fr_FR
+	linguas_he_IL
+	linguas_id_ID
+	linguas_it_IT
+	linguas_nl_NL
+	linguas_ro_RO
+	linguas_ru_RU
+	linguas_uk_UA
+	linguas_zh_CN"
 
 CDEPEND="
 	app-text/poppler
