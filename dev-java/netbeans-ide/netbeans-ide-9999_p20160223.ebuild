@@ -96,7 +96,7 @@ CDEPEND="~dev-java/netbeans-harness-${PV}
 	dev-java/commons-compress:0
 	dev-java/commons-httpclient:3
 	dev-java/commons-logging:0
-	dev-java/icu4j:4.4
+	dev-java/icu4j:55
 	dev-java/iso-relax:0
 	dev-java/jdbc-mysql:0
 	dev-java/jdbc-postgresql:0
@@ -273,7 +273,7 @@ src_prepare() {
 	java-pkg_jar-from --into db.drivers/external jdbc-mysql jdbc-mysql.jar mysql-connector-java-5.1.23-bin.jar
 	java-pkg_jar-from --into db.drivers/external jdbc-postgresql jdbc-postgresql.jar postgresql-9.2-1002.jdbc4.jar
 	java-pkg_jar-from --build-only --into db.sql.visualeditor/external javacc javacc.jar javacc-3.2.jar
-	java-pkg_jar-from --into html.parser/external icu4j-4.4 icu4j.jar icu4j-4_4_2.jar
+	java-pkg_jar-from --into html.parser/external icu4j-55 icu4j.jar icu4j-4_4_2.jar
 	java-pkg_jar-from --into html.validation/external iso-relax isorelax.jar isorelax.jar
 	java-pkg_jar-from --into html.validation/external log4j log4j.jar log4j-1.2.15.jar
 	java-pkg_jar-from --into html.validation/external saxon-9 saxon.jar saxon9B.jar
@@ -348,7 +348,7 @@ src_install() {
 	pushd "${instdir}" >/dev/null || die
 	rm commons-compress-1.8.1.jar && java-pkg_jar-from --into "${instdir}" commons-compress commons-compress.jar commons-compress-1.8.1.jar
 	# rm freemarker-2.3.19.jar && dosym /usr/share/freemarker-2.3/lib/freemarker.jar ${instdir}/freemarker-2.3.19.jar || die
-	rm icu4j-4_4_2.jar && java-pkg_jar-from --into "${instdir}" icu4j-4.4 icu4j.jar icu4j-4_4_2.jar
+	rm icu4j-4_4_2.jar && java-pkg_jar-from --into "${instdir}" icu4j-55 icu4j.jar icu4j-4_4_2.jar
 	rm isorelax.jar && java-pkg_jar-from --into "${instdir}" iso-relax isorelax.jar
 	rm json-simple-1.1.1.jar && java-pkg_jar-from --into "${instdir}" json-simple json-simple.jar json-simple-1.1.1.jar
 	rm jvyamlb-0.2.7.jar && java-pkg_jar-from --into "${instdir}" jvyamlb jvyamlb.jar jvyamlb-0.2.7.jar
