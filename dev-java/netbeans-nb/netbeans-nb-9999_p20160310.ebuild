@@ -8,9 +8,9 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans IDE Branding"
 HOMEPAGE="http://netbeans.org/"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-02-05_00-02-15/zip/netbeans-trunk-nightly-201602050002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-03-10_00-02-15/zip/netbeans-trunk-nightly-201603100002-src.zip"
 SRC_URI="${SOURCE_URL}
-	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r14-build.xml.patch.bz2
+	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r15-build.xml.patch.bz2
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-7.0.png"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
 KEYWORDS="~amd64 ~x86"
@@ -41,14 +41,14 @@ src_unpack() {
 	einfo "Deleting bundled jars..."
 	find -name "*.jar" -type f -delete
 
-	unpack netbeans-9999-r14-build.xml.patch.bz2
+	unpack netbeans-9999-r15-build.xml.patch.bz2
 }
 
 src_prepare() {
 	einfo "Deleting bundled class files..."
 	find -name "*.class" -type f | xargs rm -vf
 
-	epatch netbeans-9999-r14-build.xml.patch
+	epatch netbeans-9999-r15-build.xml.patch
 
 	# Support for custom patches
 	if [ -n "${NETBEANS9999_PATCHES_DIR}" -a -d "${NETBEANS9999_PATCHES_DIR}" ] ; then

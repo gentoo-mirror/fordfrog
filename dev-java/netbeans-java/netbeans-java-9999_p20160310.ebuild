@@ -10,10 +10,10 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans Java Cluster"
 HOMEPAGE="http://netbeans.org/projects/java"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-02-05_00-02-15/zip/netbeans-trunk-nightly-201602050002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-03-10_00-02-15/zip/netbeans-trunk-nightly-201603100002-src.zip"
 # jarjar-1.4 contains also asm libraries
 SRC_URI="${SOURCE_URL}
-	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r14-build.xml.patch.bz2
+	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r15-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/839F93A5213FB3E233B09BFD6D6B95669F7043C0-aether-api-1.0.2.v20150114.jar
 	http://hg.netbeans.org/binaries/694F57282D92C434800F79218E64704E5947008A-apache-maven-3.0.5-bin.zip
 	http://hg.netbeans.org/binaries/F7BD95641780C2AAE8CB9BED1686441A1CE5E749-beansbinding-1.2.1-doc.zip
@@ -121,7 +121,7 @@ src_unpack() {
 	einfo "Deleting bundled jars..."
 	find -name "*.jar" -type f -delete
 
-	unpack netbeans-9999-r14-build.xml.patch.bz2
+	unpack netbeans-9999-r15-build.xml.patch.bz2
 
 	pushd "${S}" >/dev/null || die
 	ln -s "${DISTDIR}"/839F93A5213FB3E233B09BFD6D6B95669F7043C0-aether-api-1.0.2.v20150114.jar maven/external/aether-api-1.0.2.v20150114.jar || die
@@ -155,7 +155,7 @@ src_prepare() {
 	einfo "Deleting bundled class files..."
 	find -name "*.class" -type f | xargs rm -vf
 
-	epatch netbeans-9999-r14-build.xml.patch
+	epatch netbeans-9999-r15-build.xml.patch
 
 	# Support for custom patches
 	if [ -n "${NETBEANS9999_PATCHES_DIR}" -a -d "${NETBEANS9999_PATCHES_DIR}" ] ; then

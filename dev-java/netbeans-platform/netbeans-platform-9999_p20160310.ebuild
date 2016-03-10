@@ -8,9 +8,9 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans Platform"
 HOMEPAGE="http://netbeans.org/features/platform/"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-02-05_00-02-15/zip/netbeans-trunk-nightly-201602050002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-03-10_00-02-15/zip/netbeans-trunk-nightly-201603100002-src.zip"
 SRC_URI="${SOURCE_URL}
-	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r14-build.xml.patch.bz2
+	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r15-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/2F7553F50B0D14ED811B849C282DA8C1FFC32AAE-asm-all-5.0.1.jar
 	http://hg.netbeans.org/binaries/1BA97A9FFD4A1DFF3E75B76CD3AE3D0EFF8493B7-felix-4.2.1.jar
 	http://hg.netbeans.org/binaries/941A8BE4506C65F0A9001C08812FB7DA1E505E21-junit-4.12-javadoc.jar
@@ -66,7 +66,7 @@ src_unpack() {
 	einfo "Deleting bundled jars..."
 	find -name "*.jar" -type f -delete
 
-	unpack netbeans-9999-r14-build.xml.patch.bz2
+	unpack netbeans-9999-r15-build.xml.patch.bz2
 
 	pushd "${S}" >/dev/null || die
 	ln -s "${DISTDIR}"/2F7553F50B0D14ED811B849C282DA8C1FFC32AAE-asm-all-5.0.1.jar libs.asm/external/asm-all-5.0.1.jar || die
@@ -91,7 +91,7 @@ src_prepare() {
 	find -name "*.class" -type f | xargs rm -vf
 
 	# upstream jna jar contains bundled binary libraries so we disable that feature
-	epatch netbeans-9999-r14-build.xml.patch
+	epatch netbeans-9999-r15-build.xml.patch
 
 	# Support for custom patches
 	if [ -n "${NETBEANS9999_PATCHES_DIR}" -a -d "${NETBEANS9999_PATCHES_DIR}" ] ; then
@@ -108,9 +108,9 @@ src_prepare() {
 
 	einfo "Symlinking external libraries..."
 	java-pkg_jar-from --into libs.junit4/external hamcrest-core-1.3 hamcrest-core.jar hamcrest-core-1.3.jar
-	java-pkg_jar-from --into libs.jna.platform/external jna platform.jar jna-platform-4.1.0.jar
+	java-pkg_jar-from --into libs.jna.platform/external jna platform.jar jna-platform-4.2.1.jar
 	java-pkg_jar-from --into javahelp/external javahelp jhall.jar jhall-2.0_05.jar
-	java-pkg_jar-from --into libs.jna/external jna jna.jar jna-4.1.0.jar
+	java-pkg_jar-from --into libs.jna/external jna jna.jar jna-4.2.1.jar
 	java-pkg_jar-from --into libs.junit4/external junit-4 junit.jar junit-4.12.jar
 	ln -s /usr/share/junit-4/sources/junit-src.zip junitlib/external/junit-4.12-sources.jar || die
 	java-pkg_jar-from --into libs.osgi/external osgi-core-api osgi-core-api.jar osgi.core-5.0.0.jar

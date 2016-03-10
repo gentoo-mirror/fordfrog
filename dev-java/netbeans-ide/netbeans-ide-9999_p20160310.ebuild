@@ -8,9 +8,9 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans IDE Cluster"
 HOMEPAGE="http://netbeans.org/projects/ide"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-02-05_00-02-15/zip/netbeans-trunk-nightly-201602050002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-03-10_00-02-15/zip/netbeans-trunk-nightly-201603100002-src.zip"
 SRC_URI="${SOURCE_URL}
-	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r14-build.xml.patch.bz2
+	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r15-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/4E74C6BE42FE89871A878C7C4D6158F21A6D8010-antlr-runtime-3.4.jar
 	http://hg.netbeans.org/binaries/98308890597ACB64047F7E896638E0D98753AE82-asm-all-4.0.jar
 	http://hg.netbeans.org/binaries/886FAF4B85054DD6E50D9B3438542F432B5F9251-bytelist-0.1.jar
@@ -96,7 +96,7 @@ CDEPEND="~dev-java/netbeans-harness-${PV}
 	dev-java/commons-compress:0
 	dev-java/commons-httpclient:3
 	dev-java/commons-logging:0
-	dev-java/icu4j:4.4
+	dev-java/icu4j:55
 	dev-java/iso-relax:0
 	dev-java/jdbc-mysql:0
 	dev-java/jdbc-postgresql:0
@@ -149,7 +149,7 @@ src_unpack() {
 	einfo "Deleting bundled jars..."
 	find -name "*.jar" -type f -delete
 
-	unpack netbeans-9999-r14-build.xml.patch.bz2
+	unpack netbeans-9999-r15-build.xml.patch.bz2
 
 	pushd "${S}" >/dev/null || die
 	ln -s "${DISTDIR}"/4E74C6BE42FE89871A878C7C4D6158F21A6D8010-antlr-runtime-3.4.jar libs.antlr3.runtime/external/antlr-runtime-3.4.jar || die
@@ -236,7 +236,7 @@ src_prepare() {
 	einfo "Deleting bundled class files..."
 	find -name "*.class" -type f | xargs rm -vf
 
-	epatch netbeans-9999-r14-build.xml.patch
+	epatch netbeans-9999-r15-build.xml.patch
 
 	# Support for custom patches
 	if [ -n "${NETBEANS9999_PATCHES_DIR}" -a -d "${NETBEANS9999_PATCHES_DIR}" ] ; then
@@ -273,8 +273,8 @@ src_prepare() {
 	java-pkg_jar-from --into db.drivers/external jdbc-mysql jdbc-mysql.jar mysql-connector-java-5.1.23-bin.jar
 	java-pkg_jar-from --into db.drivers/external jdbc-postgresql jdbc-postgresql.jar postgresql-9.2-1002.jdbc4.jar
 	java-pkg_jar-from --build-only --into db.sql.visualeditor/external javacc javacc.jar javacc-3.2.jar
-	java-pkg_jar-from --into html.parser/external icu4j-4.4 icu4j.jar icu4j-4_4_2.jar
-	java-pkg_jar-from --into html.validation/external iso-relax isorelax.jar isorelax.jar
+	java-pkg_jar-from --into html.parser/external icu4j-55 icu4j.jar icu4j-4_4_2.jar
+	java-pkg_jar-from --into html.validation/external iso-relax iso-relax.jar isorelax.jar
 	java-pkg_jar-from --into html.validation/external log4j log4j.jar log4j-1.2.15.jar
 	java-pkg_jar-from --into html.validation/external saxon-9 saxon.jar saxon9B.jar
 	java-pkg_jar-from --into libs.commons_compress/external commons-compress commons-compress.jar commons-compress-1.8.1.jar
@@ -348,8 +348,8 @@ src_install() {
 	pushd "${instdir}" >/dev/null || die
 	rm commons-compress-1.8.1.jar && java-pkg_jar-from --into "${instdir}" commons-compress commons-compress.jar commons-compress-1.8.1.jar
 	# rm freemarker-2.3.19.jar && dosym /usr/share/freemarker-2.3/lib/freemarker.jar ${instdir}/freemarker-2.3.19.jar || die
-	rm icu4j-4_4_2.jar && java-pkg_jar-from --into "${instdir}" icu4j-4.4 icu4j.jar icu4j-4_4_2.jar
-	rm isorelax.jar && java-pkg_jar-from --into "${instdir}" iso-relax isorelax.jar
+	rm icu4j-4_4_2.jar && java-pkg_jar-from --into "${instdir}" icu4j-55 icu4j.jar icu4j-4_4_2.jar
+	rm isorelax.jar && java-pkg_jar-from --into "${instdir}" iso-relax iso-relax.jar isorelax.jar
 	rm json-simple-1.1.1.jar && java-pkg_jar-from --into "${instdir}" json-simple json-simple.jar json-simple-1.1.1.jar
 	rm jvyamlb-0.2.7.jar && java-pkg_jar-from --into "${instdir}" jvyamlb jvyamlb.jar jvyamlb-0.2.7.jar
 	rm log4j-1.2.15.jar && java-pkg_jar-from --into "${instdir}" log4j log4j.jar log4j-1.2.15.jar
