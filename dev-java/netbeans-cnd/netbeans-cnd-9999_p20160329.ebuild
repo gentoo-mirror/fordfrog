@@ -8,12 +8,12 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans CND Cluster"
 HOMEPAGE="http://netbeans.org/projects/cnd"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-02-23_00-02-15/zip/netbeans-trunk-nightly-201602230002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-03-29_00-01-48/zip/netbeans-trunk-nightly-201603290001-src.zip"
 SRC_URI="${SOURCE_URL}
-	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r14-build.xml.patch.bz2
+	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r15-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/5CAB59D859CAA6598E28131D30DD2E89806DB57F-antlr-3.4.jar
 	http://hg.netbeans.org/binaries/4E74C6BE42FE89871A878C7C4D6158F21A6D8010-antlr-runtime-3.4.jar
-	http://hg.netbeans.org/binaries/688488BF9E65AC39749AF959A5653F536EDABACD-clank_0.3.6.zip
+	http://hg.netbeans.org/binaries/38DAC4EB409E96D3AABD4D3F5807505BB751C043-clank_0.3.6.zip
 	http://hg.netbeans.org/binaries/BF2C234985CF9BD6CDE18114406C67EC7C32B84A-cnd-build-trace-1.0.zip
 	http://hg.netbeans.org/binaries/E59851B0E49C05D728D5C653E52750FA5B6A8F0E-cnd-rfs-1.0.zip
 	http://hg.netbeans.org/binaries/C51780D99464CBF45B0495C7646B442AB3C7B463-open-fortran-parser-0.7.1.2.zip"
@@ -51,12 +51,12 @@ src_unpack() {
 	einfo "Deleting bundled jars..."
 	find -name "*.jar" -type f -delete
 
-	unpack netbeans-9999-r14-build.xml.patch.bz2
+	unpack netbeans-9999-r15-build.xml.patch.bz2
 
 	pushd "${S}" >/dev/null || die
 	ln -s "${DISTDIR}"/5CAB59D859CAA6598E28131D30DD2E89806DB57F-antlr-3.4.jar libs.antlr3.devel/external/antlr-3.4.jar || die
 	ln -s "${DISTDIR}"/4E74C6BE42FE89871A878C7C4D6158F21A6D8010-antlr-runtime-3.4.jar libs.antlr3.runtime/external/antlr-runtime-3.4.jar || die
-	ln -s "${DISTDIR}"/688488BF9E65AC39749AF959A5653F536EDABACD-clank_0.3.6.zip libs.clank/external/clank_0.3.6.zip || die
+	ln -s "${DISTDIR}"/38DAC4EB409E96D3AABD4D3F5807505BB751C043-clank_0.3.6.zip libs.clank/external/clank_0.3.6.zip || die
 	ln -s "${DISTDIR}"/BF2C234985CF9BD6CDE18114406C67EC7C32B84A-cnd-build-trace-1.0.zip cnd.discovery/external/cnd-build-trace-1.0.zip || die
 	ln -s "${DISTDIR}"/E59851B0E49C05D728D5C653E52750FA5B6A8F0E-cnd-rfs-1.0.zip cnd.remote/external/cnd-rfs-1.0.zip || die
 	ln -s "${DISTDIR}"/C51780D99464CBF45B0495C7646B442AB3C7B463-open-fortran-parser-0.7.1.2.zip cnd.modelimpl/external/open-fortran-parser-0.7.1.2.zip || die
@@ -67,7 +67,7 @@ src_prepare() {
 	einfo "Deleting bundled class files..."
 	find -name "*.class" -type f | xargs rm -vf
 
-	epatch netbeans-9999-r14-build.xml.patch
+	epatch netbeans-9999-r15-build.xml.patch
 
 	# Support for custom patches
 	if [ -n "${NETBEANS9999_PATCHES_DIR}" -a -d "${NETBEANS9999_PATCHES_DIR}" ] ; then
@@ -84,7 +84,7 @@ src_prepare() {
 
 	einfo "Symlinking external libraries..."
 	java-pkg_jar-from --build-only --into javahelp/external javahelp jhall.jar jhall-2.0_05.jar
-	java-pkg_jar-from --build-only --into libs.jna/external jna jna.jar jna-4.1.0.jar
+	java-pkg_jar-from --build-only --into libs.jna/external jna jna.jar jna-4.2.1.jar
 
 	einfo "Linking in other clusters..."
 	mkdir "${S}"/nbbuild/netbeans || die
