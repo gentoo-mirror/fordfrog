@@ -8,9 +8,9 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans Web Services Cluster"
 HOMEPAGE="http://netbeans.org/"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-02-26_00-02-15/zip/netbeans-trunk-nightly-201602260002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-03-31_00-01-48/zip/netbeans-trunk-nightly-201603310001-src.zip"
 SRC_URI="${SOURCE_URL}
-	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r14-build.xml.patch.bz2
+	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r16-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/59631804B5A7FF3CEAA3F0E113584AF7E1BB6E9B-dd-plist.jar
 	http://hg.netbeans.org/binaries/7C4A82593A85524A3541E55A4A9C906B773ABAD6-ios-sim
 	http://hg.netbeans.org/binaries/0929AC5F40B5A8667021408748D64F30F77B3165-libiDeviceNativeBinding.dylib
@@ -20,7 +20,7 @@ SRC_URI="${SOURCE_URL}
 	http://hg.netbeans.org/binaries/C1BB9FF4232248B0054E5A26A33474A251EA19CB-libusbmuxd.2.dylib
 	http://hg.netbeans.org/binaries/D4BD3F62EADB61216A47EF96B3152EDD35A56005-ojetdocs-1_0_0.zip
 	http://hg.netbeans.org/binaries/1EFED55F8C442E4DB1C2338A5C35D494364F9ECD-ojetdocs-1_1_2.zip
-	http://hg.netbeans.org/binaries/456736E6988B164BFC5C740605237A76A18A963E-ojetdocs-1_2_0-Dev10192015.zip"
+	http://hg.netbeans.org/binaries/CA8F6968FED0BE20E786C70CF9B603F4D7B66C68-ojetdocs-2_0_0.zip"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
@@ -32,7 +32,8 @@ CDEPEND="~dev-java/netbeans-platform-${PV}
 DEPEND=">=virtual/jdk-1.7
 	app-arch/unzip
 	${CDEPEND}
-	dev-java/javahelp:0"
+	dev-java/javahelp:0
+	dev-java/jna:0"
 RDEPEND=">=virtual/jdk-1.7
 	${CDEPEND}"
 
@@ -50,7 +51,7 @@ src_unpack() {
 	einfo "Deleting bundled jars..."
 	find -name "*.jar" -type f -delete
 
-	unpack netbeans-9999-r14-build.xml.patch.bz2
+	unpack netbeans-9999-r16-build.xml.patch.bz2
 
 	pushd "${S}" >/dev/null || die
 	ln -s "${DISTDIR}"/59631804B5A7FF3CEAA3F0E113584AF7E1BB6E9B-dd-plist.jar libs.plist/external/dd-plist.jar || die
@@ -62,7 +63,7 @@ src_unpack() {
 	ln -s "${DISTDIR}"/C1BB9FF4232248B0054E5A26A33474A251EA19CB-libusbmuxd.2.dylib cordova.platforms.ios/external/libusbmuxd.2.dylib || die
 	ln -s "${DISTDIR}"/D4BD3F62EADB61216A47EF96B3152EDD35A56005-ojetdocs-1_0_0.zip html.ojet/external/ojetdocs-1_0_0.zip || die
 	ln -s "${DISTDIR}"/1EFED55F8C442E4DB1C2338A5C35D494364F9ECD-ojetdocs-1_1_2.zip html.ojet/external/ojetdocs-1_1_2.zip || die
-	ln -s "${DISTDIR}"/456736E6988B164BFC5C740605237A76A18A963E-ojetdocs-1_2_0-Dev10192015.zip html.ojet/external/ojetdocs-1_2_0-Dev10192015.zip || die
+	ln -s "${DISTDIR}"/CA8F6968FED0BE20E786C70CF9B603F4D7B66C68-ojetdocs-2_0_0.zip html.ojet/external/ojetdocs-2_0_0.zip || die
 	popd >/dev/null || die
 }
 
@@ -70,7 +71,7 @@ src_prepare() {
 	einfo "Deleting bundled class files..."
 	find -name "*.class" -type f | xargs rm -vf
 
-	epatch netbeans-9999-r14-build.xml.patch
+	epatch netbeans-9999-r16-build.xml.patch
 
 	# Support for custom patches
 	if [ -n "${NETBEANS9999_PATCHES_DIR}" -a -d "${NETBEANS9999_PATCHES_DIR}" ] ; then
@@ -87,6 +88,7 @@ src_prepare() {
 
 	einfo "Symlinking external libraries..."
 	java-pkg_jar-from --build-only --into javahelp/external javahelp jhall.jar jhall-2.0_05.jar
+	java-pkg_jar-from --build-only --into libs.jna/external jna jna.jar jna-4.2.2.jar
 
 	einfo "Linking in other clusters..."
 	mkdir "${S}"/nbbuild/netbeans || die
