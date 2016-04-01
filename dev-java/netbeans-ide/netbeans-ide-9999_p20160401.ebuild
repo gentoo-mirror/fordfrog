@@ -8,9 +8,9 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans IDE Cluster"
 HOMEPAGE="http://netbeans.org/projects/ide"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-02-28_00-02-15/zip/netbeans-trunk-nightly-201602280002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-04-01_00-01-48/zip/netbeans-trunk-nightly-201604010001-src.zip"
 SRC_URI="${SOURCE_URL}
-	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r14-build.xml.patch.bz2
+	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r16-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/4E74C6BE42FE89871A878C7C4D6158F21A6D8010-antlr-runtime-3.4.jar
 	http://hg.netbeans.org/binaries/98308890597ACB64047F7E896638E0D98753AE82-asm-all-4.0.jar
 	http://hg.netbeans.org/binaries/886FAF4B85054DD6E50D9B3438542F432B5F9251-bytelist-0.1.jar
@@ -68,6 +68,7 @@ SRC_URI="${SOURCE_URL}
 	http://hg.netbeans.org/binaries/4F2E28BDB091E2DD215FB9B16C8708513288F16A-org.eclipse.mylyn.tasks.core_3.17.0.v20150828-2026.jar
 	http://hg.netbeans.org/binaries/11D1982BE23B06B2721240F424DBEF9F5FDE7F45-org.eclipse.mylyn.wikitext.confluence.core_2.6.0.v20150901-2143.jar
 	http://hg.netbeans.org/binaries/A3FEF6144ED1622E4CDD506B9D745527CC675D8D-org.eclipse.mylyn.wikitext.core_2.6.0.v20150901-2143-patched-nosignature.jar
+	http://hg.netbeans.org/binaries/825DC870D1D423E347F4F8229A211A2C297BB15D-org.eclipse.mylyn.wikitext.markdown.core_2.6.0.v20150901-2143.jar
 	http://hg.netbeans.org/binaries/C3024631DD14008D2FF35A576C3D82AC6FCB2E10-org.eclipse.mylyn.wikitext.textile.core_2.6.0.v20150901-2143.jar
 	http://hg.netbeans.org/binaries/8307A44D3F150F1BB317532097A0C7D125C00F2D-org.tmatesoft.svnkit_1.8.10.r10446_v20150526_1454.jar
 	http://hg.netbeans.org/binaries/6819C79348FCF4F5125C834E7D3B742582DCA34D-processtreekiller-1.0.7.jar
@@ -128,7 +129,8 @@ DEPEND=">=virtual/jdk-1.7
 	dev-java/commons-codec:0
 	${CDEPEND}
 	dev-java/javacc:0
-	dev-java/javahelp:0"
+	dev-java/javahelp:0
+	dev-java/jna:0"
 RDEPEND=">=virtual/jdk-1.7
 	${CDEPEND}"
 
@@ -149,7 +151,7 @@ src_unpack() {
 	einfo "Deleting bundled jars..."
 	find -name "*.jar" -type f -delete
 
-	unpack netbeans-9999-r14-build.xml.patch.bz2
+	unpack netbeans-9999-r16-build.xml.patch.bz2
 
 	pushd "${S}" >/dev/null || die
 	ln -s "${DISTDIR}"/4E74C6BE42FE89871A878C7C4D6158F21A6D8010-antlr-runtime-3.4.jar libs.antlr3.runtime/external/antlr-runtime-3.4.jar || die
@@ -209,6 +211,7 @@ src_unpack() {
 	ln -s "${DISTDIR}"/4F2E28BDB091E2DD215FB9B16C8708513288F16A-org.eclipse.mylyn.tasks.core_3.17.0.v20150828-2026.jar o.eclipse.mylyn.tasks.core/external/org.eclipse.mylyn.tasks.core_3.17.0.v20150828-2026.jar || die
 	ln -s "${DISTDIR}"/11D1982BE23B06B2721240F424DBEF9F5FDE7F45-org.eclipse.mylyn.wikitext.confluence.core_2.6.0.v20150901-2143.jar o.eclipse.mylyn.wikitext.confluence.core/external/org.eclipse.mylyn.wikitext.confluence.core_2.6.0.v20150901-2143.jar || die
 	ln -s "${DISTDIR}"/A3FEF6144ED1622E4CDD506B9D745527CC675D8D-org.eclipse.mylyn.wikitext.core_2.6.0.v20150901-2143-patched-nosignature.jar o.eclipse.mylyn.wikitext.core/external/org.eclipse.mylyn.wikitext.core_2.6.0.v20150901-2143-patched-nosignature.jar || die
+	ln -s "${DISTDIR}"/825DC870D1D423E347F4F8229A211A2C297BB15D-org.eclipse.mylyn.wikitext.markdown.core_2.6.0.v20150901-2143.jar o.eclipse.mylyn.wikitext.markdown.core/external/org.eclipse.mylyn.wikitext.markdown.core_2.6.0.v20150901-2143.jar || die
 	ln -s "${DISTDIR}"/C3024631DD14008D2FF35A576C3D82AC6FCB2E10-org.eclipse.mylyn.wikitext.textile.core_2.6.0.v20150901-2143.jar o.eclipse.mylyn.wikitext.textile.core/external/org.eclipse.mylyn.wikitext.textile.core_2.6.0.v20150901-2143.jar || die
 	ln -s "${DISTDIR}"/8307A44D3F150F1BB317532097A0C7D125C00F2D-org.tmatesoft.svnkit_1.8.10.r10446_v20150526_1454.jar libs.svnClientAdapter.svnkit/external/org.tmatesoft.svnkit_1.8.10.r10446_v20150526_1454.jar || die
 	ln -s "${DISTDIR}"/6819C79348FCF4F5125C834E7D3B742582DCA34D-processtreekiller-1.0.7.jar extexecution.process/external/processtreekiller-1.0.7.jar || die
@@ -236,7 +239,7 @@ src_prepare() {
 	einfo "Deleting bundled class files..."
 	find -name "*.class" -type f | xargs rm -vf
 
-	epatch netbeans-9999-r14-build.xml.patch
+	epatch netbeans-9999-r16-build.xml.patch
 
 	# Support for custom patches
 	if [ -n "${NETBEANS9999_PATCHES_DIR}" -a -d "${NETBEANS9999_PATCHES_DIR}" ] ; then
@@ -279,6 +282,7 @@ src_prepare() {
 	java-pkg_jar-from --into html.validation/external saxon-9 saxon.jar saxon9B.jar
 	java-pkg_jar-from --into libs.commons_compress/external commons-compress commons-compress.jar commons-compress-1.8.1.jar
 	# java-pkg_jar-from --into libs.freemarker/external freemarker-2.3 freemarker.jar freemarker-2.3.19.jar
+	java-pkg_jar-from --build-only --into libs.jna/external jna jna.jar jna-4.2.2.jar
 	java-pkg_jar-from --into libs.jvyamlb/external jvyamlb jvyamlb.jar jvyamlb-0.2.7.jar
 	java-pkg_jar-from --into libs.lucene/external lucene-3.5 lucene-core.jar lucene-core-3.5.0.jar
 	java-pkg_jar-from --into libs.smack/external smack-2.2 smack.jar smack.jar

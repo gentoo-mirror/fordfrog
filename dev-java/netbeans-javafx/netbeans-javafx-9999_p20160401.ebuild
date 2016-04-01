@@ -8,9 +8,9 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans JavaFX Cluster"
 HOMEPAGE="http://netbeans.org/projects/javafx"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-02-28_00-02-15/zip/netbeans-trunk-nightly-201602280002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-04-01_00-01-48/zip/netbeans-trunk-nightly-201604010001-src.zip"
 SRC_URI="${SOURCE_URL}
-	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r14-build.xml.patch.bz2
+	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r16-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/A806D99716C5E9441BFD8B401176FDDEFC673022-bindex-2.2.jar
 	http://hg.netbeans.org/binaries/D325D3913CBC0F9A8D73A466FABB98EDEEC014AB-jemmy-2.3.1.1.jar
 	http://hg.netbeans.org/binaries/D06C8980C9025183C044202419EA29E69FBD4B99-jemmy-2.3.1.1-doc.zip
@@ -48,7 +48,7 @@ src_unpack() {
 	einfo "Deleting bundled jars..."
 	find -name "*.jar" -type f -delete
 
-	unpack netbeans-9999-r14-build.xml.patch.bz2
+	unpack netbeans-9999-r16-build.xml.patch.bz2
 
 	pushd "${S}" >/dev/null || die
 	ln -s "${DISTDIR}"/A806D99716C5E9441BFD8B401176FDDEFC673022-bindex-2.2.jar apisupport.harness/external/bindex-2.2.jar || die
@@ -64,7 +64,7 @@ src_prepare() {
 	einfo "Deleting bundled class files..."
 	find -name "*.class" -type f | xargs rm -vf
 
-	epatch netbeans-9999-r14-build.xml.patch
+	epatch netbeans-9999-r16-build.xml.patch
 
 	# Support for custom patches
 	if [ -n "${NETBEANS9999_PATCHES_DIR}" -a -d "${NETBEANS9999_PATCHES_DIR}" ] ; then
