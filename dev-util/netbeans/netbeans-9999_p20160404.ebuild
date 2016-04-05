@@ -8,8 +8,8 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans IDE"
 HOMEPAGE="http://netbeans.org/"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-03-01_00-02-15/zip/netbeans-trunk-nightly-201603010002-src.zip"
-PATCHES_URL="http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r14-build.xml.patch.bz2"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-04-04_00-01-48/zip/netbeans-trunk-nightly-201604040001-src.zip"
+PATCHES_URL="http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r16-build.xml.patch.bz2"
 L10N_URL="http://dev.gentoo.org/~fordfrog/distfiles/netbeans-l10n-9999-20131010.tar.bz2"
 ALL_URLS="${SOURCE_URL} ${PATCHES_URL} ${L10N_URL}"
 SRC_URI="linguas_af? ( ${ALL_URLS} )
@@ -168,7 +168,7 @@ src_unpack() {
 		einfo "Deleting bundled jars..."
 		find -name "*.jar" -type f -delete
 
-		unpack netbeans-9999-r14-build.xml.patch.bz2
+		unpack netbeans-9999-r16-build.xml.patch.bz2
 	fi
 }
 
@@ -177,7 +177,7 @@ src_prepare() {
 		einfo "Deleting bundled class files..."
 		find -name "*.class" -type f | xargs rm -vf
 
-		epatch netbeans-9999-r14-build.xml.patch
+		epatch netbeans-9999-r16-build.xml.patch
 
 		# Support for custom patches
 		if [ -n "${NETBEANS9999_PATCHES_DIR}" -a -d "${NETBEANS9999_PATCHES_DIR}" ] ; then
