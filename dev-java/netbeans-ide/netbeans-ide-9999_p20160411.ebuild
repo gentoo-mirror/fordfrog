@@ -8,13 +8,13 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans IDE Cluster"
 HOMEPAGE="http://netbeans.org/projects/ide"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-03-04_00-02-15/zip/netbeans-trunk-nightly-201603040002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-04-11_00-01-48/zip/netbeans-trunk-nightly-201604110001-src.zip"
 SRC_URI="${SOURCE_URL}
-	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r14-build.xml.patch.bz2
+	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r16-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/4E74C6BE42FE89871A878C7C4D6158F21A6D8010-antlr-runtime-3.4.jar
 	http://hg.netbeans.org/binaries/98308890597ACB64047F7E896638E0D98753AE82-asm-all-4.0.jar
 	http://hg.netbeans.org/binaries/886FAF4B85054DD6E50D9B3438542F432B5F9251-bytelist-0.1.jar
-	http://hg.netbeans.org/binaries/ACAB7C860DF78C4A528FD8A64F2C62A0A96639E5-com.trilead.ssh2_1.0.0.build219_t20150519_2322.jar
+	http://hg.netbeans.org/binaries/DCDA3604865C8E80789B4F8E8EECC3D4D15D00F8-com.trilead.ssh2_1.0.0.build220_r167_v20150618_1733.jar
 	http://hg.netbeans.org/binaries/A8762D07E76CFDE2395257A5DA47BA7C1DBD3DCE-commons-io-1.4.jar
 	http://hg.netbeans.org/binaries/0CE1EDB914C94EBC388F086C6827E8BDEEC71AC2-commons-lang-2.6.jar
 	http://hg.netbeans.org/binaries/CD0D5510908225F76C5FE5A3F1DF4FA44866F81E-commons-net-3.3.jar
@@ -68,14 +68,15 @@ SRC_URI="${SOURCE_URL}
 	http://hg.netbeans.org/binaries/4F2E28BDB091E2DD215FB9B16C8708513288F16A-org.eclipse.mylyn.tasks.core_3.17.0.v20150828-2026.jar
 	http://hg.netbeans.org/binaries/11D1982BE23B06B2721240F424DBEF9F5FDE7F45-org.eclipse.mylyn.wikitext.confluence.core_2.6.0.v20150901-2143.jar
 	http://hg.netbeans.org/binaries/A3FEF6144ED1622E4CDD506B9D745527CC675D8D-org.eclipse.mylyn.wikitext.core_2.6.0.v20150901-2143-patched-nosignature.jar
+	http://hg.netbeans.org/binaries/825DC870D1D423E347F4F8229A211A2C297BB15D-org.eclipse.mylyn.wikitext.markdown.core_2.6.0.v20150901-2143.jar
 	http://hg.netbeans.org/binaries/C3024631DD14008D2FF35A576C3D82AC6FCB2E10-org.eclipse.mylyn.wikitext.textile.core_2.6.0.v20150901-2143.jar
-	http://hg.netbeans.org/binaries/8307A44D3F150F1BB317532097A0C7D125C00F2D-org.tmatesoft.svnkit_1.8.10.r10446_v20150526_1454.jar
+	http://hg.netbeans.org/binaries/17C0C8D6DEBF5EBE734881C131888D8088BD9E7D-org.tmatesoft.svnkit_1.8.12.r10533_v20160129_0158.jar
 	http://hg.netbeans.org/binaries/6819C79348FCF4F5125C834E7D3B742582DCA34D-processtreekiller-1.0.7.jar
 	http://hg.netbeans.org/binaries/B0D0FCBAC68826D2AFA3C7C89FC4D57B95A000C3-resolver-1.2.jar
-	http://hg.netbeans.org/binaries/D08E473A4D0510FB329D64E4CC4F2963D000699C-svnClientAdapter-javahl-1.10.3.jar
-	http://hg.netbeans.org/binaries/2CD487DCDE4C4FC38D1C9EBCD45418A1B5EF188D-svnClientAdapter-main-1.10.3.jar
-	http://hg.netbeans.org/binaries/5D37A7FE167A1D44731192748C79B2D7905D474F-svnClientAdapter-svnkit-1.10.3.jar
-	http://hg.netbeans.org/binaries/24CEAE4A9A2AAAA0BD78FF001914BA06B59CEDF2-svnjavahl-1.8.4.jar
+	http://hg.netbeans.org/binaries/DAAEFA7A5F3AF75FE4CDC86A1B5904C9F3B5BBF8-svnClientAdapter-javahl-1.10.12.jar
+	http://hg.netbeans.org/binaries/C47ED3BCD8CEAECDE3BDEEB7D8D14B577B26F9C8-svnClientAdapter-main-1.10.12.jar
+	http://hg.netbeans.org/binaries/AD4A88D99AB7C5B64C8893CA2FF2CBCFCEFC51C8-svnClientAdapter-svnkit-1.10.12.jar
+	http://hg.netbeans.org/binaries/5C47A97F05F761F190D87ED5FCBB08D1E05A7FB5-svnjavahl-1.9.3.jar
 	http://hg.netbeans.org/binaries/4F94E5B4F14B4571A1D8E37885A3037C91F7C02C-svnkit_1.7.8.r9538_v20130107_2001.jar
 	http://hg.netbeans.org/binaries/C0D8A3265D194CC886BAFD585117B6465FD97DCE-swingx-all-1.6.4.jar
 	http://hg.netbeans.org/binaries/EDE7FBABD4C96D34E48FDA0E8FECED24C98CEDCA-sqljet-1.1.10.jar
@@ -128,7 +129,8 @@ DEPEND=">=virtual/jdk-1.7
 	dev-java/commons-codec:0
 	${CDEPEND}
 	dev-java/javacc:0
-	dev-java/javahelp:0"
+	dev-java/javahelp:0
+	dev-java/jna:0"
 RDEPEND=">=virtual/jdk-1.7
 	${CDEPEND}"
 
@@ -149,13 +151,13 @@ src_unpack() {
 	einfo "Deleting bundled jars..."
 	find -name "*.jar" -type f -delete
 
-	unpack netbeans-9999-r14-build.xml.patch.bz2
+	unpack netbeans-9999-r16-build.xml.patch.bz2
 
 	pushd "${S}" >/dev/null || die
 	ln -s "${DISTDIR}"/4E74C6BE42FE89871A878C7C4D6158F21A6D8010-antlr-runtime-3.4.jar libs.antlr3.runtime/external/antlr-runtime-3.4.jar || die
 	ln -s "${DISTDIR}"/98308890597ACB64047F7E896638E0D98753AE82-asm-all-4.0.jar libs.nashorn/external/asm-all-4.0.jar || die
 	ln -s "${DISTDIR}"/886FAF4B85054DD6E50D9B3438542F432B5F9251-bytelist-0.1.jar libs.bytelist/external/bytelist-0.1.jar || die
-	ln -s "${DISTDIR}"/ACAB7C860DF78C4A528FD8A64F2C62A0A96639E5-com.trilead.ssh2_1.0.0.build219_t20150519_2322.jar libs.svnClientAdapter.svnkit/external/com.trilead.ssh2_1.0.0.build219_t20150519_2322.jar || die
+	ln -s "${DISTDIR}"/DCDA3604865C8E80789B4F8E8EECC3D4D15D00F8-com.trilead.ssh2_1.0.0.build220_r167_v20150618_1733.jar libs.svnClientAdapter.svnkit/external/com.trilead.ssh2_1.0.0.build220_r167_v20150618_1733.jar || die
 	ln -s "${DISTDIR}"/A8762D07E76CFDE2395257A5DA47BA7C1DBD3DCE-commons-io-1.4.jar o.apache.commons.io/external/commons-io-1.4.jar || die
 	ln -s "${DISTDIR}"/0CE1EDB914C94EBC388F086C6827E8BDEEC71AC2-commons-lang-2.6.jar o.apache.commons.lang/external/commons-lang-2.6.jar || die
 	ln -s "${DISTDIR}"/CD0D5510908225F76C5FE5A3F1DF4FA44866F81E-commons-net-3.3.jar libs.commons_net/external/commons-net-3.3.jar || die
@@ -209,16 +211,17 @@ src_unpack() {
 	ln -s "${DISTDIR}"/4F2E28BDB091E2DD215FB9B16C8708513288F16A-org.eclipse.mylyn.tasks.core_3.17.0.v20150828-2026.jar o.eclipse.mylyn.tasks.core/external/org.eclipse.mylyn.tasks.core_3.17.0.v20150828-2026.jar || die
 	ln -s "${DISTDIR}"/11D1982BE23B06B2721240F424DBEF9F5FDE7F45-org.eclipse.mylyn.wikitext.confluence.core_2.6.0.v20150901-2143.jar o.eclipse.mylyn.wikitext.confluence.core/external/org.eclipse.mylyn.wikitext.confluence.core_2.6.0.v20150901-2143.jar || die
 	ln -s "${DISTDIR}"/A3FEF6144ED1622E4CDD506B9D745527CC675D8D-org.eclipse.mylyn.wikitext.core_2.6.0.v20150901-2143-patched-nosignature.jar o.eclipse.mylyn.wikitext.core/external/org.eclipse.mylyn.wikitext.core_2.6.0.v20150901-2143-patched-nosignature.jar || die
+	ln -s "${DISTDIR}"/825DC870D1D423E347F4F8229A211A2C297BB15D-org.eclipse.mylyn.wikitext.markdown.core_2.6.0.v20150901-2143.jar o.eclipse.mylyn.wikitext.markdown.core/external/org.eclipse.mylyn.wikitext.markdown.core_2.6.0.v20150901-2143.jar || die
 	ln -s "${DISTDIR}"/C3024631DD14008D2FF35A576C3D82AC6FCB2E10-org.eclipse.mylyn.wikitext.textile.core_2.6.0.v20150901-2143.jar o.eclipse.mylyn.wikitext.textile.core/external/org.eclipse.mylyn.wikitext.textile.core_2.6.0.v20150901-2143.jar || die
-	ln -s "${DISTDIR}"/8307A44D3F150F1BB317532097A0C7D125C00F2D-org.tmatesoft.svnkit_1.8.10.r10446_v20150526_1454.jar libs.svnClientAdapter.svnkit/external/org.tmatesoft.svnkit_1.8.10.r10446_v20150526_1454.jar || die
+	ln -s "${DISTDIR}"/17C0C8D6DEBF5EBE734881C131888D8088BD9E7D-org.tmatesoft.svnkit_1.8.12.r10533_v20160129_0158.jar libs.svnClientAdapter.svnkit/external/org.tmatesoft.svnkit_1.8.12.r10533_v20160129_0158.jar || die
 	ln -s "${DISTDIR}"/6819C79348FCF4F5125C834E7D3B742582DCA34D-processtreekiller-1.0.7.jar extexecution.process/external/processtreekiller-1.0.7.jar || die
 	ln -s "${DISTDIR}"/4F94E5B4F14B4571A1D8E37885A3037C91F7C02C-svnkit_1.7.8.r9538_v20130107_2001.jar libs.svnClientAdapter.svnkit/external/svnkit_1.7.8.r9538_v20130107_2001.jar || die
 	ln -s "${DISTDIR}"/B0D0FCBAC68826D2AFA3C7C89FC4D57B95A000C3-resolver-1.2.jar o.apache.xml.resolver/external/resolver-1.2.jar || die
 	ln -s "${DISTDIR}"/EDE7FBABD4C96D34E48FDA0E8FECED24C98CEDCA-sqljet-1.1.10.jar libs.svnClientAdapter.svnkit/external/sqljet-1.1.10.jar || die
-	ln -s "${DISTDIR}"/D08E473A4D0510FB329D64E4CC4F2963D000699C-svnClientAdapter-javahl-1.10.3.jar libs.svnClientAdapter.javahl/external/svnClientAdapter-javahl-1.10.3.jar || die
-	ln -s "${DISTDIR}"/2CD487DCDE4C4FC38D1C9EBCD45418A1B5EF188D-svnClientAdapter-main-1.10.3.jar libs.svnClientAdapter/external/svnClientAdapter-main-1.10.3.jar || die
-	ln -s "${DISTDIR}"/5D37A7FE167A1D44731192748C79B2D7905D474F-svnClientAdapter-svnkit-1.10.3.jar libs.svnClientAdapter.svnkit/external/svnClientAdapter-svnkit-1.10.3.jar || die
-	ln -s "${DISTDIR}"/24CEAE4A9A2AAAA0BD78FF001914BA06B59CEDF2-svnjavahl-1.8.4.jar libs.svnClientAdapter.javahl/external/svnjavahl-1.8.4.jar || die
+	ln -s "${DISTDIR}"/DAAEFA7A5F3AF75FE4CDC86A1B5904C9F3B5BBF8-svnClientAdapter-javahl-1.10.12.jar libs.svnClientAdapter.javahl/external/svnClientAdapter-javahl-1.10.12.jar || die
+	ln -s "${DISTDIR}"/C47ED3BCD8CEAECDE3BDEEB7D8D14B577B26F9C8-svnClientAdapter-main-1.10.12.jar libs.svnClientAdapter/external/svnClientAdapter-main-1.10.12.jar || die
+	ln -s "${DISTDIR}"/AD4A88D99AB7C5B64C8893CA2FF2CBCFCEFC51C8-svnClientAdapter-svnkit-1.10.12.jar libs.svnClientAdapter.svnkit/external/svnClientAdapter-svnkit-1.10.12.jar || die
+	ln -s "${DISTDIR}"/5C47A97F05F761F190D87ED5FCBB08D1E05A7FB5-svnjavahl-1.9.3.jar libs.svnClientAdapter.javahl/external/svnjavahl-1.9.3.jar || die
 	ln -s "${DISTDIR}"/3B91269E9055504778F57744D24F505856698602-svnkit-1.7.0-beta4-20120316.233307-1.jar libs.svnClientAdapter.svnkit/external/svnkit-1.7.0-beta4-20120316.233307-1.jar || die
 	ln -s "${DISTDIR}"/015525209A02BD74254930FF844C7C13498B7FB9-svnkit-javahl16-1.7.0-beta4-20120316.233536-1.jar libs.svnClientAdapter.svnkit/external/svnkit-javahl16-1.7.0-beta4-20120316.233536-1.jar || die
 	ln -s "${DISTDIR}"/C0D8A3265D194CC886BAFD585117B6465FD97DCE-swingx-all-1.6.4.jar libs.swingx/external/swingx-all-1.6.4.jar || die
@@ -236,7 +239,7 @@ src_prepare() {
 	einfo "Deleting bundled class files..."
 	find -name "*.class" -type f | xargs rm -vf
 
-	epatch netbeans-9999-r14-build.xml.patch
+	epatch netbeans-9999-r16-build.xml.patch
 
 	# Support for custom patches
 	if [ -n "${NETBEANS9999_PATCHES_DIR}" -a -d "${NETBEANS9999_PATCHES_DIR}" ] ; then
@@ -279,6 +282,7 @@ src_prepare() {
 	java-pkg_jar-from --into html.validation/external saxon-9 saxon.jar saxon9B.jar
 	java-pkg_jar-from --into libs.commons_compress/external commons-compress commons-compress.jar commons-compress-1.8.1.jar
 	# java-pkg_jar-from --into libs.freemarker/external freemarker-2.3 freemarker.jar freemarker-2.3.19.jar
+	java-pkg_jar-from --build-only --into libs.jna/external jna jna.jar jna-4.2.2.jar
 	java-pkg_jar-from --into libs.jvyamlb/external jvyamlb jvyamlb.jar jvyamlb-0.2.7.jar
 	java-pkg_jar-from --into libs.lucene/external lucene-3.5 lucene-core.jar lucene-core-3.5.0.jar
 	java-pkg_jar-from --into libs.smack/external smack-2.2 smack.jar smack.jar
