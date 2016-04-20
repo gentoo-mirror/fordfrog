@@ -5,19 +5,19 @@
 EAPI="4"
 inherit eutils java-pkg-2 java-ant-2
 
-DESCRIPTION="Netbeans D-Light Cluster"
+DESCRIPTION="Netbeans Ergonomics Cluster"
 HOMEPAGE="http://netbeans.org/"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-03-17_00-01-48/zip/netbeans-trunk-nightly-201603170001-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-04-20_00-01-48/zip/netbeans-trunk-nightly-201604200001-src.zip"
 SRC_URI="${SOURCE_URL}
-	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r15-build.xml.patch.bz2
-	http://hg.netbeans.org/binaries/0F89C62CA701D20BA9A9A526D4D017888C3B5A65-fs_server-1.0.zip"
+	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r16-build.xml.patch.bz2"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 S="${WORKDIR}"
 
 CDEPEND="~dev-java/netbeans-ide-${PV}
+	~dev-java/netbeans-nb-${PV}
 	~dev-java/netbeans-platform-${PV}"
 DEPEND=">=virtual/jdk-1.7
 	app-arch/unzip
@@ -30,7 +30,7 @@ INSTALL_DIR="/usr/share/${PN}-${SLOT}"
 
 EANT_BUILD_XML="nbbuild/build.xml"
 EANT_BUILD_TARGET="rebuild-cluster"
-EANT_EXTRA_ARGS="-Drebuild.cluster.name=nb.cluster.dlight -Dext.binaries.downloaded=true -Dpermit.jdk8.builds=true"
+EANT_EXTRA_ARGS="-Drebuild.cluster.name=nb.cluster.ergonomics -Dext.binaries.downloaded=true -Dpermit.jdk8.builds=true"
 EANT_FILTER_COMPILER="ecj-3.3 ecj-3.4 ecj-3.5 ecj-3.6 ecj-3.7"
 JAVA_PKG_BSFIX="off"
 
@@ -40,18 +40,14 @@ src_unpack() {
 	einfo "Deleting bundled jars..."
 	find -name "*.jar" -type f -delete
 
-	unpack netbeans-9999-r15-build.xml.patch.bz2
-
-	pushd "${S}" >/dev/null || die
-	ln -s "${DISTDIR}"/0F89C62CA701D20BA9A9A526D4D017888C3B5A65-fs_server-1.0.zip dlight.remote.impl/external/fs_server-1.0.zip || die
-	popd >/dev/null || die
+	unpack netbeans-9999-r16-build.xml.patch.bz2
 }
 
 src_prepare() {
 	einfo "Deleting bundled class files..."
 	find -name "*.class" -type f | xargs rm -vf
 
-	epatch netbeans-9999-r15-build.xml.patch
+	epatch netbeans-9999-r16-build.xml.patch
 
 	# Support for custom patches
 	if [ -n "${NETBEANS9999_PATCHES_DIR}" -a -d "${NETBEANS9999_PATCHES_DIR}" ] ; then
@@ -77,6 +73,10 @@ src_prepare() {
 	cat /usr/share/netbeans-ide-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
 	touch nb.cluster.ide.built
 
+	ln -s /usr/share/netbeans-nb-${SLOT}/nb nb || die
+	cat /usr/share/netbeans-nb-${SLOT}/nb/moduleCluster.properties >> moduleCluster.properties || die
+	touch nb.cluster.nb.built
+
 	ln -s /usr/share/netbeans-platform-${SLOT} platform || die
 	cat /usr/share/netbeans-platform-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
 	touch nb.cluster.platform.built
@@ -87,15 +87,15 @@ src_prepare() {
 }
 
 src_install() {
-	pushd nbbuild/netbeans/dlight >/dev/null || die
+	pushd nbbuild/netbeans/ergonomics >/dev/null || die
 
 	insinto ${INSTALL_DIR}
 
-	grep -E "/dlight$" ../moduleCluster.properties > "${D}"/${INSTALL_DIR}/moduleCluster.properties || die
+	grep -E "/ergonomics$" ../moduleCluster.properties > "${D}"/${INSTALL_DIR}/moduleCluster.properties || die
 
 	doins -r *
 
 	popd >/dev/null || die
 
-	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/dlight
+	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/ergonomics
 }
