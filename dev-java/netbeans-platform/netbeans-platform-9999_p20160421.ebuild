@@ -8,12 +8,11 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans Platform"
 HOMEPAGE="http://netbeans.org/features/platform/"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-03-18_00-01-48/zip/netbeans-trunk-nightly-201603180001-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-04-21_00-01-48/zip/netbeans-trunk-nightly-201604210001-src.zip"
 SRC_URI="${SOURCE_URL}
-	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r15-build.xml.patch.bz2
+	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r16-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/2F7553F50B0D14ED811B849C282DA8C1FFC32AAE-asm-all-5.0.1.jar
 	http://hg.netbeans.org/binaries/1BA97A9FFD4A1DFF3E75B76CD3AE3D0EFF8493B7-felix-4.2.1.jar
-	http://hg.netbeans.org/binaries/0388CADD903570B9FE30140C0EC39DC573389B33-jna-platform-4.2.1-patched.jar
 	http://hg.netbeans.org/binaries/941A8BE4506C65F0A9001C08812FB7DA1E505E21-junit-4.12-javadoc.jar
 	http://hg.netbeans.org/binaries/771CDCA0A3F2F3CE818E20CC2D707A3592422485-ko4j-1.3.jar
 	http://hg.netbeans.org/binaries/A3085BAA78C8EE7F55081E70C79ABE04CA38CE93-net.java.html-1.3.jar
@@ -68,12 +67,11 @@ src_unpack() {
 	einfo "Deleting bundled jars..."
 	find -name "*.jar" -type f -delete
 
-	unpack netbeans-9999-r15-build.xml.patch.bz2
+	unpack netbeans-9999-r16-build.xml.patch.bz2
 
 	pushd "${S}" >/dev/null || die
 	ln -s "${DISTDIR}"/2F7553F50B0D14ED811B849C282DA8C1FFC32AAE-asm-all-5.0.1.jar libs.asm/external/asm-all-5.0.1.jar || die
 	ln -s "${DISTDIR}"/1BA97A9FFD4A1DFF3E75B76CD3AE3D0EFF8493B7-felix-4.2.1.jar libs.felix/external/felix-4.2.1.jar || die
-	ln -s "${DISTDIR}"/0388CADD903570B9FE30140C0EC39DC573389B33-jna-platform-4.2.1-patched.jar libs.jna.platform/external/jna-platform-4.2.1-patched.jar || die
 	ln -s "${DISTDIR}"/941A8BE4506C65F0A9001C08812FB7DA1E505E21-junit-4.12-javadoc.jar junitlib/external/junit-4.12-javadoc.jar || die
 	ln -s "${DISTDIR}"/771CDCA0A3F2F3CE818E20CC2D707A3592422485-ko4j-1.3.jar o.n.html.ko4j/external/ko4j-1.3.jar || die
 	ln -s "${DISTDIR}"/A3085BAA78C8EE7F55081E70C79ABE04CA38CE93-net.java.html-1.3.jar net.java.html/external/net.java.html-1.3.jar || die
@@ -95,7 +93,7 @@ src_prepare() {
 	find -name "*.class" -type f | xargs rm -vf
 
 	# upstream jna jar contains bundled binary libraries so we disable that feature
-	epatch netbeans-9999-r15-build.xml.patch
+	epatch netbeans-9999-r16-build.xml.patch
 
 	# Support for custom patches
 	if [ -n "${NETBEANS9999_PATCHES_DIR}" -a -d "${NETBEANS9999_PATCHES_DIR}" ] ; then
@@ -113,7 +111,8 @@ src_prepare() {
 	einfo "Symlinking external libraries..."
 	java-pkg_jar-from --into libs.junit4/external hamcrest-core-1.3 hamcrest-core.jar hamcrest-core-1.3.jar
 	java-pkg_jar-from --into javahelp/external javahelp jhall.jar jhall-2.0_05.jar
-	java-pkg_jar-from --into libs.jna/external jna jna.jar jna-4.2.1.jar
+	java-pkg_jar-from --into libs.jna/external jna jna.jar jna-4.2.2.jar
+	java-pkg_jar-from --into libs.jna.platform/external jna platform.jar jna-platform-4.2.2.jar
 	java-pkg_jar-from --into libs.junit4/external junit-4 junit.jar junit-4.12.jar
 	ln -s /usr/share/junit-4/sources/junit-src.zip junitlib/external/junit-4.12-sources.jar || die
 	java-pkg_jar-from --into libs.osgi/external osgi-core-api osgi-core-api.jar osgi.core-5.0.0.jar
@@ -155,7 +154,8 @@ src_install() {
 	pushd "${instdir}" >/dev/null || die
 	rm hamcrest-core-1.3.jar && java-pkg_jar-from --into "${instdir}" hamcrest-core-1.3 hamcrest-core.jar hamcrest-core-1.3.jar
 	rm jhall-2.0_05.jar && java-pkg_jar-from --into "${instdir}" javahelp jhall.jar jhall-2.0_05.jar
-	rm jna-4.1.0.jar && java-pkg_jar-from --into "${instdir}" jna jna.jar jna-4.1.0.jar
+	rm jna-4.2.2.jar && java-pkg_jar-from --into "${instdir}" jna jna.jar jna-4.2.2.jar
+	rm jna-platform-4.2.2.jar && java-pkg_jar-from --into "${instdir}" jna platform.jar jna-platform-4.2.2.jar
 	rm junit-4.12.jar && java-pkg_jar-from --into "${instdir}" junit-4 junit.jar junit-4.12.jar
 	rm osgi.cmpn-4.2.jar && java-pkg_jar-from --into "${instdir}" osgi-compendium osgi-compendium.jar osgi.cmpn-4.2.jar
 	rm osgi.core-5.0.0.jar && java-pkg_jar-from --into "${instdir}" osgi-core-api osgi-core-api.jar osgi.core-5.0.0.jar
