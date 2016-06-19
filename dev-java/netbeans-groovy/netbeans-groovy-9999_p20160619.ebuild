@@ -5,19 +5,21 @@
 EAPI="4"
 inherit eutils java-pkg-2 java-ant-2
 
-DESCRIPTION="Netbeans D-Light Cluster"
-HOMEPAGE="http://netbeans.org/"
+DESCRIPTION="Netbeans Groovy Cluster"
+HOMEPAGE="http://netbeans.org/projects/groovy"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-05-20_00-02-33/zip/netbeans-trunk-nightly-201605200002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-06-19_00-02-33/zip/netbeans-trunk-nightly-201606190002-src.zip"
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r16-build.xml.patch.bz2
-	http://hg.netbeans.org/binaries/0F89C62CA701D20BA9A9A526D4D017888C3B5A65-fs_server-1.0.zip"
+	http://hg.netbeans.org/binaries/01730F61E9C9E59FD1B814371265334D7BE0B8D2-groovy-all-2.4.5.jar"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 S="${WORKDIR}"
 
-CDEPEND="~dev-java/netbeans-ide-${PV}
+CDEPEND="~dev-java/netbeans-extide-${PV}
+	~dev-java/netbeans-ide-${PV}
+	~dev-java/netbeans-java-${PV}
 	~dev-java/netbeans-platform-${PV}"
 DEPEND=">=virtual/jdk-1.7
 	app-arch/unzip
@@ -30,7 +32,7 @@ INSTALL_DIR="/usr/share/${PN}-${SLOT}"
 
 EANT_BUILD_XML="nbbuild/build.xml"
 EANT_BUILD_TARGET="rebuild-cluster"
-EANT_EXTRA_ARGS="-Drebuild.cluster.name=nb.cluster.dlight -Dext.binaries.downloaded=true -Dpermit.jdk8.builds=true"
+EANT_EXTRA_ARGS="-Drebuild.cluster.name=nb.cluster.groovy -Dext.binaries.downloaded=true -Dpermit.jdk8.builds=true"
 EANT_FILTER_COMPILER="ecj-3.3 ecj-3.4 ecj-3.5 ecj-3.6 ecj-3.7"
 JAVA_PKG_BSFIX="off"
 
@@ -43,7 +45,7 @@ src_unpack() {
 	unpack netbeans-9999-r16-build.xml.patch.bz2
 
 	pushd "${S}" >/dev/null || die
-	ln -s "${DISTDIR}"/0F89C62CA701D20BA9A9A526D4D017888C3B5A65-fs_server-1.0.zip dlight.remote.impl/external/fs_server-1.0.zip || die
+	ln -s "${DISTDIR}"/01730F61E9C9E59FD1B814371265334D7BE0B8D2-groovy-all-2.4.5.jar libs.groovy/external/groovy-all-2.4.5.jar || die
 	popd >/dev/null || die
 }
 
@@ -73,9 +75,17 @@ src_prepare() {
 	mkdir "${S}"/nbbuild/netbeans || die
 	pushd "${S}"/nbbuild/netbeans >/dev/null || die
 
+	ln -s /usr/share/netbeans-extide-${SLOT} extide || die
+	cat /usr/share/netbeans-extide-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
+	touch nb.cluster.extide.built
+
 	ln -s /usr/share/netbeans-ide-${SLOT} ide || die
 	cat /usr/share/netbeans-ide-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
 	touch nb.cluster.ide.built
+
+	ln -s /usr/share/netbeans-java-${SLOT} java || die
+	cat /usr/share/netbeans-java-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
+	touch nb.cluster.java.built
 
 	ln -s /usr/share/netbeans-platform-${SLOT} platform || die
 	cat /usr/share/netbeans-platform-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
@@ -87,15 +97,15 @@ src_prepare() {
 }
 
 src_install() {
-	pushd nbbuild/netbeans/dlight >/dev/null || die
+	pushd nbbuild/netbeans/groovy >/dev/null || die
 
 	insinto ${INSTALL_DIR}
 
-	grep -E "/dlight$" ../moduleCluster.properties > "${D}"/${INSTALL_DIR}/moduleCluster.properties || die
+	grep -E "/groovy$" ../moduleCluster.properties > "${D}"/${INSTALL_DIR}/moduleCluster.properties || die
 
 	doins -r *
 
 	popd >/dev/null || die
 
-	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/dlight
+	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/groovy
 }
