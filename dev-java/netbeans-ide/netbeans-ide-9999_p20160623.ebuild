@@ -8,11 +8,10 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans IDE Cluster"
 HOMEPAGE="http://netbeans.org/projects/ide"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-05-24_00-02-33/zip/netbeans-trunk-nightly-201605240002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-06-23_00-02-33/zip/netbeans-trunk-nightly-201606230002-src.zip"
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r16-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/4E74C6BE42FE89871A878C7C4D6158F21A6D8010-antlr-runtime-3.4.jar
-	http://hg.netbeans.org/binaries/98308890597ACB64047F7E896638E0D98753AE82-asm-all-4.0.jar
 	http://hg.netbeans.org/binaries/886FAF4B85054DD6E50D9B3438542F432B5F9251-bytelist-0.1.jar
 	http://hg.netbeans.org/binaries/DCDA3604865C8E80789B4F8E8EECC3D4D15D00F8-com.trilead.ssh2_1.0.0.build220_r167_v20150618_1733.jar
 	http://hg.netbeans.org/binaries/A8762D07E76CFDE2395257A5DA47BA7C1DBD3DCE-commons-io-1.4.jar
@@ -38,16 +37,12 @@ SRC_URI="${SOURCE_URL}
 	http://hg.netbeans.org/binaries/F4DB465F207907A2406B0BF5C8FFEE22A5C3E4E3-jaxb1-impl.jar
 	http://hg.netbeans.org/binaries/5E40984A55F6FFF704F05D511A119CA5B456DDB1-jfxrt.jar
 	http://hg.netbeans.org/binaries/483A61B688B13C62BB201A683D98A6688B5373B6-jing.jar
-	http://hg.netbeans.org/binaries/3699DFFE17089F9B9C73857EDA9B8669AAD657D3-js-corestubs.zip
-	http://hg.netbeans.org/binaries/2AA13ACCC4059C930C4AD3B6ABD8E1C0FC06235C-js-domstubs.zip
-	http://hg.netbeans.org/binaries/7C0C3CFD989EE775198337C11715C1ACD6C84F41-js-reststubs.zip
 	http://hg.netbeans.org/binaries/036FA0032B44AD06A1F13504D97B3685B1C88961-jsch.agentproxy.core-0.0.7.jar
 	http://hg.netbeans.org/binaries/9F31964104D71855DF6B73F0C761CDEB3FA3C49C-jsch.agentproxy.sshagent-0.0.7.jar
 	http://hg.netbeans.org/binaries/3FA59A536F3DC2197826DC7F224C0823C1534203-jsch.agentproxy.pageant-0.0.7.jar
 	http://hg.netbeans.org/binaries/F759114E5A9F9AE907EADB59DBF65189AA399B45-jsch.agentproxy.usocket-jna-0.0.7.jar
 	http://hg.netbeans.org/binaries/F406B7784A0DA5C4670B038BF55A4DCD4AF30AEB-jzlib-1.0.7.jar
 	http://hg.netbeans.org/binaries/2E07375E5CA3A452472F0E87FB33F243F7A5C08C-libpam4j-1.1.jar
-	http://hg.netbeans.org/binaries/76E901A1F432323E7E90FC86FDB2534A28952293-nashorn-02f810c26ff9-patched.jar
 	http://hg.netbeans.org/binaries/AA2671239EBB762FEEE8B908E9F35473A72AFE1B-org.eclipse.core.contenttype_3.4.100.v20110423-0524_nosignature.jar
 	http://hg.netbeans.org/binaries/1605B38BB28EAE32C11EAB8F9E238A497754A5B8-org.eclipse.core.jobs-3.5.101_nosignature.jar
 	http://hg.netbeans.org/binaries/20800206EB8B490F3CE5BB8AC8A7C3B9E8004A30-org.eclipse.core.net_1.2.100.I20110511-0800_nosignature.jar
@@ -82,7 +77,7 @@ SRC_URI="${SOURCE_URL}
 	http://hg.netbeans.org/binaries/EDE7FBABD4C96D34E48FDA0E8FECED24C98CEDCA-sqljet-1.1.10.jar
 	http://hg.netbeans.org/binaries/CD5B5996B46CB8D96C8F0F89A7A734B3C01F3DF7-tomcat-webserver-3.2.jar
 	http://hg.netbeans.org/binaries/89BC047153217F5254506F4C622A771A78883CBC-ValidationAPI.jar
-	http://hg.netbeans.org/binaries/5C322A10E13FADE0451263035B7AA26B63AAFA47-validator.jar
+	http://hg.netbeans.org/binaries/15ACB06E2E3A70FC188782BA51369CA81ACFE860-validator.jar
 	http://hg.netbeans.org/binaries/C9757EFB2CFBA523A7375A78FA9ECFAF0D0AC505-winp-1.14-patched.jar
 	http://hg.netbeans.org/binaries/64F5BEEADD2A239C4BC354B8DFDB97CF7FDD9983-xmlrpc-client-3.0.jar
 	http://hg.netbeans.org/binaries/8FA16AD28B5E79A7CD52B8B72985B0AE8CCD6ADF-xmlrpc-common-3.0.jar
@@ -94,6 +89,7 @@ S="${WORKDIR}"
 
 CDEPEND="~dev-java/netbeans-harness-${PV}
 	~dev-java/netbeans-platform-${PV}
+	dev-java/antlr:4
 	dev-java/commons-compress:0
 	dev-java/commons-httpclient:3
 	dev-java/commons-logging:0
@@ -155,7 +151,6 @@ src_unpack() {
 
 	pushd "${S}" >/dev/null || die
 	ln -s "${DISTDIR}"/4E74C6BE42FE89871A878C7C4D6158F21A6D8010-antlr-runtime-3.4.jar libs.antlr3.runtime/external/antlr-runtime-3.4.jar || die
-	ln -s "${DISTDIR}"/98308890597ACB64047F7E896638E0D98753AE82-asm-all-4.0.jar libs.nashorn/external/asm-all-4.0.jar || die
 	ln -s "${DISTDIR}"/886FAF4B85054DD6E50D9B3438542F432B5F9251-bytelist-0.1.jar libs.bytelist/external/bytelist-0.1.jar || die
 	ln -s "${DISTDIR}"/DCDA3604865C8E80789B4F8E8EECC3D4D15D00F8-com.trilead.ssh2_1.0.0.build220_r167_v20150618_1733.jar libs.svnClientAdapter.svnkit/external/com.trilead.ssh2_1.0.0.build220_r167_v20150618_1733.jar || die
 	ln -s "${DISTDIR}"/A8762D07E76CFDE2395257A5DA47BA7C1DBD3DCE-commons-io-1.4.jar o.apache.commons.io/external/commons-io-1.4.jar || die
@@ -181,16 +176,12 @@ src_unpack() {
 	ln -s "${DISTDIR}"/F4DB465F207907A2406B0BF5C8FFEE22A5C3E4E3-jaxb1-impl.jar libs.jaxb/external/jaxb1-impl.jar || die
 	ln -s "${DISTDIR}"/5E40984A55F6FFF704F05D511A119CA5B456DDB1-jfxrt.jar libs.javafx/external/jfxrt.jar || die
 	ln -s "${DISTDIR}"/483A61B688B13C62BB201A683D98A6688B5373B6-jing.jar html.validation/external/jing.jar || die
-	ln -s "${DISTDIR}"/3699DFFE17089F9B9C73857EDA9B8669AAD657D3-js-corestubs.zip javascript2.editor/external/js-corestubs.zip || die
-	ln -s "${DISTDIR}"/2AA13ACCC4059C930C4AD3B6ABD8E1C0FC06235C-js-domstubs.zip javascript2.editor/external/js-domstubs.zip || die
-	ln -s "${DISTDIR}"/7C0C3CFD989EE775198337C11715C1ACD6C84F41-js-reststubs.zip javascript2.editor/external/js-reststubs.zip || die
 	ln -s "${DISTDIR}"/036FA0032B44AD06A1F13504D97B3685B1C88961-jsch.agentproxy.core-0.0.7.jar libs.jsch.agentproxy/external/jsch.agentproxy.core-0.0.7.jar || die
 	ln -s "${DISTDIR}"/9F31964104D71855DF6B73F0C761CDEB3FA3C49C-jsch.agentproxy.sshagent-0.0.7.jar libs.jsch.agentproxy/external/jsch.agentproxy.sshagent-0.0.7.jar || die
 	ln -s "${DISTDIR}"/3FA59A536F3DC2197826DC7F224C0823C1534203-jsch.agentproxy.pageant-0.0.7.jar libs.jsch.agentproxy/external/jsch.agentproxy.pageant-0.0.7.jar || die
 	ln -s "${DISTDIR}"/F759114E5A9F9AE907EADB59DBF65189AA399B45-jsch.agentproxy.usocket-jna-0.0.7.jar libs.jsch.agentproxy/external/jsch.agentproxy.usocket-jna-0.0.7.jar || die
 	ln -s "${DISTDIR}"/F406B7784A0DA5C4670B038BF55A4DCD4AF30AEB-jzlib-1.0.7.jar c.jcraft.jzlib/external/jzlib-1.0.7.jar || die
 	ln -s "${DISTDIR}"/2E07375E5CA3A452472F0E87FB33F243F7A5C08C-libpam4j-1.1.jar extexecution.process/external/libpam4j-1.1.jar || die
-	ln -s "${DISTDIR}"/76E901A1F432323E7E90FC86FDB2534A28952293-nashorn-02f810c26ff9-patched.jar libs.nashorn/external/nashorn-02f810c26ff9-patched.jar || die
 	ln -s "${DISTDIR}"/AA2671239EBB762FEEE8B908E9F35473A72AFE1B-org.eclipse.core.contenttype_3.4.100.v20110423-0524_nosignature.jar o.eclipse.core.contenttype/external/org.eclipse.core.contenttype_3.4.100.v20110423-0524_nosignature.jar || die
 	ln -s "${DISTDIR}"/1605B38BB28EAE32C11EAB8F9E238A497754A5B8-org.eclipse.core.jobs-3.5.101_nosignature.jar o.eclipse.core.jobs/external/org.eclipse.core.jobs-3.5.101_nosignature.jar || die
 	ln -s "${DISTDIR}"/20800206EB8B490F3CE5BB8AC8A7C3B9E8004A30-org.eclipse.core.net_1.2.100.I20110511-0800_nosignature.jar o.eclipse.core.net/external/org.eclipse.core.net_1.2.100.I20110511-0800_nosignature.jar || die
@@ -227,7 +218,7 @@ src_unpack() {
 	ln -s "${DISTDIR}"/C0D8A3265D194CC886BAFD585117B6465FD97DCE-swingx-all-1.6.4.jar libs.swingx/external/swingx-all-1.6.4.jar || die
 	ln -s "${DISTDIR}"/CD5B5996B46CB8D96C8F0F89A7A734B3C01F3DF7-tomcat-webserver-3.2.jar httpserver/external/tomcat-webserver-3.2.jar || die
 	ln -s "${DISTDIR}"/89BC047153217F5254506F4C622A771A78883CBC-ValidationAPI.jar swing.validation/external/ValidationAPI.jar || die
-	ln -s "${DISTDIR}"/5C322A10E13FADE0451263035B7AA26B63AAFA47-validator.jar html.validation/external/validator.jar || die
+	ln -s "${DISTDIR}"/15ACB06E2E3A70FC188782BA51369CA81ACFE860-validator.jar html.validation/external/validator.jar || die
 	ln -s "${DISTDIR}"/C9757EFB2CFBA523A7375A78FA9ECFAF0D0AC505-winp-1.14-patched.jar extexecution.process/external/winp-1.14-patched.jar || die
 	ln -s "${DISTDIR}"/64F5BEEADD2A239C4BC354B8DFDB97CF7FDD9983-xmlrpc-client-3.0.jar o.apache.xmlrpc/external/xmlrpc-client-3.0.jar || die
 	ln -s "${DISTDIR}"/8FA16AD28B5E79A7CD52B8B72985B0AE8CCD6ADF-xmlrpc-common-3.0.jar o.apache.xmlrpc/external/xmlrpc-common-3.0.jar || die
@@ -255,8 +246,33 @@ src_prepare() {
 	fi
 
 	einfo "Symlinking external libraries..."
+	java-pkg_jar-from --into c.jcraft.jsch/external jsch jsch.jar jsch-0.1.53.jar
+	java-pkg_jar-from --into db.drivers/external jdbc-mysql jdbc-mysql.jar mysql-connector-java-5.1.23-bin.jar
+	java-pkg_jar-from --into db.drivers/external jdbc-postgresql jdbc-postgresql.jar postgresql-9.2-1002.jdbc4.jar
+	java-pkg_jar-from --build-only --into db.sql.visualeditor/external javacc javacc.jar javacc-3.2.jar
+	java-pkg_jar-from --into html.parser/external icu4j-55 icu4j.jar icu4j-4_4_2.jar
+	java-pkg_jar-from --into html.validation/external iso-relax iso-relax.jar isorelax.jar
+	java-pkg_jar-from --into html.validation/external log4j log4j.jar log4j-1.2.15.jar
+	java-pkg_jar-from --into html.validation/external saxon-9 saxon.jar saxon9B.jar
 	java-pkg_jar-from --build-only --into javahelp/external javahelp jhall.jar jhall-2.0_05.jar
+	java-pkg_jar-from --into libs.antlr4.runtime/external antlr-4 antlr-runtime.jar antlr-runtime-4.5.3.jar
+	java-pkg_jar-from --into libs.commons_compress/external commons-compress commons-compress.jar commons-compress-1.8.1.jar
+	# java-pkg_jar-from --into libs.freemarker/external freemarker-2.3 freemarker.jar freemarker-2.3.19.jar
+	java-pkg_jar-from --build-only --into libs.jna/external jna jna.jar jna-4.2.2.jar
 	java-pkg_jar-from --into libs.json_simple/external json-simple json-simple.jar json-simple-1.1.1.jar
+	java-pkg_jar-from --into libs.jvyamlb/external jvyamlb jvyamlb.jar jvyamlb-0.2.7.jar
+	java-pkg_jar-from --into libs.lucene/external lucene-3.5 lucene-core.jar lucene-core-3.5.0.jar
+	java-pkg_jar-from --into libs.smack/external smack-2.2 smack.jar smack.jar
+	java-pkg_jar-from --into libs.smack/external smack-2.2 smackx.jar smackx.jar
+	# java-pkg_jar-from --into libs.svnClientAdapter.javahl/external subversion svn-javahl.jar svnjavahl-1.8.4.jar
+	java-pkg_jar-from --into libs.xerces/external xerces-2 xercesImpl.jar xerces-2.8.0.jar
+	java-pkg_jar-from --build-only --into o.apache.commons.codec/external commons-codec commons-codec.jar apache-commons-codec-1.3.jar
+	java-pkg_jar-from --into o.apache.commons.httpclient/external commons-httpclient-3 commons-httpclient.jar commons-httpclient-3.1.jar
+	java-pkg_jar-from --into o.apache.commons.logging/external commons-logging commons-logging.jar commons-logging-1.1.1.jar
+	java-pkg_jar-from --into o.apache.ws.commons.util/external ws-commons-util ws-commons-util.jar ws-commons-util-1.0.1.jar
+	java-pkg_jar-from --into servletapi/external tomcat-servlet-api-2.2 servlet.jar servlet-2.2.jar
+	java-pkg_jar-from --into xml.jaxb.api/external sun-jaf activation.jar activation.jar
+	java-pkg_jar-from --into xml.jaxb.api/external jsr173 jsr173.jar jsr173_1.0_api.jar
 
 	einfo "Linking in other clusters..."
 	mkdir "${S}"/nbbuild/netbeans || die
@@ -271,31 +287,6 @@ src_prepare() {
 	touch nb.cluster.harness.built
 
 	popd >/dev/null || die
-
-	java-pkg_jar-from --into c.jcraft.jsch/external jsch jsch.jar jsch-0.1.53.jar
-	java-pkg_jar-from --into db.drivers/external jdbc-mysql jdbc-mysql.jar mysql-connector-java-5.1.23-bin.jar
-	java-pkg_jar-from --into db.drivers/external jdbc-postgresql jdbc-postgresql.jar postgresql-9.2-1002.jdbc4.jar
-	java-pkg_jar-from --build-only --into db.sql.visualeditor/external javacc javacc.jar javacc-3.2.jar
-	java-pkg_jar-from --into html.parser/external icu4j-55 icu4j.jar icu4j-4_4_2.jar
-	java-pkg_jar-from --into html.validation/external iso-relax iso-relax.jar isorelax.jar
-	java-pkg_jar-from --into html.validation/external log4j log4j.jar log4j-1.2.15.jar
-	java-pkg_jar-from --into html.validation/external saxon-9 saxon.jar saxon9B.jar
-	java-pkg_jar-from --into libs.commons_compress/external commons-compress commons-compress.jar commons-compress-1.8.1.jar
-	# java-pkg_jar-from --into libs.freemarker/external freemarker-2.3 freemarker.jar freemarker-2.3.19.jar
-	java-pkg_jar-from --build-only --into libs.jna/external jna jna.jar jna-4.2.2.jar
-	java-pkg_jar-from --into libs.jvyamlb/external jvyamlb jvyamlb.jar jvyamlb-0.2.7.jar
-	java-pkg_jar-from --into libs.lucene/external lucene-3.5 lucene-core.jar lucene-core-3.5.0.jar
-	java-pkg_jar-from --into libs.smack/external smack-2.2 smack.jar smack.jar
-	java-pkg_jar-from --into libs.smack/external smack-2.2 smackx.jar smackx.jar
-	# java-pkg_jar-from --into libs.svnClientAdapter.javahl/external subversion svn-javahl.jar svnjavahl-1.8.4.jar
-	java-pkg_jar-from --into libs.xerces/external xerces-2 xercesImpl.jar xerces-2.8.0.jar
-	java-pkg_jar-from --build-only --into o.apache.commons.codec/external commons-codec commons-codec.jar apache-commons-codec-1.3.jar
-	java-pkg_jar-from --into o.apache.commons.httpclient/external commons-httpclient-3 commons-httpclient.jar commons-httpclient-3.1.jar
-	java-pkg_jar-from --into o.apache.commons.logging/external commons-logging commons-logging.jar commons-logging-1.1.1.jar
-	java-pkg_jar-from --into o.apache.ws.commons.util/external ws-commons-util ws-commons-util.jar ws-commons-util-1.0.1.jar
-	java-pkg_jar-from --into servletapi/external tomcat-servlet-api-2.2 servlet.jar servlet-2.2.jar
-	java-pkg_jar-from --into xml.jaxb.api/external sun-jaf activation.jar activation.jar
-	java-pkg_jar-from --into xml.jaxb.api/external jsr173 jsr173.jar jsr173_1.0_api.jar
 
 	java-pkg-2_src_prepare
 }
@@ -350,6 +341,7 @@ src_install() {
 
 	local instdir="${D}"/${INSTALL_DIR}/modules/ext
 	pushd "${instdir}" >/dev/null || die
+	rm antlr-runtime-4.5.3.jar && java-pkg_jar-from --into "${instdir}" antlr-4 antlr-runtime.jar antlr-runtime-4.5.3.jar
 	rm commons-compress-1.8.1.jar && java-pkg_jar-from --into "${instdir}" commons-compress commons-compress.jar commons-compress-1.8.1.jar
 	# rm freemarker-2.3.19.jar && dosym /usr/share/freemarker-2.3/lib/freemarker.jar ${instdir}/freemarker-2.3.19.jar || die
 	rm icu4j-4_4_2.jar && java-pkg_jar-from --into "${instdir}" icu4j-55 icu4j.jar icu4j-4_4_2.jar
