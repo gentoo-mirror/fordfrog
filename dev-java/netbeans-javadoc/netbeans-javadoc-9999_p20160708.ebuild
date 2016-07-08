@@ -8,7 +8,7 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans JavaDocs"
 HOMEPAGE="http://netbeans.org/"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-06-08_00-02-33/zip/netbeans-trunk-nightly-201606080002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-07-08_00-02-33/zip/netbeans-trunk-nightly-201607080002-src.zip"
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r16-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/BEA15848D713D491C6EBA1307E0564A5BC3965E7-ant-libs-1.9.7.zip"
