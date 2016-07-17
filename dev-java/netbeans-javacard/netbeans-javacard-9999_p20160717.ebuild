@@ -5,18 +5,15 @@
 EAPI="4"
 inherit eutils java-pkg-2 java-ant-2
 
-DESCRIPTION="Netbeans JavaFX Cluster"
-HOMEPAGE="http://netbeans.org/projects/javafx"
+DESCRIPTION="Netbeans JavaCard Cluster"
+HOMEPAGE="http://netbeans.org/projects/javacard"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-06-15_00-02-33/zip/netbeans-trunk-nightly-201606150002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-07-17_00-02-33/zip/netbeans-trunk-nightly-201607170002-src.zip"
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r16-build.xml.patch.bz2
-	http://hg.netbeans.org/binaries/A806D99716C5E9441BFD8B401176FDDEFC673022-bindex-2.2.jar
-	http://hg.netbeans.org/binaries/D325D3913CBC0F9A8D73A466FABB98EDEEC014AB-jemmy-2.3.1.1.jar
-	http://hg.netbeans.org/binaries/D06C8980C9025183C044202419EA29E69FBD4B99-jemmy-2.3.1.1-doc.zip
-	http://hg.netbeans.org/binaries/49197106637CCA8C337AF16CC01BB5D9DEC7E179-jemmy-2.3.1.1-src.zip
-	http://hg.netbeans.org/binaries/20D826CC819A5A969CF3F7204E2E26CB6263EC43-jnlp-servlet.jar
-	http://hg.netbeans.org/binaries/5D007C6037A8501E73A3D3FB98A1F6AE5768C3DD-nb-javac-api.jar"
+	http://hg.netbeans.org/binaries/33DCFAE258453BDD3D8A042F6ECF80656A82B8DD-anttasks.jar
+	http://hg.netbeans.org/binaries/9C1A8BC9D3270D184F1D1BCC5F60AA81D46E1ADF-apduio.jar
+	http://hg.netbeans.org/binaries/6243337E93F5841D4FFB404011AA076BFEB1590A-javacard_ri.zip"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
@@ -29,16 +26,22 @@ CDEPEND="~dev-java/netbeans-extide-${PV}
 DEPEND=">=virtual/jdk-1.7
 	app-arch/unzip
 	${CDEPEND}
-	dev-java/javahelp:0
-	dev-java/junit:4"
+	dev-java/javahelp:0"
 RDEPEND=">=virtual/jdk-1.7
-	${CDEPEND}"
+	${CDEPEND}
+	dev-java/ant-contrib:0
+	dev-java/asm:3
+	dev-java/bcel:0
+	dev-java/commons-cli:1
+	dev-java/commons-codec:0
+	dev-java/commons-httpclient:3
+	dev-java/commons-logging:0"
 
 INSTALL_DIR="/usr/share/${PN}-${SLOT}"
 
 EANT_BUILD_XML="nbbuild/build.xml"
 EANT_BUILD_TARGET="rebuild-cluster"
-EANT_EXTRA_ARGS="-Drebuild.cluster.name=nb.cluster.javafx -Dext.binaries.downloaded=true -Dpermit.jdk8.builds=true"
+EANT_EXTRA_ARGS="-Drebuild.cluster.name=nb.cluster.javacard -Dext.binaries.downloaded=true -Dpermit.jdk8.builds=true"
 EANT_FILTER_COMPILER="ecj-3.3 ecj-3.4 ecj-3.5 ecj-3.6 ecj-3.7"
 JAVA_PKG_BSFIX="off"
 
@@ -51,12 +54,9 @@ src_unpack() {
 	unpack netbeans-9999-r16-build.xml.patch.bz2
 
 	pushd "${S}" >/dev/null || die
-	ln -s "${DISTDIR}"/A806D99716C5E9441BFD8B401176FDDEFC673022-bindex-2.2.jar apisupport.harness/external/bindex-2.2.jar || die
-	ln -s "${DISTDIR}"/20D826CC819A5A969CF3F7204E2E26CB6263EC43-jnlp-servlet.jar apisupport.harness/external/jnlp-servlet.jar || die
-	ln -s "${DISTDIR}"/D325D3913CBC0F9A8D73A466FABB98EDEEC014AB-jemmy-2.3.1.1.jar jemmy/external/jemmy-2.3.1.1.jar || die
-	ln -s "${DISTDIR}"/D06C8980C9025183C044202419EA29E69FBD4B99-jemmy-2.3.1.1-doc.zip jemmy/external/jemmy-2.3.1.1-doc.zip || die
-	ln -s "${DISTDIR}"/49197106637CCA8C337AF16CC01BB5D9DEC7E179-jemmy-2.3.1.1-src.zip jemmy/external/jemmy-2.3.1.1-src.zip || die
-	ln -s "${DISTDIR}"/5D007C6037A8501E73A3D3FB98A1F6AE5768C3DD-nb-javac-api.jar libs.javacapi/external/nb-javac-api.jar || die
+	ln -s "${DISTDIR}"/33DCFAE258453BDD3D8A042F6ECF80656A82B8DD-anttasks.jar javacard.ri.platform/external/anttasks.jar || die
+	ln -s "${DISTDIR}"/9C1A8BC9D3270D184F1D1BCC5F60AA81D46E1ADF-apduio.jar javacard.apdu.io/external/apduio.jar || die
+	ln -s "${DISTDIR}"/6243337E93F5841D4FFB404011AA076BFEB1590A-javacard_ri.zip javacard.ri.bundle/external/javacard_ri.zip || die
 	popd >/dev/null || die
 }
 
@@ -80,9 +80,7 @@ src_prepare() {
 	fi
 
 	einfo "Symlinking external libraries..."
-	java-pkg_jar-from --build-only --into apisupport.harness/external javahelp jsearch.jar jsearch-2.0_05.jar
 	java-pkg_jar-from --build-only --into javahelp/external javahelp jhall.jar jhall-2.0_05.jar
-	java-pkg_jar-from --build-only --into libs.junit4/external junit-4 junit.jar junit-4.12.jar
 
 	einfo "Linking in other clusters..."
 	mkdir "${S}"/nbbuild/netbeans || die
@@ -110,15 +108,27 @@ src_prepare() {
 }
 
 src_install() {
-	pushd nbbuild/netbeans/javafx >/dev/null || die
+	pushd nbbuild/netbeans/javacard >/dev/null || die
 
 	insinto ${INSTALL_DIR}
 
-	grep -E "/javafx$" ../moduleCluster.properties > "${D}"/${INSTALL_DIR}/moduleCluster.properties || die
+	grep -E "/javacard$" ../moduleCluster.properties > "${D}"/${INSTALL_DIR}/moduleCluster.properties || die
 
 	doins -r *
+	rm -fr "${D}"/${INSTALL_DIR}/bin || die
 
 	popd >/dev/null || die
 
-	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/javafx
+	local instdir="${D}"/${INSTALL_DIR}/JCDK3.0.2_ConnectedEdition/lib
+	pushd "${instdir}" >/dev/null || die
+	rm ant-contrib-1.0b3.jar && java-pkg_jar-from --into "${instdir}" ant-contrib ant-contrib.jar ant-contrib-1.0b3.jar
+	rm asm-all-3.1.jar && java-pkg_jar-from --into "${instdir}" asm-3 asm.jar asm-all-3.1.jar
+	rm bcel-5.2.jar && java-pkg_jar-from --into "${instdir}" bcel bcel.jar bcel-5.2.jar
+	rm commons-cli-1.0.jar && java-pkg_jar-from --into "${instdir}" commons-cli-1 commons-cli.jar commons-cli-1.0.jar
+	rm commons-codec-1.3.jar && java-pkg_jar-from --into "${instdir}" commons-codec commons-codec.jar commons-codec-1.3.jar
+	rm commons-httpclient-3.0.jar && java-pkg_jar-from --into "${instdir}" commons-httpclient-3 commons-httpclient.jar commons-httpclient-3.0.jar
+	rm commons-logging-1.1.jar && java-pkg_jar-from --into "${instdir}" commons-logging commons-logging.jar commons-logging-1.1.jar
+	popd >/dev/null || die
+
+	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/javacard
 }
