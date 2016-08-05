@@ -8,13 +8,13 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans Web Services Cluster"
 HOMEPAGE="http://netbeans.org/"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-06-28_00-02-33/zip/netbeans-trunk-nightly-201606280002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-08-05_00-02-33/zip/netbeans-trunk-nightly-201608050002-src.zip"
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r16-build.xml.patch.bz2
-	http://hg.netbeans.org/binaries/C926927CC9D32F80BF93D2F9623E5C1C8425A75E-com.oracle.js.parser.jar
+	http://hg.netbeans.org/binaries/7CA13589F586F659BB0E1561719A91CA47BF1897-com.oracle.js.parser.jar
 	http://hg.netbeans.org/binaries/59631804B5A7FF3CEAA3F0E113584AF7E1BB6E9B-dd-plist.jar
 	http://hg.netbeans.org/binaries/7C4A82593A85524A3541E55A4A9C906B773ABAD6-ios-sim
-	http://hg.netbeans.org/binaries/913947D60B9AE208A20A4CEAD4D033F141ABF9F4-js-corestubs.zip
+	http://hg.netbeans.org/binaries/C8EEAB10E4539BEAF97476EBA252BD4B40377FA9-js-corestubs.zip
 	http://hg.netbeans.org/binaries/2AA13ACCC4059C930C4AD3B6ABD8E1C0FC06235C-js-domstubs.zip
 	http://hg.netbeans.org/binaries/7C0C3CFD989EE775198337C11715C1ACD6C84F41-js-reststubs.zip
 	http://hg.netbeans.org/binaries/0929AC5F40B5A8667021408748D64F30F77B3165-libiDeviceNativeBinding.dylib
@@ -58,10 +58,10 @@ src_unpack() {
 	unpack netbeans-9999-r16-build.xml.patch.bz2
 
 	pushd "${S}" >/dev/null || die
-	ln -s "${DISTDIR}"/C926927CC9D32F80BF93D2F9623E5C1C8425A75E-com.oracle.js.parser.jar libs.nashorn/external/com.oracle.js.parser.jar || die
+	ln -s "${DISTDIR}"/7CA13589F586F659BB0E1561719A91CA47BF1897-com.oracle.js.parser.jar libs.nashorn/external/com.oracle.js.parser.jar || die
 	ln -s "${DISTDIR}"/59631804B5A7FF3CEAA3F0E113584AF7E1BB6E9B-dd-plist.jar libs.plist/external/dd-plist.jar || die
 	ln -s "${DISTDIR}"/7C4A82593A85524A3541E55A4A9C906B773ABAD6-ios-sim cordova.platforms.ios/external/ios-sim || die
-	ln -s "${DISTDIR}"/913947D60B9AE208A20A4CEAD4D033F141ABF9F4-js-corestubs.zip javascript2.editor/external/js-corestubs.zip || die
+	ln -s "${DISTDIR}"/C8EEAB10E4539BEAF97476EBA252BD4B40377FA9-js-corestubs.zip javascript2.editor/external/js-corestubs.zip || die
 	ln -s "${DISTDIR}"/2AA13ACCC4059C930C4AD3B6ABD8E1C0FC06235C-js-domstubs.zip javascript2.editor/external/js-domstubs.zip || die
 	ln -s "${DISTDIR}"/7C0C3CFD989EE775198337C11715C1ACD6C84F41-js-reststubs.zip javascript2.editor/external/js-reststubs.zip || die
 	ln -s "${DISTDIR}"/0929AC5F40B5A8667021408748D64F30F77B3165-libiDeviceNativeBinding.dylib cordova.platforms.ios/external/libiDeviceNativeBinding.dylib || die
