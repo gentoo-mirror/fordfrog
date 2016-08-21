@@ -8,10 +8,10 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans Web Services Cluster"
 HOMEPAGE="http://netbeans.org/"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-07-11_00-02-33/zip/netbeans-trunk-nightly-201607110002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-08-21_00-02-33/zip/netbeans-trunk-nightly-201608210002-src.zip"
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r16-build.xml.patch.bz2
-	http://hg.netbeans.org/binaries/2E7B73D8CB88351034507A6E365AEAF76FE6FD5C-com.oracle.js.parser.jar
+	http://hg.netbeans.org/binaries/7CA13589F586F659BB0E1561719A91CA47BF1897-com.oracle.js.parser.jar
 	http://hg.netbeans.org/binaries/59631804B5A7FF3CEAA3F0E113584AF7E1BB6E9B-dd-plist.jar
 	http://hg.netbeans.org/binaries/7C4A82593A85524A3541E55A4A9C906B773ABAD6-ios-sim
 	http://hg.netbeans.org/binaries/C8EEAB10E4539BEAF97476EBA252BD4B40377FA9-js-corestubs.zip
@@ -58,7 +58,7 @@ src_unpack() {
 	unpack netbeans-9999-r16-build.xml.patch.bz2
 
 	pushd "${S}" >/dev/null || die
-	ln -s "${DISTDIR}"/2E7B73D8CB88351034507A6E365AEAF76FE6FD5C-com.oracle.js.parser.jar libs.nashorn/external/com.oracle.js.parser.jar || die
+	ln -s "${DISTDIR}"/7CA13589F586F659BB0E1561719A91CA47BF1897-com.oracle.js.parser.jar libs.nashorn/external/com.oracle.js.parser.jar || die
 	ln -s "${DISTDIR}"/59631804B5A7FF3CEAA3F0E113584AF7E1BB6E9B-dd-plist.jar libs.plist/external/dd-plist.jar || die
 	ln -s "${DISTDIR}"/7C4A82593A85524A3541E55A4A9C906B773ABAD6-ios-sim cordova.platforms.ios/external/ios-sim || die
 	ln -s "${DISTDIR}"/C8EEAB10E4539BEAF97476EBA252BD4B40377FA9-js-corestubs.zip javascript2.editor/external/js-corestubs.zip || die
