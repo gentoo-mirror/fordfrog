@@ -8,7 +8,7 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans JavaFX Cluster"
 HOMEPAGE="http://netbeans.org/projects/javafx"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-07-12_00-02-33/zip/netbeans-trunk-nightly-201607120002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-08-22_00-02-33/zip/netbeans-trunk-nightly-201608220002-src.zip"
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r16-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/A806D99716C5E9441BFD8B401176FDDEFC673022-bindex-2.2.jar
