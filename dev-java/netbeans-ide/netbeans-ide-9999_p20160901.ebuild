@@ -8,7 +8,7 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans IDE Cluster"
 HOMEPAGE="http://netbeans.org/projects/ide"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-07-21_00-02-33/zip/netbeans-trunk-nightly-201607210002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-09-01_00-02-33/zip/netbeans-trunk-nightly-201609010002-src.zip"
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r16-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/4E74C6BE42FE89871A878C7C4D6158F21A6D8010-antlr-runtime-3.4.jar
@@ -248,7 +248,7 @@ src_prepare() {
 	einfo "Symlinking external libraries..."
 	java-pkg_jar-from --into c.jcraft.jsch/external jsch jsch.jar jsch-0.1.53.jar
 	java-pkg_jar-from --into db.drivers/external jdbc-mysql jdbc-mysql.jar mysql-connector-java-5.1.23-bin.jar
-	java-pkg_jar-from --into db.drivers/external jdbc-postgresql jdbc-postgresql.jar postgresql-9.2-1002.jdbc4.jar
+	java-pkg_jar-from --into db.drivers/external jdbc-postgresql jdbc-postgresql.jar postgresql-9.4.1209.jar
 	java-pkg_jar-from --build-only --into db.sql.visualeditor/external javacc javacc.jar javacc-3.2.jar
 	java-pkg_jar-from --into html.parser/external icu4j-55 icu4j.jar icu4j-4_4_2.jar
 	java-pkg_jar-from --into html.validation/external iso-relax iso-relax.jar isorelax.jar
@@ -351,7 +351,7 @@ src_install() {
 	rm log4j-1.2.15.jar && java-pkg_jar-from --into "${instdir}" log4j log4j.jar log4j-1.2.15.jar
 	rm lucene-core-3.5.0.jar && java-pkg_jar-from --into "${instdir}" lucene-3.5 lucene-core.jar lucene-core-3.5.0.jar
 	rm mysql-connector-java-5.1.23-bin.jar && java-pkg_jar-from --into "${instdir}" jdbc-mysql jdbc-mysql.jar mysql-connector-java-5.1.23-bin.jar
-	rm postgresql-9.2-1002.jdbc4.jar && java-pkg_jar-from --into "${instdir}" jdbc-postgresql jdbc-postgresql.jar postgresql-9.2-1002.jdbc4.jar
+	rm postgresql-9.4.1209.jar && java-pkg_jar-from --into "${instdir}" jdbc-postgresql jdbc-postgresql.jar postgresql-9.4.1209.jar
 	rm saxon9B.jar && java-pkg_jar-from --into "${instdir}" saxon-9 saxon.jar saxon9B.jar
 	rm servlet-2.2.jar && java-pkg_jar-from --into "${instdir}" tomcat-servlet-api-2.2 servlet.jar servlet-2.2.jar
 	rm smack.jar && java-pkg_jar-from --into "${instdir}" smack-2.2 smack.jar
