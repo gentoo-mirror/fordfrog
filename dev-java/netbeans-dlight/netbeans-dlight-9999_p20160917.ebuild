@@ -8,10 +8,10 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans D-Light Cluster"
 HOMEPAGE="http://netbeans.org/"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-08-15_00-02-33/zip/netbeans-trunk-nightly-201608150002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-09-17_00-02-33/zip/netbeans-trunk-nightly-201609170002-src.zip"
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r16-build.xml.patch.bz2
-	http://hg.netbeans.org/binaries/0F89C62CA701D20BA9A9A526D4D017888C3B5A65-fs_server-1.0.zip"
+	http://hg.netbeans.org/binaries/18E39A0D10357B72EDB76F2070E27019317792F1-fs_server-1.0.zip"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
@@ -43,7 +43,7 @@ src_unpack() {
 	unpack netbeans-9999-r16-build.xml.patch.bz2
 
 	pushd "${S}" >/dev/null || die
-	ln -s "${DISTDIR}"/0F89C62CA701D20BA9A9A526D4D017888C3B5A65-fs_server-1.0.zip dlight.remote.impl/external/fs_server-1.0.zip || die
+	ln -s "${DISTDIR}"/18E39A0D10357B72EDB76F2070E27019317792F1-fs_server-1.0.zip dlight.remote.impl/external/fs_server-1.0.zip || die
 	popd >/dev/null || die
 }
 
