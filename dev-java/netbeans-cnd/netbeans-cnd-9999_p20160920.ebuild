@@ -8,7 +8,7 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans CND Cluster"
 HOMEPAGE="http://netbeans.org/projects/cnd"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-09-18_00-02-33/zip/netbeans-trunk-nightly-201609180002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-09-20_00-02-33/zip/netbeans-trunk-nightly-201609200002-src.zip"
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r16-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/5CAB59D859CAA6598E28131D30DD2E89806DB57F-antlr-3.4.jar
