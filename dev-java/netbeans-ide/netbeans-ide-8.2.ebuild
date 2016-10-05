@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI="6"
 inherit eutils java-pkg-2 java-ant-2
 
 DESCRIPTION="Netbeans IDE Cluster"
@@ -127,7 +127,7 @@ DEPEND=">=virtual/jdk-1.7
 	dev-java/javacc:0
 	dev-java/javahelp:0
 	dev-java/jna:0"
-RDEPEND=">=virtual/jdk-1.7
+RDEPEND="|| ( virtual/jdk:1.7 virtual/jdk:1.8 )
 	${CDEPEND}"
 
 INSTALL_DIR="/usr/share/${PN}-${SLOT}"

@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI="6"
 inherit eutils java-pkg-2 java-ant-2
 
 DESCRIPTION="Netbeans Platform"
@@ -47,7 +47,7 @@ CDEPEND="dev-java/hamcrest-core:1.3
 DEPEND="dev-java/oracle-jdk-bin:1.8[javafx]
 	app-arch/unzip
 	${CDEPEND}"
-RDEPEND=">=virtual/jdk-1.7
+RDEPEND="|| ( virtual/jdk:1.7 virtual/jdk:1.8 )
 	${CDEPEND}"
 
 INSTALL_DIR="/usr/share/${PN}-${SLOT}"
