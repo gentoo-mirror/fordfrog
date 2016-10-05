@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI="6"
 inherit eutils java-pkg-2 java-ant-2
 
 DESCRIPTION="Netbeans Enterprise cluster"
@@ -66,7 +66,7 @@ DEPEND=">=virtual/jdk-1.7
 	dev-java/javahelp:0
 	>=dev-java/junit-4.4:4
 	dev-java/tomcat-servlet-api:2.3"
-RDEPEND=">=virtual/jdk-1.7
+RDEPEND="|| ( virtual/jdk:1.7 virtual/jdk:1.8 )
 	${CDEPEND}
 	>=dev-java/antlr-2.7.7-r7:0
 	dev-java/bsf:2.3

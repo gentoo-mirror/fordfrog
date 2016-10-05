@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI="6"
 inherit eutils java-pkg-2 java-ant-2
 
 DESCRIPTION="Netbeans IDE"
@@ -107,7 +107,7 @@ S="${WORKDIR}"
 
 DEPEND=">=virtual/jdk-1.7
 	dev-java/javahelp:0"
-RDEPEND=">=virtual/jdk-1.7
+RDEPEND="|| ( virtual/jdk:1.7 virtual/jdk:1.8 )
 	~dev-java/netbeans-harness-${PV}
 	~dev-java/netbeans-ide-${PV}
 	~dev-java/netbeans-nb-${PV}

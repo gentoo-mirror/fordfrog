@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI="6"
 inherit eutils java-pkg-2 java-ant-2
 
 # Maven cannot be unbundled because it depends on exact maven version and exact content of maven directory
@@ -53,7 +53,7 @@ CDEPEND="~dev-java/netbeans-platform-${PV}
 	dev-java/beansbinding:0
 	dev-java/cglib:3
 	dev-java/jdom:0"
-DEPEND=">=virtual/jdk-1.7
+DEPEND="|| ( virtual/jdk:1.7 virtual/jdk:1.8 )
 	app-arch/unzip
 	${CDEPEND}
 	dev-java/javahelp:0
