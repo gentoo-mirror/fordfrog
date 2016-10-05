@@ -10,43 +10,43 @@ HOMEPAGE="http://netbeans.org/"
 SLOT="9999"
 SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-10-04_00-02-33/zip/netbeans-trunk-nightly-201610040002-src.zip"
 PATCHES_URL="http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r16-build.xml.patch.bz2"
-L10N_URL="http://dev.gentoo.org/~fordfrog/distfiles/netbeans-l10n-9999-20131010.tar.bz2"
+L10N_URL="http://dev.gentoo.org/~fordfrog/distfiles/netbeans-l10n-9999-20160920.tar.bz2"
 ALL_URLS="${SOURCE_URL} ${PATCHES_URL} ${L10N_URL}"
-SRC_URI="linguas_af? ( ${ALL_URLS} )
-	linguas_ar? ( ${ALL_URLS} )
-	linguas_ar_SA? ( ${ALL_URLS} )
-	linguas_bg? ( ${ALL_URLS} )
-	linguas_ca? ( ${ALL_URLS} )
-	linguas_cs? ( ${ALL_URLS} )
-	linguas_de? ( ${ALL_URLS} )
-	linguas_el? ( ${ALL_URLS} )
-	linguas_es? ( ${ALL_URLS} )
-	linguas_es_CO? ( ${ALL_URLS} )
-	linguas_fil? ( ${ALL_URLS} )
-	linguas_fr? ( ${ALL_URLS} )
-	linguas_gl? ( ${ALL_URLS} )
-	linguas_hi_IN? ( ${ALL_URLS} )
-	linguas_id_ID? ( ${ALL_URLS} )
-	linguas_it? ( ${ALL_URLS} )
-	linguas_ja? ( ${ALL_URLS} )
-	linguas_ko? ( ${ALL_URLS} )
-	linguas_lt? ( ${ALL_URLS} )
-	linguas_nl_BE? ( ${ALL_URLS} )
-	linguas_nl_NL? ( ${ALL_URLS} )
-	linguas_pl? ( ${ALL_URLS} )
-	linguas_pt_BR? ( ${ALL_URLS} )
-	linguas_pt_PT? ( ${ALL_URLS} )
-	linguas_ro? ( ${ALL_URLS} )
-	linguas_ru? ( ${ALL_URLS} )
-	linguas_si? ( ${ALL_URLS} )
-	linguas_sq? ( ${ALL_URLS} )
-	linguas_sr? ( ${ALL_URLS} )
-	linguas_sv? ( ${ALL_URLS} )
-	linguas_ta_IN? ( ${ALL_URLS} )
-	linguas_tr? ( ${ALL_URLS} )
-	linguas_vi? ( ${ALL_URLS} )
-	linguas_zh_CN? ( ${ALL_URLS} )
-	linguas_zh_TW? ( ${ALL_URLS} )
+SRC_URI="l10n_af? ( ${ALL_URLS} )
+	l10n_ar-EG? ( ${ALL_URLS} )
+	l10n_ar-SA? ( ${ALL_URLS} )
+	l10n_bg? ( ${ALL_URLS} )
+	l10n_ca? ( ${ALL_URLS} )
+	l10n_cs? ( ${ALL_URLS} )
+	l10n_de? ( ${ALL_URLS} )
+	l10n_el? ( ${ALL_URLS} )
+	l10n_es? ( ${ALL_URLS} )
+	l10n_es-CO? ( ${ALL_URLS} )
+	l10n_fil-PH? ( ${ALL_URLS} )
+	l10n_fr? ( ${ALL_URLS} )
+	l10n_gl-ES? ( ${ALL_URLS} )
+	l10n_hi-IN? ( ${ALL_URLS} )
+	l10n_id-ID? ( ${ALL_URLS} )
+	l10n_it? ( ${ALL_URLS} )
+	l10n_ja? ( ${ALL_URLS} )
+	l10n_ko? ( ${ALL_URLS} )
+	l10n_lt? ( ${ALL_URLS} )
+	l10n_nl-BE? ( ${ALL_URLS} )
+	l10n_nl-NL? ( ${ALL_URLS} )
+	l10n_pl? ( ${ALL_URLS} )
+	l10n_pt-BR? ( ${ALL_URLS} )
+	l10n_pt-PT? ( ${ALL_URLS} )
+	l10n_ro? ( ${ALL_URLS} )
+	l10n_ru? ( ${ALL_URLS} )
+	l10n_si? ( ${ALL_URLS} )
+	l10n_sq? ( ${ALL_URLS} )
+	l10n_sr? ( ${ALL_URLS} )
+	l10n_sv? ( ${ALL_URLS} )
+	l10n_ta-IN? ( ${ALL_URLS} )
+	l10n_tr? ( ${ALL_URLS} )
+	l10n_vi? ( ${ALL_URLS} )
+	l10n_zh-CN? ( ${ALL_URLS} )
+	l10n_zh-TW? ( ${ALL_URLS} )
 "
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
 KEYWORDS="~amd64 ~x86"
@@ -66,43 +66,43 @@ IUSE_NETBEANS_MODULES="
 	+netbeans_modules_profiler
 	netbeans_modules_webcommon
 	+netbeans_modules_websvccommon"
-IUSE_LINGUAS="
-	linguas_af
-	linguas_ar
-	linguas_ar_SA
-	linguas_bg
-	linguas_ca
-	linguas_cs
-	linguas_de
-	linguas_el
-	linguas_es
-	linguas_es_CO
-	linguas_fil
-	linguas_fr
-	linguas_gl
-	linguas_hi_IN
-	linguas_id_ID
-	linguas_it
-	linguas_ja
-	linguas_ko
-	linguas_lt
-	linguas_nl_BE
-	linguas_nl_NL
-	linguas_pl
-	linguas_pt_BR
-	linguas_pt_PT
-	linguas_ro
-	linguas_ru
-	linguas_si
-	linguas_sq
-	linguas_sr
-	linguas_sv
-	linguas_ta_IN
-	linguas_tr
-	linguas_vi
-	linguas_zh_CN
-	linguas_zh_TW"
-IUSE="doc ${IUSE_NETBEANS_MODULES} ${IUSE_LINGUAS}"
+IUSE_L10N="
+	l10n_af
+	l10n_ar-EG
+	l10n_ar-SA
+	l10n_bg
+	l10n_ca
+	l10n_cs
+	l10n_de
+	l10n_el
+	l10n_es
+	l10n_es-CO
+	l10n_fil-PH
+	l10n_fr
+	l10n_gl-ES
+	l10n_hi-IN
+	l10n_id-ID
+	l10n_it
+	l10n_ja
+	l10n_ko
+	l10n_lt
+	l10n_nl-BE
+	l10n_nl-NL
+	l10n_pl
+	l10n_pt-BR
+	l10n_pt-PT
+	l10n_ro
+	l10n_ru
+	l10n_si
+	l10n_sq
+	l10n_sr
+	l10n_sv
+	l10n_ta-IN
+	l10n_tr
+	l10n_vi
+	l10n_zh-CN
+	l10n_zh-TW"
+IUSE="doc ${IUSE_NETBEANS_MODULES} ${IUSE_L10N}"
 S="${WORKDIR}"
 
 DEPEND=">=virtual/jdk-1.7
@@ -133,22 +133,15 @@ JAVA_PKG_BSFIX="off"
 NBLOCALES=""
 
 pkg_setup() {
-	for lingua in ${IUSE_LINGUAS} ; do
-		local lang=${lingua/linguas_/}
-
-		if [[ "${lang}" = "ar" ]] ; then
-			lang="ar_EG,ar_SA"
-		elif [[ "${lang}" = "es" ]] ; then
-			lang="es,es_CO"
-		elif [[ "${lang}" = "fil" ]] ; then
-			lang="fil_PH"
-		elif [[ "${lang}" = "gl" ]] ; then
-			lang="gl_ES"
-		elif [[ "${lang}" = "id_ID" ]] ; then
-			lang="in_ID"
-		fi
-
+	for lingua in ${IUSE_L10N} ; do
 		if use ${lingua} ; then
+			local lang=${lingua/l10n_/}
+			lang=${lang/-/_}
+
+			case ${lang} in
+				id-ID)  lang="in_ID";;
+			esac
+
 			if [ -z "${NBLOCALES}" ] ; then
 				NBLOCALES="${lang}"
 			else
@@ -225,6 +218,21 @@ src_install() {
 		fi
 
 		popd >/dev/null || die
+
+		make_desktop_entry "netbeans-${SLOT} --locale en" "Netbeans ${PV} en" netbeans-${SLOT} Development
+
+		for lingua in ${IUSE_L10N}; do
+			if use ${lingua} ; then
+				local locale=${lingua/l10n_/}
+				locale=${locale/-/:}
+
+				case ${locale} in
+					id:ID)  lang="in:ID";;
+				esac
+
+				make_desktop_entry "netbeans-${SLOT} --locale ${locale}" "Netbeans ${PV} ${locale}" netbeans-${SLOT} Development
+			fi
+		done
 	fi
 }
 
@@ -237,17 +245,7 @@ pkg_postinst() {
 		einfo "${PN}-${SLOT} --locale pt:BR"
 	fi
 
-	if use linguas_ar ; then
-		einfo
-		einfo "You selected Arabic locale so you can choose either ar:EG or ar:SA variant."
-	fi
-
-	if use linguas_es ; then
-		einfo
-		einfo "You selected Spanish locale so you can choose either es or es:CO variant."
-	fi
-
-	if use linguas_id_ID ; then
+	if use l10n_id_ID ; then
 		einfo
 		einfo "You selected Indonesian locale which has locale code in:ID in Netbeans."
 	fi
