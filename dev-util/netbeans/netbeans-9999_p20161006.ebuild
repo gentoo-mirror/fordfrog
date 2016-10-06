@@ -7,10 +7,10 @@ inherit eutils java-pkg-2 java-ant-2
 
 DESCRIPTION="Netbeans IDE"
 HOMEPAGE="http://netbeans.org/"
-SLOT="8.2"
-SOURCE_URL="http://download.netbeans.org/netbeans/8.2/final/zip/netbeans-8.2-201609300101-src.zip"
-PATCHES_URL="http://dev.gentoo.org/~fordfrog/distfiles/netbeans-8.2-build.xml.patch.bz2"
-L10N_URL="http://dev.gentoo.org/~fordfrog/distfiles/netbeans-l10n-8.2-20160920.tar.bz2"
+SLOT="9999"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-10-06_00-02-33/zip/netbeans-trunk-nightly-201610060002-src.zip"
+PATCHES_URL="http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r16-build.xml.patch.bz2"
+L10N_URL="http://dev.gentoo.org/~fordfrog/distfiles/netbeans-l10n-9999-20160920.tar.bz2"
 ALL_URLS="${SOURCE_URL} ${PATCHES_URL} ${L10N_URL}"
 SRC_URI="l10n_af? ( ${ALL_URLS} )
 	l10n_ar? ( ${ALL_URLS} )
@@ -162,7 +162,7 @@ src_unpack() {
 		einfo "Deleting bundled jars..."
 		find -name "*.jar" -type f -delete
 
-		unpack netbeans-8.2-build.xml.patch.bz2
+		unpack netbeans-9999-r16-build.xml.patch.bz2
 	fi
 }
 
@@ -171,7 +171,7 @@ src_prepare() {
 		einfo "Deleting bundled class files..."
 		find -name "*.class" -type f | xargs rm -vf
 
-		epatch netbeans-8.2-build.xml.patch
+		epatch netbeans-9999-r16-build.xml.patch
 
 		einfo "Symlinking external libraries..."
 		java-pkg_jar-from --build-only --into javahelp/external javahelp jhall.jar jhall-2.0_05.jar

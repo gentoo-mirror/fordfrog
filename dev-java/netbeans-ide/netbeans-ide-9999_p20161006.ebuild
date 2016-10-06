@@ -7,10 +7,10 @@ inherit eutils java-pkg-2 java-ant-2
 
 DESCRIPTION="Netbeans IDE Cluster"
 HOMEPAGE="http://netbeans.org/projects/ide"
-SLOT="8.2"
-SOURCE_URL="http://download.netbeans.org/netbeans/8.2/final/zip/netbeans-8.2-201609300101-src.zip"
+SLOT="9999"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-10-06_00-02-33/zip/netbeans-trunk-nightly-201610060002-src.zip"
 SRC_URI="${SOURCE_URL}
-	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-8.2-build.xml.patch.bz2
+	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r16-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/4E74C6BE42FE89871A878C7C4D6158F21A6D8010-antlr-runtime-3.4.jar
 	http://hg.netbeans.org/binaries/886FAF4B85054DD6E50D9B3438542F432B5F9251-bytelist-0.1.jar
 	http://hg.netbeans.org/binaries/DCDA3604865C8E80789B4F8E8EECC3D4D15D00F8-com.trilead.ssh2_1.0.0.build220_r167_v20150618_1733.jar
@@ -147,7 +147,7 @@ src_unpack() {
 	einfo "Deleting bundled jars..."
 	find -name "*.jar" -type f -delete
 
-	unpack netbeans-8.2-build.xml.patch.bz2
+	unpack netbeans-9999-r16-build.xml.patch.bz2
 
 	pushd "${S}" >/dev/null || die
 	ln -s "${DISTDIR}"/4E74C6BE42FE89871A878C7C4D6158F21A6D8010-antlr-runtime-3.4.jar libs.antlr3.runtime/external/antlr-runtime-3.4.jar || die
@@ -230,7 +230,7 @@ src_prepare() {
 	einfo "Deleting bundled class files..."
 	find -name "*.class" -type f | xargs rm -vf
 
-	epatch netbeans-8.2-build.xml.patch
+	epatch netbeans-9999-r16-build.xml.patch
 
 	einfo "Symlinking external libraries..."
 	java-pkg_jar-from --into c.jcraft.jsch/external jsch jsch.jar jsch-0.1.53.jar

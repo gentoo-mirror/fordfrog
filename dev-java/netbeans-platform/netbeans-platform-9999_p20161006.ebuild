@@ -7,10 +7,10 @@ inherit eutils java-pkg-2 java-ant-2
 
 DESCRIPTION="Netbeans Platform"
 HOMEPAGE="http://netbeans.org/features/platform/"
-SLOT="8.2"
-SOURCE_URL="http://download.netbeans.org/netbeans/8.2/final/zip/netbeans-8.2-201609300101-src.zip"
+SLOT="9999"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-10-06_00-02-33/zip/netbeans-trunk-nightly-201610060002-src.zip"
 SRC_URI="${SOURCE_URL}
-	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-8.2-build.xml.patch.bz2
+	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r16-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/2F7553F50B0D14ED811B849C282DA8C1FFC32AAE-asm-all-5.0.1.jar
 	http://hg.netbeans.org/binaries/1BA97A9FFD4A1DFF3E75B76CD3AE3D0EFF8493B7-felix-4.2.1.jar
 	http://hg.netbeans.org/binaries/941A8BE4506C65F0A9001C08812FB7DA1E505E21-junit-4.12-javadoc.jar
@@ -67,7 +67,7 @@ src_unpack() {
 	einfo "Deleting bundled jars..."
 	find -name "*.jar" -type f -delete
 
-	unpack netbeans-8.2-build.xml.patch.bz2
+	unpack netbeans-9999-r16-build.xml.patch.bz2
 
 	pushd "${S}" >/dev/null || die
 	ln -s "${DISTDIR}"/2F7553F50B0D14ED811B849C282DA8C1FFC32AAE-asm-all-5.0.1.jar libs.asm/external/asm-all-5.0.1.jar || die
@@ -93,7 +93,7 @@ src_prepare() {
 	find -name "*.class" -type f | xargs rm -vf
 
 	# upstream jna jar contains bundled binary libraries so we disable that feature
-	epatch netbeans-8.2-build.xml.patch
+	epatch netbeans-9999-r16-build.xml.patch
 
 	einfo "Symlinking external libraries..."
 	java-pkg_jar-from --into libs.junit4/external hamcrest-core-1.3 hamcrest-core.jar hamcrest-core-1.3.jar

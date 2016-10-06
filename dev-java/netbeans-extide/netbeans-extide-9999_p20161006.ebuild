@@ -7,10 +7,10 @@ inherit eutils java-pkg-2 java-ant-2
 
 DESCRIPTION="Netbeans ExtIDE Cluster"
 HOMEPAGE="http://netbeans.org/projects/ide"
-SLOT="8.2"
-SOURCE_URL="http://download.netbeans.org/netbeans/8.2/final/zip/netbeans-8.2-201609300101-src.zip"
+SLOT="9999"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-10-06_00-02-33/zip/netbeans-trunk-nightly-201610060002-src.zip"
 SRC_URI="${SOURCE_URL}
-	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-8.2-build.xml.patch.bz2
+	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r16-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/BEA15848D713D491C6EBA1307E0564A5BC3965E7-ant-libs-1.9.7.zip
 	http://hg.netbeans.org/binaries/545E2B7AB1BD579CC76E3836055877982C5CD0C6-ant-misc-1.9.7.zip"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
@@ -41,7 +41,7 @@ src_unpack() {
 	einfo "Deleting bundled jars..."
 	find -name "*.jar" -type f -delete
 
-	unpack netbeans-8.2-build.xml.patch.bz2
+	unpack netbeans-9999-r16-build.xml.patch.bz2
 
 	pushd "${S}" >/dev/null || die
 	ln -s "${DISTDIR}"/BEA15848D713D491C6EBA1307E0564A5BC3965E7-ant-libs-1.9.7.zip o.apache.tools.ant.module/external/ant-libs-1.9.7.zip || die
@@ -53,7 +53,7 @@ src_prepare() {
 	einfo "Deleting bundled class files..."
 	find -name "*.class" -type f | xargs rm -vf
 
-	epatch netbeans-8.2-build.xml.patch
+	epatch netbeans-9999-r16-build.xml.patch
 
 	einfo "Symlinking external libraries..."
 	java-pkg_jar-from --build-only --into javahelp/external javahelp jhall.jar jhall-2.0_05.jar

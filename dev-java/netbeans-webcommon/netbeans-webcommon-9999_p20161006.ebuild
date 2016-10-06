@@ -7,10 +7,10 @@ inherit eutils java-pkg-2 java-ant-2
 
 DESCRIPTION="Netbeans Web Services Cluster"
 HOMEPAGE="http://netbeans.org/"
-SLOT="8.2"
-SOURCE_URL="http://download.netbeans.org/netbeans/8.2/final/zip/netbeans-8.2-201609300101-src.zip"
+SLOT="9999"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-10-06_00-02-33/zip/netbeans-trunk-nightly-201610060002-src.zip"
 SRC_URI="${SOURCE_URL}
-	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-8.2-build.xml.patch.bz2
+	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r16-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/7CA13589F586F659BB0E1561719A91CA47BF1897-com.oracle.js.parser.jar
 	http://hg.netbeans.org/binaries/59631804B5A7FF3CEAA3F0E113584AF7E1BB6E9B-dd-plist.jar
 	http://hg.netbeans.org/binaries/7C4A82593A85524A3541E55A4A9C906B773ABAD6-ios-sim
@@ -55,7 +55,7 @@ src_unpack() {
 	einfo "Deleting bundled jars..."
 	find -name "*.jar" -type f -delete
 
-	unpack netbeans-8.2-build.xml.patch.bz2
+	unpack netbeans-9999-r16-build.xml.patch.bz2
 
 	pushd "${S}" >/dev/null || die
 	ln -s "${DISTDIR}"/7CA13589F586F659BB0E1561719A91CA47BF1897-com.oracle.js.parser.jar libs.nashorn/external/com.oracle.js.parser.jar || die
@@ -79,7 +79,7 @@ src_prepare() {
 	einfo "Deleting bundled class files..."
 	find -name "*.class" -type f | xargs rm -vf
 
-	epatch netbeans-8.2-build.xml.patch
+	epatch netbeans-9999-r16-build.xml.patch
 
 	einfo "Symlinking external libraries..."
 	java-pkg_jar-from --build-only --into javahelp/external javahelp jhall.jar jhall-2.0_05.jar
