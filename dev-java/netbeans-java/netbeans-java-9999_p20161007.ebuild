@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI="6"
 inherit eutils java-pkg-2 java-ant-2
 
 # Maven cannot be unbundled because it depends on exact maven version and exact content of maven directory
@@ -10,7 +10,7 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans Java Cluster"
 HOMEPAGE="http://netbeans.org/projects/java"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-10-04_00-02-33/zip/netbeans-trunk-nightly-201610040002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-10-07_00-02-33/zip/netbeans-trunk-nightly-201610070002-src.zip"
 # jarjar-1.4 contains also asm libraries
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r16-build.xml.patch.bz2
@@ -59,7 +59,7 @@ DEPEND=">=virtual/jdk-1.7
 	dev-java/javahelp:0
 	dev-java/json-simple:0
 	dev-java/junit:4"
-RDEPEND=">=virtual/jdk-1.7
+RDEPEND="|| ( virtual/jdk:1.7 virtual/jdk:1.8 )
 	${CDEPEND}
 	dev-java/absolutelayout:0
 	>=dev-java/antlr-2.7.7-r7:0
@@ -163,19 +163,6 @@ src_prepare() {
 
 	epatch netbeans-9999-r16-build.xml.patch
 
-	# Support for custom patches
-	if [ -n "${NETBEANS9999_PATCHES_DIR}" -a -d "${NETBEANS9999_PATCHES_DIR}" ] ; then
-		local files=`find "${NETBEANS9999_PATCHES_DIR}" -type f`
-
-		if [ -n "${files}" ] ; then
-			einfo "Applying custom patches:"
-
-			for file in ${files} ; do
-				epatch "${file}"
-			done
-		fi
-	fi
-
 	einfo "Symlinking external libraries..."
 	java-pkg_jar-from --build-only --into javahelp/external javahelp jhall.jar jhall-2.0_05.jar
 	java-pkg_jar-from --into libs.cglib/external cglib-3 cglib.jar cglib-2.2.jar
@@ -211,6 +198,7 @@ src_prepare() {
 	popd >/dev/null || die
 
 	java-pkg-2_src_prepare
+	default
 }
 
 src_install() {

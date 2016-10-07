@@ -2,13 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI="6"
 inherit eutils java-pkg-2 java-ant-2
 
 DESCRIPTION="Netbeans Platform"
 HOMEPAGE="http://netbeans.org/features/platform/"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-09-05_00-02-33/zip/netbeans-trunk-nightly-201609050002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-10-07_00-02-33/zip/netbeans-trunk-nightly-201610070002-src.zip"
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r16-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/2F7553F50B0D14ED811B849C282DA8C1FFC32AAE-asm-all-5.0.1.jar
@@ -47,7 +47,7 @@ CDEPEND="dev-java/hamcrest-core:1.3
 DEPEND="dev-java/oracle-jdk-bin:1.8[javafx]
 	app-arch/unzip
 	${CDEPEND}"
-RDEPEND=">=virtual/jdk-1.7
+RDEPEND="|| ( virtual/jdk:1.7 virtual/jdk:1.8 )
 	${CDEPEND}"
 
 INSTALL_DIR="/usr/share/${PN}-${SLOT}"
@@ -95,19 +95,6 @@ src_prepare() {
 	# upstream jna jar contains bundled binary libraries so we disable that feature
 	epatch netbeans-9999-r16-build.xml.patch
 
-	# Support for custom patches
-	if [ -n "${NETBEANS9999_PATCHES_DIR}" -a -d "${NETBEANS9999_PATCHES_DIR}" ] ; then
-		local files=`find "${NETBEANS9999_PATCHES_DIR}" -type f`
-
-		if [ -n "${files}" ] ; then
-			einfo "Applying custom patches:"
-
-			for file in ${files} ; do
-				epatch "${file}"
-			done
-		fi
-	fi
-
 	einfo "Symlinking external libraries..."
 	java-pkg_jar-from --into libs.junit4/external hamcrest-core-1.3 hamcrest-core.jar hamcrest-core-1.3.jar
 	java-pkg_jar-from --into javahelp/external javahelp jhall.jar jhall-2.0_05.jar
@@ -122,6 +109,7 @@ src_prepare() {
 	java-pkg_jar-from --into libs.testng/external testng testng.jar testng-6.8.1-dist.jar
 
 	java-pkg-2_src_prepare
+	default
 }
 
 src_compile() {
