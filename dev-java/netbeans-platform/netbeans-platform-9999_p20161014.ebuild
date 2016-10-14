@@ -2,15 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI="6"
 inherit eutils java-pkg-2 java-ant-2
 
 DESCRIPTION="Netbeans Platform"
 HOMEPAGE="http://netbeans.org/features/platform/"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-09-12_00-02-33/zip/netbeans-trunk-nightly-201609120002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-10-14_00-02-33/zip/netbeans-trunk-nightly-201610140002-src.zip"
 SRC_URI="${SOURCE_URL}
-	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r16-build.xml.patch.bz2
+	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r17-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/2F7553F50B0D14ED811B849C282DA8C1FFC32AAE-asm-all-5.0.1.jar
 	http://hg.netbeans.org/binaries/1BA97A9FFD4A1DFF3E75B76CD3AE3D0EFF8493B7-felix-4.2.1.jar
 	http://hg.netbeans.org/binaries/941A8BE4506C65F0A9001C08812FB7DA1E505E21-junit-4.12-javadoc.jar
@@ -38,7 +38,7 @@ S="${WORKDIR}"
 
 CDEPEND="dev-java/hamcrest-core:1.3
 	dev-java/javahelp:0
-	>=dev-java/jna-3.4:0
+	dev-java/jna:4
 	dev-java/junit:4[source]
 	>=dev-java/osgi-core-api-5:0
 	dev-java/osgi-compendium:0
@@ -47,7 +47,7 @@ CDEPEND="dev-java/hamcrest-core:1.3
 DEPEND="dev-java/oracle-jdk-bin:1.8[javafx]
 	app-arch/unzip
 	${CDEPEND}"
-RDEPEND=">=virtual/jdk-1.7
+RDEPEND="|| ( virtual/jdk:1.7 virtual/jdk:1.8 )
 	${CDEPEND}"
 
 INSTALL_DIR="/usr/share/${PN}-${SLOT}"
@@ -67,7 +67,7 @@ src_unpack() {
 	einfo "Deleting bundled jars..."
 	find -name "*.jar" -type f -delete
 
-	unpack netbeans-9999-r16-build.xml.patch.bz2
+	unpack netbeans-9999-r17-build.xml.patch.bz2
 
 	pushd "${S}" >/dev/null || die
 	ln -s "${DISTDIR}"/2F7553F50B0D14ED811B849C282DA8C1FFC32AAE-asm-all-5.0.1.jar libs.asm/external/asm-all-5.0.1.jar || die
@@ -93,26 +93,13 @@ src_prepare() {
 	find -name "*.class" -type f | xargs rm -vf
 
 	# upstream jna jar contains bundled binary libraries so we disable that feature
-	epatch netbeans-9999-r16-build.xml.patch
-
-	# Support for custom patches
-	if [ -n "${NETBEANS9999_PATCHES_DIR}" -a -d "${NETBEANS9999_PATCHES_DIR}" ] ; then
-		local files=`find "${NETBEANS9999_PATCHES_DIR}" -type f`
-
-		if [ -n "${files}" ] ; then
-			einfo "Applying custom patches:"
-
-			for file in ${files} ; do
-				epatch "${file}"
-			done
-		fi
-	fi
+	epatch netbeans-9999-r17-build.xml.patch
 
 	einfo "Symlinking external libraries..."
 	java-pkg_jar-from --into libs.junit4/external hamcrest-core-1.3 hamcrest-core.jar hamcrest-core-1.3.jar
 	java-pkg_jar-from --into javahelp/external javahelp jhall.jar jhall-2.0_05.jar
-	java-pkg_jar-from --into libs.jna/external jna jna.jar jna-4.2.2.jar
-	java-pkg_jar-from --into libs.jna.platform/external jna platform.jar jna-platform-4.2.2.jar
+	java-pkg_jar-from --into libs.jna/external jna-4 jna.jar jna-4.2.2-stripped.jar
+	java-pkg_jar-from --into libs.jna.platform/external jna-4 jna-platform.jar jna-platform-4.2.2.jar
 	java-pkg_jar-from --into libs.junit4/external junit-4 junit.jar junit-4.12.jar
 	ln -s /usr/share/junit-4/sources/junit-src.zip junitlib/external/junit-4.12-sources.jar || die
 	java-pkg_jar-from --into libs.osgi/external osgi-core-api osgi-core-api.jar osgi.core-5.0.0.jar
@@ -122,6 +109,7 @@ src_prepare() {
 	java-pkg_jar-from --into libs.testng/external testng testng.jar testng-6.8.1-dist.jar
 
 	java-pkg-2_src_prepare
+	default
 }
 
 src_compile() {
@@ -154,8 +142,8 @@ src_install() {
 	pushd "${instdir}" >/dev/null || die
 	rm hamcrest-core-1.3.jar && java-pkg_jar-from --into "${instdir}" hamcrest-core-1.3 hamcrest-core.jar hamcrest-core-1.3.jar
 	rm jhall-2.0_05.jar && java-pkg_jar-from --into "${instdir}" javahelp jhall.jar jhall-2.0_05.jar
-	rm jna-4.2.2.jar && java-pkg_jar-from --into "${instdir}" jna jna.jar jna-4.2.2.jar
-	rm jna-platform-4.2.2.jar && java-pkg_jar-from --into "${instdir}" jna platform.jar jna-platform-4.2.2.jar
+	rm jna-4.2.2-stripped.jar && java-pkg_jar-from --into "${instdir}" jna-4 jna.jar jna-4.2.2-stripped.jar
+	rm jna-platform-4.2.2.jar && java-pkg_jar-from --into "${instdir}" jna-4 jna-platform.jar jna-platform-4.2.2.jar
 	rm junit-4.12.jar && java-pkg_jar-from --into "${instdir}" junit-4 junit.jar junit-4.12.jar
 	rm osgi.cmpn-4.2.jar && java-pkg_jar-from --into "${instdir}" osgi-compendium osgi-compendium.jar osgi.cmpn-4.2.jar
 	rm osgi.core-5.0.0.jar && java-pkg_jar-from --into "${instdir}" osgi-core-api osgi-core-api.jar osgi.core-5.0.0.jar
