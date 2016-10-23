@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI="6"
 inherit eutils java-pkg-2 java-ant-2
 
 # Maven cannot be unbundled because it depends on exact maven version and exact content of maven directory
@@ -10,10 +10,10 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans Java Cluster"
 HOMEPAGE="http://netbeans.org/projects/java"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-09-21_00-02-33/zip/netbeans-trunk-nightly-201609210002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-10-23_00-02-33/zip/netbeans-trunk-nightly-201610230002-src.zip"
 # jarjar-1.4 contains also asm libraries
 SRC_URI="${SOURCE_URL}
-	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r16-build.xml.patch.bz2
+	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r17-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/839F93A5213FB3E233B09BFD6D6B95669F7043C0-aether-api-1.0.2.v20150114.jar
 	http://hg.netbeans.org/binaries/694F57282D92C434800F79218E64704E5947008A-apache-maven-3.0.5-bin.zip
 	http://hg.netbeans.org/binaries/F7BD95641780C2AAE8CB9BED1686441A1CE5E749-beansbinding-1.2.1-doc.zip
@@ -30,8 +30,8 @@ SRC_URI="${SOURCE_URL}
 	http://hg.netbeans.org/binaries/9EC77E2507F9CC01756964C71D91EFD8154A8C47-lucene-core-3.6.2.jar
 	http://hg.netbeans.org/binaries/A90682C6BC0B9E105BD260C9A041FEFEA9579E46-lucene-highlighter-3.6.2.jar
 	http://hg.netbeans.org/binaries/BF206C4AA93C74A739FBAF1F1C78E3AD5F167245-maven-dependency-tree-2.0.jar
-	http://hg.netbeans.org/binaries/5D007C6037A8501E73A3D3FB98A1F6AE5768C3DD-nb-javac-api.jar
-	http://hg.netbeans.org/binaries/5968566A351B28623DE4720B0ACB1E40338074D0-nb-javac-impl.jar
+	http://hg.netbeans.org/binaries/3BB258C976F65C78D890CACB5C0D3096B793289E-nb-javac-api.jar
+	http://hg.netbeans.org/binaries/45DA542728DD77AD51C6766ED6C3A1B71EF8DA77-nb-javac-impl.jar
 	http://hg.netbeans.org/binaries/29AF1D338CBB76290D1A96F5A6610F1E8C319AE5-org.eclipse.persistence.jpa.jpql_2.5.2.v20140319-9ad6abd.jar
 	http://hg.netbeans.org/binaries/3CE04BDB48FE315736B1DCE407362C57DFAE286D-org.eclipse.persistence.jpa.modelgen_2.5.2.v20140319-9ad6abd.jar
 	http://hg.netbeans.org/binaries/7666B94C1004AFFFE88E5328BD70EBA6F60125F4-spring-framework-3.2.7.RELEASE.zip
@@ -59,7 +59,7 @@ DEPEND=">=virtual/jdk-1.7
 	dev-java/javahelp:0
 	dev-java/json-simple:0
 	dev-java/junit:4"
-RDEPEND=">=virtual/jdk-1.7
+RDEPEND="|| ( virtual/jdk:1.7 virtual/jdk:1.8 )
 	${CDEPEND}
 	dev-java/absolutelayout:0
 	>=dev-java/antlr-2.7.7-r7:0
@@ -124,7 +124,7 @@ src_unpack() {
 	einfo "Deleting bundled jars..."
 	find -name "*.jar" -type f -delete
 
-	unpack netbeans-9999-r16-build.xml.patch.bz2
+	unpack netbeans-9999-r17-build.xml.patch.bz2
 
 	pushd "${S}" >/dev/null || die
 	ln -s "${DISTDIR}"/839F93A5213FB3E233B09BFD6D6B95669F7043C0-aether-api-1.0.2.v20150114.jar maven/external/aether-api-1.0.2.v20150114.jar || die
@@ -143,8 +143,8 @@ src_unpack() {
 	ln -s "${DISTDIR}"/9EC77E2507F9CC01756964C71D91EFD8154A8C47-lucene-core-3.6.2.jar maven.indexer/external/lucene-core-3.6.2.jar || die
 	ln -s "${DISTDIR}"/A90682C6BC0B9E105BD260C9A041FEFEA9579E46-lucene-highlighter-3.6.2.jar maven.indexer/external/lucene-highlighter-3.6.2.jar || die
 	ln -s "${DISTDIR}"/BF206C4AA93C74A739FBAF1F1C78E3AD5F167245-maven-dependency-tree-2.0.jar maven.embedder/external/maven-dependency-tree-2.0.jar || die
-	ln -s "${DISTDIR}"/5D007C6037A8501E73A3D3FB98A1F6AE5768C3DD-nb-javac-api.jar libs.javacapi/external/nb-javac-api.jar || die
-	ln -s "${DISTDIR}"/5968566A351B28623DE4720B0ACB1E40338074D0-nb-javac-impl.jar libs.javacimpl/external/nb-javac-impl.jar || die
+	ln -s "${DISTDIR}"/3BB258C976F65C78D890CACB5C0D3096B793289E-nb-javac-api.jar libs.javacapi/external/nb-javac-api.jar || die
+	ln -s "${DISTDIR}"/45DA542728DD77AD51C6766ED6C3A1B71EF8DA77-nb-javac-impl.jar libs.javacimpl/external/nb-javac-impl.jar || die
 	ln -s "${DISTDIR}"/CA4F4DB7B6C140E36B0001873BEEA7C26489D2A1-netbeans-cos.jar maven/external/netbeans-cos.jar || die
 	ln -s "${DISTDIR}"/29AF1D338CBB76290D1A96F5A6610F1E8C319AE5-org.eclipse.persistence.jpa.jpql_2.5.2.v20140319-9ad6abd.jar j2ee.eclipselink/external/org.eclipse.persistence.jpa.jpql_2.5.2.v20140319-9ad6abd.jar || die
 	ln -s "${DISTDIR}"/3CE04BDB48FE315736B1DCE407362C57DFAE286D-org.eclipse.persistence.jpa.modelgen_2.5.2.v20140319-9ad6abd.jar j2ee.eclipselinkmodelgen/external/org.eclipse.persistence.jpa.modelgen_2.5.2.v20140319-9ad6abd.jar || die
@@ -161,20 +161,7 @@ src_prepare() {
 	einfo "Deleting bundled class files..."
 	find -name "*.class" -type f | xargs rm -vf
 
-	epatch netbeans-9999-r16-build.xml.patch
-
-	# Support for custom patches
-	if [ -n "${NETBEANS9999_PATCHES_DIR}" -a -d "${NETBEANS9999_PATCHES_DIR}" ] ; then
-		local files=`find "${NETBEANS9999_PATCHES_DIR}" -type f`
-
-		if [ -n "${files}" ] ; then
-			einfo "Applying custom patches:"
-
-			for file in ${files} ; do
-				epatch "${file}"
-			done
-		fi
-	fi
+	epatch netbeans-9999-r17-build.xml.patch
 
 	einfo "Symlinking external libraries..."
 	java-pkg_jar-from --build-only --into javahelp/external javahelp jhall.jar jhall-2.0_05.jar
@@ -211,6 +198,7 @@ src_prepare() {
 	popd >/dev/null || die
 
 	java-pkg-2_src_prepare
+	default
 }
 
 src_install() {
