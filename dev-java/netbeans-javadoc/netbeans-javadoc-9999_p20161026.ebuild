@@ -2,16 +2,16 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI="6"
 inherit eutils java-pkg-2 java-ant-2
 
 DESCRIPTION="Netbeans JavaDocs"
 HOMEPAGE="http://netbeans.org/"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-09-24_00-02-33/zip/netbeans-trunk-nightly-201609240002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-10-26_00-02-33/zip/netbeans-trunk-nightly-201610260002-src.zip"
 SRC_URI="${SOURCE_URL}
-	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r16-build.xml.patch.bz2
-	http://hg.netbeans.org/binaries/BEA15848D713D491C6EBA1307E0564A5BC3965E7-ant-libs-1.9.7.zip"
+	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r17-build.xml.patch.bz2
+	http://hg.netbeans.org/binaries/7B38E2908FFD70F2AB580D21A9E688A78C6365E7-ant-libs-1.10.0alpha.zip"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
@@ -52,10 +52,10 @@ src_unpack() {
 	einfo "Deleting bundled jars..."
 	find -name "*.jar" -type f -delete
 
-	unpack netbeans-9999-r16-build.xml.patch.bz2
+	unpack netbeans-9999-r17-build.xml.patch.bz2
 
 	pushd "${S}" >/dev/null || die
-	ln -s "${DISTDIR}"/BEA15848D713D491C6EBA1307E0564A5BC3965E7-ant-libs-1.9.7.zip o.apache.tools.ant.module/external/ant-libs-1.9.7.zip || die
+	ln -s "${DISTDIR}"/7B38E2908FFD70F2AB580D21A9E688A78C6365E7-ant-libs-1.10.0alpha.zip o.apache.tools.ant.module/external/ant-libs-1.10.0alpha.zip || die
 	popd >/dev/null || die
 }
 
@@ -63,20 +63,7 @@ src_prepare() {
 	einfo "Deleting bundled class files..."
 	find -name "*.class" -type f | xargs rm -vf
 
-	epatch netbeans-9999-r16-build.xml.patch
-
-	# Support for custom patches
-	if [ -n "${NETBEANS9999_PATCHES_DIR}" -a -d "${NETBEANS9999_PATCHES_DIR}" ] ; then
-		local files=`find "${NETBEANS9999_PATCHES_DIR}" -type f`
-
-		if [ -n "${files}" ] ; then
-			einfo "Applying custom patches:"
-
-			for file in ${files} ; do
-				epatch "${file}"
-			done
-		fi
-	fi
+	epatch netbeans-9999-r17-build.xml.patch
 
 	einfo "Symlinking external libraries..."
 	java-pkg_jar-from --build-only --into javahelp/external javahelp jhall.jar jhall-2.0_05.jar
@@ -155,6 +142,7 @@ src_prepare() {
 	touch nb.cluster.websvccommon.built
 
 	java-pkg-2_src_prepare
+	default
 }
 
 src_compile() {
