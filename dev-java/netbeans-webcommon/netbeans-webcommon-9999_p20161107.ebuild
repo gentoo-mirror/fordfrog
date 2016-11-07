@@ -8,9 +8,9 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans Web Services Cluster"
 HOMEPAGE="http://netbeans.org/"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-10-06_00-02-33/zip/netbeans-trunk-nightly-201610060002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-11-07_00-01-33/zip/netbeans-trunk-nightly-201611070001-src.zip"
 SRC_URI="${SOURCE_URL}
-	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r16-build.xml.patch.bz2
+	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r17-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/7CA13589F586F659BB0E1561719A91CA47BF1897-com.oracle.js.parser.jar
 	http://hg.netbeans.org/binaries/59631804B5A7FF3CEAA3F0E113584AF7E1BB6E9B-dd-plist.jar
 	http://hg.netbeans.org/binaries/7C4A82593A85524A3541E55A4A9C906B773ABAD6-ios-sim
@@ -37,7 +37,7 @@ DEPEND=">=virtual/jdk-1.7
 	app-arch/unzip
 	${CDEPEND}
 	dev-java/javahelp:0
-	dev-java/jna:0"
+	dev-java/jna:4"
 RDEPEND="|| ( virtual/jdk:1.7 virtual/jdk:1.8 )
 	${CDEPEND}"
 
@@ -55,7 +55,7 @@ src_unpack() {
 	einfo "Deleting bundled jars..."
 	find -name "*.jar" -type f -delete
 
-	unpack netbeans-9999-r16-build.xml.patch.bz2
+	unpack netbeans-9999-r17-build.xml.patch.bz2
 
 	pushd "${S}" >/dev/null || die
 	ln -s "${DISTDIR}"/7CA13589F586F659BB0E1561719A91CA47BF1897-com.oracle.js.parser.jar libs.nashorn/external/com.oracle.js.parser.jar || die
@@ -79,11 +79,11 @@ src_prepare() {
 	einfo "Deleting bundled class files..."
 	find -name "*.class" -type f | xargs rm -vf
 
-	epatch netbeans-9999-r16-build.xml.patch
+	epatch netbeans-9999-r17-build.xml.patch
 
 	einfo "Symlinking external libraries..."
 	java-pkg_jar-from --build-only --into javahelp/external javahelp jhall.jar jhall-2.0_05.jar
-	java-pkg_jar-from --build-only --into libs.jna/external jna jna.jar jna-4.2.2.jar
+	java-pkg_jar-from --build-only --into libs.jna/external jna-4 jna.jar jna-4.2.2-stripped.jar
 
 	einfo "Linking in other clusters..."
 	mkdir "${S}"/nbbuild/netbeans || die

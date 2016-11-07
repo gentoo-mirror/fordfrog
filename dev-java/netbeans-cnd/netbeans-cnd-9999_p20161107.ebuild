@@ -8,9 +8,9 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans CND Cluster"
 HOMEPAGE="http://netbeans.org/projects/cnd"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-10-07_00-02-33/zip/netbeans-trunk-nightly-201610070002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-11-07_00-01-33/zip/netbeans-trunk-nightly-201611070001-src.zip"
 SRC_URI="${SOURCE_URL}
-	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r16-build.xml.patch.bz2
+	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r17-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/5CAB59D859CAA6598E28131D30DD2E89806DB57F-antlr-3.4.jar
 	http://hg.netbeans.org/binaries/4E74C6BE42FE89871A878C7C4D6158F21A6D8010-antlr-runtime-3.4.jar
 	http://hg.netbeans.org/binaries/F20EEEDF4FE6B93B180387576FB780EED9F79C66-clank_0.3.9.zip
@@ -31,7 +31,7 @@ CDEPEND="~dev-java/netbeans-dlight-${PV}
 	~dev-java/netbeans-platform-${PV}"
 DEPEND=">=virtual/jdk-1.7
 	app-arch/unzip
-	>=dev-java/jna-3.4.0
+	dev-java/jna:4
 	${CDEPEND}
 	dev-java/javahelp:0"
 RDEPEND="|| ( virtual/jdk:1.7 virtual/jdk:1.8 )
@@ -51,7 +51,7 @@ src_unpack() {
 	einfo "Deleting bundled jars..."
 	find -name "*.jar" -type f -delete
 
-	unpack netbeans-9999-r16-build.xml.patch.bz2
+	unpack netbeans-9999-r17-build.xml.patch.bz2
 
 	pushd "${S}" >/dev/null || die
 	ln -s "${DISTDIR}"/5CAB59D859CAA6598E28131D30DD2E89806DB57F-antlr-3.4.jar libs.antlr3.devel/external/antlr-3.4.jar || die
@@ -67,11 +67,11 @@ src_prepare() {
 	einfo "Deleting bundled class files..."
 	find -name "*.class" -type f | xargs rm -vf
 
-	epatch netbeans-9999-r16-build.xml.patch
+	epatch netbeans-9999-r17-build.xml.patch
 
 	einfo "Symlinking external libraries..."
 	java-pkg_jar-from --build-only --into javahelp/external javahelp jhall.jar jhall-2.0_05.jar
-	java-pkg_jar-from --build-only --into libs.jna/external jna jna.jar jna-4.2.2.jar
+	java-pkg_jar-from --build-only --into libs.jna/external jna-4 jna.jar jna-4.2.2-stripped.jar
 
 	einfo "Linking in other clusters..."
 	mkdir "${S}"/nbbuild/netbeans || die
