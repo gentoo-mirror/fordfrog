@@ -8,7 +8,7 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans IDE Cluster"
 HOMEPAGE="http://netbeans.org/projects/ide"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-10-13_00-02-33/zip/netbeans-trunk-nightly-201610130002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-11-13_00-01-33/zip/netbeans-trunk-nightly-201611130001-src.zip"
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r17-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/4E74C6BE42FE89871A878C7C4D6158F21A6D8010-antlr-runtime-3.4.jar
@@ -87,7 +87,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 S="${WORKDIR}"
 
-CDEPEND="~dev-java/netbeans-harness-${PV}
+CDEPEND="virtual/jdk:1.8
+	~dev-java/netbeans-harness-${PV}
 	~dev-java/netbeans-platform-${PV}
 	dev-java/antlr:4
 	dev-java/commons-compress:0
@@ -97,7 +98,7 @@ CDEPEND="~dev-java/netbeans-harness-${PV}
 	dev-java/iso-relax:0
 	dev-java/jdbc-mysql:0
 	dev-java/jdbc-postgresql:0
-	>=dev-java/jsch-0.1.46:0
+	dev-java/jsch:0
 	>=dev-java/json-simple-1.1:0
 	dev-java/jsr173:0
 	dev-java/jvyamlb:0
@@ -120,15 +121,13 @@ CDEPEND="~dev-java/netbeans-harness-${PV}
 #	dev-java/jaxb:2 upstream version contains more stuff so websvccommon does not compile with ours
 #	dev-java/jzlib:0 fails with "Missing manifest tag OpenIDE-Module"
 #	dev-java/trilead-ssh2:0 in overlay
-DEPEND=">=virtual/jdk-1.7
+DEPEND="${CDEPEND}
 	app-arch/unzip
 	dev-java/commons-codec:0
-	${CDEPEND}
 	dev-java/javacc:0
 	dev-java/javahelp:0
 	dev-java/jna:4"
-RDEPEND="|| ( virtual/jdk:1.7 virtual/jdk:1.8 )
-	${CDEPEND}"
+RDEPEND="${CDEPEND}"
 
 INSTALL_DIR="/usr/share/${PN}-${SLOT}"
 
@@ -233,7 +232,7 @@ src_prepare() {
 	epatch netbeans-9999-r17-build.xml.patch
 
 	einfo "Symlinking external libraries..."
-	java-pkg_jar-from --into c.jcraft.jsch/external jsch jsch.jar jsch-0.1.53.jar
+	java-pkg_jar-from --into c.jcraft.jsch/external jsch jsch.jar jsch-0.1.54.jar
 	java-pkg_jar-from --into db.drivers/external jdbc-mysql jdbc-mysql.jar mysql-connector-java-5.1.23-bin.jar
 	java-pkg_jar-from --into db.drivers/external jdbc-postgresql jdbc-postgresql.jar postgresql-9.4.1209.jar
 	java-pkg_jar-from --build-only --into db.sql.visualeditor/external javacc javacc.jar javacc-3.2.jar

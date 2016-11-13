@@ -8,7 +8,7 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans CND Cluster"
 HOMEPAGE="http://netbeans.org/projects/cnd"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-10-13_00-02-33/zip/netbeans-trunk-nightly-201610130002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-11-13_00-01-33/zip/netbeans-trunk-nightly-201611130001-src.zip"
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r17-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/5CAB59D859CAA6598E28131D30DD2E89806DB57F-antlr-3.4.jar
@@ -25,17 +25,16 @@ S="${WORKDIR}"
 # These files are for remote development and debugging
 QA_PREBUILT="usr/share/netbeans-cnd-${SLOT}/bin/*"
 
-CDEPEND="~dev-java/netbeans-dlight-${PV}
+CDEPEND="virtual/jdk:1.8
+	~dev-java/netbeans-dlight-${PV}
 	~dev-java/netbeans-harness-${PV}
 	~dev-java/netbeans-ide-${PV}
 	~dev-java/netbeans-platform-${PV}"
-DEPEND=">=virtual/jdk-1.7
+DEPEND="${CDEPEND}
 	app-arch/unzip
 	dev-java/jna:4
-	${CDEPEND}
 	dev-java/javahelp:0"
-RDEPEND="|| ( virtual/jdk:1.7 virtual/jdk:1.8 )
-	${CDEPEND}"
+RDEPEND="${CDEPEND}"
 
 INSTALL_DIR="/usr/share/${PN}-${SLOT}"
 
