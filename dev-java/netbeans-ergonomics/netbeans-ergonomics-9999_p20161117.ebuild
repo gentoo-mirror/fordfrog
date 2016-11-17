@@ -5,10 +5,10 @@
 EAPI="6"
 inherit eutils java-pkg-2 java-ant-2
 
-DESCRIPTION="Netbeans Web Services Common Cluster"
+DESCRIPTION="Netbeans Ergonomics Cluster"
 HOMEPAGE="http://netbeans.org/"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-10-17_00-02-33/zip/netbeans-trunk-nightly-201610170002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-11-17_00-01-33/zip/netbeans-trunk-nightly-201611170001-src.zip"
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r17-build.xml.patch.bz2"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
@@ -16,20 +16,20 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 S="${WORKDIR}"
 
-CDEPEND="~dev-java/netbeans-platform-${PV}
-	~dev-java/netbeans-ide-${PV}"
-DEPEND=">=virtual/jdk-1.7
+CDEPEND="virtual/jdk:1.8
+	~dev-java/netbeans-ide-${PV}
+	~dev-java/netbeans-nb-${PV}
+	~dev-java/netbeans-platform-${PV}"
+DEPEND="${CDEPEND}
 	app-arch/unzip
-	${CDEPEND}
 	dev-java/javahelp:0"
-RDEPEND="|| ( virtual/jdk:1.7 virtual/jdk:1.8 )
-	${CDEPEND}"
+RDEPEND="${CDEPEND}"
 
 INSTALL_DIR="/usr/share/${PN}-${SLOT}"
 
 EANT_BUILD_XML="nbbuild/build.xml"
 EANT_BUILD_TARGET="rebuild-cluster"
-EANT_EXTRA_ARGS="-Drebuild.cluster.name=nb.cluster.websvccommon -Dext.binaries.downloaded=true -Dpermit.jdk8.builds=true"
+EANT_EXTRA_ARGS="-Drebuild.cluster.name=nb.cluster.ergonomics -Dext.binaries.downloaded=true -Dpermit.jdk8.builds=true"
 EANT_FILTER_COMPILER="ecj-3.3 ecj-3.4 ecj-3.5 ecj-3.6 ecj-3.7"
 JAVA_PKG_BSFIX="off"
 
@@ -55,13 +55,17 @@ src_prepare() {
 	mkdir "${S}"/nbbuild/netbeans || die
 	pushd "${S}"/nbbuild/netbeans >/dev/null || die
 
-	ln -s /usr/share/netbeans-platform-${SLOT} platform || die
-	cat /usr/share/netbeans-platform-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
-	touch nb.cluster.platform.built
-
 	ln -s /usr/share/netbeans-ide-${SLOT} ide || die
 	cat /usr/share/netbeans-ide-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
 	touch nb.cluster.ide.built
+
+	ln -s /usr/share/netbeans-nb-${SLOT}/nb nb || die
+	cat /usr/share/netbeans-nb-${SLOT}/nb/moduleCluster.properties >> moduleCluster.properties || die
+	touch nb.cluster.nb.built
+
+	ln -s /usr/share/netbeans-platform-${SLOT} platform || die
+	cat /usr/share/netbeans-platform-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
+	touch nb.cluster.platform.built
 
 	popd >/dev/null || die
 
@@ -70,13 +74,15 @@ src_prepare() {
 }
 
 src_install() {
-	pushd nbbuild/netbeans/websvccommon >/dev/null || die
+	pushd nbbuild/netbeans/ergonomics >/dev/null || die
 
 	insinto ${INSTALL_DIR}
-	grep -E "/websvccommon$" ../moduleCluster.properties > "${D}"/${INSTALL_DIR}/moduleCluster.properties || die
+
+	grep -E "/ergonomics$" ../moduleCluster.properties > "${D}"/${INSTALL_DIR}/moduleCluster.properties || die
+
 	doins -r *
 
 	popd >/dev/null || die
 
-	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/websvccommon
+	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/ergonomics
 }
