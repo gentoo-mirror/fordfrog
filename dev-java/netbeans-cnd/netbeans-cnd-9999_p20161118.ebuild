@@ -8,12 +8,12 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans CND Cluster"
 HOMEPAGE="http://netbeans.org/projects/cnd"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-10-18_00-02-33/zip/netbeans-trunk-nightly-201610180002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-11-18_00-01-33/zip/netbeans-trunk-nightly-201611180001-src.zip"
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r17-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/5CAB59D859CAA6598E28131D30DD2E89806DB57F-antlr-3.4.jar
 	http://hg.netbeans.org/binaries/4E74C6BE42FE89871A878C7C4D6158F21A6D8010-antlr-runtime-3.4.jar
-	http://hg.netbeans.org/binaries/F20EEEDF4FE6B93B180387576FB780EED9F79C66-clank_0.3.9.zip
+	http://hg.netbeans.org/binaries/B3706CA2B4FFFAA52D6877AAB45433E50A3BAF95-clank_0.3.9.zip
 	http://hg.netbeans.org/binaries/43A82EB3CE61B9B0B1C60586C7D84729BD5BE3E0-cnd-build-trace-1.0.zip
 	http://hg.netbeans.org/binaries/E59851B0E49C05D728D5C653E52750FA5B6A8F0E-cnd-rfs-1.0.zip
 	http://hg.netbeans.org/binaries/C51780D99464CBF45B0495C7646B442AB3C7B463-open-fortran-parser-0.7.1.2.zip"
@@ -25,17 +25,16 @@ S="${WORKDIR}"
 # These files are for remote development and debugging
 QA_PREBUILT="usr/share/netbeans-cnd-${SLOT}/bin/*"
 
-CDEPEND="~dev-java/netbeans-dlight-${PV}
+CDEPEND="virtual/jdk:1.8
+	~dev-java/netbeans-dlight-${PV}
 	~dev-java/netbeans-harness-${PV}
 	~dev-java/netbeans-ide-${PV}
 	~dev-java/netbeans-platform-${PV}"
-DEPEND=">=virtual/jdk-1.7
+DEPEND="${CDEPEND}
 	app-arch/unzip
 	dev-java/jna:4
-	${CDEPEND}
 	dev-java/javahelp:0"
-RDEPEND="|| ( virtual/jdk:1.7 virtual/jdk:1.8 )
-	${CDEPEND}"
+RDEPEND="${CDEPEND}"
 
 INSTALL_DIR="/usr/share/${PN}-${SLOT}"
 
@@ -56,7 +55,7 @@ src_unpack() {
 	pushd "${S}" >/dev/null || die
 	ln -s "${DISTDIR}"/5CAB59D859CAA6598E28131D30DD2E89806DB57F-antlr-3.4.jar libs.antlr3.devel/external/antlr-3.4.jar || die
 	ln -s "${DISTDIR}"/4E74C6BE42FE89871A878C7C4D6158F21A6D8010-antlr-runtime-3.4.jar libs.antlr3.runtime/external/antlr-runtime-3.4.jar || die
-	ln -s "${DISTDIR}"/F20EEEDF4FE6B93B180387576FB780EED9F79C66-clank_0.3.9.zip libs.clank/external/clank_0.3.9.zip || die
+	ln -s "${DISTDIR}"/B3706CA2B4FFFAA52D6877AAB45433E50A3BAF95-clank_0.3.9.zip libs.clank/external/clank_0.3.9.zip || die
 	ln -s "${DISTDIR}"/43A82EB3CE61B9B0B1C60586C7D84729BD5BE3E0-cnd-build-trace-1.0.zip cnd.discovery/external/cnd-build-trace-1.0.zip || die
 	ln -s "${DISTDIR}"/E59851B0E49C05D728D5C653E52750FA5B6A8F0E-cnd-rfs-1.0.zip cnd.remote/external/cnd-rfs-1.0.zip || die
 	ln -s "${DISTDIR}"/C51780D99464CBF45B0495C7646B442AB3C7B463-open-fortran-parser-0.7.1.2.zip cnd.modelimpl/external/open-fortran-parser-0.7.1.2.zip || die

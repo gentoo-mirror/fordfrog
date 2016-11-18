@@ -10,42 +10,41 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans Java Cluster"
 HOMEPAGE="http://netbeans.org/projects/java"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-10-18_00-02-33/zip/netbeans-trunk-nightly-201610180002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-11-18_00-01-33/zip/netbeans-trunk-nightly-201611180001-src.zip"
 # jarjar-1.4 contains also asm libraries
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r17-build.xml.patch.bz2
-	http://hg.netbeans.org/binaries/839F93A5213FB3E233B09BFD6D6B95669F7043C0-aether-api-1.0.2.v20150114.jar
-	http://hg.netbeans.org/binaries/694F57282D92C434800F79218E64704E5947008A-apache-maven-3.0.5-bin.zip
+	http://hg.netbeans.org/binaries/E48292EAE5E14EC44978AA53DEBB1AF7DDD6DF93-aether-api-1.13.1.jar
+	http://hg.netbeans.org/binaries/2DDF9BB8C3B41BC2891832A6D6FC25F8BF41D77F-apache-maven-3.3.9-bin.zip
 	http://hg.netbeans.org/binaries/F7BD95641780C2AAE8CB9BED1686441A1CE5E749-beansbinding-1.2.1-doc.zip
 	http://hg.netbeans.org/binaries/CD2211635F3011E300CA8FEDC1CE0E1CF61C175B-eclipselink.jar
 	http://hg.netbeans.org/binaries/A9A0648BD7D9FD2CDFBD22C25366E71DA72438DA-hibernate-release-4.3.1-lib.zip
-	http://hg.netbeans.org/binaries/562F0CFA47F0636EBB5A544968EE7A692FC5D26D-indexer-artifact-5.1.1.jar
-	http://hg.netbeans.org/binaries/E775F5BEB07F8303A9AD3DDC12E3128DD48AB03A-indexer-core-5.1.1-patched.jar
+	http://hg.netbeans.org/binaries/627EC612B8D50EE42C2D0F13DF5476E26D696634-indexer-core-6.0-SNAPSHOT-patched.jar
 	http://hg.netbeans.org/binaries/D87F53C99E4CD88F5416EDD5ABB77F2A1CCFB050-jarjar-1.4.jar
+	http://hg.netbeans.org/binaries/479C1E06DB31C432330183F5CAE684163F186146-javax.annotation-api-1.2.jar
 	http://hg.netbeans.org/binaries/5BAB675816DBE0F64BB86004B108BF2A00292358-javax.persistence_2.1.0.v201304241213.jar
 	http://hg.netbeans.org/binaries/84E2020E5499015E9F40D1212C86918264B89EB1-jaxws-2.2.6.zip
 	http://hg.netbeans.org/binaries/D64C40E770C95C2A6994081C00CCD489C0AA20C9-jaxws-2.2.6-api.zip
 	http://hg.netbeans.org/binaries/8ECD169E9E308C258287E4F28B03B6D6F1E55F47-jaxws-api-doc.zip
 	http://hg.netbeans.org/binaries/A8BD39C5B88571B4D4697E78DD1A56566E44B1DD-JPAjavadocs04032013.zip
-	http://hg.netbeans.org/binaries/9EC77E2507F9CC01756964C71D91EFD8154A8C47-lucene-core-3.6.2.jar
-	http://hg.netbeans.org/binaries/A90682C6BC0B9E105BD260C9A041FEFEA9579E46-lucene-highlighter-3.6.2.jar
+	http://hg.netbeans.org/binaries/CF734AB72813AF33DC1544CE61ABC5C17B9D35E9-lucene-analyzers-common-5.5.3.jar
+	http://hg.netbeans.org/binaries/20540C6347259F35A0D264605B22CE2A13917066-lucene-core-5.5.3.jar
+	http://hg.netbeans.org/binaries/D276E74D57C64ED5F9A09A48DA05B75555E8709A-lucene-highlighter-5.5.3.jar
+	http://hg.netbeans.org/binaries/E2452203D2C44CAC5AC42B34E5DCC0A44BF29A53-lucene-queryparser-5.5.3.jar
 	http://hg.netbeans.org/binaries/BF206C4AA93C74A739FBAF1F1C78E3AD5F167245-maven-dependency-tree-2.0.jar
-	http://hg.netbeans.org/binaries/3BB258C976F65C78D890CACB5C0D3096B793289E-nb-javac-api.jar
-	http://hg.netbeans.org/binaries/45DA542728DD77AD51C6766ED6C3A1B71EF8DA77-nb-javac-impl.jar
+	http://hg.netbeans.org/binaries/5E9BDB67535C7FA113FF601FBDF0FE4DAAB7CE78-nb-javac-api.jar
+	http://hg.netbeans.org/binaries/3603C3CE067CD86CBF76B6B297DC97DCA7E69662-nb-javac-impl.jar
 	http://hg.netbeans.org/binaries/29AF1D338CBB76290D1A96F5A6610F1E8C319AE5-org.eclipse.persistence.jpa.jpql_2.5.2.v20140319-9ad6abd.jar
 	http://hg.netbeans.org/binaries/3CE04BDB48FE315736B1DCE407362C57DFAE286D-org.eclipse.persistence.jpa.modelgen_2.5.2.v20140319-9ad6abd.jar
 	http://hg.netbeans.org/binaries/7666B94C1004AFFFE88E5328BD70EBA6F60125F4-spring-framework-3.2.7.RELEASE.zip
-	http://hg.netbeans.org/binaries/91B55CDAC59BC4DDDF0AF9A54EAAE4304EDEF266-spring-framework-4.0.1.RELEASE.zip
-	http://hg.netbeans.org/binaries/BFCC4C322190D6E3DD2FA9F191C0359D380D87C5-wagon-file-2.10.jar
-	http://hg.netbeans.org/binaries/4EF309C09ABB5F8B2D0C6A4010205DB185729CDC-wagon-http-2.10-shaded.jar
-	http://hg.netbeans.org/binaries/3B96251214DF697E902C849EB0B4A0EFA2CD1A53-wagon-http-shared-2.10.jar
-	http://hg.netbeans.org/binaries/0CD9CDDE3F56BB5250D87C54592F04CBC24F03BF-wagon-provider-api-2.10.jar"
+	http://hg.netbeans.org/binaries/91B55CDAC59BC4DDDF0AF9A54EAAE4304EDEF266-spring-framework-4.0.1.RELEASE.zip"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 S="${WORKDIR}"
 
-CDEPEND="~dev-java/netbeans-platform-${PV}
+CDEPEND="virtual/jdk:1.8
+	~dev-java/netbeans-platform-${PV}
 	~dev-java/netbeans-extide-${PV}
 	~dev-java/netbeans-harness-${PV}
 	~dev-java/netbeans-ide-${PV}
@@ -53,14 +52,12 @@ CDEPEND="~dev-java/netbeans-platform-${PV}
 	dev-java/beansbinding:0
 	dev-java/cglib:3
 	dev-java/jdom:0"
-DEPEND=">=virtual/jdk-1.7
+DEPEND="${CDEPEND}
 	app-arch/unzip
-	${CDEPEND}
 	dev-java/javahelp:0
 	dev-java/json-simple:0
 	dev-java/junit:4"
-RDEPEND="|| ( virtual/jdk:1.7 virtual/jdk:1.8 )
-	${CDEPEND}
+RDEPEND="${CDEPEND}
 	dev-java/absolutelayout:0
 	>=dev-java/antlr-2.7.7-r7:0
 	dev-java/c3p0:0
@@ -127,24 +124,26 @@ src_unpack() {
 	unpack netbeans-9999-r17-build.xml.patch.bz2
 
 	pushd "${S}" >/dev/null || die
-	ln -s "${DISTDIR}"/839F93A5213FB3E233B09BFD6D6B95669F7043C0-aether-api-1.0.2.v20150114.jar maven/external/aether-api-1.0.2.v20150114.jar || die
-	ln -s "${DISTDIR}"/694F57282D92C434800F79218E64704E5947008A-apache-maven-3.0.5-bin.zip maven.embedder/external/apache-maven-3.0.5-bin.zip || die
+	ln -s "${DISTDIR}"/E48292EAE5E14EC44978AA53DEBB1AF7DDD6DF93-aether-api-1.13.1.jar maven/external/aether-api-1.13.1.jar || die
+	ln -s "${DISTDIR}"/2DDF9BB8C3B41BC2891832A6D6FC25F8BF41D77F-apache-maven-3.3.9-bin.zip maven.embedder/external/apache-maven-3.3.9-bin.zip || die
 	ln -s "${DISTDIR}"/F7BD95641780C2AAE8CB9BED1686441A1CE5E749-beansbinding-1.2.1-doc.zip o.jdesktop.beansbinding/external/beansbinding-1.2.1-doc.zip || die
 	ln -s "${DISTDIR}"/CD2211635F3011E300CA8FEDC1CE0E1CF61C175B-eclipselink.jar j2ee.eclipselink/external/eclipselink.jar || die
 	ln -s "${DISTDIR}"/A9A0648BD7D9FD2CDFBD22C25366E71DA72438DA-hibernate-release-4.3.1-lib.zip hibernate4lib/external/hibernate-release-4.3.1-lib.zip || die
-	ln -s "${DISTDIR}"/562F0CFA47F0636EBB5A544968EE7A692FC5D26D-indexer-artifact-5.1.1.jar maven.indexer/external/indexer-artifact-5.1.1.jar || die
-	ln -s "${DISTDIR}"/E775F5BEB07F8303A9AD3DDC12E3128DD48AB03A-indexer-core-5.1.1-patched.jar maven.indexer/external/indexer-core-5.1.1-patched.jar || die
+	ln -s "${DISTDIR}"/627EC612B8D50EE42C2D0F13DF5476E26D696634-indexer-core-6.0-SNAPSHOT-patched.jar maven.indexer/external/indexer-core-6.0-SNAPSHOT-patched.jar || die
 	ln -s "${DISTDIR}"/D87F53C99E4CD88F5416EDD5ABB77F2A1CCFB050-jarjar-1.4.jar maven/external/jarjar-1.4.jar || die
+	ln -s "${DISTDIR}"/479C1E06DB31C432330183F5CAE684163F186146-javax.annotation-api-1.2.jar maven.indexer/external/javax.annotation-api-1.2.jar || die
 	ln -s "${DISTDIR}"/5BAB675816DBE0F64BB86004B108BF2A00292358-javax.persistence_2.1.0.v201304241213.jar j2ee.eclipselink/external/javax.persistence_2.1.0.v201304241213.jar || die
 	ln -s "${DISTDIR}"/84E2020E5499015E9F40D1212C86918264B89EB1-jaxws-2.2.6.zip websvc.jaxws21/external/jaxws-2.2.6.zip || die
 	ln -s "${DISTDIR}"/D64C40E770C95C2A6994081C00CCD489C0AA20C9-jaxws-2.2.6-api.zip websvc.jaxws21api/external/jaxws-2.2.6-api.zip || die
 	ln -s "${DISTDIR}"/8ECD169E9E308C258287E4F28B03B6D6F1E55F47-jaxws-api-doc.zip websvc.jaxws21/external/jaxws-api-doc.zip || die
 	ln -s "${DISTDIR}"/A8BD39C5B88571B4D4697E78DD1A56566E44B1DD-JPAjavadocs04032013.zip j2ee.eclipselink/external/JPAjavadocs04032013.zip || die
-	ln -s "${DISTDIR}"/9EC77E2507F9CC01756964C71D91EFD8154A8C47-lucene-core-3.6.2.jar maven.indexer/external/lucene-core-3.6.2.jar || die
-	ln -s "${DISTDIR}"/A90682C6BC0B9E105BD260C9A041FEFEA9579E46-lucene-highlighter-3.6.2.jar maven.indexer/external/lucene-highlighter-3.6.2.jar || die
+	ln -s "${DISTDIR}"/CF734AB72813AF33DC1544CE61ABC5C17B9D35E9-lucene-analyzers-common-5.5.3.jar maven.indexer/external/lucene-analyzers-common-5.5.3.jar || die
+	ln -s "${DISTDIR}"/20540C6347259F35A0D264605B22CE2A13917066-lucene-core-5.5.3.jar maven.indexer/external/lucene-core-5.5.3.jar || die
+	ln -s "${DISTDIR}"/D276E74D57C64ED5F9A09A48DA05B75555E8709A-lucene-highlighter-5.5.3.jar maven.indexer/external/lucene-highlighter-5.5.3.jar || die
+	ln -s "${DISTDIR}"/E2452203D2C44CAC5AC42B34E5DCC0A44BF29A53-lucene-queryparser-5.5.3.jar maven.indexer/external/lucene-queryparser-5.5.3.jar || die
 	ln -s "${DISTDIR}"/BF206C4AA93C74A739FBAF1F1C78E3AD5F167245-maven-dependency-tree-2.0.jar maven.embedder/external/maven-dependency-tree-2.0.jar || die
-	ln -s "${DISTDIR}"/3BB258C976F65C78D890CACB5C0D3096B793289E-nb-javac-api.jar libs.javacapi/external/nb-javac-api.jar || die
-	ln -s "${DISTDIR}"/45DA542728DD77AD51C6766ED6C3A1B71EF8DA77-nb-javac-impl.jar libs.javacimpl/external/nb-javac-impl.jar || die
+	ln -s "${DISTDIR}"/5E9BDB67535C7FA113FF601FBDF0FE4DAAB7CE78-nb-javac-api.jar libs.javacapi/external/nb-javac-api.jar || die
+	ln -s "${DISTDIR}"/3603C3CE067CD86CBF76B6B297DC97DCA7E69662-nb-javac-impl.jar libs.javacimpl/external/nb-javac-impl.jar || die
 	ln -s "${DISTDIR}"/CA4F4DB7B6C140E36B0001873BEEA7C26489D2A1-netbeans-cos.jar maven/external/netbeans-cos.jar || die
 	ln -s "${DISTDIR}"/29AF1D338CBB76290D1A96F5A6610F1E8C319AE5-org.eclipse.persistence.jpa.jpql_2.5.2.v20140319-9ad6abd.jar j2ee.eclipselink/external/org.eclipse.persistence.jpa.jpql_2.5.2.v20140319-9ad6abd.jar || die
 	ln -s "${DISTDIR}"/3CE04BDB48FE315736B1DCE407362C57DFAE286D-org.eclipse.persistence.jpa.modelgen_2.5.2.v20140319-9ad6abd.jar j2ee.eclipselinkmodelgen/external/org.eclipse.persistence.jpa.modelgen_2.5.2.v20140319-9ad6abd.jar || die
