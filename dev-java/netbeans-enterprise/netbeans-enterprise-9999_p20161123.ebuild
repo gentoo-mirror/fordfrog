@@ -76,7 +76,7 @@ RDEPEND="${CDEPEND}
 	dev-java/commons-io:1
 	dev-java/commons-validator:0
 	dev-java/glassfish-persistence:0
-	dev-java/guava:14
+	dev-java/guava:20
 	dev-java/jakarta-oro:2.0
 	dev-java/osgi-core-api:0
 	dev-java/validation-api:1.0"
@@ -222,7 +222,7 @@ src_install() {
 	local instdir="${D}"/${INSTALL_DIR}/modules/ext/jersey2/ext
 	pushd "${instdir}" >/dev/null || die
 	rm cglib-2.2.0-b21.jar && java-pkg_jar-from --into "${instdir}" cglib-3 cglib.jar cglib-2.2.0-b21.jar
-	rm guava-14.0.1.jar && java-pkg_jar-from --into "${instdir}" guava-14 guava.jar guava-14.0.1.jar
+	rm guava-14.0.1.jar && java-pkg_jar-from --into "${instdir}" guava-20 guava.jar guava-14.0.1.jar
 	rm org.osgi.core-4.2.0.jar && java-pkg_jar-from --into "${instdir}" osgi-core-api osgi-core-api.jar org.osgi.core-4.2.0.jar
 	rm persistence-api-1.0.jar && java-pkg_jar-from --into "${instdir}" glassfish-persistence glassfish-persistence.jar persistence-api-1.0.jar
 	rm validation-api-1.1.0.Final.jar && java-pkg_jar-from --into "${instdir}" validation-api-1.0 validation-api.jar validation-api-1.1.0.Final.jar
