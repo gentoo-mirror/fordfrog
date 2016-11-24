@@ -8,7 +8,7 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans Web Services Cluster"
 HOMEPAGE="http://netbeans.org/"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-10-24_00-02-33/zip/netbeans-trunk-nightly-201610240002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-11-24_00-01-33/zip/netbeans-trunk-nightly-201611240001-src.zip"
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r17-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/7CA13589F586F659BB0E1561719A91CA47BF1897-com.oracle.js.parser.jar
@@ -30,16 +30,15 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 S="${WORKDIR}"
 
-CDEPEND="~dev-java/netbeans-platform-${PV}
+CDEPEND="virtual/jdk:1.8
+	~dev-java/netbeans-platform-${PV}
 	~dev-java/netbeans-extide-${PV}
 	~dev-java/netbeans-ide-${PV}"
-DEPEND=">=virtual/jdk-1.7
+DEPEND="${CDEPEND}
 	app-arch/unzip
-	${CDEPEND}
 	dev-java/javahelp:0
 	dev-java/jna:4"
-RDEPEND="|| ( virtual/jdk:1.7 virtual/jdk:1.8 )
-	${CDEPEND}"
+RDEPEND="${CDEPEND}"
 
 INSTALL_DIR="/usr/share/${PN}-${SLOT}"
 

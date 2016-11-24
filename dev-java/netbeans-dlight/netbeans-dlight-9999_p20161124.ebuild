@@ -5,31 +5,31 @@
 EAPI="6"
 inherit eutils java-pkg-2 java-ant-2
 
-DESCRIPTION="Netbeans Web Services Common Cluster"
+DESCRIPTION="Netbeans D-Light Cluster"
 HOMEPAGE="http://netbeans.org/"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-10-24_00-02-33/zip/netbeans-trunk-nightly-201610240002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-11-24_00-01-33/zip/netbeans-trunk-nightly-201611240001-src.zip"
 SRC_URI="${SOURCE_URL}
-	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r17-build.xml.patch.bz2"
+	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r17-build.xml.patch.bz2
+	http://hg.netbeans.org/binaries/18E39A0D10357B72EDB76F2070E27019317792F1-fs_server-1.0.zip"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 S="${WORKDIR}"
 
-CDEPEND="~dev-java/netbeans-platform-${PV}
-	~dev-java/netbeans-ide-${PV}"
-DEPEND=">=virtual/jdk-1.7
+CDEPEND="virtual/jdk:1.8
+	~dev-java/netbeans-ide-${PV}
+	~dev-java/netbeans-platform-${PV}"
+DEPEND="${CDEPEND}
 	app-arch/unzip
-	${CDEPEND}
 	dev-java/javahelp:0"
-RDEPEND="|| ( virtual/jdk:1.7 virtual/jdk:1.8 )
-	${CDEPEND}"
+RDEPEND="${CDEPEND}"
 
 INSTALL_DIR="/usr/share/${PN}-${SLOT}"
 
 EANT_BUILD_XML="nbbuild/build.xml"
 EANT_BUILD_TARGET="rebuild-cluster"
-EANT_EXTRA_ARGS="-Drebuild.cluster.name=nb.cluster.websvccommon -Dext.binaries.downloaded=true -Dpermit.jdk8.builds=true"
+EANT_EXTRA_ARGS="-Drebuild.cluster.name=nb.cluster.dlight -Dext.binaries.downloaded=true -Dpermit.jdk8.builds=true"
 EANT_FILTER_COMPILER="ecj-3.3 ecj-3.4 ecj-3.5 ecj-3.6 ecj-3.7"
 JAVA_PKG_BSFIX="off"
 
@@ -40,6 +40,10 @@ src_unpack() {
 	find -name "*.jar" -type f -delete
 
 	unpack netbeans-9999-r17-build.xml.patch.bz2
+
+	pushd "${S}" >/dev/null || die
+	ln -s "${DISTDIR}"/18E39A0D10357B72EDB76F2070E27019317792F1-fs_server-1.0.zip dlight.remote.impl/external/fs_server-1.0.zip || die
+	popd >/dev/null || die
 }
 
 src_prepare() {
@@ -55,13 +59,13 @@ src_prepare() {
 	mkdir "${S}"/nbbuild/netbeans || die
 	pushd "${S}"/nbbuild/netbeans >/dev/null || die
 
-	ln -s /usr/share/netbeans-platform-${SLOT} platform || die
-	cat /usr/share/netbeans-platform-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
-	touch nb.cluster.platform.built
-
 	ln -s /usr/share/netbeans-ide-${SLOT} ide || die
 	cat /usr/share/netbeans-ide-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
 	touch nb.cluster.ide.built
+
+	ln -s /usr/share/netbeans-platform-${SLOT} platform || die
+	cat /usr/share/netbeans-platform-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
+	touch nb.cluster.platform.built
 
 	popd >/dev/null || die
 
@@ -70,13 +74,15 @@ src_prepare() {
 }
 
 src_install() {
-	pushd nbbuild/netbeans/websvccommon >/dev/null || die
+	pushd nbbuild/netbeans/dlight >/dev/null || die
 
 	insinto ${INSTALL_DIR}
-	grep -E "/websvccommon$" ../moduleCluster.properties > "${D}"/${INSTALL_DIR}/moduleCluster.properties || die
+
+	grep -E "/dlight$" ../moduleCluster.properties > "${D}"/${INSTALL_DIR}/moduleCluster.properties || die
+
 	doins -r *
 
 	popd >/dev/null || die
 
-	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/websvccommon
+	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/dlight
 }

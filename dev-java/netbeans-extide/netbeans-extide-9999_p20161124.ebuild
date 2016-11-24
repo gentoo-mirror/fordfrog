@@ -8,7 +8,7 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans ExtIDE Cluster"
 HOMEPAGE="http://netbeans.org/projects/ide"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-10-24_00-02-33/zip/netbeans-trunk-nightly-201610240002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-11-24_00-01-33/zip/netbeans-trunk-nightly-201611240001-src.zip"
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r17-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/7B38E2908FFD70F2AB580D21A9E688A78C6365E7-ant-libs-1.10.0alpha.zip
@@ -18,14 +18,13 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 S="${WORKDIR}"
 
-CDEPEND="~dev-java/netbeans-ide-${PV}
+CDEPEND="virtual/jdk:1.8
+	~dev-java/netbeans-ide-${PV}
 	~dev-java/netbeans-platform-${PV}"
-DEPEND=">=virtual/jdk-1.7
+DEPEND="${CDEPEND}
 	app-arch/unzip
-	dev-java/javahelp:0
-	${CDEPEND}"
-RDEPEND="|| ( virtual/jdk:1.7 virtual/jdk:1.8 )
-	${CDEPEND}"
+	dev-java/javahelp:0"
+RDEPEND="${CDEPEND}"
 
 INSTALL_DIR="/usr/share/${PN}-${SLOT}"
 

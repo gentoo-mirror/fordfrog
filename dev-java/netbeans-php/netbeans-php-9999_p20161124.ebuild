@@ -8,7 +8,7 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans PHP Cluster"
 HOMEPAGE="http://netbeans.org/projects/php"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-10-24_00-02-33/zip/netbeans-trunk-nightly-201610240002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-11-24_00-01-33/zip/netbeans-trunk-nightly-201611240001-src.zip"
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r17-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/0702230EB3354A1687E4496D73A94F33A1E343BD-phpdocdesc.zip
@@ -19,18 +19,17 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 S="${WORKDIR}"
 
-CDEPEND="~dev-java/netbeans-extide-${PV}
+CDEPEND="virtual/jdk:1.8
+	~dev-java/netbeans-extide-${PV}
 	~dev-java/netbeans-ide-${PV}
 	~dev-java/netbeans-platform-${PV}
 	~dev-java/netbeans-webcommon-${PV}
 	~dev-java/netbeans-websvccommon-${PV}
 	dev-java/javacup:0"
-DEPEND=">=virtual/jdk-1.7
+DEPEND="${CDEPEND}
 	app-arch/unzip
-	${CDEPEND}
 	dev-java/javahelp:0"
-RDEPEND="|| ( virtual/jdk:1.7 virtual/jdk:1.8 )
-	${CDEPEND}"
+RDEPEND="${CDEPEND}"
 
 INSTALL_DIR="/usr/share/${PN}-${SLOT}"
 
