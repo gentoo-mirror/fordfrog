@@ -8,7 +8,7 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans IDE"
 HOMEPAGE="http://netbeans.org/"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-11-02_00-02-33/zip/netbeans-trunk-nightly-201611020002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-12-07_00-01-33/zip/netbeans-trunk-nightly-201612070001-src.zip"
 PATCHES_URL="http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r17-build.xml.patch.bz2"
 L10N_URL="http://dev.gentoo.org/~fordfrog/distfiles/netbeans-l10n-9999-20160920.tar.bz2"
 ALL_URLS="${SOURCE_URL} ${PATCHES_URL} ${L10N_URL}"
@@ -99,9 +99,10 @@ IUSE_L10N="
 IUSE="doc ${IUSE_NETBEANS_MODULES} ${IUSE_L10N}"
 S="${WORKDIR}"
 
-DEPEND=">=virtual/jdk-1.7
+CDEPEND="virtual/jdk:1.8"
+DEPEND="${CDEPEND}
 	dev-java/javahelp:0"
-RDEPEND="|| ( virtual/jdk:1.7 virtual/jdk:1.8 )
+RDEPEND="${CDEPEND}
 	~dev-java/netbeans-harness-${PV}
 	~dev-java/netbeans-ide-${PV}
 	~dev-java/netbeans-nb-${PV}

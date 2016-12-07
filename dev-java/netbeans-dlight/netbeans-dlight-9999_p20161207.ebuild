@@ -8,23 +8,22 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans D-Light Cluster"
 HOMEPAGE="http://netbeans.org/"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-11-02_00-02-33/zip/netbeans-trunk-nightly-201611020002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-12-07_00-01-33/zip/netbeans-trunk-nightly-201612070001-src.zip"
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r17-build.xml.patch.bz2
-	http://hg.netbeans.org/binaries/18E39A0D10357B72EDB76F2070E27019317792F1-fs_server-1.0.zip"
+	http://hg.netbeans.org/binaries/FDB0530AE633084C1CAD9A2CADFFB8AE1965BD8B-fs_server-1.0.zip"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 S="${WORKDIR}"
 
-CDEPEND="~dev-java/netbeans-ide-${PV}
+CDEPEND="virtual/jdk:1.8
+	~dev-java/netbeans-ide-${PV}
 	~dev-java/netbeans-platform-${PV}"
-DEPEND=">=virtual/jdk-1.7
+DEPEND="${CDEPEND}
 	app-arch/unzip
-	${CDEPEND}
 	dev-java/javahelp:0"
-RDEPEND="|| ( virtual/jdk:1.7 virtual/jdk:1.8 )
-	${CDEPEND}"
+RDEPEND="${CDEPEND}"
 
 INSTALL_DIR="/usr/share/${PN}-${SLOT}"
 
@@ -43,7 +42,7 @@ src_unpack() {
 	unpack netbeans-9999-r17-build.xml.patch.bz2
 
 	pushd "${S}" >/dev/null || die
-	ln -s "${DISTDIR}"/18E39A0D10357B72EDB76F2070E27019317792F1-fs_server-1.0.zip dlight.remote.impl/external/fs_server-1.0.zip || die
+	ln -s "${DISTDIR}"/FDB0530AE633084C1CAD9A2CADFFB8AE1965BD8B-fs_server-1.0.zip dlight.remote.impl/external/fs_server-1.0.zip || die
 	popd >/dev/null || die
 }
 

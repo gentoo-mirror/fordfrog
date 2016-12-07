@@ -5,10 +5,10 @@
 EAPI="6"
 inherit eutils java-pkg-2 java-ant-2
 
-DESCRIPTION="Netbeans Ergonomics Cluster"
-HOMEPAGE="http://netbeans.org/"
+DESCRIPTION="Netbeans Profiler Cluster"
+HOMEPAGE="http://netbeans.org/projects/profiler"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-11-02_00-02-33/zip/netbeans-trunk-nightly-201611020002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-12-07_00-01-33/zip/netbeans-trunk-nightly-201612070001-src.zip"
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r17-build.xml.patch.bz2"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
@@ -16,21 +16,24 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 S="${WORKDIR}"
 
-CDEPEND="~dev-java/netbeans-ide-${PV}
-	~dev-java/netbeans-nb-${PV}
+# Binary files needed for remote profiling
+QA_PREBUILT="usr/share/netbeans-profiler-${SLOT}/lib/deployed/*"
+
+CDEPEND="virtual/jdk:1.8
+	~dev-java/netbeans-extide-${PV}
+	~dev-java/netbeans-ide-${PV}
+	~dev-java/netbeans-java-${PV}
 	~dev-java/netbeans-platform-${PV}"
-DEPEND=">=virtual/jdk-1.7
+DEPEND="${CDEPEND}
 	app-arch/unzip
-	${CDEPEND}
 	dev-java/javahelp:0"
-RDEPEND="|| ( virtual/jdk:1.7 virtual/jdk:1.8 )
-	${CDEPEND}"
+RDEPEND="${CDEPEND}"
 
 INSTALL_DIR="/usr/share/${PN}-${SLOT}"
 
 EANT_BUILD_XML="nbbuild/build.xml"
 EANT_BUILD_TARGET="rebuild-cluster"
-EANT_EXTRA_ARGS="-Drebuild.cluster.name=nb.cluster.ergonomics -Dext.binaries.downloaded=true -Dpermit.jdk8.builds=true"
+EANT_EXTRA_ARGS="-Drebuild.cluster.name=nb.cluster.profiler -Dext.binaries.downloaded=true -Dpermit.jdk8.builds=true"
 EANT_FILTER_COMPILER="ecj-3.3 ecj-3.4 ecj-3.5 ecj-3.6 ecj-3.7"
 JAVA_PKG_BSFIX="off"
 
@@ -56,13 +59,17 @@ src_prepare() {
 	mkdir "${S}"/nbbuild/netbeans || die
 	pushd "${S}"/nbbuild/netbeans >/dev/null || die
 
+	ln -s /usr/share/netbeans-extide-${SLOT} extide || die
+	cat /usr/share/netbeans-extide-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
+	touch nb.cluster.extide.built
+
 	ln -s /usr/share/netbeans-ide-${SLOT} ide || die
 	cat /usr/share/netbeans-ide-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
 	touch nb.cluster.ide.built
 
-	ln -s /usr/share/netbeans-nb-${SLOT}/nb nb || die
-	cat /usr/share/netbeans-nb-${SLOT}/nb/moduleCluster.properties >> moduleCluster.properties || die
-	touch nb.cluster.nb.built
+	ln -s /usr/share/netbeans-java-${SLOT} java || die
+	cat /usr/share/netbeans-java-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
+	touch nb.cluster.java.built
 
 	ln -s /usr/share/netbeans-platform-${SLOT} platform || die
 	cat /usr/share/netbeans-platform-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
@@ -75,15 +82,27 @@ src_prepare() {
 }
 
 src_install() {
-	pushd nbbuild/netbeans/ergonomics >/dev/null || die
+	pushd nbbuild/netbeans/profiler >/dev/null || die
 
 	insinto ${INSTALL_DIR}
 
-	grep -E "/ergonomics$" ../moduleCluster.properties > "${D}"/${INSTALL_DIR}/moduleCluster.properties || die
+	grep -E "/profiler$" ../moduleCluster.properties > "${D}"/${INSTALL_DIR}/moduleCluster.properties || die
 
 	doins -r *
 
+	for file in lib/deployed/cvm/linux/*.so ; do
+		fperms 755 ${file}
+	done
+
+	for file in lib/deployed/jdk*/linux*/*.so ; do
+		fperms 755 ${file}
+	done
+
+	for file in remote-pack-defs/*.sh ; do
+		fperms 755 ${file}
+	done
+
 	popd >/dev/null || die
 
-	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/ergonomics
+	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/profiler
 }
