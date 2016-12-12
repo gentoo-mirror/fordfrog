@@ -8,7 +8,7 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans IDE Cluster"
 HOMEPAGE="http://netbeans.org/projects/ide"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-11-07_00-01-33/zip/netbeans-trunk-nightly-201611070001-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-12-12_00-01-33/zip/netbeans-trunk-nightly-201612120001-src.zip"
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r17-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/4E74C6BE42FE89871A878C7C4D6158F21A6D8010-antlr-runtime-3.4.jar
@@ -87,7 +87,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 S="${WORKDIR}"
 
-CDEPEND="~dev-java/netbeans-harness-${PV}
+CDEPEND="virtual/jdk:1.8
+	~dev-java/netbeans-harness-${PV}
 	~dev-java/netbeans-platform-${PV}
 	dev-java/antlr:4
 	dev-java/commons-compress:0
@@ -120,15 +121,13 @@ CDEPEND="~dev-java/netbeans-harness-${PV}
 #	dev-java/jaxb:2 upstream version contains more stuff so websvccommon does not compile with ours
 #	dev-java/jzlib:0 fails with "Missing manifest tag OpenIDE-Module"
 #	dev-java/trilead-ssh2:0 in overlay
-DEPEND=">=virtual/jdk-1.7
+DEPEND="${CDEPEND}
 	app-arch/unzip
 	dev-java/commons-codec:0
-	${CDEPEND}
 	dev-java/javacc:0
 	dev-java/javahelp:0
 	dev-java/jna:4"
-RDEPEND="|| ( virtual/jdk:1.7 virtual/jdk:1.8 )
-	${CDEPEND}"
+RDEPEND="${CDEPEND}"
 
 INSTALL_DIR="/usr/share/${PN}-${SLOT}"
 
