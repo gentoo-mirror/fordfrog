@@ -8,7 +8,7 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans Enterprise cluster"
 HOMEPAGE="http://netbeans.org/"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-11-08_00-01-33/zip/netbeans-trunk-nightly-201611080001-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-12-13_00-01-33/zip/netbeans-trunk-nightly-201612130001-src.zip"
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r17-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/8BFEBCD4B39B87BBE788B4EECED068C8DBE75822-aws-java-sdk-1.2.1.jar
@@ -47,7 +47,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 S="${WORKDIR}"
 
-CDEPEND="~dev-java/netbeans-ide-${PV}
+CDEPEND="virtual/jdk:1.8
+	~dev-java/netbeans-ide-${PV}
 	~dev-java/netbeans-harness-${PV}
 	~dev-java/netbeans-ide-${PV}
 	~dev-java/netbeans-java-${PV}
@@ -60,14 +61,12 @@ CDEPEND="~dev-java/netbeans-ide-${PV}
 	dev-java/commons-logging:0
 	dev-java/glassfish-deployment-api:1.2
 	dev-java/jsr181:0"
-DEPEND=">=virtual/jdk-1.7
+DEPEND="${CDEPEND}
 	app-arch/unzip
-	${CDEPEND}
 	dev-java/javahelp:0
 	>=dev-java/junit-4.4:4
 	dev-java/tomcat-servlet-api:2.3"
-RDEPEND="|| ( virtual/jdk:1.7 virtual/jdk:1.8 )
-	${CDEPEND}
+RDEPEND="${CDEPEND}
 	>=dev-java/antlr-2.7.7-r7:0
 	dev-java/bsf:2.3
 	dev-java/cglib:3
@@ -77,7 +76,7 @@ RDEPEND="|| ( virtual/jdk:1.7 virtual/jdk:1.8 )
 	dev-java/commons-io:1
 	dev-java/commons-validator:0
 	dev-java/glassfish-persistence:0
-	dev-java/guava:14
+	dev-java/guava:20
 	dev-java/jakarta-oro:2.0
 	dev-java/osgi-core-api:0
 	dev-java/validation-api:1.0"
@@ -223,7 +222,7 @@ src_install() {
 	local instdir="${D}"/${INSTALL_DIR}/modules/ext/jersey2/ext
 	pushd "${instdir}" >/dev/null || die
 	rm cglib-2.2.0-b21.jar && java-pkg_jar-from --into "${instdir}" cglib-3 cglib.jar cglib-2.2.0-b21.jar
-	rm guava-14.0.1.jar && java-pkg_jar-from --into "${instdir}" guava-14 guava.jar guava-14.0.1.jar
+	rm guava-14.0.1.jar && java-pkg_jar-from --into "${instdir}" guava-20 guava.jar guava-14.0.1.jar
 	rm org.osgi.core-4.2.0.jar && java-pkg_jar-from --into "${instdir}" osgi-core-api osgi-core-api.jar org.osgi.core-4.2.0.jar
 	rm persistence-api-1.0.jar && java-pkg_jar-from --into "${instdir}" glassfish-persistence glassfish-persistence.jar persistence-api-1.0.jar
 	rm validation-api-1.1.0.Final.jar && java-pkg_jar-from --into "${instdir}" validation-api-1.0 validation-api.jar validation-api-1.1.0.Final.jar
