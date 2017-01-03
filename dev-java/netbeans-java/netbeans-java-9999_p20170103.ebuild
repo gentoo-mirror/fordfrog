@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,7 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans Java Cluster"
 HOMEPAGE="http://netbeans.org/projects/java"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-11-23_00-01-33/zip/netbeans-trunk-nightly-201611230001-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-01-03_00-01-33/zip/netbeans-trunk-nightly-201701030001-src.zip"
 # jarjar-1.4 contains also asm libraries
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r17-build.xml.patch.bz2
@@ -27,6 +27,7 @@ SRC_URI="${SOURCE_URL}
 	http://hg.netbeans.org/binaries/D64C40E770C95C2A6994081C00CCD489C0AA20C9-jaxws-2.2.6-api.zip
 	http://hg.netbeans.org/binaries/8ECD169E9E308C258287E4F28B03B6D6F1E55F47-jaxws-api-doc.zip
 	http://hg.netbeans.org/binaries/A8BD39C5B88571B4D4697E78DD1A56566E44B1DD-JPAjavadocs04032013.zip
+	http://hg.netbeans.org/binaries/EA991F4949DD0D212745632D4364636315E4F169-jshell.jar
 	http://hg.netbeans.org/binaries/CF734AB72813AF33DC1544CE61ABC5C17B9D35E9-lucene-analyzers-common-5.5.3.jar
 	http://hg.netbeans.org/binaries/20540C6347259F35A0D264605B22CE2A13917066-lucene-core-5.5.3.jar
 	http://hg.netbeans.org/binaries/D276E74D57C64ED5F9A09A48DA05B75555E8709A-lucene-highlighter-5.5.3.jar
@@ -137,6 +138,7 @@ src_unpack() {
 	ln -s "${DISTDIR}"/D64C40E770C95C2A6994081C00CCD489C0AA20C9-jaxws-2.2.6-api.zip websvc.jaxws21api/external/jaxws-2.2.6-api.zip || die
 	ln -s "${DISTDIR}"/8ECD169E9E308C258287E4F28B03B6D6F1E55F47-jaxws-api-doc.zip websvc.jaxws21/external/jaxws-api-doc.zip || die
 	ln -s "${DISTDIR}"/A8BD39C5B88571B4D4697E78DD1A56566E44B1DD-JPAjavadocs04032013.zip j2ee.eclipselink/external/JPAjavadocs04032013.zip || die
+	ln -s "${DISTDIR}"/EA991F4949DD0D212745632D4364636315E4F169-jshell.jar libs.jshell/external/jshell.jar || die
 	ln -s "${DISTDIR}"/CF734AB72813AF33DC1544CE61ABC5C17B9D35E9-lucene-analyzers-common-5.5.3.jar maven.indexer/external/lucene-analyzers-common-5.5.3.jar || die
 	ln -s "${DISTDIR}"/20540C6347259F35A0D264605B22CE2A13917066-lucene-core-5.5.3.jar maven.indexer/external/lucene-core-5.5.3.jar || die
 	ln -s "${DISTDIR}"/D276E74D57C64ED5F9A09A48DA05B75555E8709A-lucene-highlighter-5.5.3.jar maven.indexer/external/lucene-highlighter-5.5.3.jar || die
