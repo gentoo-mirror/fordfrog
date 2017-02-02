@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,7 +8,7 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans IDE"
 HOMEPAGE="http://netbeans.org/"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2016-12-28_00-01-33/zip/netbeans-trunk-nightly-201612280001-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-02-02_00-02-00/zip/netbeans-trunk-nightly-201702020002-src.zip"
 PATCHES_URL="http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r17-build.xml.patch.bz2"
 L10N_URL="http://dev.gentoo.org/~fordfrog/distfiles/netbeans-l10n-9999-20160920.tar.bz2"
 ALL_URLS="${SOURCE_URL} ${PATCHES_URL} ${L10N_URL}"
