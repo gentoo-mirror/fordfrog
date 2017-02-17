@@ -8,11 +8,11 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans ExtIDE Cluster"
 HOMEPAGE="http://netbeans.org/projects/ide"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-01-13_00-01-33/zip/netbeans-trunk-nightly-201701130001-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-02-17_00-02-00/zip/netbeans-trunk-nightly-201702170002-src.zip"
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r17-build.xml.patch.bz2
-	http://hg.netbeans.org/binaries/7B38E2908FFD70F2AB580D21A9E688A78C6365E7-ant-libs-1.10.0alpha.zip
-	http://hg.netbeans.org/binaries/63D41674237D4EB5ED1C41D23EBBFD410615F566-ant-misc-1.10.0alpha.zip"
+	http://hg.netbeans.org/binaries/0B539A378C2EA52B17BD0326ECE03DF66E3A65E9-ant-libs-1.10.1.zip
+	http://hg.netbeans.org/binaries/F6E0317E5F315E395DA47E5B008D01FAA48C91FB-ant-misc-1.10.1.zip"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
@@ -43,8 +43,8 @@ src_unpack() {
 	unpack netbeans-9999-r17-build.xml.patch.bz2
 
 	pushd "${S}" >/dev/null || die
-	ln -s "${DISTDIR}"/7B38E2908FFD70F2AB580D21A9E688A78C6365E7-ant-libs-1.10.0alpha.zip o.apache.tools.ant.module/external/ant-libs-1.10.0alpha.zip || die
-	ln -s "${DISTDIR}"/63D41674237D4EB5ED1C41D23EBBFD410615F566-ant-misc-1.10.0alpha.zip o.apache.tools.ant.module/external/ant-misc-1.10.0alpha.zip || die
+	ln -s "${DISTDIR}"/0B539A378C2EA52B17BD0326ECE03DF66E3A65E9-ant-libs-1.10.1.zip o.apache.tools.ant.module/external/ant-libs-1.10.1.zip || die
+	ln -s "${DISTDIR}"/F6E0317E5F315E395DA47E5B008D01FAA48C91FB-ant-misc-1.10.1.zip o.apache.tools.ant.module/external/ant-misc-1.10.1.zip || die
 	popd >/dev/null || die
 }
 
