@@ -10,7 +10,7 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans Java Cluster"
 HOMEPAGE="http://netbeans.org/projects/java"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-02-06_00-02-00/zip/netbeans-trunk-nightly-201702060002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-03-11_00-02-00/zip/netbeans-trunk-nightly-201703110002-src.zip"
 # jarjar-1.4 contains also asm libraries
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r17-build.xml.patch.bz2
@@ -27,14 +27,14 @@ SRC_URI="${SOURCE_URL}
 	http://hg.netbeans.org/binaries/D64C40E770C95C2A6994081C00CCD489C0AA20C9-jaxws-2.2.6-api.zip
 	http://hg.netbeans.org/binaries/8ECD169E9E308C258287E4F28B03B6D6F1E55F47-jaxws-api-doc.zip
 	http://hg.netbeans.org/binaries/A8BD39C5B88571B4D4697E78DD1A56566E44B1DD-JPAjavadocs04032013.zip
-	http://hg.netbeans.org/binaries/B0613C96FF725CF2DB9A2ECA64086B0BA4D4DFC7-jshell.jar
+	http://hg.netbeans.org/binaries/48EDC6778F1802BDCFC60033DC0AB0579850B633-jshell.jar
 	http://hg.netbeans.org/binaries/CF734AB72813AF33DC1544CE61ABC5C17B9D35E9-lucene-analyzers-common-5.5.3.jar
 	http://hg.netbeans.org/binaries/20540C6347259F35A0D264605B22CE2A13917066-lucene-core-5.5.3.jar
 	http://hg.netbeans.org/binaries/D276E74D57C64ED5F9A09A48DA05B75555E8709A-lucene-highlighter-5.5.3.jar
 	http://hg.netbeans.org/binaries/E2452203D2C44CAC5AC42B34E5DCC0A44BF29A53-lucene-queryparser-5.5.3.jar
 	http://hg.netbeans.org/binaries/BF206C4AA93C74A739FBAF1F1C78E3AD5F167245-maven-dependency-tree-2.0.jar
-	http://hg.netbeans.org/binaries/6833AC4E8E810BB07A3FD673B7A1377ED226D363-nb-javac-api.jar
-	http://hg.netbeans.org/binaries/5C9C759960D7CBD210AFB2DD4EED015C1287126A-nb-javac-impl.jar
+	http://hg.netbeans.org/binaries/FF6814FB24C19922016106F293D8A928C9EE3CEB-nb-javac-api.jar
+	http://hg.netbeans.org/binaries/48DFCEAC45D2A2C85B2E58EBEF00D0D3754FBE5E-nb-javac-impl.jar
 	http://hg.netbeans.org/binaries/29AF1D338CBB76290D1A96F5A6610F1E8C319AE5-org.eclipse.persistence.jpa.jpql_2.5.2.v20140319-9ad6abd.jar
 	http://hg.netbeans.org/binaries/3CE04BDB48FE315736B1DCE407362C57DFAE286D-org.eclipse.persistence.jpa.modelgen_2.5.2.v20140319-9ad6abd.jar
 	http://hg.netbeans.org/binaries/7666B94C1004AFFFE88E5328BD70EBA6F60125F4-spring-framework-3.2.7.RELEASE.zip
@@ -138,14 +138,14 @@ src_unpack() {
 	ln -s "${DISTDIR}"/D64C40E770C95C2A6994081C00CCD489C0AA20C9-jaxws-2.2.6-api.zip websvc.jaxws21api/external/jaxws-2.2.6-api.zip || die
 	ln -s "${DISTDIR}"/8ECD169E9E308C258287E4F28B03B6D6F1E55F47-jaxws-api-doc.zip websvc.jaxws21/external/jaxws-api-doc.zip || die
 	ln -s "${DISTDIR}"/A8BD39C5B88571B4D4697E78DD1A56566E44B1DD-JPAjavadocs04032013.zip j2ee.eclipselink/external/JPAjavadocs04032013.zip || die
-	ln -s "${DISTDIR}"/B0613C96FF725CF2DB9A2ECA64086B0BA4D4DFC7-jshell.jar libs.jshell/external/jshell.jar || die
+	ln -s "${DISTDIR}"/48EDC6778F1802BDCFC60033DC0AB0579850B633-jshell.jar libs.jshell.compile/external/jshell.jar || die
 	ln -s "${DISTDIR}"/CF734AB72813AF33DC1544CE61ABC5C17B9D35E9-lucene-analyzers-common-5.5.3.jar maven.indexer/external/lucene-analyzers-common-5.5.3.jar || die
 	ln -s "${DISTDIR}"/20540C6347259F35A0D264605B22CE2A13917066-lucene-core-5.5.3.jar maven.indexer/external/lucene-core-5.5.3.jar || die
 	ln -s "${DISTDIR}"/D276E74D57C64ED5F9A09A48DA05B75555E8709A-lucene-highlighter-5.5.3.jar maven.indexer/external/lucene-highlighter-5.5.3.jar || die
 	ln -s "${DISTDIR}"/E2452203D2C44CAC5AC42B34E5DCC0A44BF29A53-lucene-queryparser-5.5.3.jar maven.indexer/external/lucene-queryparser-5.5.3.jar || die
 	ln -s "${DISTDIR}"/BF206C4AA93C74A739FBAF1F1C78E3AD5F167245-maven-dependency-tree-2.0.jar maven.embedder/external/maven-dependency-tree-2.0.jar || die
-	ln -s "${DISTDIR}"/6833AC4E8E810BB07A3FD673B7A1377ED226D363-nb-javac-api.jar libs.javacapi/external/nb-javac-api.jar || die
-	ln -s "${DISTDIR}"/5C9C759960D7CBD210AFB2DD4EED015C1287126A-nb-javac-impl.jar libs.javacimpl/external/nb-javac-impl.jar || die
+	ln -s "${DISTDIR}"/FF6814FB24C19922016106F293D8A928C9EE3CEB-nb-javac-api.jar libs.javacapi/external/nb-javac-api.jar || die
+	ln -s "${DISTDIR}"/48DFCEAC45D2A2C85B2E58EBEF00D0D3754FBE5E-nb-javac-impl.jar libs.javacimpl/external/nb-javac-impl.jar || die
 	ln -s "${DISTDIR}"/CA4F4DB7B6C140E36B0001873BEEA7C26489D2A1-netbeans-cos.jar maven/external/netbeans-cos.jar || die
 	ln -s "${DISTDIR}"/29AF1D338CBB76290D1A96F5A6610F1E8C319AE5-org.eclipse.persistence.jpa.jpql_2.5.2.v20140319-9ad6abd.jar j2ee.eclipselink/external/org.eclipse.persistence.jpa.jpql_2.5.2.v20140319-9ad6abd.jar || die
 	ln -s "${DISTDIR}"/3CE04BDB48FE315736B1DCE407362C57DFAE286D-org.eclipse.persistence.jpa.modelgen_2.5.2.v20140319-9ad6abd.jar j2ee.eclipselinkmodelgen/external/org.eclipse.persistence.jpa.modelgen_2.5.2.v20140319-9ad6abd.jar || die
