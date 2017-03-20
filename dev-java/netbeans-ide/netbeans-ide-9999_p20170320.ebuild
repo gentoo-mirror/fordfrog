@@ -8,7 +8,7 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans IDE Cluster"
 HOMEPAGE="http://netbeans.org/projects/ide"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-02-16_00-02-00/zip/netbeans-trunk-nightly-201702160002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-03-20_00-02-00/zip/netbeans-trunk-nightly-201703200002-src.zip"
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r17-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/4E74C6BE42FE89871A878C7C4D6158F21A6D8010-antlr-runtime-3.4.jar
@@ -20,7 +20,7 @@ SRC_URI="${SOURCE_URL}
 	http://hg.netbeans.org/binaries/901D8F815922C435D985DA3814D20E34CC7622CB-css21-spec.zip
 	http://hg.netbeans.org/binaries/83E794DFF9A39401AC65252C8E10157761584224-css3-spec.zip
 	http://hg.netbeans.org/binaries/C9A6304FAA121C97CB2458B93D30B1FD6F0F7691-derbysampledb.zip
-	http://hg.netbeans.org/binaries/3502EB7D4A72C2C684D23AFC241CCF50797079D1-exechlp-1.0.zip
+	http://hg.netbeans.org/binaries/AD56136EB86DE2425C09134285FDAB458E6F6269-exechlp-1.0.zip
 	http://hg.netbeans.org/binaries/5EEAAC41164FEBCB79C73BEBD678A7B6C10C3E80-freemarker-2.3.19.jar
 	http://hg.netbeans.org/binaries/ED727A8D9F247E2050281CB083F1C77B09DCB5CD-guava-15.0.jar
 	http://hg.netbeans.org/binaries/23123BB29025254556B6E573023FCDF0F6715A66-html-4.01.zip
@@ -158,7 +158,7 @@ src_unpack() {
 	ln -s "${DISTDIR}"/901D8F815922C435D985DA3814D20E34CC7622CB-css21-spec.zip css.editor/external/css21-spec.zip || die
 	ln -s "${DISTDIR}"/83E794DFF9A39401AC65252C8E10157761584224-css3-spec.zip css.editor/external/css3-spec.zip || die
 	ln -s "${DISTDIR}"/C9A6304FAA121C97CB2458B93D30B1FD6F0F7691-derbysampledb.zip derby/external/derbysampledb.zip || die
-	ln -s "${DISTDIR}"/3502EB7D4A72C2C684D23AFC241CCF50797079D1-exechlp-1.0.zip dlight.nativeexecution/external/exechlp-1.0.zip || die
+	ln -s "${DISTDIR}"/AD56136EB86DE2425C09134285FDAB458E6F6269-exechlp-1.0.zip dlight.nativeexecution/external/exechlp-1.0.zip || die
 	ln -s "${DISTDIR}"/5EEAAC41164FEBCB79C73BEBD678A7B6C10C3E80-freemarker-2.3.19.jar libs.freemarker/external/freemarker-2.3.19.jar || die
 	ln -s "${DISTDIR}"/ED727A8D9F247E2050281CB083F1C77B09DCB5CD-guava-15.0.jar c.google.guava/external/guava-15.0.jar || die
 	ln -s "${DISTDIR}"/23123BB29025254556B6E573023FCDF0F6715A66-html-4.01.zip html.editor/external/html-4.01.zip || die
