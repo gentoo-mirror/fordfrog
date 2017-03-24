@@ -5,14 +5,13 @@
 EAPI="6"
 inherit eutils java-pkg-2 java-ant-2
 
-DESCRIPTION="Netbeans ExtIDE Cluster"
-HOMEPAGE="http://netbeans.org/projects/ide"
+DESCRIPTION="Netbeans D-Light Cluster"
+HOMEPAGE="http://netbeans.org/"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-02-21_00-02-00/zip/netbeans-trunk-nightly-201702210002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-03-24_00-02-00/zip/netbeans-trunk-nightly-201703240002-src.zip"
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r17-build.xml.patch.bz2
-	http://hg.netbeans.org/binaries/0B539A378C2EA52B17BD0326ECE03DF66E3A65E9-ant-libs-1.10.1.zip
-	http://hg.netbeans.org/binaries/F6E0317E5F315E395DA47E5B008D01FAA48C91FB-ant-misc-1.10.1.zip"
+	http://hg.netbeans.org/binaries/FDB0530AE633084C1CAD9A2CADFFB8AE1965BD8B-fs_server-1.0.zip"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
@@ -30,7 +29,7 @@ INSTALL_DIR="/usr/share/${PN}-${SLOT}"
 
 EANT_BUILD_XML="nbbuild/build.xml"
 EANT_BUILD_TARGET="rebuild-cluster"
-EANT_EXTRA_ARGS="-Drebuild.cluster.name=nb.cluster.extide -Dext.binaries.downloaded=true -Djava.awt.headless=true -Dpermit.jdk8.builds=true"
+EANT_EXTRA_ARGS="-Drebuild.cluster.name=nb.cluster.dlight -Dext.binaries.downloaded=true -Dpermit.jdk8.builds=true"
 EANT_FILTER_COMPILER="ecj-3.3 ecj-3.4 ecj-3.5 ecj-3.6 ecj-3.7"
 JAVA_PKG_BSFIX="off"
 
@@ -43,8 +42,7 @@ src_unpack() {
 	unpack netbeans-9999-r17-build.xml.patch.bz2
 
 	pushd "${S}" >/dev/null || die
-	ln -s "${DISTDIR}"/0B539A378C2EA52B17BD0326ECE03DF66E3A65E9-ant-libs-1.10.1.zip o.apache.tools.ant.module/external/ant-libs-1.10.1.zip || die
-	ln -s "${DISTDIR}"/F6E0317E5F315E395DA47E5B008D01FAA48C91FB-ant-misc-1.10.1.zip o.apache.tools.ant.module/external/ant-misc-1.10.1.zip || die
+	ln -s "${DISTDIR}"/FDB0530AE633084C1CAD9A2CADFFB8AE1965BD8B-fs_server-1.0.zip dlight.remote.impl/external/fs_server-1.0.zip || die
 	popd >/dev/null || die
 }
 
@@ -75,21 +73,16 @@ src_prepare() {
 	default
 }
 
-src_compile() {
-	unset DISPLAY
-	eant -f ${EANT_BUILD_XML} ${EANT_EXTRA_ARGS} ${EANT_BUILD_TARGET} || die "Compilation failed"
-}
-
 src_install() {
-	pushd nbbuild/netbeans/extide >/dev/null || die
+	pushd nbbuild/netbeans/dlight >/dev/null || die
 
 	insinto ${INSTALL_DIR}
 
-	grep -E "/extide$" ../moduleCluster.properties > "${D}"/${INSTALL_DIR}/moduleCluster.properties || die
+	grep -E "/dlight$" ../moduleCluster.properties > "${D}"/${INSTALL_DIR}/moduleCluster.properties || die
 
 	doins -r *
 
 	popd >/dev/null || die
 
-	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/extide
+	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/dlight
 }
