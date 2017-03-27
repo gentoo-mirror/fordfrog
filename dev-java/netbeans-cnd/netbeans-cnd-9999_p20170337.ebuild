@@ -8,13 +8,13 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans CND Cluster"
 HOMEPAGE="http://netbeans.org/projects/cnd"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-02-24_00-02-00/zip/netbeans-trunk-nightly-201702240002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-03-27_00-02-00/zip/netbeans-trunk-nightly-201703270002-src.zip"
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r17-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/5CAB59D859CAA6598E28131D30DD2E89806DB57F-antlr-3.4.jar
 	http://hg.netbeans.org/binaries/4E74C6BE42FE89871A878C7C4D6158F21A6D8010-antlr-runtime-3.4.jar
 	http://hg.netbeans.org/binaries/F3A74CD526DF05DFBFF96D0072BB71A334B52AD9-clank_0.3.9.zip
-	http://hg.netbeans.org/binaries/43A82EB3CE61B9B0B1C60586C7D84729BD5BE3E0-cnd-build-trace-1.0.zip
+	http://hg.netbeans.org/binaries/B7B417DE191ACF30A60E061437B810840128A89D-cnd-build-trace-1.0.zip
 	http://hg.netbeans.org/binaries/E59851B0E49C05D728D5C653E52750FA5B6A8F0E-cnd-rfs-1.0.zip
 	http://hg.netbeans.org/binaries/C51780D99464CBF45B0495C7646B442AB3C7B463-open-fortran-parser-0.7.1.2.zip"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
@@ -56,7 +56,7 @@ src_unpack() {
 	ln -s "${DISTDIR}"/5CAB59D859CAA6598E28131D30DD2E89806DB57F-antlr-3.4.jar libs.antlr3.devel/external/antlr-3.4.jar || die
 	ln -s "${DISTDIR}"/4E74C6BE42FE89871A878C7C4D6158F21A6D8010-antlr-runtime-3.4.jar libs.antlr3.runtime/external/antlr-runtime-3.4.jar || die
 	ln -s "${DISTDIR}"/F3A74CD526DF05DFBFF96D0072BB71A334B52AD9-clank_0.3.9.zip libs.clank/external/clank_0.3.9.zip || die
-	ln -s "${DISTDIR}"/43A82EB3CE61B9B0B1C60586C7D84729BD5BE3E0-cnd-build-trace-1.0.zip cnd.discovery/external/cnd-build-trace-1.0.zip || die
+	ln -s "${DISTDIR}"/B7B417DE191ACF30A60E061437B810840128A89D-cnd-build-trace-1.0.zip cnd.discovery/external/cnd-build-trace-1.0.zip || die
 	ln -s "${DISTDIR}"/E59851B0E49C05D728D5C653E52750FA5B6A8F0E-cnd-rfs-1.0.zip cnd.remote/external/cnd-rfs-1.0.zip || die
 	ln -s "${DISTDIR}"/C51780D99464CBF45B0495C7646B442AB3C7B463-open-fortran-parser-0.7.1.2.zip cnd.modelimpl/external/open-fortran-parser-0.7.1.2.zip || die
 	popd >/dev/null || die
