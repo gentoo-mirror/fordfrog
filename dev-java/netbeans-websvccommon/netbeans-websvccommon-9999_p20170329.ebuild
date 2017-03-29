@@ -8,7 +8,7 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans Web Services Common Cluster"
 HOMEPAGE="http://netbeans.org/"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-02-26_00-02-00/zip/netbeans-trunk-nightly-201702260002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-03-29_00-02-00/zip/netbeans-trunk-nightly-201703290002-src.zip"
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r17-build.xml.patch.bz2"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
