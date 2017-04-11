@@ -10,7 +10,7 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans Java Cluster"
 HOMEPAGE="http://netbeans.org/projects/java"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-04-10_00-02-00/zip/netbeans-trunk-nightly-201704100002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-04-11_00-02-00/zip/netbeans-trunk-nightly-201704110002-src.zip"
 # jarjar-1.4 contains also asm libraries
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r18-build.xml.patch.bz2
@@ -57,7 +57,8 @@ DEPEND="${CDEPEND}
 	app-arch/unzip
 	dev-java/javahelp:0
 	dev-java/json-simple:0
-	dev-java/junit:4"
+	dev-java/junit:4
+	dev-java/oracle-jdk-bin:1.8[javafx]"
 RDEPEND="${CDEPEND}
 	dev-java/absolutelayout:0
 	>=dev-java/antlr-2.7.7-r7:0
@@ -90,6 +91,9 @@ EANT_BUILD_TARGET="rebuild-cluster"
 EANT_EXTRA_ARGS="-Drebuild.cluster.name=nb.cluster.java -Dext.binaries.downloaded=true -Dpermit.jdk8.builds=true"
 EANT_FILTER_COMPILER="ecj-3.3 ecj-3.4 ecj-3.5 ecj-3.6 ecj-3.7"
 JAVA_PKG_BSFIX="off"
+JAVA_PKG_WANT_BUILD_VM="oracle-jdk-bin-1.8"
+JAVA_PKG_WANT_SOURCE="1.7"
+JAVA_PKG_WANT_TARGET="1.7"
 
 pkg_pretend() {
 	local die_now=""
