@@ -8,10 +8,10 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans D-Light Cluster"
 HOMEPAGE="http://netbeans.org/"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-03-11_00-02-00/zip/netbeans-trunk-nightly-201703110002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-04-12_00-02-00/zip/netbeans-trunk-nightly-201704120002-src.zip"
 SRC_URI="${SOURCE_URL}
-	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r17-build.xml.patch.bz2
-	http://hg.netbeans.org/binaries/FDB0530AE633084C1CAD9A2CADFFB8AE1965BD8B-fs_server-1.0.zip"
+	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r18-build.xml.patch.bz2
+	http://hg.netbeans.org/binaries/00784557F614BE02268C50C1BA692A6B19F0EE27-fs_server-1.0.zip"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
@@ -39,10 +39,10 @@ src_unpack() {
 	einfo "Deleting bundled jars..."
 	find -name "*.jar" -type f -delete
 
-	unpack netbeans-9999-r17-build.xml.patch.bz2
+	unpack netbeans-9999-r18-build.xml.patch.bz2
 
 	pushd "${S}" >/dev/null || die
-	ln -s "${DISTDIR}"/FDB0530AE633084C1CAD9A2CADFFB8AE1965BD8B-fs_server-1.0.zip dlight.remote.impl/external/fs_server-1.0.zip || die
+	ln -s "${DISTDIR}"/00784557F614BE02268C50C1BA692A6B19F0EE27-fs_server-1.0.zip dlight.remote.impl/external/fs_server-1.0.zip || die
 	popd >/dev/null || die
 }
 
@@ -50,7 +50,7 @@ src_prepare() {
 	einfo "Deleting bundled class files..."
 	find -name "*.class" -type f | xargs rm -vf
 
-	epatch netbeans-9999-r17-build.xml.patch
+	epatch netbeans-9999-r18-build.xml.patch
 
 	einfo "Symlinking external libraries..."
 	java-pkg_jar-from --build-only --into javahelp/external javahelp jhall.jar jhall-2.0_05.jar

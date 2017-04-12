@@ -8,19 +8,19 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans IDE Cluster"
 HOMEPAGE="http://netbeans.org/projects/ide"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-03-11_00-02-00/zip/netbeans-trunk-nightly-201703110002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-04-12_00-02-00/zip/netbeans-trunk-nightly-201704120002-src.zip"
 SRC_URI="${SOURCE_URL}
-	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r17-build.xml.patch.bz2
+	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r18-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/4E74C6BE42FE89871A878C7C4D6158F21A6D8010-antlr-runtime-3.4.jar
 	http://hg.netbeans.org/binaries/886FAF4B85054DD6E50D9B3438542F432B5F9251-bytelist-0.1.jar
 	http://hg.netbeans.org/binaries/DCDA3604865C8E80789B4F8E8EECC3D4D15D00F8-com.trilead.ssh2_1.0.0.build220_r167_v20150618_1733.jar
 	http://hg.netbeans.org/binaries/A8762D07E76CFDE2395257A5DA47BA7C1DBD3DCE-commons-io-1.4.jar
 	http://hg.netbeans.org/binaries/0CE1EDB914C94EBC388F086C6827E8BDEEC71AC2-commons-lang-2.6.jar
-	http://hg.netbeans.org/binaries/CD0D5510908225F76C5FE5A3F1DF4FA44866F81E-commons-net-3.3.jar
+	http://hg.netbeans.org/binaries/B71DE00508DCB078D2B24B5FA7E538636DE9B3DA-commons-net-3.6.jar
 	http://hg.netbeans.org/binaries/901D8F815922C435D985DA3814D20E34CC7622CB-css21-spec.zip
 	http://hg.netbeans.org/binaries/83E794DFF9A39401AC65252C8E10157761584224-css3-spec.zip
 	http://hg.netbeans.org/binaries/C9A6304FAA121C97CB2458B93D30B1FD6F0F7691-derbysampledb.zip
-	http://hg.netbeans.org/binaries/3502EB7D4A72C2C684D23AFC241CCF50797079D1-exechlp-1.0.zip
+	http://hg.netbeans.org/binaries/89E5CF21801B51580FF00D6CC1209676EDE420FA-exechlp-1.0.zip
 	http://hg.netbeans.org/binaries/5EEAAC41164FEBCB79C73BEBD678A7B6C10C3E80-freemarker-2.3.19.jar
 	http://hg.netbeans.org/binaries/ED727A8D9F247E2050281CB083F1C77B09DCB5CD-guava-15.0.jar
 	http://hg.netbeans.org/binaries/23123BB29025254556B6E573023FCDF0F6715A66-html-4.01.zip
@@ -146,7 +146,7 @@ src_unpack() {
 	einfo "Deleting bundled jars..."
 	find -name "*.jar" -type f -delete
 
-	unpack netbeans-9999-r17-build.xml.patch.bz2
+	unpack netbeans-9999-r18-build.xml.patch.bz2
 
 	pushd "${S}" >/dev/null || die
 	ln -s "${DISTDIR}"/4E74C6BE42FE89871A878C7C4D6158F21A6D8010-antlr-runtime-3.4.jar libs.antlr3.runtime/external/antlr-runtime-3.4.jar || die
@@ -154,11 +154,11 @@ src_unpack() {
 	ln -s "${DISTDIR}"/DCDA3604865C8E80789B4F8E8EECC3D4D15D00F8-com.trilead.ssh2_1.0.0.build220_r167_v20150618_1733.jar libs.svnClientAdapter.svnkit/external/com.trilead.ssh2_1.0.0.build220_r167_v20150618_1733.jar || die
 	ln -s "${DISTDIR}"/A8762D07E76CFDE2395257A5DA47BA7C1DBD3DCE-commons-io-1.4.jar o.apache.commons.io/external/commons-io-1.4.jar || die
 	ln -s "${DISTDIR}"/0CE1EDB914C94EBC388F086C6827E8BDEEC71AC2-commons-lang-2.6.jar o.apache.commons.lang/external/commons-lang-2.6.jar || die
-	ln -s "${DISTDIR}"/CD0D5510908225F76C5FE5A3F1DF4FA44866F81E-commons-net-3.3.jar libs.commons_net/external/commons-net-3.3.jar || die
+	ln -s "${DISTDIR}"/B71DE00508DCB078D2B24B5FA7E538636DE9B3DA-commons-net-3.6.jar libs.commons_net/external/commons-net-3.6.jar || die
 	ln -s "${DISTDIR}"/901D8F815922C435D985DA3814D20E34CC7622CB-css21-spec.zip css.editor/external/css21-spec.zip || die
 	ln -s "${DISTDIR}"/83E794DFF9A39401AC65252C8E10157761584224-css3-spec.zip css.editor/external/css3-spec.zip || die
 	ln -s "${DISTDIR}"/C9A6304FAA121C97CB2458B93D30B1FD6F0F7691-derbysampledb.zip derby/external/derbysampledb.zip || die
-	ln -s "${DISTDIR}"/3502EB7D4A72C2C684D23AFC241CCF50797079D1-exechlp-1.0.zip dlight.nativeexecution/external/exechlp-1.0.zip || die
+	ln -s "${DISTDIR}"/89E5CF21801B51580FF00D6CC1209676EDE420FA-exechlp-1.0.zip dlight.nativeexecution/external/exechlp-1.0.zip || die
 	ln -s "${DISTDIR}"/5EEAAC41164FEBCB79C73BEBD678A7B6C10C3E80-freemarker-2.3.19.jar libs.freemarker/external/freemarker-2.3.19.jar || die
 	ln -s "${DISTDIR}"/ED727A8D9F247E2050281CB083F1C77B09DCB5CD-guava-15.0.jar c.google.guava/external/guava-15.0.jar || die
 	ln -s "${DISTDIR}"/23123BB29025254556B6E573023FCDF0F6715A66-html-4.01.zip html.editor/external/html-4.01.zip || die
@@ -229,7 +229,7 @@ src_prepare() {
 	einfo "Deleting bundled class files..."
 	find -name "*.class" -type f | xargs rm -vf
 
-	epatch netbeans-9999-r17-build.xml.patch
+	epatch netbeans-9999-r18-build.xml.patch
 
 	einfo "Symlinking external libraries..."
 	java-pkg_jar-from --into c.jcraft.jsch/external jsch jsch.jar jsch-0.1.54.jar
@@ -244,7 +244,7 @@ src_prepare() {
 	java-pkg_jar-from --into libs.antlr4.runtime/external antlr-4 antlr-runtime.jar antlr-runtime-4.5.3.jar
 	java-pkg_jar-from --into libs.commons_compress/external commons-compress commons-compress.jar commons-compress-1.8.1.jar
 	# java-pkg_jar-from --into libs.freemarker/external freemarker-2.3 freemarker.jar freemarker-2.3.19.jar
-	java-pkg_jar-from --build-only --into libs.jna/external jna-4 jna.jar jna-4.2.2-stripped.jar
+	java-pkg_jar-from --build-only --into libs.jna/external jna-4 jna.jar jna-4.2.2.jar
 	java-pkg_jar-from --into libs.json_simple/external json-simple json-simple.jar json-simple-1.1.1.jar
 	java-pkg_jar-from --into libs.jvyamlb/external jvyamlb jvyamlb.jar jvyamlb-0.2.7.jar
 	java-pkg_jar-from --into libs.lucene/external lucene-3.5 lucene-core.jar lucene-core-3.5.0.jar
