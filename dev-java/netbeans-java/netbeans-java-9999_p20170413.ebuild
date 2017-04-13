@@ -10,10 +10,10 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans Java Cluster"
 HOMEPAGE="http://netbeans.org/projects/java"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-03-12_00-02-00/zip/netbeans-trunk-nightly-201703120002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-04-13_00-02-00/zip/netbeans-trunk-nightly-201704130002-src.zip"
 # jarjar-1.4 contains also asm libraries
 SRC_URI="${SOURCE_URL}
-	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r17-build.xml.patch.bz2
+	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r18-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/E48292EAE5E14EC44978AA53DEBB1AF7DDD6DF93-aether-api-1.13.1.jar
 	http://hg.netbeans.org/binaries/2DDF9BB8C3B41BC2891832A6D6FC25F8BF41D77F-apache-maven-3.3.9-bin.zip
 	http://hg.netbeans.org/binaries/F7BD95641780C2AAE8CB9BED1686441A1CE5E749-beansbinding-1.2.1-doc.zip
@@ -27,14 +27,14 @@ SRC_URI="${SOURCE_URL}
 	http://hg.netbeans.org/binaries/D64C40E770C95C2A6994081C00CCD489C0AA20C9-jaxws-2.2.6-api.zip
 	http://hg.netbeans.org/binaries/8ECD169E9E308C258287E4F28B03B6D6F1E55F47-jaxws-api-doc.zip
 	http://hg.netbeans.org/binaries/A8BD39C5B88571B4D4697E78DD1A56566E44B1DD-JPAjavadocs04032013.zip
-	http://hg.netbeans.org/binaries/48EDC6778F1802BDCFC60033DC0AB0579850B633-jshell.jar
+	http://hg.netbeans.org/binaries/1CA9DE21C6E443E814CB56912BEE872EF7094C49-jshell.jar
 	http://hg.netbeans.org/binaries/CF734AB72813AF33DC1544CE61ABC5C17B9D35E9-lucene-analyzers-common-5.5.3.jar
 	http://hg.netbeans.org/binaries/20540C6347259F35A0D264605B22CE2A13917066-lucene-core-5.5.3.jar
 	http://hg.netbeans.org/binaries/D276E74D57C64ED5F9A09A48DA05B75555E8709A-lucene-highlighter-5.5.3.jar
 	http://hg.netbeans.org/binaries/E2452203D2C44CAC5AC42B34E5DCC0A44BF29A53-lucene-queryparser-5.5.3.jar
 	http://hg.netbeans.org/binaries/BF206C4AA93C74A739FBAF1F1C78E3AD5F167245-maven-dependency-tree-2.0.jar
-	http://hg.netbeans.org/binaries/FF6814FB24C19922016106F293D8A928C9EE3CEB-nb-javac-api.jar
-	http://hg.netbeans.org/binaries/F4FEE8D953E381EAB378555F2870258F88F3CE32-nb-javac-impl.jar
+	http://hg.netbeans.org/binaries/A0D73583DB9546DBC57E88181135039369827B5B-nb-javac-api.jar
+	http://hg.netbeans.org/binaries/071355012BD9E174619F838E72F1869277E24B69-nb-javac-impl.jar
 	http://hg.netbeans.org/binaries/29AF1D338CBB76290D1A96F5A6610F1E8C319AE5-org.eclipse.persistence.jpa.jpql_2.5.2.v20140319-9ad6abd.jar
 	http://hg.netbeans.org/binaries/3CE04BDB48FE315736B1DCE407362C57DFAE286D-org.eclipse.persistence.jpa.modelgen_2.5.2.v20140319-9ad6abd.jar
 	http://hg.netbeans.org/binaries/7666B94C1004AFFFE88E5328BD70EBA6F60125F4-spring-framework-3.2.7.RELEASE.zip
@@ -57,7 +57,8 @@ DEPEND="${CDEPEND}
 	app-arch/unzip
 	dev-java/javahelp:0
 	dev-java/json-simple:0
-	dev-java/junit:4"
+	dev-java/junit:4
+	dev-java/oracle-jdk-bin:1.8[javafx]"
 RDEPEND="${CDEPEND}
 	dev-java/absolutelayout:0
 	>=dev-java/antlr-2.7.7-r7:0
@@ -90,6 +91,9 @@ EANT_BUILD_TARGET="rebuild-cluster"
 EANT_EXTRA_ARGS="-Drebuild.cluster.name=nb.cluster.java -Dext.binaries.downloaded=true -Dpermit.jdk8.builds=true"
 EANT_FILTER_COMPILER="ecj-3.3 ecj-3.4 ecj-3.5 ecj-3.6 ecj-3.7"
 JAVA_PKG_BSFIX="off"
+JAVA_PKG_WANT_BUILD_VM="oracle-jdk-bin-1.8"
+JAVA_PKG_WANT_SOURCE="1.7"
+JAVA_PKG_WANT_TARGET="1.7"
 
 pkg_pretend() {
 	local die_now=""
@@ -122,7 +126,7 @@ src_unpack() {
 	einfo "Deleting bundled jars..."
 	find -name "*.jar" -type f -delete
 
-	unpack netbeans-9999-r17-build.xml.patch.bz2
+	unpack netbeans-9999-r18-build.xml.patch.bz2
 
 	pushd "${S}" >/dev/null || die
 	ln -s "${DISTDIR}"/E48292EAE5E14EC44978AA53DEBB1AF7DDD6DF93-aether-api-1.13.1.jar maven/external/aether-api-1.13.1.jar || die
@@ -138,14 +142,14 @@ src_unpack() {
 	ln -s "${DISTDIR}"/D64C40E770C95C2A6994081C00CCD489C0AA20C9-jaxws-2.2.6-api.zip websvc.jaxws21api/external/jaxws-2.2.6-api.zip || die
 	ln -s "${DISTDIR}"/8ECD169E9E308C258287E4F28B03B6D6F1E55F47-jaxws-api-doc.zip websvc.jaxws21/external/jaxws-api-doc.zip || die
 	ln -s "${DISTDIR}"/A8BD39C5B88571B4D4697E78DD1A56566E44B1DD-JPAjavadocs04032013.zip j2ee.eclipselink/external/JPAjavadocs04032013.zip || die
-	ln -s "${DISTDIR}"/48EDC6778F1802BDCFC60033DC0AB0579850B633-jshell.jar libs.jshell.compile/external/jshell.jar || die
+	ln -s "${DISTDIR}"/1CA9DE21C6E443E814CB56912BEE872EF7094C49-jshell.jar libs.jshell.compile/external/jshell.jar || die
 	ln -s "${DISTDIR}"/CF734AB72813AF33DC1544CE61ABC5C17B9D35E9-lucene-analyzers-common-5.5.3.jar maven.indexer/external/lucene-analyzers-common-5.5.3.jar || die
 	ln -s "${DISTDIR}"/20540C6347259F35A0D264605B22CE2A13917066-lucene-core-5.5.3.jar maven.indexer/external/lucene-core-5.5.3.jar || die
 	ln -s "${DISTDIR}"/D276E74D57C64ED5F9A09A48DA05B75555E8709A-lucene-highlighter-5.5.3.jar maven.indexer/external/lucene-highlighter-5.5.3.jar || die
 	ln -s "${DISTDIR}"/E2452203D2C44CAC5AC42B34E5DCC0A44BF29A53-lucene-queryparser-5.5.3.jar maven.indexer/external/lucene-queryparser-5.5.3.jar || die
 	ln -s "${DISTDIR}"/BF206C4AA93C74A739FBAF1F1C78E3AD5F167245-maven-dependency-tree-2.0.jar maven.embedder/external/maven-dependency-tree-2.0.jar || die
-	ln -s "${DISTDIR}"/FF6814FB24C19922016106F293D8A928C9EE3CEB-nb-javac-api.jar libs.javacapi/external/nb-javac-api.jar || die
-	ln -s "${DISTDIR}"/F4FEE8D953E381EAB378555F2870258F88F3CE32-nb-javac-impl.jar libs.javacimpl/external/nb-javac-impl.jar || die
+	ln -s "${DISTDIR}"/A0D73583DB9546DBC57E88181135039369827B5B-nb-javac-api.jar libs.javacapi/external/nb-javac-api.jar || die
+	ln -s "${DISTDIR}"/071355012BD9E174619F838E72F1869277E24B69-nb-javac-impl.jar libs.javacimpl/external/nb-javac-impl.jar || die
 	ln -s "${DISTDIR}"/CA4F4DB7B6C140E36B0001873BEEA7C26489D2A1-netbeans-cos.jar maven/external/netbeans-cos.jar || die
 	ln -s "${DISTDIR}"/29AF1D338CBB76290D1A96F5A6610F1E8C319AE5-org.eclipse.persistence.jpa.jpql_2.5.2.v20140319-9ad6abd.jar j2ee.eclipselink/external/org.eclipse.persistence.jpa.jpql_2.5.2.v20140319-9ad6abd.jar || die
 	ln -s "${DISTDIR}"/3CE04BDB48FE315736B1DCE407362C57DFAE286D-org.eclipse.persistence.jpa.modelgen_2.5.2.v20140319-9ad6abd.jar j2ee.eclipselinkmodelgen/external/org.eclipse.persistence.jpa.modelgen_2.5.2.v20140319-9ad6abd.jar || die
@@ -162,7 +166,7 @@ src_prepare() {
 	einfo "Deleting bundled class files..."
 	find -name "*.class" -type f | xargs rm -vf
 
-	epatch netbeans-9999-r17-build.xml.patch
+	epatch netbeans-9999-r18-build.xml.patch
 
 	einfo "Symlinking external libraries..."
 	java-pkg_jar-from --build-only --into javahelp/external javahelp jhall.jar jhall-2.0_05.jar
