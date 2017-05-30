@@ -8,7 +8,7 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans Platform"
 HOMEPAGE="http://netbeans.org/features/platform/"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-04-28_00-02-00/zip/netbeans-trunk-nightly-201704280002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-05-30_00-01-25/zip/netbeans-trunk-nightly-201705300001-src.zip"
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r18-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/2F7553F50B0D14ED811B849C282DA8C1FFC32AAE-asm-all-5.0.1.jar
@@ -45,8 +45,8 @@ CDEPEND="dev-java/hamcrest-core:1.3
 	dev-java/swing-layout:1[source]
 	dev-java/testng:0"
 DEPEND="${CDEPEND}
-	app-arch/unzip
-	dev-java/oracle-jdk-bin:1.8[javafx]"
+	dev-java/oracle-jdk-bin:1.8[javafx]
+	app-arch/unzip"
 RDEPEND="${CDEPEND}
 	virtual/jdk:1.8"
 

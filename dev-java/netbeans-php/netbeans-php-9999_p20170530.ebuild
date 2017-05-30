@@ -8,11 +8,11 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans PHP Cluster"
 HOMEPAGE="http://netbeans.org/projects/php"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-04-28_00-02-00/zip/netbeans-trunk-nightly-201704280002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-05-30_00-01-25/zip/netbeans-trunk-nightly-201705300001-src.zip"
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r18-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/0702230EB3354A1687E4496D73A94F33A1E343BD-phpdocdesc.zip
-	http://hg.netbeans.org/binaries/0374F2BD0D980B8ED52C0D7CED5B12445750B365-phpsigfiles.zip
+	http://hg.netbeans.org/binaries/472A52636BE09823B4E5F707071B31FB990A7375-phpsigfiles.zip
 	http://hg.netbeans.org/binaries/3D6AF75EA20D715887DAF47A3F063864EF0814C1-predefined_vars.zip"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
 KEYWORDS="~amd64 ~x86"
@@ -49,7 +49,7 @@ src_unpack() {
 
 	pushd "${S}" >/dev/null || die
 	ln -s "${DISTDIR}"/0702230EB3354A1687E4496D73A94F33A1E343BD-phpdocdesc.zip php.phpdoc.documentation/external/phpdocdesc.zip || die
-	ln -s "${DISTDIR}"/0374F2BD0D980B8ED52C0D7CED5B12445750B365-phpsigfiles.zip php.project/external/phpsigfiles.zip || die
+	ln -s "${DISTDIR}"/472A52636BE09823B4E5F707071B31FB990A7375-phpsigfiles.zip php.project/external/phpsigfiles.zip || die
 	ln -s "${DISTDIR}"/3D6AF75EA20D715887DAF47A3F063864EF0814C1-predefined_vars.zip php.editor/external/predefined_vars.zip || die
 	popd >/dev/null || die
 }
