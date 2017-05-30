@@ -10,7 +10,7 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans Java Cluster"
 HOMEPAGE="http://netbeans.org/projects/java"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-04-25_00-02-00/zip/netbeans-trunk-nightly-201704250002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-05-29_00-01-25/zip/netbeans-trunk-nightly-201705290001-src.zip"
 # jarjar-1.4 contains also asm libraries
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r18-build.xml.patch.bz2
@@ -33,8 +33,8 @@ SRC_URI="${SOURCE_URL}
 	http://hg.netbeans.org/binaries/D276E74D57C64ED5F9A09A48DA05B75555E8709A-lucene-highlighter-5.5.3.jar
 	http://hg.netbeans.org/binaries/E2452203D2C44CAC5AC42B34E5DCC0A44BF29A53-lucene-queryparser-5.5.3.jar
 	http://hg.netbeans.org/binaries/BF206C4AA93C74A739FBAF1F1C78E3AD5F167245-maven-dependency-tree-2.0.jar
-	http://hg.netbeans.org/binaries/A0D73583DB9546DBC57E88181135039369827B5B-nb-javac-api.jar
-	http://hg.netbeans.org/binaries/A201B099E718EAAB165FD0E9BFB49BC903658CB8-nb-javac-impl.jar
+	http://hg.netbeans.org/binaries/C6E5101D6A096D90AD8CF9E0F21C30F1D6DA74D4-nb-javac-api.jar
+	http://hg.netbeans.org/binaries/3C949981C2B887A433A8CB816E0C0789D99AAEBC-nb-javac-impl.jar
 	http://hg.netbeans.org/binaries/29AF1D338CBB76290D1A96F5A6610F1E8C319AE5-org.eclipse.persistence.jpa.jpql_2.5.2.v20140319-9ad6abd.jar
 	http://hg.netbeans.org/binaries/3CE04BDB48FE315736B1DCE407362C57DFAE286D-org.eclipse.persistence.jpa.modelgen_2.5.2.v20140319-9ad6abd.jar
 	http://hg.netbeans.org/binaries/7666B94C1004AFFFE88E5328BD70EBA6F60125F4-spring-framework-3.2.7.RELEASE.zip
@@ -57,8 +57,7 @@ DEPEND="${CDEPEND}
 	app-arch/unzip
 	dev-java/javahelp:0
 	dev-java/json-simple:0
-	dev-java/junit:4
-	dev-java/oracle-jdk-bin:1.8[javafx]"
+	dev-java/junit:4"
 RDEPEND="${CDEPEND}
 	dev-java/absolutelayout:0
 	>=dev-java/antlr-2.7.7-r7:0
@@ -91,9 +90,6 @@ EANT_BUILD_TARGET="rebuild-cluster"
 EANT_EXTRA_ARGS="-Drebuild.cluster.name=nb.cluster.java -Dext.binaries.downloaded=true -Dpermit.jdk8.builds=true"
 EANT_FILTER_COMPILER="ecj-3.3 ecj-3.4 ecj-3.5 ecj-3.6 ecj-3.7"
 JAVA_PKG_BSFIX="off"
-JAVA_PKG_WANT_BUILD_VM="oracle-jdk-bin-1.8"
-JAVA_PKG_WANT_SOURCE="1.7"
-JAVA_PKG_WANT_TARGET="1.7"
 
 pkg_pretend() {
 	local die_now=""
@@ -148,8 +144,8 @@ src_unpack() {
 	ln -s "${DISTDIR}"/D276E74D57C64ED5F9A09A48DA05B75555E8709A-lucene-highlighter-5.5.3.jar maven.indexer/external/lucene-highlighter-5.5.3.jar || die
 	ln -s "${DISTDIR}"/E2452203D2C44CAC5AC42B34E5DCC0A44BF29A53-lucene-queryparser-5.5.3.jar maven.indexer/external/lucene-queryparser-5.5.3.jar || die
 	ln -s "${DISTDIR}"/BF206C4AA93C74A739FBAF1F1C78E3AD5F167245-maven-dependency-tree-2.0.jar maven.embedder/external/maven-dependency-tree-2.0.jar || die
-	ln -s "${DISTDIR}"/A0D73583DB9546DBC57E88181135039369827B5B-nb-javac-api.jar libs.javacapi/external/nb-javac-api.jar || die
-	ln -s "${DISTDIR}"/A201B099E718EAAB165FD0E9BFB49BC903658CB8-nb-javac-impl.jar libs.javacimpl/external/nb-javac-impl.jar || die
+	ln -s "${DISTDIR}"/C6E5101D6A096D90AD8CF9E0F21C30F1D6DA74D4-nb-javac-api.jar libs.javacapi/external/nb-javac-api.jar || die
+	ln -s "${DISTDIR}"/3C949981C2B887A433A8CB816E0C0789D99AAEBC-nb-javac-impl.jar libs.javacimpl/external/nb-javac-impl.jar || die
 	ln -s "${DISTDIR}"/CA4F4DB7B6C140E36B0001873BEEA7C26489D2A1-netbeans-cos.jar maven/external/netbeans-cos.jar || die
 	ln -s "${DISTDIR}"/29AF1D338CBB76290D1A96F5A6610F1E8C319AE5-org.eclipse.persistence.jpa.jpql_2.5.2.v20140319-9ad6abd.jar j2ee.eclipselink/external/org.eclipse.persistence.jpa.jpql_2.5.2.v20140319-9ad6abd.jar || die
 	ln -s "${DISTDIR}"/3CE04BDB48FE315736B1DCE407362C57DFAE286D-org.eclipse.persistence.jpa.modelgen_2.5.2.v20140319-9ad6abd.jar j2ee.eclipselinkmodelgen/external/org.eclipse.persistence.jpa.modelgen_2.5.2.v20140319-9ad6abd.jar || die
