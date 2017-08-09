@@ -1,24 +1,24 @@
 dev-db/apache-solr-bin 5.3.1-r1: The popular, blazing fast open source enterprise search platform from the Apache Lucene project.
 dev-db/pgfouine 1.2-r2: pgFouine is a PostgreSQL log analyzer used to generate detailed reports from a PostgreSQL log file
 dev-java/lucene-core 5.3.1: Apache Lucene Core
-dev-java/netbeans-apisupport 8.0.2 8.1 8.2 9999_p20170803 9999_p20170804 9999_p20170807 9999_p20170808: Netbeans API Support Cluster
-dev-java/netbeans-cnd 8.0.2 8.1 8.2 9999_p20170803 9999_p20170804 9999_p20170807 9999_p20170808: Netbeans CND Cluster
-dev-java/netbeans-dlight 8.0.2 8.1 8.2 9999_p20170803 9999_p20170804 9999_p20170807 9999_p20170808: Netbeans D-Light Cluster
-dev-java/netbeans-enterprise 8.0.2-r1 8.1-r2 8.2-r1 9999_p20170803 9999_p20170804 9999_p20170807 9999_p20170808: Netbeans Enterprise cluster
-dev-java/netbeans-ergonomics 8.0.2 8.1 8.2 9999_p20170803 9999_p20170804 9999_p20170807 9999_p20170808: Netbeans Ergonomics Cluster
-dev-java/netbeans-extide 8.0.2 8.1 8.2 9999_p20170803 9999_p20170804 9999_p20170807 9999_p20170808: Netbeans ExtIDE Cluster
-dev-java/netbeans-groovy 8.0.2 8.1 8.2 9999_p20170803 9999_p20170804 9999_p20170807 9999_p20170808: Netbeans Groovy Cluster
-dev-java/netbeans-harness 8.0.2 8.1 8.2 9999_p20170803 9999_p20170804 9999_p20170807 9999_p20170808: Netbeans Harness
-dev-java/netbeans-ide 8.0.2-r2 8.1-r2 8.2 9999_p20170803 9999_p20170804 9999_p20170807 9999_p20170808: Netbeans IDE Cluster
-dev-java/netbeans-java 8.0.2-r6 8.1-r3 8.2-r1 9999_p20170803 9999_p20170804 9999_p20170807 9999_p20170808: Netbeans Java Cluster
-dev-java/netbeans-javacard 8.0.2 8.1 8.2 9999_p20170803 9999_p20170804 9999_p20170807 9999_p20170808: Netbeans JavaCard Cluster
-dev-java/netbeans-javadoc 8.0.2 8.1 8.2 9999_p20170803 9999_p20170804 9999_p20170807 9999_p20170808: Netbeans JavaDocs
-dev-java/netbeans-javafx 8.0.2 8.1 8.2 9999_p20170803 9999_p20170804 9999_p20170807 9999_p20170808: Netbeans JavaFX Cluster
-dev-java/netbeans-mobility 8.0.2 8.1 8.2 9999_p20170803 9999_p20170804 9999_p20170807 9999_p20170808: Netbeans Mobility Cluster
-dev-java/netbeans-nb 8.0.2 8.1 8.2 9999_p20170803 9999_p20170804 9999_p20170807 9999_p20170808: Netbeans IDE Branding
-dev-java/netbeans-php 8.0.2 8.1 8.2 9999_p20170803 9999_p20170804 9999_p20170807 9999_p20170808: Netbeans PHP Cluster
-dev-java/netbeans-platform 8.0.2 8.1 8.2 9999_p20170803 9999_p20170804 9999_p20170807 9999_p20170808: Netbeans Platform
-dev-java/netbeans-profiler 8.0.2 8.1 8.2 9999_p20170803 9999_p20170804 9999_p20170807 9999_p20170808: Netbeans Profiler Cluster
-dev-java/netbeans-webcommon 8.0.2 8.1 8.2 9999_p20170803 9999_p20170804 9999_p20170807 9999_p20170808: Netbeans Web Services Cluster
-dev-java/netbeans-websvccommon 8.0.2 8.1 8.2 9999_p20170803 9999_p20170804 9999_p20170807 9999_p20170808: Netbeans Web Services Common Cluster
-dev-util/netbeans 8.0.2 8.1 8.2 9999_p20170803 9999_p20170804 9999_p20170807 9999_p20170808: Netbeans IDE
+dev-java/netbeans-apisupport 8.0.2 8.1 8.2 9999_p20170803 9999_p20170804 9999_p20170807 9999_p20170808 9999_p20170809: Netbeans API Support Cluster
+dev-java/netbeans-cnd 8.0.2 8.1 8.2 9999_p20170803 9999_p20170804 9999_p20170807 9999_p20170808 9999_p20170809: Netbeans CND Cluster
+dev-java/netbeans-dlight 8.0.2 8.1 8.2 9999_p20170803 9999_p20170804 9999_p20170807 9999_p20170808 9999_p20170809: Netbeans D-Light Cluster
+dev-java/netbeans-enterprise 8.0.2-r1 8.1-r2 8.2-r1 9999_p20170803 9999_p20170804 9999_p20170807 9999_p20170808 9999_p20170809: Netbeans Enterprise cluster
+dev-java/netbeans-ergonomics 8.0.2 8.1 8.2 9999_p20170803 9999_p20170804 9999_p20170807 9999_p20170808 9999_p20170809: Netbeans Ergonomics Cluster
+dev-java/netbeans-extide 8.0.2 8.1 8.2 9999_p20170803 9999_p20170804 9999_p20170807 9999_p20170808 9999_p20170809: Netbeans ExtIDE Cluster
+dev-java/netbeans-groovy 8.0.2 8.1 8.2 9999_p20170803 9999_p20170804 9999_p20170807 9999_p20170808 9999_p20170809: Netbeans Groovy Cluster
+dev-java/netbeans-harness 8.0.2 8.1 8.2 9999_p20170803 9999_p20170804 9999_p20170807 9999_p20170808 9999_p20170809: Netbeans Harness
+dev-java/netbeans-ide 8.0.2-r2 8.1-r2 8.2 9999_p20170803 9999_p20170804 9999_p20170807 9999_p20170808 9999_p20170809: Netbeans IDE Cluster
+dev-java/netbeans-java 8.0.2-r6 8.1-r3 8.2-r1 9999_p20170803 9999_p20170804 9999_p20170807 9999_p20170808 9999_p20170809: Netbeans Java Cluster
+dev-java/netbeans-javacard 8.0.2 8.1 8.2 9999_p20170803 9999_p20170804 9999_p20170807 9999_p20170808 9999_p20170809: Netbeans JavaCard Cluster
+dev-java/netbeans-javadoc 8.0.2 8.1 8.2 9999_p20170803 9999_p20170804 9999_p20170807 9999_p20170808 9999_p20170809: Netbeans JavaDocs
+dev-java/netbeans-javafx 8.0.2 8.1 8.2 9999_p20170803 9999_p20170804 9999_p20170807 9999_p20170808 9999_p20170809: Netbeans JavaFX Cluster
+dev-java/netbeans-mobility 8.0.2 8.1 8.2 9999_p20170803 9999_p20170804 9999_p20170807 9999_p20170808 9999_p20170809: Netbeans Mobility Cluster
+dev-java/netbeans-nb 8.0.2 8.1 8.2 9999_p20170803 9999_p20170804 9999_p20170807 9999_p20170808 9999_p20170809: Netbeans IDE Branding
+dev-java/netbeans-php 8.0.2 8.1 8.2 9999_p20170803 9999_p20170804 9999_p20170807 9999_p20170808 9999_p20170809: Netbeans PHP Cluster
+dev-java/netbeans-platform 8.0.2 8.1 8.2 9999_p20170803 9999_p20170804 9999_p20170807 9999_p20170808 9999_p20170809: Netbeans Platform
+dev-java/netbeans-profiler 8.0.2 8.1 8.2 9999_p20170803 9999_p20170804 9999_p20170807 9999_p20170808 9999_p20170809: Netbeans Profiler Cluster
+dev-java/netbeans-webcommon 8.0.2 8.1 8.2 9999_p20170803 9999_p20170804 9999_p20170807 9999_p20170808 9999_p20170809: Netbeans Web Services Cluster
+dev-java/netbeans-websvccommon 8.0.2 8.1 8.2 9999_p20170803 9999_p20170804 9999_p20170807 9999_p20170808 9999_p20170809: Netbeans Web Services Common Cluster
+dev-util/netbeans 8.0.2 8.1 8.2 9999_p20170803 9999_p20170804 9999_p20170807 9999_p20170808 9999_p20170809: Netbeans IDE
