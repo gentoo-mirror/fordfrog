@@ -8,9 +8,9 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans JavaDocs"
 HOMEPAGE="https://netbeans.org/"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-08-17_00-01-25/zip/netbeans-trunk-nightly-201708170001-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-09-25_00-02-02/zip/netbeans-trunk-nightly-201709250002-src.zip"
 SRC_URI="${SOURCE_URL}
-	https://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r18-build.xml.patch.bz2
+	https://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r21-build.xml.patch.bz2
 	https://hg.netbeans.org/binaries/0B539A378C2EA52B17BD0326ECE03DF66E3A65E9-ant-libs-1.10.1.zip"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
 KEYWORDS="~amd64 ~x86"
@@ -52,7 +52,7 @@ src_unpack() {
 	einfo "Deleting bundled jars..."
 	find -name "*.jar" -type f -delete
 
-	unpack netbeans-9999-r18-build.xml.patch.bz2
+	unpack netbeans-9999-r21-build.xml.patch.bz2
 
 	pushd "${S}" >/dev/null || die
 	ln -s "${DISTDIR}"/0B539A378C2EA52B17BD0326ECE03DF66E3A65E9-ant-libs-1.10.1.zip o.apache.tools.ant.module/external/ant-libs-1.10.1.zip || die
@@ -63,7 +63,7 @@ src_prepare() {
 	einfo "Deleting bundled class files..."
 	find -name "*.class" -type f | xargs rm -vf
 
-	epatch netbeans-9999-r18-build.xml.patch
+	epatch netbeans-9999-r21-build.xml.patch
 
 	einfo "Symlinking external libraries..."
 	java-pkg_jar-from --build-only --into javahelp/external javahelp jhall.jar jhall-2.0_05.jar
