@@ -10,10 +10,10 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans Java Cluster"
 HOMEPAGE="https://netbeans.org/projects/java"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-08-24_00-01-25/zip/netbeans-trunk-nightly-201708240001-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-09-29_00-02-02/zip/netbeans-trunk-nightly-201709290002-src.zip"
 # jarjar-1.4 contains also asm libraries
 SRC_URI="${SOURCE_URL}
-	https://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r18-build.xml.patch.bz2
+	https://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r21-build.xml.patch.bz2
 	https://hg.netbeans.org/binaries/E48292EAE5E14EC44978AA53DEBB1AF7DDD6DF93-aether-api-1.13.1.jar
 	https://hg.netbeans.org/binaries/2DDF9BB8C3B41BC2891832A6D6FC25F8BF41D77F-apache-maven-3.3.9-bin.zip
 	https://hg.netbeans.org/binaries/F7BD95641780C2AAE8CB9BED1686441A1CE5E749-beansbinding-1.2.1-doc.zip
@@ -34,7 +34,7 @@ SRC_URI="${SOURCE_URL}
 	https://hg.netbeans.org/binaries/E2452203D2C44CAC5AC42B34E5DCC0A44BF29A53-lucene-queryparser-5.5.3.jar
 	https://hg.netbeans.org/binaries/BF206C4AA93C74A739FBAF1F1C78E3AD5F167245-maven-dependency-tree-2.0.jar
 	https://hg.netbeans.org/binaries/C6E5101D6A096D90AD8CF9E0F21C30F1D6DA74D4-nb-javac-api.jar
-	https://hg.netbeans.org/binaries/4D7B69D33280EEBD32DB657D5836195F6243AF0A-nb-javac-impl.jar
+	https://hg.netbeans.org/binaries/BB17923713699B721CDB3BDBBAE863D8C8B291E3-nb-javac-impl.jar
 	https://hg.netbeans.org/binaries/29AF1D338CBB76290D1A96F5A6610F1E8C319AE5-org.eclipse.persistence.jpa.jpql_2.5.2.v20140319-9ad6abd.jar
 	https://hg.netbeans.org/binaries/3CE04BDB48FE315736B1DCE407362C57DFAE286D-org.eclipse.persistence.jpa.modelgen_2.5.2.v20140319-9ad6abd.jar
 	https://hg.netbeans.org/binaries/7666B94C1004AFFFE88E5328BD70EBA6F60125F4-spring-framework-3.2.7.RELEASE.zip
@@ -122,7 +122,7 @@ src_unpack() {
 	einfo "Deleting bundled jars..."
 	find -name "*.jar" -type f -delete
 
-	unpack netbeans-9999-r18-build.xml.patch.bz2
+	unpack netbeans-9999-r21-build.xml.patch.bz2
 
 	pushd "${S}" >/dev/null || die
 	ln -s "${DISTDIR}"/E48292EAE5E14EC44978AA53DEBB1AF7DDD6DF93-aether-api-1.13.1.jar maven/external/aether-api-1.13.1.jar || die
@@ -145,7 +145,7 @@ src_unpack() {
 	ln -s "${DISTDIR}"/E2452203D2C44CAC5AC42B34E5DCC0A44BF29A53-lucene-queryparser-5.5.3.jar maven.indexer/external/lucene-queryparser-5.5.3.jar || die
 	ln -s "${DISTDIR}"/BF206C4AA93C74A739FBAF1F1C78E3AD5F167245-maven-dependency-tree-2.0.jar maven.embedder/external/maven-dependency-tree-2.0.jar || die
 	ln -s "${DISTDIR}"/C6E5101D6A096D90AD8CF9E0F21C30F1D6DA74D4-nb-javac-api.jar libs.javacapi/external/nb-javac-api.jar || die
-	ln -s "${DISTDIR}"/4D7B69D33280EEBD32DB657D5836195F6243AF0A-nb-javac-impl.jar libs.javacimpl/external/nb-javac-impl.jar || die
+	ln -s "${DISTDIR}"/BB17923713699B721CDB3BDBBAE863D8C8B291E3-nb-javac-impl.jar libs.javacimpl/external/nb-javac-impl.jar || die
 	ln -s "${DISTDIR}"/CA4F4DB7B6C140E36B0001873BEEA7C26489D2A1-netbeans-cos.jar maven/external/netbeans-cos.jar || die
 	ln -s "${DISTDIR}"/29AF1D338CBB76290D1A96F5A6610F1E8C319AE5-org.eclipse.persistence.jpa.jpql_2.5.2.v20140319-9ad6abd.jar j2ee.eclipselink/external/org.eclipse.persistence.jpa.jpql_2.5.2.v20140319-9ad6abd.jar || die
 	ln -s "${DISTDIR}"/3CE04BDB48FE315736B1DCE407362C57DFAE286D-org.eclipse.persistence.jpa.modelgen_2.5.2.v20140319-9ad6abd.jar j2ee.eclipselinkmodelgen/external/org.eclipse.persistence.jpa.modelgen_2.5.2.v20140319-9ad6abd.jar || die
@@ -162,7 +162,7 @@ src_prepare() {
 	einfo "Deleting bundled class files..."
 	find -name "*.class" -type f | xargs rm -vf
 
-	epatch netbeans-9999-r18-build.xml.patch
+	epatch netbeans-9999-r21-build.xml.patch
 
 	einfo "Symlinking external libraries..."
 	java-pkg_jar-from --build-only --into javahelp/external javahelp jhall.jar jhall-2.0_05.jar
