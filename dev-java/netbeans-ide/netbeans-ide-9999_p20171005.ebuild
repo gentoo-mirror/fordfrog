@@ -8,9 +8,9 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans IDE Cluster"
 HOMEPAGE="https://netbeans.org/projects/ide"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-08-29_00-01-25/zip/netbeans-trunk-nightly-201708290001-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-10-05_00-02-02/zip/netbeans-trunk-nightly-201710050002-src.zip"
 SRC_URI="${SOURCE_URL}
-	https://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r18-build.xml.patch.bz2
+	https://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r21-build.xml.patch.bz2
 	https://hg.netbeans.org/binaries/4E74C6BE42FE89871A878C7C4D6158F21A6D8010-antlr-runtime-3.4.jar
 	https://hg.netbeans.org/binaries/886FAF4B85054DD6E50D9B3438542F432B5F9251-bytelist-0.1.jar
 	https://hg.netbeans.org/binaries/DCDA3604865C8E80789B4F8E8EECC3D4D15D00F8-com.trilead.ssh2_1.0.0.build220_r167_v20150618_1733.jar
@@ -146,7 +146,7 @@ src_unpack() {
 	einfo "Deleting bundled jars..."
 	find -name "*.jar" -type f -delete
 
-	unpack netbeans-9999-r18-build.xml.patch.bz2
+	unpack netbeans-9999-r21-build.xml.patch.bz2
 
 	pushd "${S}" >/dev/null || die
 	ln -s "${DISTDIR}"/4E74C6BE42FE89871A878C7C4D6158F21A6D8010-antlr-runtime-3.4.jar libs.antlr3.runtime/external/antlr-runtime-3.4.jar || die
@@ -229,7 +229,7 @@ src_prepare() {
 	einfo "Deleting bundled class files..."
 	find -name "*.class" -type f | xargs rm -vf
 
-	epatch netbeans-9999-r18-build.xml.patch
+	epatch netbeans-9999-r21-build.xml.patch
 
 	einfo "Symlinking external libraries..."
 	java-pkg_jar-from --into c.jcraft.jsch/external jsch jsch.jar jsch-0.1.54.jar
@@ -244,7 +244,7 @@ src_prepare() {
 	java-pkg_jar-from --into libs.antlr4.runtime/external antlr-4 antlr-runtime.jar antlr-runtime-4.5.3.jar
 	java-pkg_jar-from --into libs.commons_compress/external commons-compress commons-compress.jar commons-compress-1.8.1.jar
 	# java-pkg_jar-from --into libs.freemarker/external freemarker-2.3 freemarker.jar freemarker-2.3.19.jar
-	java-pkg_jar-from --build-only --into libs.jna/external jna-4 jna.jar jna-4.2.2.jar
+	java-pkg_jar-from --build-only --into libs.jna/external jna-4 jna.jar jna-4.4.0.jar
 	java-pkg_jar-from --into libs.json_simple/external json-simple json-simple.jar json-simple-1.1.1.jar
 	java-pkg_jar-from --into libs.jvyamlb/external jvyamlb jvyamlb.jar jvyamlb-0.2.7.jar
 	java-pkg_jar-from --into libs.lucene/external lucene-3.5 lucene-core.jar lucene-core-3.5.0.jar
