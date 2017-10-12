@@ -8,7 +8,7 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans Harness"
 HOMEPAGE="https://netbeans.org/features/platform/"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-09-11_00-01-25/zip/netbeans-trunk-nightly-201709110001-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-10-12_00-02-02/zip/netbeans-trunk-nightly-201710120002-src.zip"
 SRC_URI="${SOURCE_URL}
 	https://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r21-build.xml.patch.bz2
 	https://hg.netbeans.org/binaries/A806D99716C5E9441BFD8B401176FDDEFC673022-bindex-2.2.jar
