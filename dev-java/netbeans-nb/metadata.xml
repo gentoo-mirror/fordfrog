@@ -5,8 +5,4 @@
   <email>fordfrog@gentoo.org</email>
   <name>Miroslav Šulc</name>
 </maintainer>
-<use>
-  <flag name="keychain">Automatically starts keychain on netbeans start and loads
-  specified keys so Netbeans can use them.</flag>
-</use>
 </pkgmetadata>
