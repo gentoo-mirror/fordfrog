@@ -8,7 +8,7 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans Mobility Cluster"
 HOMEPAGE="https://netbeans.org/features/platform/"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-09-18_00-02-02/zip/netbeans-trunk-nightly-201709180002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-10-19_00-02-02/zip/netbeans-trunk-nightly-201710190002-src.zip"
 SRC_URI="${SOURCE_URL}
 	https://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r21-build.xml.patch.bz2"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
