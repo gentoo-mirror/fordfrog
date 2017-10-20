@@ -8,7 +8,7 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans Enterprise cluster"
 HOMEPAGE="https://netbeans.org/"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-09-19_00-02-02/zip/netbeans-trunk-nightly-201709190002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-10-20_00-02-02/zip/netbeans-trunk-nightly-201710200002-src.zip"
 SRC_URI="${SOURCE_URL}
 	https://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r21-build.xml.patch.bz2
 	https://hg.netbeans.org/binaries/8BFEBCD4B39B87BBE788B4EECED068C8DBE75822-aws-java-sdk-1.2.1.jar
