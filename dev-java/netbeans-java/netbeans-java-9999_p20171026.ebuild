@@ -9,7 +9,7 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans Java Cluster"
 HOMEPAGE="https://netbeans.org/projects/java"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-09-25_00-02-02/zip/netbeans-trunk-nightly-201709250002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-10-26_00-02-02/zip/netbeans-trunk-nightly-201710260002-src.zip"
 # jarjar-1.4 contains also asm libraries
 SRC_URI="${SOURCE_URL}
 	https://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r21-build.xml.patch.bz2
