@@ -7,7 +7,7 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans Ergonomics Cluster"
 HOMEPAGE="https://netbeans.org/"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-09-27_00-02-02/zip/netbeans-trunk-nightly-201709270002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-10-31_00-02-15/zip/netbeans-trunk-nightly-201710310002-src.zip"
 SRC_URI="${SOURCE_URL}
 	https://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r21-build.xml.patch.bz2"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
