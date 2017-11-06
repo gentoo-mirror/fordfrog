@@ -7,7 +7,7 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans JavaCard Cluster"
 HOMEPAGE="https://netbeans.org/projects/javacard"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-10-02_00-02-02/zip/netbeans-trunk-nightly-201710020002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-11-06_00-02-15/zip/netbeans-trunk-nightly-201711060002-src.zip"
 SRC_URI="${SOURCE_URL}
 	https://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r21-build.xml.patch.bz2
 	https://hg.netbeans.org/binaries/33DCFAE258453BDD3D8A042F6ECF80656A82B8DD-anttasks.jar
