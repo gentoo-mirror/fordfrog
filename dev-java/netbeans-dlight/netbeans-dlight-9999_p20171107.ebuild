@@ -7,7 +7,7 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans D-Light Cluster"
 HOMEPAGE="https://netbeans.org/"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-10-05_00-02-02/zip/netbeans-trunk-nightly-201710050002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-11-07_00-02-15/zip/netbeans-trunk-nightly-201711070002-src.zip"
 SRC_URI="${SOURCE_URL}
 	https://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r21-build.xml.patch.bz2
 	https://hg.netbeans.org/binaries/00784557F614BE02268C50C1BA692A6B19F0EE27-fs_server-1.0.zip"
