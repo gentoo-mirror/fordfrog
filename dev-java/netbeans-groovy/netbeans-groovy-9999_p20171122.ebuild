@@ -7,7 +7,7 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans Groovy Cluster"
 HOMEPAGE="https://netbeans.org/projects/groovy"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-10-18_00-02-02/zip/netbeans-trunk-nightly-201710180002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-11-22_00-02-15/zip/netbeans-trunk-nightly-201711220002-src.zip"
 SRC_URI="${SOURCE_URL}
 	https://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r21-build.xml.patch.bz2
 	https://hg.netbeans.org/binaries/01730F61E9C9E59FD1B814371265334D7BE0B8D2-groovy-all-2.4.5.jar"
