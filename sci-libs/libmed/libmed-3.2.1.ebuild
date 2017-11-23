@@ -32,10 +32,6 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/${MY_P}_SRC
 
-PATCHES=(
-	"${FILESDIR}/${P}-cmake-fortran.patch"
-)
-
 DOCS=( AUTHORS COPYING COPYING.LESSER ChangeLog NEWS README TODO )
 
 pkg_setup() {
