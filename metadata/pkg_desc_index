@@ -21,3 +21,4 @@ dev-java/netbeans-websvccommon 9999_p20171020 9999_p20171024 9999_p20171025 9999
 dev-util/netbeans 9999_p20171020 9999_p20171024 9999_p20171025 9999_p20171026 9999_p20171027 9999_p20171031 9999_p20171101 9999_p20171102 9999_p20171103 9999_p20171106 9999_p20171107 9999_p20171108 9999_p20171109 9999_p20171110 9999_p20171115 9999_p20171116 9999_p20171120 9999_p20171121 9999_p20171122: Netbeans IDE
 media-libs/libgig 9999: C++ library for loading/modifying GigaStudio, SoundFont, KORG, AKAI, DLS files
 media-sound/linuxsampler 9999: LinuxSampler is a software audio sampler engine with professional grade features
+sci-libs/libmed 3.2.1: A library to store and exchange meshed data or computation results
