@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>fordfrog@gentoo.org</email>
+	<name>Miroslav Šulc</name>
+</maintainer>
+<use>
+	<flag name="gig">Enables GigaSampler instrument file support</flag>
+	<flag name="xunique">Enables X11 unique/single instance</flag>
+</use>
+</pkgmetadata>
