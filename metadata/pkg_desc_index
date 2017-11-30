@@ -24,5 +24,6 @@ media-gfx/freecad 9999: QT based Computer Aided Design application
 media-libs/libgig 9999: C++ library for loading/modifying GigaStudio, SoundFont, KORG, AKAI, DLS files
 media-libs/liblscp 9999: C++ library for the Linux Sampler control protocol
 media-sound/linuxsampler 9999: LinuxSampler is a software audio sampler engine with professional grade features
+media-sound/qsampler 9999: A graphical frontend to the LinuxSampler engine
 media-video/vobsub2srt 9999: Converts image subtitles created by VobSub to SRT subtitles using OCR engine
 sci-libs/libmed 3.2.1: A library to store and exchange meshed data or computation results
