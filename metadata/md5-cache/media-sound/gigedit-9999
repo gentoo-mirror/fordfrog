@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile configure install preinst unpack
+DEPEND=dev-cpp/gtkmm:3.0 media-libs/libgig media-libs/libsndfile >=dev-util/intltool-0.35.0 sys-devel/gettext virtual/pkgconfig doc? ( app-doc/doxygen ) || ( dev-vcs/subversion[http] dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] ) net-misc/rsync
+DESCRIPTION=GigaSampler instrument file editor
+EAPI=6
+HOMEPAGE=http://www.linuxsampler.org/
+IUSE=doc static-libs
+LICENSE=GPL-2
+RDEPEND=dev-cpp/gtkmm:3.0 media-libs/libgig media-libs/libsndfile
+SLOT=0
+_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	97ce9decef1ff4b6c5be700283f67343	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	subversion	a5d5826a85609611f098c0553eb24cc1	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=0bf5dff8ed810cf580a3a8fa4959985c
