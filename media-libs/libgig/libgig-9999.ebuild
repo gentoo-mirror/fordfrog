@@ -11,7 +11,7 @@ ESVN_REPO_URI="https://svn.linuxsampler.org/svn/libgig/trunk"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS=""
 IUSE="doc static-libs"
 
 RDEPEND=">=media-libs/libsndfile-1.0.2
@@ -24,12 +24,13 @@ DOCS=( AUTHORS ChangeLog NEWS README TODO )
 
 src_configure() {
 	emake -f Makefile.svn
+
 	econf \
 		$(use_enable static-libs static)
 }
 
 src_compile() {
-	emake
+	default
 
 	if use doc ; then
 		emake docs
@@ -37,12 +38,13 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
-	dodoc AUTHORS ChangeLog NEWS README TODO
+	default
 
 	# For libgig.so to be found at runtime
 	printf "LDPATH=\"${EPREFIX}/usr/$(get_libdir)/libgig/\"" > 99${PN}
 	doenvd "99${PN}"
+
+	! use static-libs && prune_libtool_files --modules
 
 	if use doc ; then
 		dohtml -r doc/html/*

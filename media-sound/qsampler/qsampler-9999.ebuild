@@ -43,8 +43,6 @@ DOCS=( AUTHORS ChangeLog README )
 src_configure() {
 	emake -f Makefile.svn
 
-	# upstream does not support --disable-static during configuration,
-	# just --enable-static=no
 	econf \
 		--enable-qt4=no \
 		--with-qt5=/usr/$(get_libdir)/qt5 \
@@ -53,7 +51,8 @@ src_configure() {
 }
 
 src_compile() {
-	emake
+	default
+
 	use doc && emake docs
 }
 
