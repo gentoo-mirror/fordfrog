@@ -59,5 +59,10 @@ src_compile() {
 src_install() {
 	default
 
+        # For liblinuxsampler.so to be found at runtime
+	printf "LDPATH=\"${EPREFIX}/usr/$(get_libdir)/linuxsampler/\"" > 99${PN}
+        doenvd "99${PN}"
+
+
 	! use static-libs && prune_libtool_files --modules
 }
