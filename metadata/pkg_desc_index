@@ -23,7 +23,9 @@ dev-util/netbeans 9999_p20171027 9999_p20171031 9999_p20171101 9999_p20171102 99
 media-gfx/freecad 9999: QT based Computer Aided Design application
 media-libs/libgig 9999: C++ library for loading/modifying GigaStudio, SoundFont, KORG, AKAI, DLS files
 media-libs/liblscp 9999: C++ library for the Linux Sampler control protocol
+media-libs/zita-resampler 1.6.0: C++ library for real-time resampling of audio signals
 media-sound/gigedit 9999: GigaSampler instrument file editor
+media-sound/guitarix2 9999: A simple Linux Guitar Amplifier for jack with one input and two outputs
 media-sound/linuxsampler 9999: LinuxSampler is a software audio sampler engine with professional grade features
 media-sound/qsampler 9999: A graphical frontend to the LinuxSampler engine
 media-video/vobsub2srt 9999: Converts image subtitles created by VobSub to SRT subtitles using OCR engine
