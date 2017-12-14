@@ -7,7 +7,7 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans IDE Branding"
 HOMEPAGE="https://netbeans.org/"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-11-10_00-02-15/zip/netbeans-trunk-nightly-201711100002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-12-14_00-02-15/zip/netbeans-trunk-nightly-201712140002-src.zip"
 SRC_URI="${SOURCE_URL}
 	https://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r21-build.xml.patch.bz2
 	https://dev.gentoo.org/~fordfrog/distfiles/netbeans-7.0.png"
