@@ -28,5 +28,6 @@ media-sound/gigedit 9999: GigaSampler instrument file editor
 media-sound/guitarix2 9999: A simple Linux Guitar Amplifier for jack with one input and two outputs
 media-sound/linuxsampler 9999: LinuxSampler is a software audio sampler engine with professional grade features
 media-sound/qsampler 9999: A graphical frontend to the LinuxSampler engine
+media-sound/zynaddsubfx 9999: ZynAddSubFX is an opensource software synthesizer.
 media-video/vobsub2srt 9999: Converts image subtitles created by VobSub to SRT subtitles using OCR engine
 sci-libs/libmed 3.2.1: A library to store and exchange meshed data or computation results

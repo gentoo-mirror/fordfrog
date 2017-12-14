@@ -10,3 +10,6 @@ media-sound/linuxsampler:lv2 - Add support for Ladspa V2
 media-sound/linuxsampler:sf2 - Add support for SoundFont 2 sound bank files
 media-sound/qsampler:gig - Enables GigaSampler instrument file support
 media-sound/qsampler:xunique - Enables X11 unique/single instance
+media-sound/zynaddsubfx:dssi - Adds support for DSSI
+media-sound/zynaddsubfx:jackmidi - Adds support for JACK MIDI
+media-sound/zynaddsubfx:ntk - Build x11-libs/ntk GUI>
