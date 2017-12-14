@@ -1,0 +1,12 @@
+--- zynaddsubfx-9999/CMakeLists.txt.orig	2017-08-19 15:39:42.538545388 +0200
++++ zynaddsubfx-9999/CMakeLists.txt	2017-08-19 15:42:24.546539477 +0200
+@@ -36,9 +36,6 @@
+ add_subdirectory(src)
+ add_subdirectory(doc) # Doxygen only
+ 
+-install(FILES AUTHORS.txt COPYING HISTORY.txt README.adoc
+-	DESTINATION share/doc/zynaddsubfx
+-	)
+ install(FILES zynaddsubfx-jack.desktop zynaddsubfx-alsa.desktop zynaddsubfx-oss.desktop
+     DESTINATION share/applications)
+ install(FILES zynaddsubfx.svg
