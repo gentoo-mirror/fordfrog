@@ -90,8 +90,8 @@ COMMON_DEPEND="
 	freetype? ( media-libs/freetype )
 	qt5? (
 		dev-libs/libspnav
-		dev-python/pyside[${PYTHON_USEDEP}]
-		dev-python/pyside-tools[${PYTHON_USEDEP}]
+		dev-python/pyside:2[${PYTHON_USEDEP}]
+		dev-python/pyside-tools:2[${PYTHON_USEDEP}]
 		dev-qt/qtconcurrent:5
 		dev-qt/qtcore:5
 		dev-qt/qtnetwork:5
