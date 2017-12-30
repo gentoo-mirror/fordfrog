@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{4,5,6} )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 
 inherit cmake-utils eutils xdg-utils gnome2-utils fortran-2 python-single-r1
 
@@ -73,8 +73,6 @@ COMMON_DEPEND="
 	dev-java/xerces
 	dev-libs/boost:=[python,${PYTHON_USEDEP}]
 	dev-libs/xerces-c[icu]
-	dev-python/pyside:2[${PYTHON_USEDEP}]
-	dev-python/shiboken:2[${PYTHON_USEDEP}]
 	sci-libs/orocos_kdl
 	sci-libs/opencascade[vtk(+)]
 	sys-libs/zlib
@@ -91,7 +89,7 @@ COMMON_DEPEND="
 	qt5? (
 		dev-libs/libspnav
 		dev-python/pyside:2[${PYTHON_USEDEP}]
-		dev-python/pyside-tools:2[${PYTHON_USEDEP}]
+		dev-python/shiboken:2[${PYTHON_USEDEP}]
 		dev-qt/qtconcurrent:5
 		dev-qt/qtcore:5
 		dev-qt/qtnetwork:5
@@ -102,10 +100,15 @@ COMMON_DEPEND="
 		dev-qt/qtwebkit:5
 		media-libs/coin
 	)
-	!qt5? ( dev-python/shiboken[${PYTHON_USEDEP}] )
-	swig? ( dev-lang/swig:= )"
+	!qt5? (
+		dev-python/pyside:0[${PYTHON_USEDEP}]
+		dev-python/shiboken:0[${PYTHON_USEDEP}]
+	)"
 RDEPEND="${COMMON_DEPEND}"
-DEPEND="${COMMON_DEPEND}"
+DEPEND="${COMMON_DEPEND}
+	qt5? ( dev-python/pyside-tools:2[${PYTHON_USEDEP}] )
+	!qt5? ( dev-python/pyside-tools:0[${PYTHON_USEDEP}] )
+	swig? ( dev-lang/swig:= )"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -116,10 +119,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.14.3702-install-paths.patch
 	"${FILESDIR}"/${P}-disable-shiboken2-missing-header-files.patch
 )
-
-# https://bugs.gentoo.org/show_bug.cgi?id=352435
-# https://www.gentoo.org/foundation/en/minutes/2011/20110220_trustees.meeting_log.txt
-RESTRICT="mirror"
 
 DOCS=( README.md ChangeLog.txt )
 
