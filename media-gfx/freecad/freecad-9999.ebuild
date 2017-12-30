@@ -3,7 +3,8 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+# As of 2017-12-30 only python3_5 works (that is FreeCAD does not crash on startup)
+PYTHON_COMPAT=( python3_5 )
 
 inherit cmake-utils eutils xdg-utils gnome2-utils fortran-2 python-single-r1
 
