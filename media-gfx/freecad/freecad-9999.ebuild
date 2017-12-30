@@ -109,8 +109,12 @@ DEPEND="${COMMON_DEPEND}"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
+# freecad-9999-disable-shiboken2-missing-header-files.patch: it is a temporary workaround
+# till the issue is solved by upstream.
+# see https://forum.freecadweb.org/viewtopic.php?f=4&t=25308&p=203127
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.14.3702-install-paths.patch
+	"${FILESDIR}"/${P}-disable-shiboken2-missing-header-files.patch
 )
 
 # https://bugs.gentoo.org/show_bug.cgi?id=352435
