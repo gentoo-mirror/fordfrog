@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure install prepare unpack
+DEPEND=dev-cpp/eigen:3 dev-cpp/muParser dev-qt/qtcore:5 dev-qt/qtopengl:5 dev-qt/qtscript:5 dev-qt/qtxmlpatterns:5 >=media-gfx/jhead-3.00-r2 media-libs/glew:0 media-libs/qhull =media-libs/lib3ds-1* media-libs/openctm sci-libs/levmar sci-libs/mpir >=dev-vcs/git-1.8.2.1
+DESCRIPTION=the open source system for processing and editing 3D triangular meshes
+EAPI=6
+HOMEPAGE=http://www.meshlab.net
+IUSE=-minimal
+LICENSE=GPL-2
+RDEPEND=dev-cpp/eigen:3 dev-cpp/muParser dev-qt/qtcore:5 dev-qt/qtopengl:5 dev-qt/qtscript:5 dev-qt/qtxmlpatterns:5 >=media-gfx/jhead-3.00-r2 media-libs/glew:0 media-libs/qhull =media-libs/lib3ds-1* media-libs/openctm sci-libs/levmar sci-libs/mpir
+SLOT=0
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	git-r3	fec09a83ae965b041b47f5ff7c8ba29a	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	185a06792159ca143528e7010368e8af
+_md5_=c1216bb17f472f48c2e1c6dcf0a19a8b
