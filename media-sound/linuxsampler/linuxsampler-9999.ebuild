@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -59,10 +59,9 @@ src_compile() {
 src_install() {
 	default
 
-        # For liblinuxsampler.so to be found at runtime
+	# For liblinuxsampler.so to be found at runtime
 	printf "LDPATH=\"${EPREFIX}/usr/$(get_libdir)/linuxsampler/\"" > 99${PN}
-        doenvd "99${PN}"
-
+	doenvd "99${PN}"
 
 	! use static-libs && prune_libtool_files --modules
 }
