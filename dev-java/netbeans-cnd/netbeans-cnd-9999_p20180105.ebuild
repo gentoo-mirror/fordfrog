@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -7,7 +7,7 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans CND Cluster"
 HOMEPAGE="https://netbeans.org/projects/cnd"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-12-04_00-02-15/zip/netbeans-trunk-nightly-201712040002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2018-01-05_00-02-15/zip/netbeans-trunk-nightly-201801050002-src.zip"
 SRC_URI="${SOURCE_URL}
 	https://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r21-build.xml.patch.bz2
 	https://hg.netbeans.org/binaries/5CAB59D859CAA6598E28131D30DD2E89806DB57F-antlr-3.4.jar

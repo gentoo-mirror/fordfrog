@@ -1,42 +1,38 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 inherit eutils java-pkg-2 java-ant-2
 
-DESCRIPTION="Netbeans JavaFX Cluster"
-HOMEPAGE="https://netbeans.org/projects/javafx"
+DESCRIPTION="Netbeans Harness"
+HOMEPAGE="https://netbeans.org/features/platform/"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-12-04_00-02-15/zip/netbeans-trunk-nightly-201712040002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2018-01-05_00-02-15/zip/netbeans-trunk-nightly-201801050002-src.zip"
 SRC_URI="${SOURCE_URL}
 	https://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r21-build.xml.patch.bz2
 	https://hg.netbeans.org/binaries/A806D99716C5E9441BFD8B401176FDDEFC673022-bindex-2.2.jar
 	https://hg.netbeans.org/binaries/D325D3913CBC0F9A8D73A466FABB98EDEEC014AB-jemmy-2.3.1.1.jar
 	https://hg.netbeans.org/binaries/D06C8980C9025183C044202419EA29E69FBD4B99-jemmy-2.3.1.1-doc.zip
 	https://hg.netbeans.org/binaries/49197106637CCA8C337AF16CC01BB5D9DEC7E179-jemmy-2.3.1.1-src.zip
-	https://hg.netbeans.org/binaries/20D826CC819A5A969CF3F7204E2E26CB6263EC43-jnlp-servlet.jar
-	https://hg.netbeans.org/binaries/C6E5101D6A096D90AD8CF9E0F21C30F1D6DA74D4-nb-javac-api.jar"
+	https://hg.netbeans.org/binaries/20D826CC819A5A969CF3F7204E2E26CB6263EC43-jnlp-servlet.jar"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 S="${WORKDIR}"
 
 CDEPEND="virtual/jdk:1.8
-	~dev-java/netbeans-extide-${PV}
-	~dev-java/netbeans-ide-${PV}
-	~dev-java/netbeans-java-${PV}
-	~dev-java/netbeans-platform-${PV}"
+	~dev-java/netbeans-platform-${PV}
+	dev-java/javahelp:0"
 DEPEND="${CDEPEND}
 	app-arch/unzip
-	dev-java/javahelp:0
-	dev-java/junit:4"
+	>=dev-java/junit-4.4:4"
 RDEPEND="${CDEPEND}"
 
 INSTALL_DIR="/usr/share/${PN}-${SLOT}"
 
 EANT_BUILD_XML="nbbuild/build.xml"
 EANT_BUILD_TARGET="rebuild-cluster"
-EANT_EXTRA_ARGS="-Drebuild.cluster.name=nb.cluster.javafx -Dext.binaries.downloaded=true -Dpermit.jdk8.builds=true"
+EANT_EXTRA_ARGS="-Drebuild.cluster.name=nb.cluster.harness -Dext.binaries.downloaded=true -Dpermit.jdk8.builds=true"
 EANT_FILTER_COMPILER="ecj-3.3 ecj-3.4 ecj-3.5 ecj-3.6 ecj-3.7"
 JAVA_PKG_BSFIX="off"
 
@@ -54,7 +50,6 @@ src_unpack() {
 	ln -s "${DISTDIR}"/D325D3913CBC0F9A8D73A466FABB98EDEEC014AB-jemmy-2.3.1.1.jar jemmy/external/jemmy-2.3.1.1.jar || die
 	ln -s "${DISTDIR}"/D06C8980C9025183C044202419EA29E69FBD4B99-jemmy-2.3.1.1-doc.zip jemmy/external/jemmy-2.3.1.1-doc.zip || die
 	ln -s "${DISTDIR}"/49197106637CCA8C337AF16CC01BB5D9DEC7E179-jemmy-2.3.1.1-src.zip jemmy/external/jemmy-2.3.1.1-src.zip || die
-	ln -s "${DISTDIR}"/C6E5101D6A096D90AD8CF9E0F21C30F1D6DA74D4-nb-javac-api.jar libs.javacapi/external/nb-javac-api.jar || die
 	popd >/dev/null || die
 }
 
@@ -65,25 +60,13 @@ src_prepare() {
 	epatch netbeans-9999-r21-build.xml.patch
 
 	einfo "Symlinking external libraries..."
-	java-pkg_jar-from --build-only --into apisupport.harness/external javahelp jsearch.jar jsearch-2.0_05.jar
-	java-pkg_jar-from --build-only --into javahelp/external javahelp jhall.jar jhall-2.0_05.jar
+	java-pkg_jar-from --into javahelp/external javahelp jhall.jar jhall-2.0_05.jar
+	java-pkg_jar-from --into apisupport.harness/external javahelp jsearch.jar jsearch-2.0_05.jar
 	java-pkg_jar-from --build-only --into libs.junit4/external junit-4 junit.jar junit-4.12.jar
 
 	einfo "Linking in other clusters..."
 	mkdir "${S}"/nbbuild/netbeans || die
 	pushd "${S}"/nbbuild/netbeans >/dev/null || die
-
-	ln -s /usr/share/netbeans-extide-${SLOT} extide || die
-	cat /usr/share/netbeans-extide-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
-	touch nb.cluster.extide.built
-
-	ln -s /usr/share/netbeans-ide-${SLOT} ide || die
-	cat /usr/share/netbeans-ide-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
-	touch nb.cluster.ide.built
-
-	ln -s /usr/share/netbeans-java-${SLOT} java || die
-	cat /usr/share/netbeans-java-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
-	touch nb.cluster.java.built
 
 	ln -s /usr/share/netbeans-platform-${SLOT} platform || die
 	cat /usr/share/netbeans-platform-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
@@ -96,15 +79,22 @@ src_prepare() {
 }
 
 src_install() {
-	pushd nbbuild/netbeans/javafx >/dev/null || die
+	pushd nbbuild/netbeans/harness >/dev/null || die
 
 	insinto ${INSTALL_DIR}
 
-	grep -E "/javafx$" ../moduleCluster.properties > "${D}"/${INSTALL_DIR}/moduleCluster.properties || die
+	grep -E "/harness$" ../moduleCluster.properties > "${D}"/${INSTALL_DIR}/moduleCluster.properties || die
 
 	doins -r *
+	fperms 755 launchers/app.sh
+	find "${D}" -name "*.exe" -type f -delete
 
 	popd >/dev/null || die
 
-	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/javafx
+	local instdir="${D}"/${INSTALL_DIR}/antlib
+	pushd "${instdir}" >/dev/null || die
+	rm jsearch-2.0_05.jar && java-pkg_jar-from --into "${instdir}" javahelp jsearch.jar jsearch-2.0_05.jar
+	popd >/dev/null || die
+
+	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/harness
 }
