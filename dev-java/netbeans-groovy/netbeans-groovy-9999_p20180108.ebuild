@@ -1,22 +1,20 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 inherit eutils java-pkg-2 java-ant-2
 
-DESCRIPTION="Netbeans Profiler Cluster"
-HOMEPAGE="https://netbeans.org/projects/profiler"
+DESCRIPTION="Netbeans Groovy Cluster"
+HOMEPAGE="https://netbeans.org/projects/groovy"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-12-06_00-02-15/zip/netbeans-trunk-nightly-201712060002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2018-01-08_00-02-15/zip/netbeans-trunk-nightly-201801080002-src.zip"
 SRC_URI="${SOURCE_URL}
-	https://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r21-build.xml.patch.bz2"
+	https://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r21-build.xml.patch.bz2
+	https://hg.netbeans.org/binaries/01730F61E9C9E59FD1B814371265334D7BE0B8D2-groovy-all-2.4.5.jar"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 S="${WORKDIR}"
-
-# Binary files needed for remote profiling
-QA_PREBUILT="usr/share/netbeans-profiler-${SLOT}/lib/deployed/*"
 
 CDEPEND="virtual/jdk:1.8
 	~dev-java/netbeans-extide-${PV}
@@ -32,7 +30,7 @@ INSTALL_DIR="/usr/share/${PN}-${SLOT}"
 
 EANT_BUILD_XML="nbbuild/build.xml"
 EANT_BUILD_TARGET="rebuild-cluster"
-EANT_EXTRA_ARGS="-Drebuild.cluster.name=nb.cluster.profiler -Dext.binaries.downloaded=true -Dpermit.jdk8.builds=true"
+EANT_EXTRA_ARGS="-Drebuild.cluster.name=nb.cluster.groovy -Dext.binaries.downloaded=true -Dpermit.jdk8.builds=true"
 EANT_FILTER_COMPILER="ecj-3.3 ecj-3.4 ecj-3.5 ecj-3.6 ecj-3.7"
 JAVA_PKG_BSFIX="off"
 
@@ -43,6 +41,10 @@ src_unpack() {
 	find -name "*.jar" -type f -delete
 
 	unpack netbeans-9999-r21-build.xml.patch.bz2
+
+	pushd "${S}" >/dev/null || die
+	ln -s "${DISTDIR}"/01730F61E9C9E59FD1B814371265334D7BE0B8D2-groovy-all-2.4.5.jar libs.groovy/external/groovy-all-2.4.5.jar || die
+	popd >/dev/null || die
 }
 
 src_prepare() {
@@ -81,27 +83,15 @@ src_prepare() {
 }
 
 src_install() {
-	pushd nbbuild/netbeans/profiler >/dev/null || die
+	pushd nbbuild/netbeans/groovy >/dev/null || die
 
 	insinto ${INSTALL_DIR}
 
-	grep -E "/profiler$" ../moduleCluster.properties > "${D}"/${INSTALL_DIR}/moduleCluster.properties || die
+	grep -E "/groovy$" ../moduleCluster.properties > "${D}"/${INSTALL_DIR}/moduleCluster.properties || die
 
 	doins -r *
 
-	for file in lib/deployed/cvm/linux/*.so ; do
-		fperms 755 ${file}
-	done
-
-	for file in lib/deployed/jdk*/linux*/*.so ; do
-		fperms 755 ${file}
-	done
-
-	for file in remote-pack-defs/*.sh ; do
-		fperms 755 ${file}
-	done
-
 	popd >/dev/null || die
 
-	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/profiler
+	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/groovy
 }
