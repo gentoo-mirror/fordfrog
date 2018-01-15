@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -7,7 +7,7 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Netbeans IDE Cluster"
 HOMEPAGE="https://netbeans.org/projects/ide"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-12-13_00-02-15/zip/netbeans-trunk-nightly-201712130002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2018-01-15_00-02-15/zip/netbeans-trunk-nightly-201801150002-src.zip"
 SRC_URI="${SOURCE_URL}
 	https://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r21-build.xml.patch.bz2
 	https://hg.netbeans.org/binaries/4E74C6BE42FE89871A878C7C4D6158F21A6D8010-antlr-runtime-3.4.jar
@@ -42,6 +42,7 @@ SRC_URI="${SOURCE_URL}
 	https://hg.netbeans.org/binaries/F759114E5A9F9AE907EADB59DBF65189AA399B45-jsch.agentproxy.usocket-jna-0.0.7.jar
 	https://hg.netbeans.org/binaries/F406B7784A0DA5C4670B038BF55A4DCD4AF30AEB-jzlib-1.0.7.jar
 	https://hg.netbeans.org/binaries/2E07375E5CA3A452472F0E87FB33F243F7A5C08C-libpam4j-1.1.jar
+	https://hg.netbeans.org/binaries/90FF0731FAFB05C01FEE4F2247140D56E9C30A3B-lucene-core-3.5.0.jar
 	https://hg.netbeans.org/binaries/AA2671239EBB762FEEE8B908E9F35473A72AFE1B-org.eclipse.core.contenttype_3.4.100.v20110423-0524_nosignature.jar
 	https://hg.netbeans.org/binaries/1605B38BB28EAE32C11EAB8F9E238A497754A5B8-org.eclipse.core.jobs-3.5.101_nosignature.jar
 	https://hg.netbeans.org/binaries/20800206EB8B490F3CE5BB8AC8A7C3B9E8004A30-org.eclipse.core.net_1.2.100.I20110511-0800_nosignature.jar
@@ -102,7 +103,6 @@ CDEPEND="virtual/jdk:1.8
 	dev-java/jsr173:0
 	dev-java/jvyamlb:0
 	dev-java/log4j:0
-	dev-java/lucene:3.5
 	dev-java/rhino:1.6
 	dev-java/saxon:9
 	dev-java/smack:2.2
@@ -180,6 +180,7 @@ src_unpack() {
 	ln -s "${DISTDIR}"/F759114E5A9F9AE907EADB59DBF65189AA399B45-jsch.agentproxy.usocket-jna-0.0.7.jar libs.jsch.agentproxy/external/jsch.agentproxy.usocket-jna-0.0.7.jar || die
 	ln -s "${DISTDIR}"/F406B7784A0DA5C4670B038BF55A4DCD4AF30AEB-jzlib-1.0.7.jar c.jcraft.jzlib/external/jzlib-1.0.7.jar || die
 	ln -s "${DISTDIR}"/2E07375E5CA3A452472F0E87FB33F243F7A5C08C-libpam4j-1.1.jar extexecution.process/external/libpam4j-1.1.jar || die
+	ln -s "${DISTDIR}"/90FF0731FAFB05C01FEE4F2247140D56E9C30A3B-lucene-core-3.5.0.jar libs.lucene/external/lucene-core-3.5.0.jar || die
 	ln -s "${DISTDIR}"/AA2671239EBB762FEEE8B908E9F35473A72AFE1B-org.eclipse.core.contenttype_3.4.100.v20110423-0524_nosignature.jar o.eclipse.core.contenttype/external/org.eclipse.core.contenttype_3.4.100.v20110423-0524_nosignature.jar || die
 	ln -s "${DISTDIR}"/1605B38BB28EAE32C11EAB8F9E238A497754A5B8-org.eclipse.core.jobs-3.5.101_nosignature.jar o.eclipse.core.jobs/external/org.eclipse.core.jobs-3.5.101_nosignature.jar || die
 	ln -s "${DISTDIR}"/20800206EB8B490F3CE5BB8AC8A7C3B9E8004A30-org.eclipse.core.net_1.2.100.I20110511-0800_nosignature.jar o.eclipse.core.net/external/org.eclipse.core.net_1.2.100.I20110511-0800_nosignature.jar || die
@@ -246,7 +247,6 @@ src_prepare() {
 	java-pkg_jar-from --build-only --into libs.jna/external jna-4 jna.jar jna-4.4.0.jar
 	java-pkg_jar-from --into libs.json_simple/external json-simple json-simple.jar json-simple-1.1.1.jar
 	java-pkg_jar-from --into libs.jvyamlb/external jvyamlb jvyamlb.jar jvyamlb-0.2.7.jar
-	java-pkg_jar-from --into libs.lucene/external lucene-3.5 lucene-core.jar lucene-core-3.5.0.jar
 	java-pkg_jar-from --into libs.smack/external smack-2.2 smack.jar smack.jar
 	java-pkg_jar-from --into libs.smack/external smack-2.2 smackx.jar smackx.jar
 	# java-pkg_jar-from --into libs.svnClientAdapter.javahl/external subversion svn-javahl.jar svnjavahl-1.8.4.jar
@@ -335,7 +335,6 @@ src_install() {
 	rm json-simple-1.1.1.jar && java-pkg_jar-from --into "${instdir}" json-simple json-simple.jar json-simple-1.1.1.jar
 	rm jvyamlb-0.2.7.jar && java-pkg_jar-from --into "${instdir}" jvyamlb jvyamlb.jar jvyamlb-0.2.7.jar
 	rm log4j-1.2.15.jar && java-pkg_jar-from --into "${instdir}" log4j log4j.jar log4j-1.2.15.jar
-	rm lucene-core-3.5.0.jar && java-pkg_jar-from --into "${instdir}" lucene-3.5 lucene-core.jar lucene-core-3.5.0.jar
 	rm mysql-connector-java-5.1.23-bin.jar && java-pkg_jar-from --into "${instdir}" jdbc-mysql jdbc-mysql.jar mysql-connector-java-5.1.23-bin.jar
 	rm postgresql-9.4.1209.jar && java-pkg_jar-from --into "${instdir}" jdbc-postgresql jdbc-postgresql.jar postgresql-9.4.1209.jar
 	rm saxon9B.jar && java-pkg_jar-from --into "${instdir}" saxon-9 saxon.jar saxon9B.jar

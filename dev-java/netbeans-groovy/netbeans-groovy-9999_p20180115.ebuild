@@ -1,28 +1,26 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 inherit eutils java-pkg-2 java-ant-2
 
-DESCRIPTION="Netbeans Mobility Cluster"
-HOMEPAGE="https://netbeans.org/features/platform/"
+DESCRIPTION="Netbeans Groovy Cluster"
+HOMEPAGE="https://netbeans.org/projects/groovy"
 SLOT="9999"
-SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2017-12-13_00-02-15/zip/netbeans-trunk-nightly-201712130002-src.zip"
+SOURCE_URL="http://bits.netbeans.org/download/trunk/nightly/2018-01-15_00-02-15/zip/netbeans-trunk-nightly-201801150002-src.zip"
 SRC_URI="${SOURCE_URL}
-	https://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r21-build.xml.patch.bz2"
+	https://dev.gentoo.org/~fordfrog/distfiles/netbeans-9999-r21-build.xml.patch.bz2
+	https://hg.netbeans.org/binaries/01730F61E9C9E59FD1B814371265334D7BE0B8D2-groovy-all-2.4.5.jar"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 S="${WORKDIR}"
 
 CDEPEND="virtual/jdk:1.8
-	~dev-java/netbeans-apisupport-${PV}
-	~dev-java/netbeans-enterprise-${PV}
 	~dev-java/netbeans-extide-${PV}
 	~dev-java/netbeans-ide-${PV}
 	~dev-java/netbeans-java-${PV}
-	~dev-java/netbeans-platform-${PV}
-	~dev-java/netbeans-websvccommon-${PV}"
+	~dev-java/netbeans-platform-${PV}"
 DEPEND="${CDEPEND}
 	app-arch/unzip
 	dev-java/javahelp:0"
@@ -32,7 +30,7 @@ INSTALL_DIR="/usr/share/${PN}-${SLOT}"
 
 EANT_BUILD_XML="nbbuild/build.xml"
 EANT_BUILD_TARGET="rebuild-cluster"
-EANT_EXTRA_ARGS="-Drebuild.cluster.name=nb.cluster.mobility -Dext.binaries.downloaded=true -Dpermit.jdk8.builds=true"
+EANT_EXTRA_ARGS="-Drebuild.cluster.name=nb.cluster.groovy -Dext.binaries.downloaded=true -Dpermit.jdk8.builds=true"
 EANT_FILTER_COMPILER="ecj-3.3 ecj-3.4 ecj-3.5 ecj-3.6 ecj-3.7"
 JAVA_PKG_BSFIX="off"
 
@@ -40,13 +38,13 @@ src_unpack() {
 	unpack $(basename ${SOURCE_URL})
 
 	einfo "Deleting bundled jars..."
-	find -name "*.jar" -type f | grep -vE "mobility.databindingme/lib/netbeans_databindingme.*\.jar" \
-		| grep -v "vmd.components.midp/netbeans_midp_components_basic/dist/netbeans_midp_components_basic.jar" \
-		| grep -v "vmd.components.midp.pda/netbeans_midp_components_pda/dist/netbeans_midp_components_pda.jar" \
-		| grep -v "vmd.components.midp.wma/netbeans_midp_components_wma/dist/netbeans_midp_components_wma.jar" \
-		| grep -v "vmd.components.svg/nb_svg_midp_components/dist/nb_svg_midp_components.jar" | xargs rm
+	find -name "*.jar" -type f -delete
 
 	unpack netbeans-9999-r21-build.xml.patch.bz2
+
+	pushd "${S}" >/dev/null || die
+	ln -s "${DISTDIR}"/01730F61E9C9E59FD1B814371265334D7BE0B8D2-groovy-all-2.4.5.jar libs.groovy/external/groovy-all-2.4.5.jar || die
+	popd >/dev/null || die
 }
 
 src_prepare() {
@@ -61,14 +59,6 @@ src_prepare() {
 	einfo "Linking in other clusters..."
 	mkdir "${S}"/nbbuild/netbeans || die
 	pushd "${S}"/nbbuild/netbeans >/dev/null || die
-
-	ln -s /usr/share/netbeans-apisupport-${SLOT} apisupport || die
-	cat /usr/share/netbeans-apisupport-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
-	touch nb.cluster.apisupport.built
-
-	ln -s /usr/share/netbeans-enterprise-${SLOT} enterprise || die
-	cat /usr/share/netbeans-enterprise-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
-	touch nb.cluster.enterprise.built
 
 	ln -s /usr/share/netbeans-extide-${SLOT} extide || die
 	cat /usr/share/netbeans-extide-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
@@ -86,10 +76,6 @@ src_prepare() {
 	cat /usr/share/netbeans-platform-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
 	touch nb.cluster.platform.built
 
-	ln -s /usr/share/netbeans-websvccommon-${SLOT} websvccommon || die
-	cat /usr/share/netbeans-websvccommon-${SLOT}/moduleCluster.properties >> moduleCluster.properties || die
-	touch nb.cluster.websvccommon.built
-
 	popd >/dev/null || die
 
 	java-pkg-2_src_prepare
@@ -97,16 +83,15 @@ src_prepare() {
 }
 
 src_install() {
-	pushd nbbuild/netbeans/mobility >/dev/null || die
+	pushd nbbuild/netbeans/groovy >/dev/null || die
 
 	insinto ${INSTALL_DIR}
 
-	grep -E "/mobility$" ../moduleCluster.properties > "${D}"/${INSTALL_DIR}/moduleCluster.properties || die
+	grep -E "/groovy$" ../moduleCluster.properties > "${D}"/${INSTALL_DIR}/moduleCluster.properties || die
 
 	doins -r *
-	rm -rf "${D}"/${INSTALL_DIR}/modules/lib || die
 
 	popd >/dev/null || die
 
-	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/mobility
+	dosym ${INSTALL_DIR} /usr/share/netbeans-nb-${SLOT}/groovy
 }
