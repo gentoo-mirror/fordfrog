@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=>media-libs/libgig-4 media-libs/libsndfile alsa? ( media-libs/alsa-lib ) dbus? ( sys-apps/dbus ) dssi? ( media-libs/dssi ) flac? ( media-libs/flac ) jack? ( virtual/jack ) ladspa? ( media-libs/ladspa-sdk ) lv2? ( media-libs/lv2 ) sqlite? ( >=dev-db/sqlite-3.3 ) vorbis? ( media-libs/libogg media-libs/libvorbis )
 REQUIRED_USE=|| ( alsa jack )
 SLOT=0
-_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e7258392d5eda499c1cfa94db650b61	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	subversion	a5d5826a85609611f098c0553eb24cc1	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	subversion	a5d5826a85609611f098c0553eb24cc1	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=80dac09e26011782d3a2c5b4cd6d3047
