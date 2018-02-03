@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -41,7 +41,7 @@ src_unpack() {
 	git-r3_fetch ${GIT_REPO_MESHLAB} refs/heads/master
 	git-r3_checkout ${GIT_REPO_MESHLAB} "${WORKDIR}/${PN}"
 
-	git-r3_fetch ${GIT_REPO_VCGLIB} refs/heads/master
+	git-r3_fetch ${GIT_REPO_VCGLIB} refs/heads/devel
 	git-r3_checkout ${GIT_REPO_VCGLIB} "${WORKDIR}/vcglib"
 }
 
