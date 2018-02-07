@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -118,8 +118,8 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 # see https://forum.freecadweb.org/viewtopic.php?f=4&t=25308&p=203127
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.14.3702-install-paths.patch
-	"${FILESDIR}"/${P}-disable-shiboken2-missing-header-files.patch
 )
+#	"${FILESDIR}"/${P}-disable-shiboken2-missing-header-files.patch
 
 DOCS=( README.md ChangeLog.txt )
 
