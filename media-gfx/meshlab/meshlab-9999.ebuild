@@ -48,14 +48,13 @@ src_unpack() {
 src_prepare(){
 	default
 
-	rm -r "external" || die
-
 	rm -r "distrib/plugins/U3D_W32" || die
 	rm -r "distrib/plugins/U3D_OSX" || die
 }
 
 src_configure() {
-	use minimal || eqmake5 -r meshlab_$(use minimal && echo minimal || echo full).pro
+	eqmake5 -r external/external.pro
+	eqmake5 -r meshlab_$(use minimal && echo minimal || echo full).pro
 }
 
 src_install() {
