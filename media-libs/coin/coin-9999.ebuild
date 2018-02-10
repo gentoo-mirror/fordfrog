@@ -14,6 +14,8 @@ COIN_REPO_URI="https://bitbucket.org/Coin3D/coin"
 GENERALMSVCGENERATION_REPO_URI="https://bitbucket.org/Coin3D/generalmsvcgeneration"
 BOOSTHEADERLIBSFULL_REPO_URI="https://bitbucket.org/Coin3D/boost-header-libs-full"
 
+EHG_PROJECT="Coin3D"
+
 LICENSE="|| ( GPL-2 PEL )"
 KEYWORDS=""
 SLOT="0"
