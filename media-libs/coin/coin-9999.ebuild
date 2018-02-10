@@ -72,16 +72,16 @@ src_unpack() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DHAVE_3DS_IMPORT_CAPABILITIES=$(usex 3ds-import YES NO)
-		-DHAVE_MAN=$(usex doc YES NO)
-		-DHAVE_DRAGGERS=$(usex dragger YES NO)
-		-DCOIN_HAVE_JAVASCRIPT=$(usex javascript YES NO)
-		-DHAVE_MANIPULATORS=$(usex manipulator YES NO)
-		-DHAVE_NODEKITS=$(usex nodekit YES NO)
-		-DHAVE_SOUND=$(usex openal YES NO)
-		-DSIMAGE_RUNTIME_LINKING=$(usex simage YES NO)
-		-DCOIN_THREADSAFE=$(usex threads YES NO)
-		-DHAVE_VRML97=$(usex vrml97 YES NO)
+		-DHAVE_3DS_IMPORT_CAPABILITIES=$(usex 3ds-import ON OFF)
+		-DHAVE_MAN=$(usex doc ON OFF)
+		-DHAVE_DRAGGERS=$(usex dragger ON OFF)
+		-DCOIN_HAVE_JAVASCRIPT=$(usex javascript ON OFF)
+		-DHAVE_MANIPULATORS=$(usex manipulator ON OFF)
+		-DHAVE_NODEKITS=$(usex OFFdekit ON OFF)
+		-DHAVE_SOUND=$(usex openal ON OFF)
+		-DSIMAGE_RUNTIME_LINKING=$(usex simage ON OFF)
+		-DCOIN_THREADSAFE=$(usex threads ON OFF)
+		-DHAVE_VRML97=$(usex vrml97 ON OFF)
 	)
 
 	cmake-utils_src_configure
