@@ -105,7 +105,9 @@ COMMON_DEPEND="
 		dev-python/pyside:0[${PYTHON_USEDEP}]
 		dev-python/shiboken:0[${PYTHON_USEDEP}]
 	)"
-RDEPEND="${COMMON_DEPEND}"
+RDEPEND="${COMMON_DEPEND}
+	dev-python/numpy[${PYTHON_USEDEP}]
+	dev-python/pivy[${PYTHON_USEDEP}]"
 DEPEND="${COMMON_DEPEND}
 	qt5? ( dev-python/pyside-tools:2[${PYTHON_USEDEP}] )
 	!qt5? ( dev-python/pyside-tools:0[${PYTHON_USEDEP}] )
