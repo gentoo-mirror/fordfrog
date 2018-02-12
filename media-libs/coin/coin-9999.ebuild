@@ -79,7 +79,7 @@ src_configure() {
 		-DHAVE_DRAGGERS=$(usex dragger ON OFF)
 		-DCOIN_HAVE_JAVASCRIPT=$(usex javascript ON OFF)
 		-DHAVE_MANIPULATORS=$(usex manipulator ON OFF)
-		-DHAVE_NODEKITS=$(usex OFFdekit ON OFF)
+		-DHAVE_NODEKITS=$(usex nodekit ON OFF)
 		-DHAVE_SOUND=$(usex openal ON OFF)
 		-DSIMAGE_RUNTIME_LINKING=$(usex simage ON OFF)
 		-DCOIN_THREADSAFE=$(usex threads ON OFF)
