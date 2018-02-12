@@ -22,7 +22,7 @@
 		<flag name="freecad_modules_inspection">Build the FreeCAD inspection module</flag>
 		<flag name="freecad_modules_jtreader">Build the FreeCAD jt reader module</flag>
 		<flag name="freecad_modules_material">Build the FreeCAD material module</flag>
-		<flag name="freecad_modules_mesh">"Build the FreeCAD mesh module</flag>
+		<flag name="freecad_modules_mesh">Build the FreeCAD mesh module</flag>
 		<flag name="freecad_modules_mesh_part">Build the FreeCAD mesh part module</flag>
 		<flag name="freecad_modules_openscad">Build the FreeCAD openscad module</flag>
 		<flag name="freecad_modules_part">Build the FreeCAD part module</flag>
