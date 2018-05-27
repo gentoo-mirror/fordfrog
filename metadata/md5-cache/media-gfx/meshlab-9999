@@ -7,5 +7,5 @@ IUSE=-minimal
 LICENSE=GPL-2
 RDEPEND=dev-cpp/eigen:3 dev-cpp/muParser dev-qt/qtcore:5 dev-qt/qtopengl:5 dev-qt/qtscript:5 dev-qt/qtxmlpatterns:5 >=media-gfx/jhead-3.00-r2 media-libs/glew:0 media-libs/qhull =media-libs/lib3ds-1* media-libs/openctm sci-libs/levmar sci-libs/mpir
 SLOT=0
-_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	git-r3	af51ccfceeb403ab80f1bf9209d372c8	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	fa02994d0beba88681127d93da4411ec
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	git-r3	af51ccfceeb403ab80f1bf9209d372c8	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
 _md5_=2042f3f1c5f78f12af90193fa9a4887c
