@@ -41,7 +41,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	x11-proto/xextproto
+	x11-base/xorg-proto
 	doc? ( app-doc/doxygen )
 "
 S="${WORKDIR}/${MY_P}"
