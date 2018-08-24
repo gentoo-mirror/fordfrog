@@ -115,13 +115,10 @@ DEPEND="${COMMON_DEPEND}
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-# freecad-9999-disable-shiboken2-missing-header-files.patch: it is a temporary workaround
-# till the issue is solved by upstream.
-# see https://forum.freecadweb.org/viewtopic.php?f=4&t=25308&p=203127
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.14.3702-install-paths.patch
+	"${FILESDIR}"/${P}-install-paths.patch
+	"${FILESDIR}"/${P}-libboost-python-fix.patch
 )
-#	"${FILESDIR}"/${P}-disable-shiboken2-missing-header-files.patch
 
 DOCS=( README.md ChangeLog.txt )
 
