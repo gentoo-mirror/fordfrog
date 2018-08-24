@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,7 +22,7 @@ IUSE="doc fortran python static-libs test"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RDEPEND="
-	sci-libs/hdf5[fortran=]
+	=sci-libs/hdf5-1.8*[fortran=]
 	sys-cluster/openmpi[fortran=]
 	python? ( ${PYTHON_DEPS} )
 "
