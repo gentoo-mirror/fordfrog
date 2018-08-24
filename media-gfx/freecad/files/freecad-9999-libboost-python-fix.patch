@@ -1,0 +1,26 @@
+Index: freecad-9999/src/Mod/MeshPart/App/CMakeLists.txt
+===================================================================
+--- freecad-9999.orig/src/Mod/MeshPart/App/CMakeLists.txt
++++ freecad-9999/src/Mod/MeshPart/App/CMakeLists.txt
+@@ -96,7 +96,7 @@ if (BUILD_FLAT_MESH)
+     else()
+         if(NOT FREECAD_LIBPACK_USE OR FREECAD_LIBPACK_CHECKFILE_CLBUNDLER)
+             # boost-python >= 1.67 on some platforms has suffix
+-            set(BOOST_PY_SUFFIX ${PYTHON_VERSION_MAJOR}${PYTHON_VERSION_MINOR})
++            set(BOOST_PY_SUFFIX -${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR})
+
+             find_package( Boost COMPONENTS python${BOOST_PY_SUFFIX} )
+             if (NOT Boost_PYTHON${BOOST_PY_SUFFIX}_FOUND)
+Index: freecad-9999/src/Mod/Path/libarea/CMakeLists.txt
+===================================================================
+--- freecad-9999.orig/src/Mod/Path/libarea/CMakeLists.txt
++++ freecad-9999/src/Mod/Path/libarea/CMakeLists.txt
+@@ -15,7 +15,7 @@ include_directories(${CMAKE_CURRENT_SOUR
+ if(NOT FREECAD_USE_PYBIND11)
+     if(NOT FREECAD_LIBPACK_USE OR FREECAD_LIBPACK_CHECKFILE_CLBUNDLER)
+         # boost-python >= 1.67 on some platforms has suffix
+-        set(BOOST_PY_SUFFIX ${PYTHON_VERSION_MAJOR}${PYTHON_VERSION_MINOR})
++        set(BOOST_PY_SUFFIX -${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR})
+
+         find_package( Boost COMPONENTS python${BOOST_PY_SUFFIX} )
+         if (NOT Boost_PYTHON${BOOST_PY_SUFFIX}_FOUND)
