@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -50,6 +50,10 @@ src_prepare(){
 
 	rm -r "distrib/plugins/U3D_W32" || die
 	rm -r "distrib/plugins/U3D_OSX" || die
+
+	# Fix bug 638796
+	cd "${WORKDIR}" || die
+	eapply "${FILESDIR}/${PN}-2016.12-remove-header.patch"
 }
 
 src_configure() {
