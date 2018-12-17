@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,7 +21,6 @@ REQUIRED_USE="|| ( alsa jack )"
 RDEPEND=">media-libs/libgig-4
 	media-libs/libsndfile
 	alsa? ( media-libs/alsa-lib )
-	dbus? ( sys-apps/dbus )
 	dssi? ( media-libs/dssi )
 	flac? ( media-libs/flac )
 	jack? ( virtual/jack )
