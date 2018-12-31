@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,7 @@ IUSE="oss alsa dssi fltk jack jackmidi lash +ntk portaudio"
 # upstream the following preference ntk -> fltk; we waant to choose the GUI:
 REQUIRED_USE="?? ( fltk ntk )"
 
-RDEPEND=">=dev-libs/mini-xml-2.2.1
+RDEPEND="
 	sci-libs/fftw:3.0
 	alsa? ( media-libs/alsa-lib )
 	dssi? ( media-libs/dssi )
@@ -34,8 +34,11 @@ DEPEND="!media-libs/zynaddsubfx-banks
 	!media-sound/zynaddsubfx-cvs
 	virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}/gnustd.diff"
-	"${FILESDIR}/${P}-docs.patch" )
+PATCHES=(
+	"${FILESDIR}/gnustd.diff"
+	"${FILESDIR}/${P}-docs.patch"
+	"${FILESDIR}/${P}-bashcomp.patch"
+)
 
 src_unpack() {
 	git-r3_src_unpack
