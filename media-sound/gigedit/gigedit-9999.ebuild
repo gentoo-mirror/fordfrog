@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,6 +23,7 @@ DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )"
 
 DOCS=( AUTHORS ChangeLog NEWS README )
+PATCHES=( "${FILESDIR}/${P}-gtkmm-3.24.patch")
 
 src_configure() {
 	emake -f Makefile.svn
