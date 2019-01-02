@@ -23,7 +23,6 @@ DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )"
 
 DOCS=( AUTHORS ChangeLog NEWS README )
-PATCHES=( "${FILESDIR}/${P}-gtkmm-3.24.patch")
 
 src_configure() {
 	emake -f Makefile.svn
