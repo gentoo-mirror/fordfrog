@@ -1,0 +1,12 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 76d0d06..8822b8f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -20,6 +20,7 @@ find_package(soqt CONFIG QUIET)
+ 
+ if (SoQt_INCLUDE_DIRS)
+     MESSAGE(STATUS "SOQT_FOUND: " true)
++    set(SoQt_INCLUDE_DIRS "/usr/include")
+ else()
+     MESSAGE(STATUS "SOQT_FOUND: " false)
+ endif()
