@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,6 +21,7 @@ IUSE="oss alsa dssi fltk jack jackmidi lash +ntk portaudio"
 REQUIRED_USE="?? ( fltk ntk )"
 
 RDEPEND="
+	dev-libs/mxml
 	sci-libs/fftw:3.0
 	alsa? ( media-libs/alsa-lib )
 	dssi? ( media-libs/dssi )
