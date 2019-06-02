@@ -1,23 +1,23 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index ff4d3fb49..b80d5085a 100644
+index a3f53c029..c97e05862 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -138,9 +138,15 @@ else(WIN32)
-     SET(CMAKE_INSTALL_PREFIX "/usr/lib${LIB_SUFFIX}/freecad" CACHE PATH "Installation root directory")
+@@ -140,9 +140,15 @@ else(WIN32)
+     set(CMAKE_INSTALL_PREFIX "/usr/lib${LIB_SUFFIX}/freecad" CACHE PATH "Installation root directory")
  endif(WIN32)
  
--SET(CMAKE_INSTALL_DATADIR data CACHE PATH "Output directory for data and resource files")
--SET(CMAKE_INSTALL_INCLUDEDIR include CACHE PATH "Output directory for header files")
--SET(CMAKE_INSTALL_DOCDIR doc CACHE PATH "Output directory for documentation and license files")
+-set(CMAKE_INSTALL_DATADIR data CACHE PATH "Output directory for data and resource files")
+-set(CMAKE_INSTALL_INCLUDEDIR include CACHE PATH "Output directory for header files")
+-set(CMAKE_INSTALL_DOCDIR doc CACHE PATH "Output directory for documentation and license files")
 +if(NOT CMAKE_INSTALL_DATADIR)
-+    SET(CMAKE_INSTALL_DATADIR data CACHE PATH "Output directory for data and resource files")
++    set(CMAKE_INSTALL_DATADIR data CACHE PATH "Output directory for data and resource files")
 +endif(NOT CMAKE_INSTALL_DATADIR)
 +if(NOT CMAKE_INSTALL_INCLUDEDIR)
-+    SET(CMAKE_INSTALL_INCLUDEDIR include CACHE PATH "Output directory for header files")
++    set(CMAKE_INSTALL_INCLUDEDIR include CACHE PATH "Output directory for header files")
 +endif(NOT CMAKE_INSTALL_INCLUDEDIR)
 +if(NOT CMAKE_INSTALL_DOCDIR)
-+    SET(CMAKE_INSTALL_DOCDIR doc CACHE PATH "Output directory for documentation and license files")
++    set(CMAKE_INSTALL_DOCDIR doc CACHE PATH "Output directory for documentation and license files")
 +endif(NOT CMAKE_INSTALL_DOCDIR)
  # Don't set it without manual adoption of LibDir variable in src/App/FreeCADInit.py
- SET(CMAKE_INSTALL_LIBDIR lib CACHE PATH "Output directory for libraries")
+ set(CMAKE_INSTALL_LIBDIR lib CACHE PATH "Output directory for libraries")
  
