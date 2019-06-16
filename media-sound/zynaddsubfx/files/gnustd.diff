@@ -3,7 +3,7 @@
 @@ -4,6 +4,7 @@
  set(VERSION_MAJOR "3")
  set(VERSION_MINOR "0")
- set(VERSION_REVISION "3")
+ set(VERSION_REVISION "5")
 +set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++11")
  
  #Set data directory, if any

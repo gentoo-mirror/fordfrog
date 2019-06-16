@@ -1,5 +1,5 @@
 diff --git a/cmake/BashCompletion.cmake b/cmake/BashCompletion.cmake
-index 769f7678..a0f56938 100644
+index 0eb16fff..383397c9 100644
 --- a/cmake/BashCompletion.cmake
 +++ b/cmake/BashCompletion.cmake
 @@ -73,7 +73,7 @@ ELSE()
@@ -8,6 +8,6 @@ index 769f7678..a0f56938 100644
  set -e\n\
 -BASHCOMP_PKG_PATH=\"${BASHCOMP_USER_PATH}\"\n\
 +BASHCOMP_PKG_PATH=\"/var/tmp/portage/media-sound/zynaddsubfx-9999/image${BASHCOMP_USER_PATH}\"\n\
- if [ -w \"${BASHCOMP_PKG_PATH}\" ]; then\n\
+ if [ -n \"${BASHCOMP_PKG_PATH}\" ]; then\n\
    BASHCOMP_PKG_PATH=\"${BASHCOMP_PKG_PATH}\"\n\
  fi\n\
