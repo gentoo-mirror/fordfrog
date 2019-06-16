@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ HOMEPAGE="https://bitbucket.org/Coin3D/soqt"
 
 SOQT_REPO_URI="https://bitbucket.org/Coin3D/soqt"
 GENERALMSVCGENERATION_REPO_URI="https://bitbucket.org/Coin3D/generalmsvcgeneration"
-BOOSTHEADERLIBSFULL_REPO_URI="https://bitbucket.org/Coin3D/boost-header-libs-full"
+CPACKD_REPO_URI="https://bitbucket.org/Coin3D/cpack.d"
 SOANYDATA_REPO_URI="https://bitbucket.org/Coin3D/soanydata"
 SOGUI_REPO_URI="https://bitbucket.org/Coin3D/sogui"
 
@@ -44,8 +44,8 @@ src_unpack() {
 	EHG_CHECKOUT_DIR="${WORKDIR}/generalmsvcgeneration"
 	mercurial_fetch
 
-	EHG_REPO_URI=${BOOSTHEADERLIBSFULL_REPO_URI}
-	EHG_CHECKOUT_DIR="${WORKDIR}/boost-header-libs-full"
+	EHG_REPO_URI=${CPACKD_REPO_URI}
+	EHG_CHECKOUT_DIR="${WORKDIR}/cpack.d"
 	mercurial_fetch
 
 	EHG_REPO_URI=${SOANYDATA_REPO_URI}
