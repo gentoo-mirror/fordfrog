@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 # As of 2017-12-30 only python3_5 works (that is FreeCAD does not crash on startup)
-PYTHON_COMPAT=( python3_5 )
+PYTHON_COMPAT=( python3_6 )
 
 inherit cmake-utils eutils xdg-utils gnome2-utils fortran-2 python-single-r1
 
@@ -84,7 +84,7 @@ COMMON_DEPEND="
 	freecad_modules_smesh? (
 		sci-libs/hdf5
 		sci-libs/libmed[${PYTHON_USEDEP}]
-		sys-cluster/openmpi[cxx]
+		virtual/nmpi[cxx]
 	)
 	freetype? ( media-libs/freetype )
 	qt5? (
@@ -117,7 +117,6 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-install-paths.patch
-	"${FILESDIR}"/${P}-libboost-python-fix.patch
 )
 
 DOCS=( README.md ChangeLog.txt )
@@ -152,10 +151,12 @@ src_configure() {
 		-DCMAKE_INSTALL_DATADIR=/usr/share/${P}
 		-DCMAKE_INSTALL_DOCDIR=/usr/share/doc/${PF}
 		-DCMAKE_INSTALL_INCLUDEDIR=/usr/include/${P}
+		-DCMAKE_INSTALL_PREFIX=/usr/$(get_libdir)/${PN}
 		-DFREECAD_USE_EXTERNAL_KDL="ON"
 		-DBUILD_QT5="$(usex qt5)"
 		-DBUILD_GUI="$(usex qt5)"
 		-DBUILD_FREETYPE="$(usex freetype)"
+		-DOPENMPI_INCLUDE_DIRS=/usr/include/
 		$(enable_module addonmgr)
 		$(enable_module arch)
 		$(enable_module assembly)
