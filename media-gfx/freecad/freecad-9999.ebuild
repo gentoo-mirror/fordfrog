@@ -15,7 +15,8 @@ if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/FreeCAD/FreeCAD.git"
 else
-	SRC_URI="https://github.com/FreeCAD/FreeCAD/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/FreeCAD/FreeCAD/archive/${PV}.tar.gz -> ${P}.tar.gz
+		doc? ( https://github.com/FreeCAD/FreeCAD/releases/download/0.18.1/FreeCAD.${MY_PV}.Quick.Reference.Guide.7z -> ${P}.Quick.Reference.Guide.7z )"
 	KEYWORDS="~amd64 ~x86"
 fi
 
@@ -63,7 +64,7 @@ IUSE_FREECAD_MODULES="
 	+freecad_modules_test
 	+freecad_modules_tux
 	+freecad_modules_web"
-IUSE="eigen3 +freetype +qt5 swig ${IUSE_FREECAD_MODULES}"
+IUSE="doc eigen3 +freetype +qt5 swig ${IUSE_FREECAD_MODULES}"
 
 # TODO:
 #   DEPEND and RDEPEND:
@@ -152,6 +153,7 @@ src_configure() {
 		-DCMAKE_INSTALL_DOCDIR=/usr/share/doc/${PF}
 		-DCMAKE_INSTALL_INCLUDEDIR=/usr/include/${P}
 		-DCMAKE_INSTALL_PREFIX=/usr/$(get_libdir)/${PN}
+		-DCMAKE_INSTALL_DOCDIR=/usr/share/doc/${PF}
 		-DFREECAD_USE_EXTERNAL_KDL="ON"
 		-DBUILD_QT5="$(usex qt5)"
 		-DBUILD_GUI="$(usex qt5)"
@@ -198,16 +200,33 @@ src_configure() {
 
 	cmake-utils_src_configure
 	einfo "${P} will be built against opencascade version ${CASROOT}"
+
+	# Fix paths on amd64 (temporary hack)
+	if use amd64; then
+		for lib in libSM.so libICE.so libX11.so libXext.so libGL.so libGLU.so libfreetype.so; do
+			count=0
+			for file in $(grep /usr/lib/${lib} ${BUILD_DIR}/* -rl); do
+				sed -i "s%/usr/lib/${lib}%/usr/lib64/${lib}%g" $file
+				count=$((count+1))
+			done
+			einfo "Fixed /usr/lib/${lib} to /usr/lib64/${lib} in ${count} affected file(s)"
+		done
+	fi
 }
 
 src_install() {
 	cmake-utils_src_install
+
+	dosym ../$(get_libdir)/${PN}/bin/FreeCAD /usr/bin/freecad
+	dosym ../$(get_libdir)/${PN}/bin/FreeCADCmd /usr/bin/freecadcmd
 
 	make_desktop_entry FreeCAD "FreeCAD" "" "" "MimeType=application/x-extension-fcstd;"
 
 	# install mimetype for FreeCAD files
 	insinto /usr/share/mime/packages
 	newins "${FILESDIR}"/${PN}.sharedmimeinfo "${PN}.xml"
+	insinto /usr/share/pixmaps
+	newins "${S}"/src/Gui/Icons/${PN}.xpm "${PN}.xpm"
 
 	# install icons to correct place rather than /usr/share/freecad
 	pushd "${ED%/}"/usr/share/${P} || die
@@ -218,6 +237,14 @@ src_install() {
 	doicon -s scalable freecad.svg
 	newicon -s 64 -c mimetypes freecad-doc.png application-x-extension-fcstd.png
 	popd || die
+
+	rm "${ED}"/usr/share/${PN}/data/${PN}-{doc,icon-{16,32,48,64}}.png || die
+	rm "${ED}"/usr/share/${PN}/data/${PN}.svg || die
+	rm "${ED}"/usr/share/${PN}/data/${PN}.xpm || die
+
+	if use doc; then
+		cp -r "${WORKDIR}/FreeCAD 0_18 Quick Reference Guide" "${ED}/usr/share/doc/${PF}" || die
+	fi
 
 	python_optimize "${ED%/}"/usr/{,share/${P}/}Mod/
 }
