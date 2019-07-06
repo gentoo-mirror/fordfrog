@@ -217,8 +217,8 @@ src_configure() {
 src_install() {
 	cmake-utils_src_install
 
-	dosym ../$(get_libdir)/${PN}/bin/FreeCAD /usr/bin/freecad
-	dosym ../$(get_libdir)/${PN}/bin/FreeCADCmd /usr/bin/freecadcmd
+	dosym ../$(get_libdir)/${PN}/bin/FreeCAD /usr/bin/FreeCAD
+	dosym ../$(get_libdir)/${PN}/bin/FreeCADCmd /usr/bin/FreeCADCmd
 
 	make_desktop_entry FreeCAD "FreeCAD" "" "" "MimeType=application/x-extension-fcstd;"
 
@@ -237,10 +237,6 @@ src_install() {
 	doicon -s scalable freecad.svg
 	newicon -s 64 -c mimetypes freecad-doc.png application-x-extension-fcstd.png
 	popd || die
-
-	rm "${ED}"/usr/share/${PN}/data/${PN}-{doc,icon-{16,32,48,64}}.png || die
-	rm "${ED}"/usr/share/${PN}/data/${PN}.svg || die
-	rm "${ED}"/usr/share/${PN}/data/${PN}.xpm || die
 
 	if use doc; then
 		cp -r "${WORKDIR}/FreeCAD 0_18 Quick Reference Guide" "${ED}/usr/share/doc/${PF}" || die
