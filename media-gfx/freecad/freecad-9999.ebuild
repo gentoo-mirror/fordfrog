@@ -149,8 +149,8 @@ src_configure() {
 	#-DOCC_* defined with cMake/FindOpenCasCade.cmake
 	# VR module not included here as we do not support it
 	local mycmakeargs=(
-		-DOCC_INCLUDE_DIR="${CASROOT}"/inc
-		-DOCC_LIBRARY_DIR="${CASROOT}"/$(get_libdir)
+		-DOCC_INCLUDE_DIR="${CASROOT}"/include/opencascade
+		-DOCC_LIBRARY_DIR="${CASROOT}"/lib
 		-DCMAKE_INSTALL_DATADIR=/usr/share/${P}
 		-DCMAKE_INSTALL_DOCDIR=/usr/share/doc/${PF}
 		-DCMAKE_INSTALL_INCLUDEDIR=/usr/include/${P}
