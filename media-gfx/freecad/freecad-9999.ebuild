@@ -55,7 +55,7 @@ IUSE_FREECAD_MODULES="
 	+freecad_modules_ship
 	+freecad_modules_show
 	+freecad_modules_sketcher
-	freecad_modules_smesh
+	+freecad_modules_smesh
 	+freecad_modules_spreadsheet
 	+freecad_modules_start
 	+freecad_modules_surface
@@ -85,7 +85,7 @@ COMMON_DEPEND="
 	freecad_modules_smesh? (
 		sci-libs/hdf5
 		sci-libs/libmed[${PYTHON_USEDEP}]
-		virtual/nmpi[cxx]
+		virtual/mpi[cxx]
 	)
 	freetype? ( media-libs/freetype )
 	qt5? (
