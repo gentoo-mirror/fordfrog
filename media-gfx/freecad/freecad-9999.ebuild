@@ -134,6 +134,8 @@ enable_module() {
 }
 
 pkg_setup() {
+	use freecad_modules_fem && ! use freecad_modules_smesh && die "You must enable smesh module when fem module is enabled"
+
 	fortran-2_pkg_setup
 	python-single-r1_pkg_setup
 
