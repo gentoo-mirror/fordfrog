@@ -207,7 +207,7 @@ src_configure() {
 	if use amd64; then
 		for lib in libSM.so libICE.so libX11.so libXext.so libGL.so libGLU.so libfreetype.so; do
 			count=0
-			for file in $(grep /usr/lib/${lib} ${BUILD_DIR}/* -rl); do
+			for file in $(grep /usr/lib/${lib} "${BUILD_DIR}"/* -rl); do
 				sed -i "s%/usr/lib/${lib}%/usr/lib64/${lib}%g" $file
 				count=$((count+1))
 			done
