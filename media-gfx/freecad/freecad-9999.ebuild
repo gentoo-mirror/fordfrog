@@ -55,7 +55,7 @@ IUSE_FREECAD_MODULES="
 	+freecad_modules_ship
 	+freecad_modules_show
 	+freecad_modules_sketcher
-	freecad_modules_smesh
+	+freecad_modules_smesh
 	+freecad_modules_spreadsheet
 	+freecad_modules_start
 	+freecad_modules_surface
@@ -85,7 +85,7 @@ COMMON_DEPEND="
 	freecad_modules_smesh? (
 		sci-libs/hdf5
 		sci-libs/libmed[${PYTHON_USEDEP}]
-		virtual/nmpi[cxx]
+		virtual/mpi[cxx]
 	)
 	freetype? ( media-libs/freetype )
 	qt5? (
@@ -134,6 +134,8 @@ enable_module() {
 }
 
 pkg_setup() {
+	use freecad_modules_fem && ! use freecad_modules_smesh && die "You must enable smesh module when fem module is enabled"
+
 	fortran-2_pkg_setup
 	python-single-r1_pkg_setup
 
@@ -147,8 +149,8 @@ src_configure() {
 	#-DOCC_* defined with cMake/FindOpenCasCade.cmake
 	# VR module not included here as we do not support it
 	local mycmakeargs=(
-		-DOCC_INCLUDE_DIR="${CASROOT}"/inc
-		-DOCC_LIBRARY_DIR="${CASROOT}"/$(get_libdir)
+		-DOCC_INCLUDE_DIR="${CASROOT}"/include/opencascade
+		-DOCC_LIBRARY_DIR="${CASROOT}"/lib
 		-DCMAKE_INSTALL_DATADIR=/usr/share/${P}
 		-DCMAKE_INSTALL_DOCDIR=/usr/share/doc/${PF}
 		-DCMAKE_INSTALL_INCLUDEDIR=/usr/include/${P}
@@ -205,7 +207,7 @@ src_configure() {
 	if use amd64; then
 		for lib in libSM.so libICE.so libX11.so libXext.so libGL.so libGLU.so libfreetype.so; do
 			count=0
-			for file in $(grep /usr/lib/${lib} ${BUILD_DIR}/* -rl); do
+			for file in $(grep /usr/lib/${lib} "${BUILD_DIR}"/* -rl); do
 				sed -i "s%/usr/lib/${lib}%/usr/lib64/${lib}%g" $file
 				count=$((count+1))
 			done
