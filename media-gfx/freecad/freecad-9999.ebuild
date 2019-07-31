@@ -30,7 +30,7 @@ IUSE_FREECAD_MODULES="
 	+freecad_modules_addonmgr
 	+freecad_modules_arch
 	freecad_modules_assembly
-	+freecad_modules_complete
+	freecad_modules_complete
 	+freecad_modules_draft
 	+freecad_modules_drawing
 	+freecad_modules_fem
