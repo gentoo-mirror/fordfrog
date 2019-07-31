@@ -16,6 +16,7 @@
 		<flag name="freecad_modules_draft">Build the FreeCAD draft module</flag>
 		<flag name="freecad_modules_drawing">Build the FreeCAD drawing module</flag>
 		<flag name="freecad_modules_fem">Build the FreeCAD FEM module</flag>
+		<flag name="freecad_modules_flat_mesh">Build the FreeCAD flat mesh module</flag>
 		<flag name="freecad_modules_idf">Build the FreeCAD idf module</flag>
 		<flag name="freecad_modules_image">Build the FreeCAD image module</flag>
 		<flag name="freecad_modules_import">Build the FreeCAD import module</flag>
@@ -37,7 +38,6 @@
 		<flag name="freecad_modules_ship">Build the FreeCAD ship module</flag>
 		<flag name="freecad_modules_show">Build the FreeCAD Show module (helper module for visibility automation)</flag>
 		<flag name="freecad_modules_sketcher">Build the FreeCAD sketcher module</flag>
-		<flag name="freecad_modules_smesh">Build the FreeCAD smesh module</flag>
 		<flag name="freecad_modules_spreadsheet">Build the FreeCAD spreadsheet module</flag>
 		<flag name="freecad_modules_start">Build the FreeCAD start module</flag>
 		<flag name="freecad_modules_surface">Build the FreeCAD surface module</flag>

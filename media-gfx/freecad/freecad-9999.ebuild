@@ -34,6 +34,7 @@ IUSE_FREECAD_MODULES="
 	+freecad_modules_draft
 	+freecad_modules_drawing
 	+freecad_modules_fem
+	freecad_modules_flat_mesh
 	+freecad_modules_idf
 	+freecad_modules_image
 	+freecad_modules_import
@@ -46,16 +47,15 @@ IUSE_FREECAD_MODULES="
 	+freecad_modules_part
 	+freecad_modules_part_design
 	+freecad_modules_path
-	+freecad_modules_plot
+	freecad_modules_plot
 	+freecad_modules_points
 	+freecad_modules_raytracing
 	+freecad_modules_reverseengineering
 	+freecad_modules_robot
 	freecad_modules_sandbox
-	+freecad_modules_ship
+	freecad_modules_ship
 	+freecad_modules_show
 	+freecad_modules_sketcher
-	+freecad_modules_smesh
 	+freecad_modules_spreadsheet
 	+freecad_modules_start
 	+freecad_modules_surface
@@ -81,12 +81,12 @@ COMMON_DEPEND="
 	virtual/glu
 	eigen3? ( dev-cpp/eigen:3 )
 	freecad_modules_draft? ( dev-python/pyside:2[svg,${PYTHON_USEDEP}] )
-	freecad_modules_plot? ( dev-python/matplotlib[${PYTHON_USEDEP}] )
-	freecad_modules_smesh? (
+	freecad_modules_fem? (
 		sci-libs/hdf5
-		sci-libs/libmed[${PYTHON_USEDEP}]
+		sci-libs/libmed[fortran,${PYTHON_USEDEP}]
 		virtual/mpi[cxx]
 	)
+	freecad_modules_plot? ( dev-python/matplotlib[${PYTHON_USEDEP}] )
 	freetype? ( media-libs/freetype )
 	qt5? (
 		dev-libs/libspnav
@@ -134,8 +134,6 @@ enable_module() {
 }
 
 pkg_setup() {
-	use freecad_modules_fem && ! use freecad_modules_smesh && die "You must enable smesh module when fem module is enabled"
-
 	fortran-2_pkg_setup
 	python-single-r1_pkg_setup
 
@@ -143,14 +141,42 @@ pkg_setup() {
 }
 
 src_configure() {
+	local occ=$(basename ${CASROOT})
+	local occ_type
+	local occ_include
+	local occ_lib
+
+	occ=${occ%-*}
+
+	case ${occ} in
+	oce)
+		occ_type="Community Edition"
+		occ_include=/usr/include/oce
+		occ_lib=/usr/$(get_libdir)/libTKernel.so
+		;;
+	opencascade)
+		occ_type="Official Version"
+		occ_include="${CASROOT}"/include/opencascade
+		occ_lib="${CASROOT}"/lib/libTKernel.so
+		;;
+	*)
+		die "Unsupported occ: ${occ}"
+		;;
+	esac
+
+	einfo "OCC: ${occ_type}"
+	einfo "  OCC_INCLUDE_DIR=${occ_include}"
+	einfo "  OCC_LIBRARY_DIR=${occ_lib}"
+
 	# TODO
 	# FREECAD_USE_EXTERNAL_ZIPIOS="ON": needs zipois++ which is not in tree yet
 	# FREECAD_USE_EXTERNAL_SMESH="ON": needs salome-smash which is not in tree yet
 	#-DOCC_* defined with cMake/FindOpenCasCade.cmake
 	# VR module not included here as we do not support it
 	local mycmakeargs=(
-		-DOCC_INCLUDE_DIR="${CASROOT}"/include/opencascade
-		-DOCC_LIBRARY_DIR="${CASROOT}"/lib
+		-DFREECAD_USE_OCC_VARIANT="\"${occ_type}\""
+		-DOCC_INCLUDE_DIR=${occ_include}
+		-DOCC_LIBRARY=${occ_lib}
 		-DCMAKE_INSTALL_DATADIR=/usr/share/${P}
 		-DCMAKE_INSTALL_DOCDIR=/usr/share/doc/${PF}
 		-DCMAKE_INSTALL_INCLUDEDIR=/usr/include/${P}
@@ -161,6 +187,8 @@ src_configure() {
 		-DBUILD_GUI="$(usex qt5)"
 		-DBUILD_FREETYPE="$(usex freetype)"
 		-DOPENMPI_INCLUDE_DIRS=/usr/include/
+		$(use qt5 && echo "-DCOIN3D_DOC_TAGFILE=/usr/share/doc/Coin/html/Coin.tag.bz2")
+		$(use qt5 && echo "-DCOIN3D_DOC_PATH=/usr/share/doc/Coin/html/")
 		$(enable_module addonmgr)
 		$(enable_module arch)
 		$(enable_module assembly)
@@ -168,6 +196,7 @@ src_configure() {
 		$(enable_module draft)
 		$(enable_module drawing)
 		$(enable_module fem)
+		$(enable_module flat_mesh)
 		$(enable_module idf)
 		$(enable_module image)
 		$(enable_module import)
@@ -189,7 +218,6 @@ src_configure() {
 		$(enable_module ship)
 		$(enable_module show)
 		$(enable_module sketcher)
-		$(enable_module smesh)
 		$(enable_module spreadsheet)
 		$(enable_module start)
 		$(enable_module surface)
@@ -202,18 +230,6 @@ src_configure() {
 
 	cmake-utils_src_configure
 	einfo "${P} will be built against opencascade version ${CASROOT}"
-
-	# Fix paths on amd64 (temporary hack)
-	if use amd64; then
-		for lib in libSM.so libICE.so libX11.so libXext.so libGL.so libGLU.so libfreetype.so; do
-			count=0
-			for file in $(grep /usr/lib/${lib} "${BUILD_DIR}"/* -rl); do
-				sed -i "s%/usr/lib/${lib}%/usr/lib64/${lib}%g" $file
-				count=$((count+1))
-			done
-			einfo "Fixed /usr/lib/${lib} to /usr/lib64/${lib} in ${count} affected file(s)"
-		done
-	fi
 }
 
 src_install() {
