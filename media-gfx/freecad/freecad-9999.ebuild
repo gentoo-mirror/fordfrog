@@ -260,7 +260,7 @@ src_install() {
 		cp -r "${WORKDIR}/FreeCAD 0_18 Quick Reference Guide" "${ED}/usr/share/doc/${PF}" || die
 	fi
 
-	python_optimize "${ED%/}"/usr/{,share/${P}/}Mod/
+	python_optimize "${ED%/}"/usr/{$(get_libdir)/${PN},share/${P}}/Mod/
 }
 
 pkg_postinst() {
