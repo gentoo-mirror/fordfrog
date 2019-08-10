@@ -1,9 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-EGIT_REPO_URI="https://github.com/ruediger/VobSub2SRT.git"
+# Not using the upstream repo as it is not developped anymore but a live clone
+EGIT_REPO_URI="https://github.com/bubonic/VobSub2SRT.git"
 
 inherit cmake-utils git-r3
 
