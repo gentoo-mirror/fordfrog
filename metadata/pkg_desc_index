@@ -21,6 +21,7 @@ dev-java/netbeans-webcommon 9999_p20180212 9999_p20180213 9999_p20180214 9999_p2
 dev-java/netbeans-websvccommon 9999_p20180212 9999_p20180213 9999_p20180214 9999_p20180215 9999_p20180219 9999_p20180220 9999_p20180221 9999_p20180222 9999_p20180223 9999_p20180226 9999_p20180227 9999_p20180314 9999_p20180332: Netbeans Web Services Common Cluster
 dev-python/pivy 9999: Coin3d binding for Python
 dev-util/netbeans 9999_p20180212 9999_p20180213 9999_p20180214 9999_p20180215 9999_p20180219 9999_p20180220 9999_p20180221 9999_p20180222 9999_p20180223 9999_p20180226 9999_p20180227 9999_p20180314 9999_p20180332: Netbeans IDE
+dev-util/netbeans-standalone 11.1 9999: Apache Netbeans IDE
 media-gfx/freecad 9999: QT based Computer Aided Design application
 media-gfx/meshlab 9999: the open source system for processing and editing 3D triangular meshes
 media-libs/SoQt 9999: The glue between Coin3D and Qt
