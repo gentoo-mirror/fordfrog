@@ -69,11 +69,20 @@ src_install() {
 	doins -r .
 
 	rm -fr "${ED}"/${INSTALL_DIR}/ide/bin/nativeexecution/{Linux-{sparc_64,x86},MacOSX-{x86_64,x86},SunOS-{sparc,sparc_64,x86,x86_64},Windows-{x86,x86_64}} || die "Failed to remove unused binaries"
+	find "${ED}"/${INSTALL_DIR}/ \( -name *.exe -o -name *.cmd -o -name *.bat \) -type f -exec rm {} + || die "Failed to remove unused binaries"
 	rm -fr "${ED}"/${INSTALL_DIR}/profiler/lib/deployed/jdk15/{hpux-pa_risc2.0{,w},linux,mac,solaris-{amd64,i386,sparc{,v9}},windows{,-amd64}} || die "Failed to remove unused libraries"
 	rm -fr "${ED}"/${INSTALL_DIR}/profiler/lib/deployed/jdk16/{hpux-pa_risc2.0{,w},linux{,-arm,-arm-vfp-hflt},mac,solaris-{amd64,i386,sparc{,v9}},windows{,-amd64}} || die "Failed to remove unused libraries"
 	rm -fr "${ED}"/${INSTALL_DIR}/profiler/lib/deployed/cvm/windows || die "Failed to remove unused libraries"
 	rm -fr "${ED}"/${INSTALL_DIR}/platform/modules/lib/{i386,x86} || die "Failed to remove unused libraries"
-	find "${ED}"/${INSTALL_DIR}/ \( -name *.exe -o -name *.dll \) -type f -exec rm {} + || die "Failed to remove unused libraries"
+	find "${ED}"/${INSTALL_DIR}/ -name *.dll -type f -exec rm {} + || die "Failed to remove unused libraries"
+
+	find "${ED}/${INSTALL_DIR}" -name "*.so*" -type f -exec chmod +x {} \; || die "Change .so permission failed"
+	exeinto ${INSTALL_DIR}/ide/bin/nativeexecution/Linux-x86_64/
+	doexe ide/bin/nativeexecution/Linux-x86_64/{process_start,stat,pty_open,sigqueue,killall,pty}
+	exeinto ${INSTALL_DIR}/java/maven/bin
+	doexe java/maven/bin/mvn{,Debug,yjp}
+	exeinto ${INSTALL_DIR}/extide/ant/bin
+	doexe extide/ant/bin/{ant{,Run,Run.pl},complete-ant-cmd.pl,runant.{pl,py}}
 
 	dodoc DEPENDENCIES NOTICE
 	dosym ${INSTALL_DIR}/bin/netbeans /usr/bin/${PN}-${SLOT}
