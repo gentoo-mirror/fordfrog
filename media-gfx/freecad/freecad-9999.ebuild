@@ -116,10 +116,6 @@ DEPEND="${COMMON_DEPEND}
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-PATCHES=(
-	"${FILESDIR}"/${P}-install-paths.patch
-)
-
 DOCS=( README.md ChangeLog.txt )
 
 enable_module() {
@@ -250,10 +246,10 @@ src_install() {
 	pushd "${ED%/}"/usr/share/${P} || die
 	local size
 	for size in 16 32 48 64; do
-		newicon -s ${size} freecad-icon-${size}.png freecad.png
+		newicon -s ${size} "${S}"/src/Gui/Icons/freecad-icon-${size}.png freecad.png
 	done
-	doicon -s scalable freecad.svg
-	newicon -s 64 -c mimetypes freecad-doc.png application-x-extension-fcstd.png
+	doicon -s scalable "${S}"/src/Gui/Icons/freecad.svg
+	newicon -s 64 -c mimetypes "${S}"/src/Gui/Icons/freecad-doc.png application-x-extension-fcstd.png
 	popd || die
 
 	if use doc; then
