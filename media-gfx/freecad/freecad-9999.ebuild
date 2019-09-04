@@ -83,7 +83,7 @@ COMMON_DEPEND="
 	freecad_modules_draft? ( dev-python/pyside:2[svg,${PYTHON_USEDEP}] )
 	freecad_modules_fem? (
 		sci-libs/hdf5
-		sci-libs/libmed[fortran,${PYTHON_USEDEP}]
+		sci-libs/med[fortran,${PYTHON_USEDEP}]
 		virtual/mpi[cxx]
 	)
 	freecad_modules_plot? ( dev-python/matplotlib[${PYTHON_USEDEP}] )
