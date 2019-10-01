@@ -9,10 +9,11 @@ if [ ${PV} = "9999" ]; then
 	inherit git-r3 java-pkg-2 java-ant-2 desktop
 	EGIT_REPO_URI="https://github.com/apache/netbeans.git"
 else
+	MY_PV=${PV/_/-}
 	inherit java-pkg-2 java-ant-2 desktop
 	KEYWORDS="~amd64"
-	SRC_URI="https://github.com/apache/netbeans/archive/${PV}.zip -> ${P}.zip"
-	S=${WORKDIR}/netbeans-${PV}
+	SRC_URI="https://github.com/apache/netbeans/archive/${MY_PV}.zip -> ${P}.zip"
+	S=${WORKDIR}/netbeans-${MY_PV}
 fi
 
 DESCRIPTION="Apache Netbeans IDE"
