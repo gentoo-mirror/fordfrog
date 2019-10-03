@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit eutils subversion
 
 DESCRIPTION="GigaSampler instrument file editor"
@@ -40,5 +40,5 @@ src_compile() {
 src_install() {
 	default
 
-	! use static-libs && prune_libtool_files --modules
+	use static-libs || find "${ED}" -name '*.la' -delete
 }
