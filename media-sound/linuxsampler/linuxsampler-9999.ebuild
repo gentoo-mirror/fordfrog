@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit eutils subversion
 
 DESCRIPTION="LinuxSampler is a software audio sampler engine with professional grade features"
@@ -12,25 +12,14 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
 # it also supports vst but it's masked in the tree at this moment
-IUSE="alsa dbus doc dssi flac jack ladspa lv2 sf2 sqlite static-libs vorbis"
+IUSE="alsa doc jack sf2 sqlite static-libs"
 REQUIRED_USE="|| ( alsa jack )"
 
-# media-libs/dssi, media-libs/flac, media-libs/ladspa, media-libs/lv2, media-libs/libogg,
-# media-libs/libvorbis, sys-apps/dbus automagic
-# sys-apps/dbus is linked to the libraries but not declared anywhere in the sources
 RDEPEND=">media-libs/libgig-4
 	media-libs/libsndfile
 	alsa? ( media-libs/alsa-lib )
-	dssi? ( media-libs/dssi )
-	flac? ( media-libs/flac )
 	jack? ( virtual/jack )
-	ladspa? ( media-libs/ladspa-sdk )
-	lv2? ( media-libs/lv2 )
-	sqlite? ( >=dev-db/sqlite-3.3 )
-	vorbis? (
-		media-libs/libogg
-		media-libs/libvorbis
-	)"
+	sqlite? ( >=dev-db/sqlite-3.3 )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )"
