@@ -6,8 +6,6 @@
 	<name>Miroslav Šulc</name>
 </maintainer>
 <use>
-	<flag name="dssi">Add support for DSSI</flag>
-	<flag name="lv2">Add support for Ladspa V2</flag>
 	<flag name="sf2">Add support for SoundFont 2 sound bank files</flag>
 </use>
 </pkgmetadata>
