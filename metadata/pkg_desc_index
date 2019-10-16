@@ -39,3 +39,4 @@ media-sound/zynaddsubfx 9999: ZynAddSubFX is an opensource software synthesizer.
 media-tv/tbs-modules 9999: Kernel Modules for TBS DTV devices
 media-video/vobsub2srt 9999: Converts image subtitles created by VobSub to SRT subtitles using OCR engine
 sys-firmware/tbs-firmware 1.0: Firmware for TBS DTV devices
+www-servers/tomcat 8.0.53: Tomcat Servlet-3.1/JSP-2.3/EL-3.0/WebSocket-1.1 Container
