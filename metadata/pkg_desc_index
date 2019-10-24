@@ -19,12 +19,10 @@ dev-java/netbeans-platform 9999_p20180212 9999_p20180213 9999_p20180214 9999_p20
 dev-java/netbeans-profiler 9999_p20180212 9999_p20180213 9999_p20180214 9999_p20180215 9999_p20180219 9999_p20180220 9999_p20180221 9999_p20180222 9999_p20180223 9999_p20180226 9999_p20180227 9999_p20180314 9999_p20180332: Netbeans Profiler Cluster
 dev-java/netbeans-webcommon 9999_p20180212 9999_p20180213 9999_p20180214 9999_p20180215 9999_p20180219 9999_p20180220 9999_p20180221 9999_p20180222 9999_p20180223 9999_p20180226 9999_p20180227 9999_p20180314 9999_p20180332: Netbeans Web Services Cluster
 dev-java/netbeans-websvccommon 9999_p20180212 9999_p20180213 9999_p20180214 9999_p20180215 9999_p20180219 9999_p20180220 9999_p20180221 9999_p20180222 9999_p20180223 9999_p20180226 9999_p20180227 9999_p20180314 9999_p20180332: Netbeans Web Services Common Cluster
-dev-python/pivy 9999: Coin3d binding for Python
 dev-util/netbeans 9999_p20180212 9999_p20180213 9999_p20180214 9999_p20180215 9999_p20180219 9999_p20180220 9999_p20180221 9999_p20180222 9999_p20180223 9999_p20180226 9999_p20180227 9999_p20180314 9999_p20180332: Netbeans IDE
 dev-util/netbeans-standalone 11.1 11.2_beta2 9999: Apache Netbeans IDE
 media-gfx/freecad 9999: QT based Computer Aided Design application
 media-gfx/meshlab 9999: the open source system for processing and editing 3D triangular meshes
-media-libs/SoQt 9999: The glue between Coin3D and Qt
 media-libs/coin 9999: A high-level 3D graphics toolkit, fully compatible with SGI Open Inventor 2.1
 media-libs/lensfun 9999: Library for rectifying and simulating photographic lens distortions
 media-libs/libgig 9999: C++ library for loading/modifying GigaStudio, SoundFont, KORG, AKAI, DLS files

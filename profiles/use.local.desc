@@ -43,7 +43,6 @@ media-gfx/freecad:freecad_modules_tux - Build the FreeCAD Tux module
 media-gfx/freecad:freecad_modules_web - Build the FreeCAD web module
 media-gfx/freecad:freetype - Enables supportfor freetype needed by part of part module
 media-gfx/freecad:swig - Enables SWIG binding for pivy"
-media-libs/SoQt:coin-iv-extensions - Enables extra open inventor extensions
 media-libs/coin:3ds-import - Enables 3ds import capabilities
 media-libs/coin:dragger - Enables Dragger support
 media-libs/coin:manipulator - Enables Manipulator support
