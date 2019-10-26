@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -54,6 +54,10 @@ src_prepare(){
 	# Fix bug 638796
 	cd "${WORKDIR}" || die
 	eapply "${FILESDIR}/${PN}-2016.12-remove-header.patch"
+
+	# Fix libssynth.a not being found
+	einfo "Fixing libssynth.a path"
+	ln -s "${S}"/external/lib/macx64/libssynth.a "${S}"/external/lib/linux-g++/ || die "Failed to create workaround symlink"
 }
 
 src_configure() {
