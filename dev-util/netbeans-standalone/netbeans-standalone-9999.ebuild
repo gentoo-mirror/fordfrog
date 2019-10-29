@@ -25,6 +25,8 @@ IUSE=""
 DEPEND=">=virtual/jdk-1.8:*"
 RDEPEND=">=virtual/jdk-1.8:*"
 
+PATCHES=( "${FILESDIR}"/fix-private-debugger-access.patch )
+
 JAVA_PKG_BSFIX="off"
 INSTALL_DIR=/usr/share/${PN}-${SLOT}
 
@@ -41,6 +43,10 @@ pkg_pretend() {
 		eerror
 		die "network-sandbox is enabled, disable it to proceed";
 	fi
+}
+
+src_prepare() {
+	default
 }
 
 src_compile() {
