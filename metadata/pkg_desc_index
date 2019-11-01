@@ -32,7 +32,6 @@ media-libs/zita-resampler 1.6.0: C++ library for real-time resampling of audio s
 media-sound/gigedit 9999: GigaSampler instrument file editor
 media-sound/guitarix2 9999: A simple Linux Guitar Amplifier for jack with one input and two outputs
 media-sound/linuxsampler 9999: LinuxSampler is a software audio sampler engine with professional grade features
-media-sound/qjackctl 9999: Qt GUI to control the JACK Audio Connection Kit and ALSA sequencer connections
 media-sound/qsampler 9999: A graphical frontend to the LinuxSampler engine
 media-sound/zynaddsubfx 9999: ZynAddSubFX is an opensource software synthesizer.
 media-tv/tbs-modules 9999: Kernel Modules for TBS DTV devices
