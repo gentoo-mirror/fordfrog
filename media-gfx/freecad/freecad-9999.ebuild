@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 # As of 2017-12-30 only python3_5 works (that is FreeCAD does not crash on startup)
 PYTHON_COMPAT=( python3_6 )
@@ -243,7 +243,7 @@ src_install() {
 	newins "${S}"/src/Gui/Icons/${PN}.xpm "${PN}.xpm"
 
 	# install icons to correct place rather than /usr/share/freecad
-	pushd "${ED%/}"/usr/share/${P} || die
+	pushd "${ED}"/usr/share/${P} || die
 	local size
 	for size in 16 32 48 64; do
 		newicon -s ${size} "${S}"/src/Gui/Icons/freecad-icon-${size}.png freecad.png
@@ -256,7 +256,7 @@ src_install() {
 		cp -r "${WORKDIR}/FreeCAD 0_18 Quick Reference Guide" "${ED}/usr/share/doc/${PF}" || die
 	fi
 
-	python_optimize "${ED%/}"/usr/{$(get_libdir)/${PN},share/${P}}/Mod/
+	python_optimize "${ED}"/usr/{$(get_libdir)/${PN},share/${P}}/Mod/
 }
 
 pkg_postinst() {
