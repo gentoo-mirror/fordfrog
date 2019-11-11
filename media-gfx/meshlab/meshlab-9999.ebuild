@@ -51,10 +51,6 @@ src_prepare(){
 	rm -r "distrib/plugins/U3D_W32" || die
 	rm -r "distrib/plugins/U3D_OSX" || die
 
-	# Fix bug 638796
-	cd "${WORKDIR}" || die
-	eapply "${FILESDIR}/${PN}-2016.12-remove-header.patch"
-
 	# Fix libssynth.a not being found
 	einfo "Fixing libssynth.a path"
 	ln -s "${S}"/external/lib/macx64/libssynth.a "${S}"/external/lib/linux-g++/ || die "Failed to create workaround symlink"
