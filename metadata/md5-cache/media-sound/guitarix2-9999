@@ -9,5 +9,5 @@ PROPERTIES=live
 RDEPEND=dev-cpp/eigen:3 dev-cpp/glibmm:2 dev-cpp/gtkmm:2.4 dev-libs/boost dev-libs/glib dev-libs/libsigc++:2 media-libs/liblrdf media-libs/libsndfile media-libs/lilv:0 media-libs/zita-convolver media-libs/zita-resampler net-libs/webkit-gtk:= sci-libs/fftw:3.0 virtual/jack x11-libs/gtk+:2 avahi? ( net-dns/avahi ) faust? ( dev-lang/faust ) ladspa? ( media-libs/ladspa-sdk ) lv2? ( media-libs/lv2 )
 RESTRICT=mirror
 SLOT=0
-_eclasses_=git-r3	562b380fc59ae6a8622171d0acb777d1	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-any-r1	b5f01473006ccc2cd78bc3dab20fced4	python-utils-r1	25291c381052933ddf86bcffbfaff2ed	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	waf-utils	1fab5379519d4b71bff5790435a71986
+_eclasses_=git-r3	562b380fc59ae6a8622171d0acb777d1	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-any-r1	b5f01473006ccc2cd78bc3dab20fced4	python-utils-r1	93ff6f0f8518926f2951ca70ce36e887	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	waf-utils	1fab5379519d4b71bff5790435a71986
 _md5_=1a6f7b3c722130f76b23fac08ac196c6
