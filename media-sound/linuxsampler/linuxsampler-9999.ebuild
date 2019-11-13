@@ -61,7 +61,7 @@ src_configure() {
 }
 
 src_compile() {
-	emake -j1 # fails with parallel jobs, bug #666738
+	emake
 	use doc && emake docs
 }
 
