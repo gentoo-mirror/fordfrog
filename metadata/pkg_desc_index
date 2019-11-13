@@ -26,7 +26,7 @@ media-gfx/freecad 9999: QT based Computer Aided Design application
 media-gfx/meshlab 9999: the open source system for processing and editing 3D triangular meshes
 media-libs/coin 9999: A high-level 3D graphics toolkit, fully compatible with SGI Open Inventor 2.1
 media-libs/lensfun 9999: Library for rectifying and simulating photographic lens distortions
-media-libs/libgig 9999: C++ library for loading/modifying GigaStudio, SoundFont, KORG, AKAI, DLS files
+media-libs/libgig 9999: C++ library for loading Gigasampler and DLS level 1/2 files
 media-libs/liblscp 9999: C++ library for the Linux Sampler control protocol
 media-libs/zita-resampler 1.6.0: C++ library for real-time resampling of audio signals
 media-sound/gigedit 9999: GigaSampler instrument file editor
