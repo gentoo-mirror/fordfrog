@@ -1,52 +1,46 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit eutils multilib subversion
+inherit autotools subversion
 
-DESCRIPTION="C++ library for loading/modifying GigaStudio, SoundFont, KORG, AKAI, DLS files"
-HOMEPAGE="http://www.linuxsampler.org/libgig/"
+DESCRIPTION="C++ library for loading Gigasampler and DLS level 1/2 files"
+HOMEPAGE="https://www.linuxsampler.org/libgig/"
 ESVN_REPO_URI="https://svn.linuxsampler.org/svn/libgig/trunk"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="doc static-libs"
+IUSE="doc"
 
-RDEPEND=">=media-libs/libsndfile-1.0.2
-	>=media-libs/audiofile-0.2.3"
-DEPEND="${RDEPEND}
+RDEPEND="
+	media-libs/audiofile
+	media-libs/libsndfile"
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )"
 
-DOCS=( AUTHORS ChangeLog NEWS README TODO )
+src_prepare() {
+	default
 
-src_configure() {
 	emake -f Makefile.svn
-
-	econf \
-		$(use_enable static-libs static)
+	eautoreconf
 }
 
 src_compile() {
-	default
-
-	if use doc ; then
-		emake docs
-	fi
+	emake
+	use doc && emake docs
 }
 
 src_install() {
-	default
+	emake DESTDIR="${D}" install
+
+	use doc && HTML_DOCS=( doc/html/. )
+	einstalldocs
 
 	# For libgig.so to be found at runtime
 	printf "LDPATH=\"${EPREFIX}/usr/$(get_libdir)/libgig/\"" > 99${PN}
 	doenvd "99${PN}"
-
-	! use static-libs && prune_libtool_files --modules
-
-	if use doc ; then
-		dohtml -r doc/html/*
-	fi
 }
