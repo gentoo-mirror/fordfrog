@@ -2,43 +2,52 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit eutils subversion
+inherit autotools eutils desktop xdg subversion
 
-DESCRIPTION="GigaSampler instrument file editor"
+DESCRIPTION="An instrument editor for gig files"
 HOMEPAGE="http://www.linuxsampler.org/"
 ESVN_REPO_URI="https://svn.linuxsampler.org/svn/gigedit/trunk"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="doc static-libs"
+IUSE=""
 
-RDEPEND="dev-cpp/gtkmm:3.0
-	media-libs/libgig
-	media-libs/libsndfile"
-DEPEND="${RDEPEND}
-	>=dev-util/intltool-0.35.0
+BDEPEND="
 	sys-devel/gettext
+	>=dev-util/intltool-0.35.0
 	virtual/pkgconfig
-	doc? ( app-doc/doxygen )"
+"
+CDEPEND="
+	dev-cpp/gtkmm:2.4
+	>=media-libs/libgig-3.3.0
+	>=media-libs/libsndfile-1.0.2
+	>=media-sound/linuxsampler-0.5.1
+"
+DEPEND="${RDEPEND}"
+RDEPEND="${CDEPEND}"
 
-DOCS=( AUTHORS ChangeLog NEWS README )
+src_prepare() {
+	default
+
+	# docdir is not propagated there
+	sed -i "s%\$(datadir)/doc/\$(PACKAGE)%\$(datadir)/doc/${P}%g" doc/quickstart/Makefile.am || die
+	eautoreconf
+}
 
 src_configure() {
-	emake -f Makefile.svn
-
-	econf \
-		$(! has static-libs && echo --enable-static=no)
+	econf --disable-static
 }
 
 src_compile() {
-	default
-
-	use doc && emake docs
+	emake LDFLAGS="${LDFLAGS} -Wl,-rpath,/usr/$(get_libdir)/linuxsampler"
 }
 
 src_install() {
 	default
 
-	use static-libs || find "${ED}" -name '*.la' -delete
+	einfo "Removing static libs..."
+	find "${D}" -name "*.la" -delete || die "Failed to remove static libs"
+
+	make_desktop_entry gigedit GigEdit "" "AudioVideo;AudioVideoEditing"
 }
