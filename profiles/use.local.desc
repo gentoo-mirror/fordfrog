@@ -51,6 +51,7 @@ media-libs/coin:simage - Enables runtime linkage of simage library
 media-libs/coin:vrml97 - Enables VRML97 support
 media-sound/guitarix:lv2 - Build lv2 plugins
 media-sound/guitarix:standalone - Build standalone application
+media-sound/linuxsampler:lv2 - Add support for Ladspa V2
 media-sound/linuxsampler:sf2 - Add support for SoundFont 2 sound bank files
 media-sound/qsampler:gig - Enables GigaSampler instrument file support
 media-sound/qsampler:xunique - Enables X11 unique/single instance
