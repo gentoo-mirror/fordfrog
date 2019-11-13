@@ -2,54 +2,75 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit eutils subversion
 
-DESCRIPTION="LinuxSampler is a software audio sampler engine with professional grade features"
-HOMEPAGE="http://www.linuxsampler.org/"
+inherit autotools subversion
+
+DESCRIPTION="Software audio sampler engine with professional grade features"
+HOMEPAGE="https://www.linuxsampler.org/"
 ESVN_REPO_URI="https://svn.linuxsampler.org/svn/linuxsampler/trunk"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-# it also supports vst but it's masked in the tree at this moment
-IUSE="alsa doc jack sf2 sqlite static-libs"
+IUSE="alsa doc jack lv2 sf2 sqlite"
 REQUIRED_USE="|| ( alsa jack )"
 
-RDEPEND=">media-libs/libgig-4
-	media-libs/libsndfile
+RDEPEND="
+	>=media-libs/libgig-4.1.0
+	media-libs/libsndfile[-minimal]
 	alsa? ( media-libs/alsa-lib )
 	jack? ( virtual/jack )
-	sqlite? ( >=dev-db/sqlite-3.3 )"
+	lv2? ( media-libs/lv2 )
+	sqlite? ( >=dev-db/sqlite-3.3 )
+"
 DEPEND="${RDEPEND}
+	media-libs/dssi
+	media-libs/ladspa-sdk
+"
+BDEPEND="
 	virtual/pkgconfig
-	doc? ( app-doc/doxygen )"
+	doc? ( app-doc/doxygen )
+"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-2.0.0-nptl-hardened.patch"
+	"${FILESDIR}/${PN}-2.0.0-lv2-automagic.patch"
+)
 
 DOCS=( AUTHORS ChangeLog NEWS README )
 
-src_configure() {
+src_prepare() {
+	default
+
 	emake -f Makefile.svn
 
-	econf \
-		$(use_enable alsa alsa-driver) \
-		--disable-arts-driver \
-		$(use_enable jack jack-driver) \
-		$(use_enable sqlite instruments-db) \
-		$(use_enable sf2 sf2-engine) \
-		$(! has static-libs && echo --enable-static=no)
+	eautoreconf
+}
+
+src_configure() {
+	local myeconfargs=(
+		--disable-arts-driver
+		--disable-static
+		$(use_enable alsa alsa-driver)
+		$(use_enable jack jack-driver)
+		$(use_enable lv2)
+		$(use_enable sqlite instruments-db)
+		$(use_enable sf2 sf2-engine)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_compile() {
-	default
-
+	emake -j1 # fails with parallel jobs, bug #666738
 	use doc && emake docs
 }
 
 src_install() {
+	use doc && local HTML_DOCS=( doc/html/. )
 	default
+	find "${D}" -name '*.la' -delete || die
 
-	# For liblinuxsampler.so to be found at runtime
-	printf "LDPATH=\"${EPREFIX}/usr/$(get_libdir)/linuxsampler/\"" > 99${PN}
-	doenvd "99${PN}"
-
-	! use static-libs && prune_libtool_files --modules
+	# lscp files conflict with nilfs-utils, bug #556330
+	mv "${D}/usr/bin/lscp" "${D}/usr/bin/lscp-${PN}" || die
+	mv "${D}/usr/share/man/man1/lscp.1" "${D}/usr/share/man/man1/lscp-${PN}.1" || die
 }
