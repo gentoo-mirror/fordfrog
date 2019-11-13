@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit subversion
+inherit autotools subversion
 
 DESCRIPTION="C++ library for loading Gigasampler and DLS level 1/2 files"
 HOMEPAGE="https://www.linuxsampler.org/libgig/"
@@ -22,9 +22,11 @@ BDEPEND="
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )"
 
-src_configure() {
+src_prepare() {
+	default
+
 	emake -f Makefile.svn
-	econf
+	eautoreconf
 }
 
 src_compile() {
