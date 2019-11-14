@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-	<email>fordfrog@gentoo.org</email>
-	<name>Miroslav Šulc</name>
-</maintainer>
-<use>
-	<flag name="gig">Enables GigaSampler instrument file support</flag>
-	<flag name="xunique">Enables X11 unique/single instance</flag>
-</use>
+  <maintainer type="person">
+    <email>fordfrog@gentoo.org</email>
+    <name>Miroslav Šulc</name>
+  </maintainer>
+  <use>
+    <flag name="libgig">Enable libgig support for loading Gigasampler files and
+      DLS (Downloadable Sounds) Level 1/2 files</flag>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge">qsampler</remote-id>
+  </upstream>
 </pkgmetadata>

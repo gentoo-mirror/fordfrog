@@ -1,67 +1,55 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit subversion gnome2-utils xdg-utils
+EAPI=7
 
-DESCRIPTION="A graphical frontend to the LinuxSampler engine"
-HOMEPAGE="https://qsampler.sourceforge.io http://www.linuxsampler.org/"
+inherit qmake-utils autotools xdg subversion
+
+DESCRIPTION="Graphical frontend to the LinuxSampler engine"
+HOMEPAGE="https://qsampler.sourceforge.io/ https://www.linuxsampler.org/"
 ESVN_REPO_URI="https://svn.linuxsampler.org/svn/qsampler/trunk"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="doc +gig +xunique"
+IUSE="debug +libgig"
 
-RDEPEND="
-	app-arch/bzip2
-	dev-libs/double-conversion
-	dev-libs/expat
-	dev-libs/glib
-	dev-libs/libpcre
-	dev-libs/libpcre2
+COMMON_DEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
-	media-gfx/graphite2
-	media-libs/freetype
-	media-libs/harfbuzz
-	media-libs/liblscp
-	media-libs/libpng:=
-	sys-apps/util-linux
-	dev-libs/icu:=
-	sys-libs/zlib
-	virtual/opengl
-	gig? ( media-libs/libgig )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
-	doc? ( app-doc/doxygen )"
+	media-libs/alsa-lib
+	>=media-libs/liblscp-0.5.6:=
+	x11-libs/libX11
+	libgig? ( >=media-libs/libgig-3.3.0:= )
+"
+RDEPEND="${COMMON_DEPEND}
+	>=media-sound/linuxsampler-0.5
+"
+DEPEND="${COMMON_DEPEND}
+	dev-qt/linguist-tools:5
+"
 
-DOCS=( AUTHORS ChangeLog README )
+DOCS=( AUTHORS ChangeLog README TODO TRANSLATORS )
 
-src_configure() {
-	emake -f Makefile.svn
+PATCHES=( "${FILESDIR}/${PN}-0.5.3-Makefile.patch" )
 
-	econf \
-		--enable-qt4=no \
-		--with-qt5=/usr/$(get_libdir)/qt5 \
-		$(use_enable gig libgig) \
-		$(use_enable xunique xunique)
-}
-
-src_compile() {
+src_prepare() {
 	default
 
-	use doc && emake docs
+	emake -f Makefile.svn
+	eautoreconf
 }
 
-pkg_postinst() {
-	gnome2_icon_cache_update
-	xdg_mimeinfo_database_update
-}
+src_configure() {
+	local myeconfargs=(
+		$(use_enable debug)
+		$(use_enable libgig)
+	)
+	ac_qmake="$(qt5_get_bindir)/qmake" \
+		econf "${myeconfargs[@]}"
 
-pkg_postrm() {
-	gnome2_icon_cache_update
-	xdg_mimeinfo_database_update
+	cd src || die
+	eqmake5 src.pro -o Makefile
 }
