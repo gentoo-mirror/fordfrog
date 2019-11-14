@@ -32,7 +32,7 @@ media-libs/zita-resampler 1.6.0: C++ library for real-time resampling of audio s
 media-sound/gigedit 9999: An instrument editor for gig files
 media-sound/guitarix 9999: Virtual guitar amplifier for Linux
 media-sound/linuxsampler 9999: Software audio sampler engine with professional grade features
-media-sound/qsampler 9999: A graphical frontend to the LinuxSampler engine
+media-sound/qsampler 9999: Graphical frontend to the LinuxSampler engine
 media-sound/zynaddsubfx 9999: ZynAddSubFX is an opensource software synthesizer.
 media-tv/tbs-modules 9999: Kernel Modules for TBS DTV devices
 media-video/vobsub2srt 9999: Converts image subtitles created by VobSub to SRT subtitles using OCR engine
