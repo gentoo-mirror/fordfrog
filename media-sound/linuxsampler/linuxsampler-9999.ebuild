@@ -16,7 +16,7 @@ IUSE="alsa doc jack lv2 sf2 sqlite"
 REQUIRED_USE="|| ( alsa jack )"
 
 RDEPEND="
-	>=media-libs/libgig-4.1.0
+	>=media-libs/libgig-4.2.0
 	media-libs/libsndfile[-minimal]
 	alsa? ( media-libs/alsa-lib )
 	jack? ( virtual/jack )
