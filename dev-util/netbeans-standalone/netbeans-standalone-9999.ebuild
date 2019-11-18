@@ -6,15 +6,15 @@ EAPI=7
 ANT_TASKS="ant-apache-bsf"
 
 if [ ${PV} = "9999" ]; then
-	inherit git-r3 java-pkg-2 java-ant-2 desktop
 	EGIT_REPO_URI="https://github.com/apache/netbeans.git"
 else
 	MY_PV=${PV/_/-}
-	inherit java-pkg-2 java-ant-2 desktop
 	KEYWORDS="~amd64"
-	SRC_URI="https://github.com/apache/netbeans/archive/${MY_PV}.zip -> ${P}.zip"
+	SRC_URI="https://github.com/apache/netbeans/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 	S=${WORKDIR}/netbeans-${MY_PV}
 fi
+
+inherit java-pkg-2 java-ant-2 desktop xdg $([[ ${PV} = "9999" ]] && echo git-r3)
 
 DESCRIPTION="Apache Netbeans IDE"
 HOMEPAGE="https://netbeans.apache.org/"
