@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit qmake-utils git-r3
 
@@ -63,7 +63,7 @@ src_configure() {
 
 src_install() {
 	dobin distrib/{meshlab,meshlabserver}
-	dolib distrib/libcommon.so.1.0.0
+	dolib.so distrib/libcommon.so.1.0.0
 	dosym libcommon.so.1.0.0 /usr/$(get_libdir)/libcommon.so.1
 	dosym libcommon.so.1 /usr/$(get_libdir)/libcommon.so
 	exeinto /usr/$(get_libdir)/meshlab/plugins
