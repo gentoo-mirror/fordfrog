@@ -35,7 +35,7 @@ index cf4cccff..e75f1bb4 100644
  			meshlabdocumentbundler.cpp \
  			ml_shared_data_context.cpp 
 diff --git a/general.pri b/general.pri
-index d12a066e..be41ffce 100644
+index 4cb5102c..b90d7546 100644
 --- a/general.pri
 +++ b/general.pri
 @@ -7,7 +7,6 @@ DEFINES += MESHLAB_SCALAR=float
@@ -47,7 +47,7 @@ index d12a066e..be41ffce 100644
  CONFIG += c++11
  
 diff --git a/meshlab/meshlab.pro b/meshlab/meshlab.pro
-index efaa6614..b9e5d321 100644
+index 5f542b87..fbf27bff 100644
 --- a/meshlab/meshlab.pro
 +++ b/meshlab/meshlab.pro
 @@ -1,7 +1,6 @@
@@ -73,8 +73,8 @@ index efaa6614..b9e5d321 100644
  #	win32-g++:release:LIBS 			+= -L../common/release -lcommon
  #}
  
--linux:LIBS += -L$$PWD/../external/lib/linux -ljhead -L../distrib -lcommon -lGLU
-+linux:LIBS += -L$$PWD/../external/lib/linux -ljhead -L../distrib -lcommon -lGLU -lGLEW
+-linux:LIBS += -L$$PWD/../external/lib/linux-g++ -ljhead -L../distrib -lcommon -lGLU
++linux:LIBS += -L$$PWD/../external/lib/linux-g++ -ljhead -L../distrib -lcommon -lGLU -lGLEW
  linux:QMAKE_RPATHDIR += ../distrib
  
  # uncomment in your local copy only in emergency cases.
