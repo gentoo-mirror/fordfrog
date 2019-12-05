@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit qmake-utils git-r3
+inherit qmake-utils desktop xdg git-r3
 
 DESCRIPTION="the open source system for processing and editing 3D triangular meshes"
 HOMEPAGE="http://www.meshlab.net"
@@ -15,7 +15,9 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
 IUSE="-minimal"
-DEPEND="dev-cpp/eigen:3
+DEPEND="
+	app-arch/bzip2
+	dev-cpp/eigen:3
 	dev-cpp/muParser
 	dev-qt/qtcore:5
 	dev-qt/qtopengl:5
@@ -34,7 +36,7 @@ RDEPEND="${DEPEND}"
 S="${WORKDIR}/${PN}/src"
 
 PATCHES=(
-	"${FILESDIR}"/${PV}-use-external-libs.patch
+	"${FILESDIR}"/${P}-disable-bundled-libs.patch
 )
 
 src_unpack() {
@@ -57,8 +59,16 @@ src_prepare(){
 }
 
 src_configure() {
-	eqmake5 -r external/external.pro
-	eqmake5 -r meshlab_$(use minimal && echo minimal || echo full).pro
+	local qmake_flags=(
+		'CONFIG+=system_eigen3'
+		'CONFIG+=system_glew'
+		'CONFIG+=system_lib3ds'
+		'CONFIG+=system_openctm'
+		'CONFIG+=system_bzip2'
+	)
+
+	eqmake5 -r external/external.pro ${qmake_flags}
+	eqmake5 -r meshlab_$(use minimal && echo minimal || echo full).pro ${qmake_flags}
 }
 
 src_install() {
