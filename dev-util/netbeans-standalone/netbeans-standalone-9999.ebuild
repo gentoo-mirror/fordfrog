@@ -23,7 +23,7 @@ SLOT="$(ver_cut 1-1)"
 IUSE=""
 
 DEPEND="virtual/jdk:1.8"
-RDEPEND="virtual/jdk:*"
+RDEPEND=">=virtual/jdk-1.8:*"
 
 PATCHES=( "${FILESDIR}"/fix-private-debugger-access.patch )
 
