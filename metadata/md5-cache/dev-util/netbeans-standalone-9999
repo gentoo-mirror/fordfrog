@@ -7,7 +7,7 @@ HOMEPAGE=https://netbeans.apache.org/
 IUSE=elibc_FreeBSD elibc_FreeBSD
 LICENSE=Apache-2.0
 PROPERTIES=live
-RDEPEND=virtual/jdk:* >=dev-java/java-config-2.2.0-r3
+RDEPEND=>=virtual/jdk-1.8:* >=dev-java/java-config-2.2.0-r3
 SLOT=9999
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	git-r3	6d22636df236df4cc8475f7b7668bdcd	java-ant-2	8d9cb415f1ca9fc7ebc5a74bacec300c	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	82402a1c36ab4bf38f3313a543f9e827	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=b5e49a373d525ba93183c07a1833dbb6
+_md5_=d5691856a10495066e4f2ddfed3a8315
