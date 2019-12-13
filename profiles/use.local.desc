@@ -3,15 +3,8 @@
 # * generated automatically using pmaint *
 
 dev-util/netbeans:doc - Installs JavaDocs for Netbeans source code
-media-libs/coin:3ds-import - Enables 3ds import capabilities
-media-libs/coin:dragger - Enables Dragger support
-media-libs/coin:manipulator - Enables Manipulator support
-media-libs/coin:nodekit - Enables Nodekit support
-media-libs/coin:simage - Enables runtime linkage of simage library
-media-libs/coin:vrml97 - Enables VRML97 support
 media-sound/guitarix:lv2 - Build lv2 plugins
 media-sound/guitarix:standalone - Build standalone application
-media-sound/qsampler:libgig - Enable libgig support for loading Gigasampler files and DLS (Downloadable Sounds) Level 1/2 files
 media-sound/zynaddsubfx:dssi - Adds support for DSSI
 media-sound/zynaddsubfx:jackmidi - Adds support for JACK MIDI
 media-sound/zynaddsubfx:ntk - Build x11-libs/ntk GUI>
