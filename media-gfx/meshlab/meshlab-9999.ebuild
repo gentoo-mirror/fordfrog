@@ -55,6 +55,7 @@ src_prepare(){
 
 	# Fix libssynth.a not being found
 	einfo "Fixing libssynth.a path"
+	mkdir pf "${S}"/external/lib/linux-g++/ || die "Failed to create target dir"
 	ln -s "${S}"/external/lib/macx64/libssynth.a "${S}"/external/lib/linux-g++/ || die "Failed to create workaround symlink"
 }
 
