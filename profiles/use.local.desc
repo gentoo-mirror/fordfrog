@@ -3,46 +3,6 @@
 # * generated automatically using pmaint *
 
 dev-util/netbeans:doc - Installs JavaDocs for Netbeans source code
-media-gfx/freecad:eigen3 - Enables support for eigen3
-media-gfx/freecad:freecad_modules_addonmgr - Build the FreeCAD addon manager module
-media-gfx/freecad:freecad_modules_arch - Build the FreeCAD Architecture module
-media-gfx/freecad:freecad_modules_assembly - Build the FreeCAD Assembly module
-media-gfx/freecad:freecad_modules_complete - Build the FreeCAD complete module
-media-gfx/freecad:freecad_modules_draft - Build the FreeCAD draft module
-media-gfx/freecad:freecad_modules_drawing - Build the FreeCAD drawing module
-media-gfx/freecad:freecad_modules_fem - Build the FreeCAD FEM module
-media-gfx/freecad:freecad_modules_flat_mesh - Build the FreeCAD flat mesh module
-media-gfx/freecad:freecad_modules_idf - Build the FreeCAD idf module
-media-gfx/freecad:freecad_modules_image - Build the FreeCAD image module
-media-gfx/freecad:freecad_modules_import - Build the FreeCAD import module
-media-gfx/freecad:freecad_modules_inspection - Build the FreeCAD inspection module
-media-gfx/freecad:freecad_modules_jtreader - Build the FreeCAD jt reader module
-media-gfx/freecad:freecad_modules_material - Build the FreeCAD material module
-media-gfx/freecad:freecad_modules_mesh - Build the FreeCAD mesh module
-media-gfx/freecad:freecad_modules_mesh_part - Build the FreeCAD mesh part module
-media-gfx/freecad:freecad_modules_openscad - Build the FreeCAD openscad module
-media-gfx/freecad:freecad_modules_part - Build the FreeCAD part module
-media-gfx/freecad:freecad_modules_part_design - Build the FreeCAD part design module
-media-gfx/freecad:freecad_modules_path - Build the FreeCAD path module
-media-gfx/freecad:freecad_modules_plot - Build the FreeCAD plot module
-media-gfx/freecad:freecad_modules_points - Build the FreeCAD points module
-media-gfx/freecad:freecad_modules_raytracing - Build the FreeCAD ray tracing module
-media-gfx/freecad:freecad_modules_reverseengineering - Build the FreeCAD reverse engineering module
-media-gfx/freecad:freecad_modules_robot - Build the FreeCAD robot module
-media-gfx/freecad:freecad_modules_sandbox - Build the FreeCAD Sandbox module which is only for testing purposes
-media-gfx/freecad:freecad_modules_ship - Build the FreeCAD ship module
-media-gfx/freecad:freecad_modules_show - Build the FreeCAD Show module (helper module for visibility automation)
-media-gfx/freecad:freecad_modules_sketcher - Build the FreeCAD sketcher module
-media-gfx/freecad:freecad_modules_spreadsheet - Build the FreeCAD spreadsheet module
-media-gfx/freecad:freecad_modules_start - Build the FreeCAD start module
-media-gfx/freecad:freecad_modules_surface - Build the FreeCAD surface module
-media-gfx/freecad:freecad_modules_techdraw - Build the FreeCAD Technical Drawing module
-media-gfx/freecad:freecad_modules_template - Build the FreeCAD template module which is only for testing purposes
-media-gfx/freecad:freecad_modules_test - Build the FreeCAD test module
-media-gfx/freecad:freecad_modules_tux - Build the FreeCAD Tux module
-media-gfx/freecad:freecad_modules_web - Build the FreeCAD web module
-media-gfx/freecad:freetype - Enables supportfor freetype needed by part of part module
-media-gfx/freecad:swig - Enables SWIG binding for pivy"
 media-libs/coin:3ds-import - Enables 3ds import capabilities
 media-libs/coin:dragger - Enables Dragger support
 media-libs/coin:manipulator - Enables Manipulator support
