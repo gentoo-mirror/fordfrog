@@ -24,7 +24,6 @@ dev-util/netbeans 9999_p20180212 9999_p20180213 9999_p20180214 9999_p20180215 99
 dev-util/netbeans-standalone 11.1 11.2 9999: Apache Netbeans IDE
 media-gfx/meshlab 9999: the open source system for processing and editing 3D triangular meshes
 media-libs/lensfun 9999: Library for rectifying and simulating photographic lens distortions
-media-libs/zita-resampler 1.6.0: C++ library for real-time resampling of audio signals
 media-sound/zynaddsubfx 9999: ZynAddSubFX is an opensource software synthesizer.
 media-tv/tbs-modules 9999: Kernel Modules for TBS DTV devices
 media-video/vobsub2srt 9999: Converts image subtitles created by VobSub to SRT subtitles using OCR engine
