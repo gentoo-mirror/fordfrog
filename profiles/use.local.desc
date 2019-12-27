@@ -3,8 +3,6 @@
 # * generated automatically using pmaint *
 
 dev-util/netbeans:doc - Installs JavaDocs for Netbeans source code
-media-sound/guitarix:lv2 - Build lv2 plugins
-media-sound/guitarix:standalone - Build standalone application
 media-sound/zynaddsubfx:dssi - Adds support for DSSI
 media-sound/zynaddsubfx:jackmidi - Adds support for JACK MIDI
 media-sound/zynaddsubfx:ntk - Build x11-libs/ntk GUI>
