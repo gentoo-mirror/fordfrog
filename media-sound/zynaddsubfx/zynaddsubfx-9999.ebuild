@@ -1,93 +1,87 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils git-r3 multilib
-RESTRICT="mirror"
+inherit cmake flag-o-matic git-r3
 
-DESCRIPTION="ZynAddSubFX is an opensource software synthesizer."
+DESCRIPTION="Software synthesizer capable of making a countless number of instruments"
 HOMEPAGE="http://zynaddsubfx.sourceforge.net/"
-SRC_URI="http://download.tuxfamily.org/proaudio/distfiles/zynaddsubfx-presets-0.1.tar.bz2"
-
-EGIT_REPO_URI="git://git.code.sf.net/p/zynaddsubfx/code"
-EGIT_SUBMODULES=( '*' )
+EGIT_REPO_URI="https://github.com/zynaddsubfx/zynaddsubfx.git"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="oss alsa dssi fltk jack jackmidi lash +ntk portaudio"
-# upstream the following preference ntk -> fltk; we waant to choose the GUI:
-REQUIRED_USE="?? ( fltk ntk )"
+IUSE="alsa doc dssi +fltk jack lash portaudio"
 
-RDEPEND="
-	dev-libs/mxml
+REQUIRED_USE="|| ( alsa jack portaudio )"
+
+BDEPEND="
+	virtual/pkgconfig
+	doc? ( app-doc/doxygen )
+"
+DEPEND="
+	>=dev-libs/mxml-2.2.1
+	media-libs/liblo
 	sci-libs/fftw:3.0
+	sys-libs/zlib
 	alsa? ( media-libs/alsa-lib )
 	dssi? ( media-libs/dssi )
-	fltk? ( >=x11-libs/fltk-1.3:1 )
+	fltk? (
+		>=x11-libs/fltk-1.3:1
+		x11-libs/libX11
+		x11-libs/libXpm
+	)
 	jack? ( virtual/jack )
-	jackmidi? ( virtual/jack )
-	lash? ( virtual/liblash )
-	ntk? ( x11-libs/ntk )
-	portaudio? ( media-libs/portaudio )"
-DEPEND="!media-libs/zynaddsubfx-banks
-	!media-sound/zynaddsubfx-cvs
-	virtual/pkgconfig"
+	lash? ( media-sound/lash )
+	portaudio? ( media-libs/portaudio )
+"
+RDEPEND="${DEPEND}"
 
-PATCHES=(
-	"${FILESDIR}/gnustd.diff"
-	"${FILESDIR}/${P}-docs.patch"
-	"${FILESDIR}/${P}-bashcomp.patch"
-)
+PATCHES=( "${FILESDIR}"/${P}-docs.patch )
 
-src_unpack() {
-	git-r3_src_unpack
-	unpack "zynaddsubfx-presets-0.1.tar.bz2"
+DOCS=( NEWS.txt README.adoc TODO-release.md )
+
+src_prepare() {
+	cmake_src_prepare
+
+	if ! use dssi; then
+		sed -i -e '/pkg_search_module.*DSSI/s/^/#DONT/' src/CMakeLists.txt || die
+	fi
+	if ! use jack; then
+		sed -e '/pkg_check_modules.*JACK/s/^/#DONT/' -i {rtosc,src}/CMakeLists.txt || die
+	fi
+	if ! use lash; then
+		sed -i -e '/pkg_search_module.*LASH/s/^/#DONT/' src/CMakeLists.txt || die
+	fi
+	if ! use portaudio; then
+		sed -i -e '/pkg_check_modules.*PORTAUDIO/s/^/#DONT/' src/CMakeLists.txt || die
+	fi
+
+	# FIXME upstream: sandbox error
+	sed -i -e '/add_subdirectory(bash-completion)/d' doc/CMakeLists.txt || die
 }
 
 src_configure() {
-	# overide upstream GUI preference
-	MYGUI="off"
-	use fltk && MYGUI="fltk"
-	use ntk && MYGUI="ntk"
+	append-cxxflags -std=c++11
 
-	mycmakeargs=(
-		-DGuiModule="${MYGUI}"
-		`use alsa && echo "-DAlsaEnable=TRUE" || echo "-DAlsaEnable=FALSE"`
-		`use jack && echo "-DJackEnable=TRUE" || echo "-DJackEnable=FALSE"`
-		`use oss && echo "-DOssEnable=TRUE" || echo "-DOssEnable=FALSE"`
-		`use portaudio && echo "-DPaEnable=TRUE" || echo "-DPaEnable=FALSE"`
-		`use lash && echo "-DLashEnable=TRUE" || echo "-DLashEnable=FALSE"`
-		`use dssi && echo "-DDssiEnable=TRUE" || echo "-DDssiEnable=FALSE"`
-		`use lash && echo "-DLashEnable=TRUE" || echo "-DLashEnable=FALSE"`
+	local mycmakeargs=(
 		-DPluginLibDir=$(get_libdir)
+		$(cmake_use_find_package alsa Alsa)
+		$(cmake_use_find_package doc Doxygen)
+		$(cmake_use_find_package fltk FLTK)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile
-	cd "${S}"/ExternalPrograms/Spliter
-	emake
-	cd "${S}"/ExternalPrograms/Controller
-	emake
+	cmake_src_compile
+	use doc && cmake_src_compile doc
 }
 
 src_install() {
-	cmake-utils_src_install
-
-	# -------- install examples presets
-##	[ "${#MY_PN}" == "0" ] && MY_PN="${PN}"
-	insinto /usr/share/${PN}/presets
-	doins "${WORKDIR}/presets/"*
-	insinto /usr/share/${PN}/examples
-	doins "${WORKDIR}/examples/"*
-	doins "${S}/instruments/examples/"*
-	# --------
-}
-
-pkg_postinst() {
-	einfo "Banks are now provided with this package"
-	einfo "To get some nice sounding parameters emerge zynaddsubfx-extras"
+	use doc && local HTML_DOCS=( "${BUILD_DIR}"/doc/html/. )
+	cmake_src_install
+	insinto /usr/share/${PN}
+	doins -r instruments/*
 }

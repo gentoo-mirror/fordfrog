@@ -7,7 +7,5 @@
 	</maintainer>
 	<use>
 		<flag name="dssi">Adds support for DSSI</flag>
-		<flag name="jackmidi">Adds support for JACK MIDI</flag>
-		<flag name="ntk">Build x11-libs/ntk GUI></flag>
 	</use>
 </pkgmetadata>
