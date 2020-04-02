@@ -4,6 +4,4 @@
 
 dev-util/netbeans:doc - Installs JavaDocs for Netbeans source code
 media-sound/zynaddsubfx:dssi - Adds support for DSSI
-media-sound/zynaddsubfx:jackmidi - Adds support for JACK MIDI
-media-sound/zynaddsubfx:ntk - Build x11-libs/ntk GUI>
 www-servers/tomcat:extra-webapps - Build also the docs and examples webapp
