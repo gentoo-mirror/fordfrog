@@ -7,7 +7,7 @@ IUSE=elibc_FreeBSD elibc_FreeBSD
 KEYWORDS=~amd64
 LICENSE=Apache-2.0
 RDEPEND=>=virtual/jdk-1.8:* >=dev-java/java-config-2.2.0-r3
-SLOT=11
-SRC_URI=https://github.com/apache/netbeans/archive/11.2.tar.gz -> netbeans-standalone-11.2.tar.gz
+SLOT=12
+SRC_URI=https://github.com/apache/netbeans/archive/12.0.tar.gz -> netbeans-standalone-12.0.tar.gz
 _eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	java-ant-2	8d9cb415f1ca9fc7ebc5a74bacec300c	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	16d46032afaca1d6d0621f82084880cb	multilib	ba693a7065ee4edc78b3ea02a015bcad	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=d5691856a10495066e4f2ddfed3a8315
+_md5_=f4ad0af7ac197f2c1b001a0e64bd4e32
