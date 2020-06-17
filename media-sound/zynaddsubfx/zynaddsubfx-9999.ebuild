@@ -12,7 +12,7 @@ EGIT_REPO_URI="https://github.com/zynaddsubfx/zynaddsubfx.git"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="alsa doc dssi +fltk jack lash portaudio"
+IUSE="alsa doc dssi +fltk jack lash portaudio zest"
 
 REQUIRED_USE="|| ( alsa jack portaudio )"
 
@@ -36,8 +36,11 @@ DEPEND="
 	lash? ( media-sound/lash )
 	portaudio? ( media-libs/portaudio )
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	zest? ( media-sound/zyn-fusion )
+"
 
+REQUIRED_USE="^^ ( zest fltk )"
 PATCHES=( "${FILESDIR}"/${P}-docs.patch )
 
 DOCS=( NEWS.txt README.adoc TODO-release.md )
@@ -64,12 +67,16 @@ src_prepare() {
 
 src_configure() {
 	append-cxxflags -std=c++11
+	local UI
+	use fltk && UI=fltk
+	use zest && UI=zest
 
 	local mycmakeargs=(
 		-DPluginLibDir=$(get_libdir)
+		-DGuiModule=${UI}
 		$(cmake_use_find_package alsa Alsa)
 		$(cmake_use_find_package doc Doxygen)
-		$(cmake_use_find_package fltk FLTK)
+		$(use fltk && cmake_use_find_package fltk FLTK)
 	)
 	cmake_src_configure
 }
