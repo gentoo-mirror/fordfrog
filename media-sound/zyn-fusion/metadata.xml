@@ -5,8 +5,4 @@
 		<email>fordfrog@gentoo.org</email>
 		<name>Miroslav Šulc</name>
 	</maintainer>
-	<use>
-		<flag name="dssi">Adds support for DSSI</flag>
-		<flag name="zest">Builds new ZynFusion interface</flag>
-	</use>
 </pkgmetadata>
