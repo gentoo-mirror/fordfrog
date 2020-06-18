@@ -5,44 +5,40 @@ EAPI=7
 
 inherit git-r3
 
-UV_PV="1.9.1"
-
 DESCRIPTION="Zyn-Fusion User Interface"
 HOMEPAGE="https://github.com/mruby-zest/mruby-zest-build"
 EGIT_REPO_URI="https://github.com/mruby-zest/mruby-zest-build"
-SRC_URI="https://dist.libuv.org/dist/v${UV_PV}/libuv-v${UV_PV}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-DEPEND=""
+DEPEND="dev-libs/libuv
+	x11-libs/libX11
+	x11-libs/libxcb"
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
-# TODO use system libuv and as much libs as possible
-# TODO Change /opt/ default (need to check whole source repository)
-
-src_unpack() {
-	git-r3_src_unpack
-	default_src_unpack
-}
+# TODO Use gentoo custom "FLAGS" (makefile and rake file)
+# TODO allow binary, library and data installation in standard path
 
 src_prepare() {
-	ln -s "${WORKDIR}"/libuv-v${UV_PV} deps/
+	# Unbundle libuv: makefile and rake file
+	sed -i -e "s%./deps/\$(UV_DIR)/.libs/libuv.a%`pkg-config --libs libuv`%" \
+		-e 's%-I ../../deps/\$(UV_DIR)/include%-I /usr/include/uv/%' Makefile
+	sed -i -e "/deps\/libuv.a/s/<< .*/<< \"`pkg-config --libs libuv`\"/" \
+		-e 's%../deps/libuv-v1.9.1/include/%usr/include/uv/%' build_config.rb
 	eapply_user
 }
 
 src_compile() {
-	emake builddep
 	default_src_compile
 	emake pack
 }
 
 src_install() {
 	cd package
-	touch qml/MainWindow.qml
 
 	exeinto /opt/${PN}
 	doexe zest
