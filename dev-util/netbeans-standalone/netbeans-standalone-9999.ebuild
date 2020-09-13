@@ -23,8 +23,8 @@ LICENSE="Apache-2.0"
 SLOT="$(ver_cut 1-1)"
 IUSE=""
 
-DEPEND=">=virtual/jdk-11"
-RDEPEND=">=virtual/jdk-11:*"
+DEPEND=">=virtual/jdk-11:*"
+RDEPEND=">=virtual/jdk-11"
 
 PATCHES=( "${FILESDIR}"/fix-private-debugger-access.patch )
 
