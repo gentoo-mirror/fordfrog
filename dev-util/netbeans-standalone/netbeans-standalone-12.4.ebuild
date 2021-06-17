@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,11 +8,9 @@ ANT_TASKS="ant-apache-bsf"
 if [ ${PV} = "9999" ]; then
 	EGIT_REPO_URI="https://github.com/apache/netbeans.git"
 else
-	MY_PV=${PV/_/-}
-	MY_PV=${MY_PV/p/u}
 	KEYWORDS="~amd64"
-	SRC_URI="https://github.com/apache/netbeans/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
-	S=${WORKDIR}/netbeans-${MY_PV}
+	SRC_URI="mirror://apache/netbeans/netbeans/${PV}/netbeans-${PV}-source.zip"
+	S="${WORKDIR}"
 fi
 
 inherit java-pkg-2 java-ant-2 desktop xdg $([[ ${PV} = "9999" ]] && echo git-r3)
