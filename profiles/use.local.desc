@@ -5,4 +5,3 @@
 dev-util/netbeans:doc - Installs JavaDocs for Netbeans source code
 media-sound/zynaddsubfx:dssi - Adds support for DSSI
 media-sound/zynaddsubfx:zest - Builds new ZynFusion interface
-www-servers/tomcat:extra-webapps - Build also the docs and examples webapp
