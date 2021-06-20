@@ -10,5 +10,5 @@ LICENSE=GPL-2
 PROPERTIES=live
 RDEPEND=app-arch/bzip2 dev-cpp/eigen:3 dev-cpp/muParser dev-qt/qtcore:5 dev-qt/qtopengl:5 dev-qt/qtscript:5 dev-qt/qtxmlpatterns:5 >=media-gfx/jhead-3.00-r2 media-libs/glew:0 media-libs/qhull =media-libs/lib3ds-1* media-libs/openctm sci-libs/levmar sci-libs/mpir
 SLOT=0
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	ebdbaed22e873a5abe6205f41349b479	qmake-utils	dc74fe3891abc25e80dad5cd3d7c6e47	desktop	c0d27bf73aa08ca05b663dbd31fbef28	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
+_eclasses_=toolchain-funcs	2545dc6f0aaecb2dea61424911e82674	multilib	ba7da83f763a749a2870c28785c6dc0b	qmake-utils	dc74fe3891abc25e80dad5cd3d7c6e47	desktop	c0d27bf73aa08ca05b663dbd31fbef28	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
 _md5_=40818e290ef9674c0b3d5742584ef158
