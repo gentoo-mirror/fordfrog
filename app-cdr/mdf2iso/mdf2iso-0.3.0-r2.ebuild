@@ -1,7 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-inherit eutils toolchain-funcs
+EAPI=7
+
+inherit toolchain-funcs
 
 DESCRIPTION="Alcohol 120% bin image to ISO image file converter"
 HOMEPAGE="http://mdf2iso.berlios.de/"
@@ -15,12 +17,9 @@ RDEPEND="virtual/libc"
 
 S=${WORKDIR}/${PN}
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-
-	epatch "${FILESDIR}"/${P}-bigfiles.patch
-}
+PATCHES=(
+	"${FILESDIR}/${P}-bigfiles.patch"
+)
 
 src_install() {
 	dodoc ChangeLog
