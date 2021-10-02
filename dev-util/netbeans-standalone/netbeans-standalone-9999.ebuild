@@ -24,8 +24,6 @@ IUSE=""
 DEPEND=">=virtual/jdk-11:*"
 RDEPEND=">=virtual/jdk-11"
 
-PATCHES=( "${FILESDIR}"/fix-private-debugger-access.patch )
-
 JAVA_PKG_BSFIX="off"
 INSTALL_DIR=/usr/share/${PN}-${SLOT}
 
