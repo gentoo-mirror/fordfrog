@@ -22,9 +22,8 @@ SLOT="$(ver_cut 1-1)"
 IUSE=""
 
 DEPEND=">=virtual/jdk-11:*"
-RDEPEND=">=virtual/jdk-11"
-
-PATCHES=( "${FILESDIR}"/fix-private-debugger-access.patch )
+RDEPEND=">=virtual/jdk-11:*"
+BDEPEND="app-arch/unzip"
 
 JAVA_PKG_BSFIX="off"
 INSTALL_DIR=/usr/share/${PN}-${SLOT}
