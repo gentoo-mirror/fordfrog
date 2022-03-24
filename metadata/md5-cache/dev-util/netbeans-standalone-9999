@@ -9,5 +9,5 @@ LICENSE=Apache-2.0
 PROPERTIES=live
 RDEPEND=>=virtual/jdk-11 >=dev-java/java-config-2.2.0-r3
 SLOT=9999
-_eclasses_=java-utils-2	fe178a2da6b16798a2363acc5543dffa	java-pkg-2	2d0eb1353bf1264bd6e61736d3e409a2	multilib	de4beb52bfa93c4c5d96792a6b5e1784	toolchain-funcs	badd6e329e1f3e6bee99b35bf8763ce8	java-ant-2	262d853e2dd1056dc103b953dfc113b9	desktop	c0d27bf73aa08ca05b663dbd31fbef28	xdg-utils	4f29a8b760a594a212abe9c2ba957c31	xdg	6024fbc93167fad782e2032933654857	git-r3	cc875b0c1e9b3bdac1af0f82f3ba29da
+_eclasses_=java-utils-2	5faae27f317e090a61b74f53f5e0cbc9	java-pkg-2	3b09e051fc2045a0f0b9471b87d4f8bd	multilib	de4beb52bfa93c4c5d96792a6b5e1784	toolchain-funcs	badd6e329e1f3e6bee99b35bf8763ce8	java-ant-2	5cf479aa9e0ac9cc55899f2762c2aaa0	desktop	c0d27bf73aa08ca05b663dbd31fbef28	xdg-utils	fffb53a53cf17c9c0c998a3c0a590c7e	xdg	6024fbc93167fad782e2032933654857	git-r3	b9ac6f96d2a88edb5b351df634dc5e53
 _md5_=350bd3686d96de3ff74f42bbc2e33c8c
