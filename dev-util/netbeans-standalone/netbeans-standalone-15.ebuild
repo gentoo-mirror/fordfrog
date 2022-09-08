@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 ANT_TASKS="ant-apache-bsf"
 
@@ -23,7 +23,6 @@ IUSE=""
 
 DEPEND=">=virtual/jdk-11:*"
 RDEPEND=">=virtual/jdk-11"
-BDEPEND="app-arch/unzip"
 
 JAVA_PKG_BSFIX="off"
 INSTALL_DIR=/usr/share/${PN}-${SLOT}
