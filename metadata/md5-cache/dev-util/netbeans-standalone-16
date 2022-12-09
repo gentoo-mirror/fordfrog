@@ -1,4 +1,3 @@
-BDEPEND=app-arch/unzip
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare pretend setup
 DEPEND=>=virtual/jdk-11:* >=dev-java/java-config-2.2.0-r3 >=dev-java/ant-core-1.8.2:0 dev-java/javatoolkit
 DESCRIPTION=Apache Netbeans IDE
@@ -9,7 +8,7 @@ INHERIT=java-pkg-2 java-ant-2 desktop xdg
 KEYWORDS=~amd64
 LICENSE=Apache-2.0
 RDEPEND=>=virtual/jdk-11 >=dev-java/java-config-2.2.0-r3
-SLOT=14
-SRC_URI=mirror://apache/netbeans/netbeans/14/netbeans-14-source.zip
+SLOT=16
+SRC_URI=mirror://apache/netbeans/netbeans/16/netbeans-16-source.zip
 _eclasses_=java-utils-2	c79d65661a9f4f72b60376c9e4b3dfa1	java-pkg-2	3b09e051fc2045a0f0b9471b87d4f8bd	multilib	5ca4e49abed8e3a2f7b56920eadee157	toolchain-funcs	37a4612ce5522df5a100359a8dbc8491	java-ant-2	5cf479aa9e0ac9cc55899f2762c2aaa0	desktop	7eb20ad915a0a318176d51bc2508ff5c	xdg-utils	ac0e315a3688929e34ac75b139e7349a	xdg	6024fbc93167fad782e2032933654857
-_md5_=f7b5611e33e9bda0d06649edba36517d
+_md5_=556f774378c189b867c7a85dcc3f6b40
