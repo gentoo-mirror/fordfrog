@@ -47,7 +47,7 @@ src_prepare() {
 }
 
 src_compile() {
-	eant -Dcluster.config=full -Dpermit.jdk9.builds=true -Dbinaries.cache="${S}"/.hgexternalcache || die "Failed to compile"
+	GRADLE_USER_HOME="${HOME}/.gradle" eant -Dcluster.config=full -Dpermit.jdk9.builds=true -Dbinaries.cache="${S}"/.hgexternalcache || die "Failed to compile"
 }
 
 QA_PREBUILT="
