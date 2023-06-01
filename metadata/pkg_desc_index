@@ -1,5 +1,5 @@
 app-cdr/mdf2iso 0.3.0-r2: Alcohol 120% bin image to ISO image file converter
-dev-util/netbeans-standalone 16 17 9999: Apache Netbeans IDE
+dev-util/netbeans-standalone 17 18 9999: Apache Netbeans IDE
 media-sound/zyn-fusion 9999: Zyn-Fusion User Interface
 media-sound/zynaddsubfx 9999: Software synthesizer capable of making a countless number of instruments
 media-video/vobsub2srt 9999: Converts image subtitles created by VobSub to SRT subtitles using OCR engine
