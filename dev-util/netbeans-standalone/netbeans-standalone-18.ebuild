@@ -23,7 +23,6 @@ IUSE=""
 
 DEPEND=">=virtual/jdk-11:*"
 RDEPEND=">=virtual/jdk-11"
-BDEPEND="app-arch/unzip"
 
 JAVA_PKG_BSFIX="off"
 INSTALL_DIR=/usr/share/${PN}-${SLOT}
@@ -45,6 +44,9 @@ pkg_pretend() {
 
 src_prepare() {
 	default
+
+	# remove rust from the full list as there is no cluster provided in the tarball
+	sed -i /nb.cluster.rust,/d nbbuild/cluster.properties || die
 }
 
 src_compile() {
