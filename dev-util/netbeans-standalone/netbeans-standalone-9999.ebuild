@@ -3,8 +3,6 @@
 
 EAPI=8
 
-ANT_TASKS="ant-apache-bsf"
-
 if [ ${PV} = "9999" ]; then
 	EGIT_REPO_URI="https://github.com/apache/netbeans.git"
 else
@@ -21,7 +19,10 @@ LICENSE="Apache-2.0"
 SLOT="$(ver_cut 1-1)"
 IUSE=""
 
-DEPEND=">=virtual/jdk-11:*"
+DEPEND="
+	dev-java/ant[bsf]
+	>=virtual/jdk-11:*
+"
 RDEPEND=">=virtual/jdk-11"
 
 JAVA_PKG_BSFIX="off"
