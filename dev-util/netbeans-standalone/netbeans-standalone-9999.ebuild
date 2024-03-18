@@ -21,9 +21,9 @@ IUSE=""
 
 DEPEND="
 	dev-java/ant[bsf]
-	>=virtual/jdk-11:*
+	>=virtual/jdk-17:*
 "
-RDEPEND=">=virtual/jdk-11"
+RDEPEND=">=virtual/jdk-17"
 
 JAVA_PKG_BSFIX="off"
 INSTALL_DIR=/usr/share/${PN}-${SLOT}
@@ -48,7 +48,7 @@ src_prepare() {
 }
 
 src_compile() {
-	GRADLE_USER_HOME="${HOME}/.gradle" eant -Dcluster.config=full -Dpermit.jdk9.builds=true -Dbinaries.cache="${S}"/.hgexternalcache || die "Failed to compile"
+	GRADLE_USER_HOME="${HOME}/.gradle" eant -Dcluster.config=full -Dbinaries.cache="${S}"/.hgexternalcache || die "Failed to compile"
 }
 
 QA_PREBUILT="
