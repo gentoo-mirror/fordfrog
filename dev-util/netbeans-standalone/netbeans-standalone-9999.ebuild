@@ -7,8 +7,8 @@ if [ ${PV} = "9999" ]; then
 	EGIT_REPO_URI="https://github.com/apache/netbeans.git"
 else
 	KEYWORDS="~amd64"
-	SRC_URI="mirror://apache/netbeans/netbeans/${PV}/netbeans-${PV}-source.zip"
-	S="${WORKDIR}"
+	SRC_URI="https://github.com/apache/netbeans/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/netbeans-${PV}"
 fi
 
 inherit java-pkg-2 java-ant-2 desktop xdg $([[ ${PV} = "9999" ]] && echo git-r3)
@@ -21,9 +21,9 @@ IUSE=""
 
 DEPEND="
 	dev-java/ant[bsf]
-	>=virtual/jdk-17:*
+	>=virtual/jdk-11:*
 "
-RDEPEND=">=virtual/jdk-17"
+RDEPEND=">=virtual/jdk-11"
 
 JAVA_PKG_BSFIX="off"
 INSTALL_DIR=/usr/share/${PN}-${SLOT}
@@ -48,7 +48,7 @@ src_prepare() {
 }
 
 src_compile() {
-	GRADLE_USER_HOME="${HOME}/.gradle" eant -Dcluster.config=full -Dbinaries.cache="${S}"/.hgexternalcache || die "Failed to compile"
+	GRADLE_USER_HOME="${HOME}/.gradle" eant -Dcluster.config=full -Dpermit.jdk9.builds=true -Dbinaries.cache="${S}"/.hgexternalcache || die "Failed to compile"
 }
 
 QA_PREBUILT="
