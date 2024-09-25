@@ -7,8 +7,8 @@ if [ ${PV} = "9999" ]; then
 	EGIT_REPO_URI="https://github.com/apache/netbeans.git"
 else
 	KEYWORDS="~amd64"
-	SRC_URI="mirror://apache/netbeans/netbeans/${PV}/netbeans-${PV}-source.zip"
-	S="${WORKDIR}"
+	SRC_URI="https://github.com/apache/netbeans/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/netbeans-${PV}"
 fi
 
 inherit java-pkg-2 java-ant-2 desktop xdg $([[ ${PV} = "9999" ]] && echo git-r3)
