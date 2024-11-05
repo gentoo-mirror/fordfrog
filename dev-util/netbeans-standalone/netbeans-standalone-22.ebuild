@@ -11,7 +11,7 @@ else
 	S="${WORKDIR}/netbeans-${PV}"
 fi
 
-inherit java-pkg-2 java-ant-2 desktop xdg $([[ ${PV} = "9999" ]] && echo git-r3)
+inherit java-pkg-2 desktop xdg $([[ ${PV} = "9999" ]] && echo git-r3)
 
 DESCRIPTION="Apache Netbeans IDE"
 HOMEPAGE="https://netbeans.apache.org/"
