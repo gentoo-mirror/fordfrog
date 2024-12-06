@@ -10,5 +10,5 @@ LICENSE=Apache-2.0
 PROPERTIES=live
 RDEPEND=>=virtual/jdk-11 >=dev-java/java-config-2.2.0-r3
 SLOT=9999
-_eclasses_=java-utils-2	df5a29aeeb243804a2f5ef024c8467a9	java-pkg-2	6e6478d8b78f18251c008bad32994df9	desktop	3a72ffe0d8e1dd73af3a1c8c15a59fed	xdg-utils	42869b3c8d86a70ef3cf75165a395e09	xdg	3ef49a87c52c8b77c476351195dfe575	git-r3	875eb471682d3e1f18da124be97dcc81
+_eclasses_=java-utils-2	c610b1541a10e37cb26ab5b707a744f1	java-pkg-2	6e6478d8b78f18251c008bad32994df9	desktop	3a72ffe0d8e1dd73af3a1c8c15a59fed	xdg-utils	42869b3c8d86a70ef3cf75165a395e09	xdg	3ef49a87c52c8b77c476351195dfe575	git-r3	875eb471682d3e1f18da124be97dcc81
 _md5_=6e498924a81c5dcf9247932fd587b084
